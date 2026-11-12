@@ -1,0 +1,13 @@
+{
+  "repo": "pgvector/pgvector",
+  "stars": 21548,
+  "y2038detect_version": "0.9.4",
+  "scanned_at": "2026-09-30T15:01:45Z",
+  "scan_sec": 2.47,
+  "c_files": 19,
+  "c_lines": 12385,
+  "parse_errors": 9632,
+  "scan_errors": 0,
+  "issues": [],
+  "issues_strict": []
+}

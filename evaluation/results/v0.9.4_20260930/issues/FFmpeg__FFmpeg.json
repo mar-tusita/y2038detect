@@ -1,0 +1,13 @@
+{
+  "repo": "FFmpeg/FFmpeg",
+  "stars": 60668,
+  "y2038detect_version": "0.9.4",
+  "scanned_at": "2026-09-30T14:22:04Z",
+  "scan_sec": 836.86,
+  "c_files": 3399,
+  "c_lines": 1550706,
+  "parse_errors": 1075573,
+  "scan_errors": 0,
+  "issues": [],
+  "issues_strict": []
+}

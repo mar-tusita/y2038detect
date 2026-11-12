@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-10-23T14:53:07Z",
+  "platform": "Windows-11-10.0.26300-SP0",
+  "machine": "AMD64",
+  "python_version": "3.12.10",
+  "libclang_version": "18.1.1",
+  "y2038detect_version": "0.9.4",
+  "y2038detect_commit": "188c9734f244c92671249271f936d10a9c8f9c52",
+  "y2038detect_dirty": false,
+  "options": [
+    "--json",
+    "--show-parse-errors",
+    "--with-strict"
+  ],
+  "target": null,
+  "host_long_bits": 32,
+  "backfilled": true,
+  "backfill_note": "02_scan.py did not record scan_info.json when this run was made (2026-09-30 22:54 JST, run_all.py). Commit, options and tool versions were reconstructed afterwards: HEAD at the time was the v0.9.4 release commit (188c973, 22:39) with a clean tree; platform/Python/libclang are read from the same machine; options are those run_all.py passes."
+}

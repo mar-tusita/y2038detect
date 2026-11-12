@@ -1,0 +1,367 @@
+{
+  "repo": "libuv/libuv",
+  "stars": 26874,
+  "y2038detect_version": "0.9.4",
+  "scanned_at": "2026-09-30T14:40:01Z",
+  "scan_sec": 30.67,
+  "c_files": 325,
+  "c_lines": 97005,
+  "parse_errors": 62582,
+  "scan_errors": 0,
+  "issues": [
+    {
+      "file": "evaluation\\repos\\libuv__libuv\\test\\runner-unix.c",
+      "line": 303,
+      "col": 9,
+      "message": "implicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 297,
+          "text": "  for (;;) {"
+        },
+        {
+          "line": 298,
+          "text": "    /* Check that gettimeofday() doesn't jump back in time. */"
+        },
+        {
+          "line": 299,
+          "text": "    assert(tv.tv_sec > timebase.tv_sec ||"
+        },
+        {
+          "line": 300,
+          "text": "           (tv.tv_sec == timebase.tv_sec && tv.tv_usec >= timebase.tv_usec));"
+        },
+        {
+          "line": 301,
+          "text": ""
+        },
+        {
+          "line": 302,
+          "text": "    elapsed_ms ="
+        },
+        {
+          "line": 303,
+          "text": "        (tv.tv_sec - timebase.tv_sec) * 1000 +"
+        },
+        {
+          "line": 304,
+          "text": "        (tv.tv_usec / 1000) -"
+        },
+        {
+          "line": 305,
+          "text": "        (timebase.tv_usec / 1000);"
+        }
+      ]
+    }
+  ],
+  "issues_strict": [
+    {
+      "file": "evaluation\\repos\\libuv__libuv\\src\\unix\\fs.c",
+      "line": 1521,
+      "col": 34,
+      "message": "access to struct stat timestamp field 'st_ctime': filesystem may not preserve timestamps beyond 2038",
+      "context": [
+        {
+          "line": 1515,
+          "text": "  dst->st_atim.tv_sec = src->st_atime;"
+        },
+        {
+          "line": 1516,
+          "text": "  dst->st_atim.tv_nsec = 0;"
+        },
+        {
+          "line": 1517,
+          "text": "  dst->st_mtim.tv_sec = src->st_mtime;"
+        },
+        {
+          "line": 1518,
+          "text": "  dst->st_mtim.tv_nsec = 0;"
+        },
+        {
+          "line": 1519,
+          "text": "  dst->st_ctim.tv_sec = src->st_ctime;"
+        },
+        {
+          "line": 1520,
+          "text": "  dst->st_ctim.tv_nsec = 0;"
+        },
+        {
+          "line": 1521,
+          "text": "  dst->st_birthtim.tv_sec = src->st_ctime;"
+        },
+        {
+          "line": 1522,
+          "text": "  dst->st_birthtim.tv_nsec = 0;"
+        },
+        {
+          "line": 1523,
+          "text": "  dst->st_flags = 0;"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\libuv__libuv\\src\\unix\\fs.c",
+      "line": 1519,
+      "col": 30,
+      "message": "access to struct stat timestamp field 'st_ctime': filesystem may not preserve timestamps beyond 2038",
+      "context": [
+        {
+          "line": 1513,
+          "text": "# endif"
+        },
+        {
+          "line": 1514,
+          "text": "#else"
+        },
+        {
+          "line": 1515,
+          "text": "  dst->st_atim.tv_sec = src->st_atime;"
+        },
+        {
+          "line": 1516,
+          "text": "  dst->st_atim.tv_nsec = 0;"
+        },
+        {
+          "line": 1517,
+          "text": "  dst->st_mtim.tv_sec = src->st_mtime;"
+        },
+        {
+          "line": 1518,
+          "text": "  dst->st_mtim.tv_nsec = 0;"
+        },
+        {
+          "line": 1519,
+          "text": "  dst->st_ctim.tv_sec = src->st_ctime;"
+        },
+        {
+          "line": 1520,
+          "text": "  dst->st_ctim.tv_nsec = 0;"
+        },
+        {
+          "line": 1521,
+          "text": "  dst->st_birthtim.tv_sec = src->st_ctime;"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\libuv__libuv\\src\\unix\\fs.c",
+      "line": 1517,
+      "col": 30,
+      "message": "access to struct stat timestamp field 'st_mtime': filesystem may not preserve timestamps beyond 2038",
+      "context": [
+        {
+          "line": 1511,
+          "text": "  dst->st_flags = 0;"
+        },
+        {
+          "line": 1512,
+          "text": "  dst->st_gen = 0;"
+        },
+        {
+          "line": 1513,
+          "text": "# endif"
+        },
+        {
+          "line": 1514,
+          "text": "#else"
+        },
+        {
+          "line": 1515,
+          "text": "  dst->st_atim.tv_sec = src->st_atime;"
+        },
+        {
+          "line": 1516,
+          "text": "  dst->st_atim.tv_nsec = 0;"
+        },
+        {
+          "line": 1517,
+          "text": "  dst->st_mtim.tv_sec = src->st_mtime;"
+        },
+        {
+          "line": 1518,
+          "text": "  dst->st_mtim.tv_nsec = 0;"
+        },
+        {
+          "line": 1519,
+          "text": "  dst->st_ctim.tv_sec = src->st_ctime;"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\libuv__libuv\\src\\unix\\fs.c",
+      "line": 1515,
+      "col": 30,
+      "message": "access to struct stat timestamp field 'st_atime': filesystem may not preserve timestamps beyond 2038",
+      "context": [
+        {
+          "line": 1509,
+          "text": "  dst->st_birthtim.tv_sec = src->st_ctim.tv_sec;"
+        },
+        {
+          "line": 1510,
+          "text": "  dst->st_birthtim.tv_nsec = src->st_ctim.tv_nsec;"
+        },
+        {
+          "line": 1511,
+          "text": "  dst->st_flags = 0;"
+        },
+        {
+          "line": 1512,
+          "text": "  dst->st_gen = 0;"
+        },
+        {
+          "line": 1513,
+          "text": "# endif"
+        },
+        {
+          "line": 1514,
+          "text": "#else"
+        },
+        {
+          "line": 1515,
+          "text": "  dst->st_atim.tv_sec = src->st_atime;"
+        },
+        {
+          "line": 1516,
+          "text": "  dst->st_atim.tv_nsec = 0;"
+        },
+        {
+          "line": 1517,
+          "text": "  dst->st_mtim.tv_sec = src->st_mtime;"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\libuv__libuv\\src\\unix\\fs.c",
+      "line": 1343,
+      "col": 27,
+      "message": "access to struct stat timestamp field 'st_mtim': filesystem may not preserve timestamps beyond 2038",
+      "context": [
+        {
+          "line": 1337,
+          "text": "  times[0].tv_sec = src_statsbuf.st_atime;"
+        },
+        {
+          "line": 1338,
+          "text": "  times[0].tv_nsec = src_statsbuf.st_atime_n;"
+        },
+        {
+          "line": 1339,
+          "text": "  times[1].tv_sec = src_statsbuf.st_mtime;"
+        },
+        {
+          "line": 1340,
+          "text": "  times[1].tv_nsec = src_statsbuf.st_mtime_n;"
+        },
+        {
+          "line": 1341,
+          "text": "#else"
+        },
+        {
+          "line": 1342,
+          "text": "  times[0] = src_statsbuf.st_atim;"
+        },
+        {
+          "line": 1343,
+          "text": "  times[1] = src_statsbuf.st_mtim;"
+        },
+        {
+          "line": 1344,
+          "text": "#endif"
+        },
+        {
+          "line": 1345,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\libuv__libuv\\src\\unix\\fs.c",
+      "line": 1342,
+      "col": 27,
+      "message": "access to struct stat timestamp field 'st_atim': filesystem may not preserve timestamps beyond 2038",
+      "context": [
+        {
+          "line": 1336,
+          "text": "#elif defined(_AIX)"
+        },
+        {
+          "line": 1337,
+          "text": "  times[0].tv_sec = src_statsbuf.st_atime;"
+        },
+        {
+          "line": 1338,
+          "text": "  times[0].tv_nsec = src_statsbuf.st_atime_n;"
+        },
+        {
+          "line": 1339,
+          "text": "  times[1].tv_sec = src_statsbuf.st_mtime;"
+        },
+        {
+          "line": 1340,
+          "text": "  times[1].tv_nsec = src_statsbuf.st_mtime_n;"
+        },
+        {
+          "line": 1341,
+          "text": "#else"
+        },
+        {
+          "line": 1342,
+          "text": "  times[0] = src_statsbuf.st_atim;"
+        },
+        {
+          "line": 1343,
+          "text": "  times[1] = src_statsbuf.st_mtim;"
+        },
+        {
+          "line": 1344,
+          "text": "#endif"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\libuv__libuv\\test\\runner-unix.c",
+      "line": 303,
+      "col": 9,
+      "message": "implicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 297,
+          "text": "  for (;;) {"
+        },
+        {
+          "line": 298,
+          "text": "    /* Check that gettimeofday() doesn't jump back in time. */"
+        },
+        {
+          "line": 299,
+          "text": "    assert(tv.tv_sec > timebase.tv_sec ||"
+        },
+        {
+          "line": 300,
+          "text": "           (tv.tv_sec == timebase.tv_sec && tv.tv_usec >= timebase.tv_usec));"
+        },
+        {
+          "line": 301,
+          "text": ""
+        },
+        {
+          "line": 302,
+          "text": "    elapsed_ms ="
+        },
+        {
+          "line": 303,
+          "text": "        (tv.tv_sec - timebase.tv_sec) * 1000 +"
+        },
+        {
+          "line": 304,
+          "text": "        (tv.tv_usec / 1000) -"
+        },
+        {
+          "line": 305,
+          "text": "        (timebase.tv_usec / 1000);"
+        }
+      ]
+    }
+  ]
+}

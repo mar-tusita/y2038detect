@@ -1,0 +1,13 @@
+{
+  "repo": "gentilkiwi/mimikatz",
+  "stars": 21596,
+  "y2038detect_version": "0.9.4",
+  "scanned_at": "2026-09-30T15:01:43Z",
+  "scan_sec": 62.0,
+  "c_files": 139,
+  "c_lines": 316085,
+  "parse_errors": 243032,
+  "scan_errors": 0,
+  "issues": [],
+  "issues_strict": []
+}

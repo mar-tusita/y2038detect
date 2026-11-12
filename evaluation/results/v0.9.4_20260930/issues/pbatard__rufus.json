@@ -1,0 +1,279 @@
+{
+  "repo": "pbatard/rufus",
+  "stars": 36262,
+  "y2038detect_version": "0.9.4",
+  "scanned_at": "2026-09-30T14:28:43Z",
+  "scan_sec": 76.34,
+  "c_files": 220,
+  "c_lines": 138259,
+  "parse_errors": 148506,
+  "scan_errors": 0,
+  "issues": [
+    {
+      "file": "evaluation\\repos\\pbatard__rufus\\src\\format_ext.c",
+      "line": 468,
+      "col": 19,
+      "message": "explicit conversion of time_t to 'uint32_t' may truncate after 2106",
+      "context": [
+        {
+          "line": 462,
+          "text": "\t\tinode.i_links_count = 1;"
+        },
+        {
+          "line": 463,
+          "text": "\t\t// coverity[store_truncates_time_t]"
+        },
+        {
+          "line": 464,
+          "text": "\t\tinode.i_atime = (uint32_t)ctime;"
+        },
+        {
+          "line": 465,
+          "text": "\t\t// coverity[store_truncates_time_t]"
+        },
+        {
+          "line": 466,
+          "text": "\t\tinode.i_ctime = (uint32_t)ctime;"
+        },
+        {
+          "line": 467,
+          "text": "\t\t// coverity[store_truncates_time_t]"
+        },
+        {
+          "line": 468,
+          "text": "\t\tinode.i_mtime = (uint32_t)ctime;"
+        },
+        {
+          "line": 469,
+          "text": "\t\tinode.i_size = fsize;"
+        },
+        {
+          "line": 470,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\pbatard__rufus\\src\\format_ext.c",
+      "line": 466,
+      "col": 19,
+      "message": "explicit conversion of time_t to 'uint32_t' may truncate after 2106",
+      "context": [
+        {
+          "line": 460,
+          "text": "\t\t\tctime = UINT32_MAX;"
+        },
+        {
+          "line": 461,
+          "text": "\t\tinode.i_mode = 0100644;"
+        },
+        {
+          "line": 462,
+          "text": "\t\tinode.i_links_count = 1;"
+        },
+        {
+          "line": 463,
+          "text": "\t\t// coverity[store_truncates_time_t]"
+        },
+        {
+          "line": 464,
+          "text": "\t\tinode.i_atime = (uint32_t)ctime;"
+        },
+        {
+          "line": 465,
+          "text": "\t\t// coverity[store_truncates_time_t]"
+        },
+        {
+          "line": 466,
+          "text": "\t\tinode.i_ctime = (uint32_t)ctime;"
+        },
+        {
+          "line": 467,
+          "text": "\t\t// coverity[store_truncates_time_t]"
+        },
+        {
+          "line": 468,
+          "text": "\t\tinode.i_mtime = (uint32_t)ctime;"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\pbatard__rufus\\src\\format_ext.c",
+      "line": 464,
+      "col": 19,
+      "message": "explicit conversion of time_t to 'uint32_t' may truncate after 2106",
+      "context": [
+        {
+          "line": 458,
+          "text": "\t\t// Don't care about the Y2K38 problem of ext2/ext3 for a 'persistence.conf' timestamp"
+        },
+        {
+          "line": 459,
+          "text": "\t\tif (ctime > UINT32_MAX)"
+        },
+        {
+          "line": 460,
+          "text": "\t\t\tctime = UINT32_MAX;"
+        },
+        {
+          "line": 461,
+          "text": "\t\tinode.i_mode = 0100644;"
+        },
+        {
+          "line": 462,
+          "text": "\t\tinode.i_links_count = 1;"
+        },
+        {
+          "line": 463,
+          "text": "\t\t// coverity[store_truncates_time_t]"
+        },
+        {
+          "line": 464,
+          "text": "\t\tinode.i_atime = (uint32_t)ctime;"
+        },
+        {
+          "line": 465,
+          "text": "\t\t// coverity[store_truncates_time_t]"
+        },
+        {
+          "line": 466,
+          "text": "\t\tinode.i_ctime = (uint32_t)ctime;"
+        }
+      ]
+    }
+  ],
+  "issues_strict": [
+    {
+      "file": "evaluation\\repos\\pbatard__rufus\\src\\format_ext.c",
+      "line": 468,
+      "col": 19,
+      "message": "explicit conversion of time_t to 'uint32_t' may truncate after 2106",
+      "context": [
+        {
+          "line": 462,
+          "text": "\t\tinode.i_links_count = 1;"
+        },
+        {
+          "line": 463,
+          "text": "\t\t// coverity[store_truncates_time_t]"
+        },
+        {
+          "line": 464,
+          "text": "\t\tinode.i_atime = (uint32_t)ctime;"
+        },
+        {
+          "line": 465,
+          "text": "\t\t// coverity[store_truncates_time_t]"
+        },
+        {
+          "line": 466,
+          "text": "\t\tinode.i_ctime = (uint32_t)ctime;"
+        },
+        {
+          "line": 467,
+          "text": "\t\t// coverity[store_truncates_time_t]"
+        },
+        {
+          "line": 468,
+          "text": "\t\tinode.i_mtime = (uint32_t)ctime;"
+        },
+        {
+          "line": 469,
+          "text": "\t\tinode.i_size = fsize;"
+        },
+        {
+          "line": 470,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\pbatard__rufus\\src\\format_ext.c",
+      "line": 466,
+      "col": 19,
+      "message": "explicit conversion of time_t to 'uint32_t' may truncate after 2106",
+      "context": [
+        {
+          "line": 460,
+          "text": "\t\t\tctime = UINT32_MAX;"
+        },
+        {
+          "line": 461,
+          "text": "\t\tinode.i_mode = 0100644;"
+        },
+        {
+          "line": 462,
+          "text": "\t\tinode.i_links_count = 1;"
+        },
+        {
+          "line": 463,
+          "text": "\t\t// coverity[store_truncates_time_t]"
+        },
+        {
+          "line": 464,
+          "text": "\t\tinode.i_atime = (uint32_t)ctime;"
+        },
+        {
+          "line": 465,
+          "text": "\t\t// coverity[store_truncates_time_t]"
+        },
+        {
+          "line": 466,
+          "text": "\t\tinode.i_ctime = (uint32_t)ctime;"
+        },
+        {
+          "line": 467,
+          "text": "\t\t// coverity[store_truncates_time_t]"
+        },
+        {
+          "line": 468,
+          "text": "\t\tinode.i_mtime = (uint32_t)ctime;"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\pbatard__rufus\\src\\format_ext.c",
+      "line": 464,
+      "col": 19,
+      "message": "explicit conversion of time_t to 'uint32_t' may truncate after 2106",
+      "context": [
+        {
+          "line": 458,
+          "text": "\t\t// Don't care about the Y2K38 problem of ext2/ext3 for a 'persistence.conf' timestamp"
+        },
+        {
+          "line": 459,
+          "text": "\t\tif (ctime > UINT32_MAX)"
+        },
+        {
+          "line": 460,
+          "text": "\t\t\tctime = UINT32_MAX;"
+        },
+        {
+          "line": 461,
+          "text": "\t\tinode.i_mode = 0100644;"
+        },
+        {
+          "line": 462,
+          "text": "\t\tinode.i_links_count = 1;"
+        },
+        {
+          "line": 463,
+          "text": "\t\t// coverity[store_truncates_time_t]"
+        },
+        {
+          "line": 464,
+          "text": "\t\tinode.i_atime = (uint32_t)ctime;"
+        },
+        {
+          "line": 465,
+          "text": "\t\t// coverity[store_truncates_time_t]"
+        },
+        {
+          "line": 466,
+          "text": "\t\tinode.i_ctime = (uint32_t)ctime;"
+        }
+      ]
+    }
+  ]
+}

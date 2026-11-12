@@ -1,0 +1,13 @@
+{
+  "repo": "julycoding/The-Art-Of-Programming-By-July-2nd",
+  "stars": 21511,
+  "y2038detect_version": "0.9.4",
+  "scanned_at": "2026-09-30T15:01:47Z",
+  "scan_sec": 2.0,
+  "c_files": 36,
+  "c_lines": 5263,
+  "parse_errors": 1472,
+  "scan_errors": 0,
+  "issues": [],
+  "issues_strict": []
+}

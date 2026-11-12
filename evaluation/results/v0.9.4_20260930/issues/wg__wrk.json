@@ -1,0 +1,103 @@
+{
+  "repo": "wg/wrk",
+  "stars": 40312,
+  "y2038detect_version": "0.9.4",
+  "scanned_at": "2026-09-30T14:27:27Z",
+  "scan_sec": 2.25,
+  "c_files": 14,
+  "c_lines": 5497,
+  "parse_errors": 536,
+  "scan_errors": 0,
+  "issues": [
+    {
+      "file": "evaluation\\repos\\wg__wrk\\src\\ae.c",
+      "line": 185,
+      "col": 19,
+      "message": "implicit conversion of time_t to 'long' may truncate after 2038",
+      "context": [
+        {
+          "line": 179,
+          "text": ""
+        },
+        {
+          "line": 180,
+          "text": "static void aeGetTime(long *seconds, long *milliseconds)"
+        },
+        {
+          "line": 181,
+          "text": "{"
+        },
+        {
+          "line": 182,
+          "text": "    struct timeval tv;"
+        },
+        {
+          "line": 183,
+          "text": ""
+        },
+        {
+          "line": 184,
+          "text": "    gettimeofday(&tv, NULL);"
+        },
+        {
+          "line": 185,
+          "text": "    *seconds = tv.tv_sec;"
+        },
+        {
+          "line": 186,
+          "text": "    *milliseconds = tv.tv_usec/1000;"
+        },
+        {
+          "line": 187,
+          "text": "}"
+        }
+      ]
+    }
+  ],
+  "issues_strict": [
+    {
+      "file": "evaluation\\repos\\wg__wrk\\src\\ae.c",
+      "line": 185,
+      "col": 19,
+      "message": "implicit conversion of time_t to 'long' may truncate after 2038",
+      "context": [
+        {
+          "line": 179,
+          "text": ""
+        },
+        {
+          "line": 180,
+          "text": "static void aeGetTime(long *seconds, long *milliseconds)"
+        },
+        {
+          "line": 181,
+          "text": "{"
+        },
+        {
+          "line": 182,
+          "text": "    struct timeval tv;"
+        },
+        {
+          "line": 183,
+          "text": ""
+        },
+        {
+          "line": 184,
+          "text": "    gettimeofday(&tv, NULL);"
+        },
+        {
+          "line": 185,
+          "text": "    *seconds = tv.tv_sec;"
+        },
+        {
+          "line": 186,
+          "text": "    *milliseconds = tv.tv_usec/1000;"
+        },
+        {
+          "line": 187,
+          "text": "}"
+        }
+      ]
+    }
+  ]
+}

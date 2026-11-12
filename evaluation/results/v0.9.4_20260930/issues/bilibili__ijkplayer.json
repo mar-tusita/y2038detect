@@ -1,0 +1,13 @@
+{
+  "repo": "bilibili/ijkplayer",
+  "stars": 33154,
+  "y2038detect_version": "0.9.4",
+  "scanned_at": "2026-09-30T14:32:03Z",
+  "scan_sec": 11.69,
+  "c_files": 94,
+  "c_lines": 32312,
+  "parse_errors": 11968,
+  "scan_errors": 0,
+  "issues": [],
+  "issues_strict": []
+}

@@ -1,0 +1,58 @@
+{
+  "repo": "xiaojieonly/Ehviewer_CN_SXJ",
+  "stars": 24288,
+  "y2038detect_version": "0.9.4",
+  "scanned_at": "2026-09-30T14:49:43Z",
+  "scan_sec": 78.98,
+  "c_files": 394,
+  "c_lines": 244171,
+  "parse_errors": 48804,
+  "scan_errors": 0,
+  "issues": [],
+  "issues_strict": [
+    {
+      "file": "evaluation\\repos\\xiaojieonly__Ehviewer_CN_SXJ\\app\\src\\main\\cpp\\jni\\libjpeg-turbo\\libjpeg-turbo\\tjunittest.c",
+      "line": 853,
+      "col": 9,
+      "message": "explicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 847,
+          "text": ""
+        },
+        {
+          "line": 848,
+          "text": "int main(int argc, char *argv[])"
+        },
+        {
+          "line": 849,
+          "text": "{"
+        },
+        {
+          "line": 850,
+          "text": "  int i, num4bf = 5;"
+        },
+        {
+          "line": 851,
+          "text": ""
+        },
+        {
+          "line": 852,
+          "text": "#ifdef _WIN32"
+        },
+        {
+          "line": 853,
+          "text": "  srand((unsigned int)time(NULL));"
+        },
+        {
+          "line": 854,
+          "text": "#endif"
+        },
+        {
+          "line": 855,
+          "text": "  if (argc > 1) {"
+        }
+      ]
+    }
+  ]
+}

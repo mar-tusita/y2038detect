@@ -1,0 +1,367 @@
+{
+  "repo": "tmux/tmux",
+  "stars": 46170,
+  "y2038detect_version": "0.9.4",
+  "scanned_at": "2026-09-30T14:26:31Z",
+  "scan_sec": 267.12,
+  "c_files": 190,
+  "c_lines": 90706,
+  "parse_errors": 4560,
+  "scan_errors": 0,
+  "issues": [
+    {
+      "file": "evaluation\\repos\\tmux__tmux\\alerts.c",
+      "line": 152,
+      "col": 48,
+      "message": "explicit conversion of time_t to 'u_int' may truncate after 2106",
+      "context": [
+        {
+          "line": 146,
+          "text": "\tw->flags &= ~WINDOW_SILENCE;"
+        },
+        {
+          "line": 147,
+          "text": "\tevent_del(&w->alerts_timer);"
+        },
+        {
+          "line": 148,
+          "text": ""
+        },
+        {
+          "line": 149,
+          "text": "\ttimerclear(&tv);"
+        },
+        {
+          "line": 150,
+          "text": "\ttv.tv_sec = options_get_number(w->options, \"monitor-silence\");"
+        },
+        {
+          "line": 151,
+          "text": ""
+        },
+        {
+          "line": 152,
+          "text": "\tlog_debug(\"@%u alerts timer reset %u\", w->id, (u_int)tv.tv_sec);"
+        },
+        {
+          "line": 153,
+          "text": "\tif (tv.tv_sec != 0)"
+        },
+        {
+          "line": 154,
+          "text": "\t\tevent_add(&w->alerts_timer, &tv);"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\tmux__tmux\\cmd-queue.c",
+      "line": 828,
+      "col": 19,
+      "message": "implicit conversion of time_t to 'long' may truncate after 2038",
+      "context": [
+        {
+          "line": 822,
+          "text": ""
+        },
+        {
+          "line": 823,
+          "text": "/* Print a guard line. */"
+        },
+        {
+          "line": 824,
+          "text": "void"
+        },
+        {
+          "line": 825,
+          "text": "cmdq_guard(struct cmdq_item *item, const char *guard, int flags)"
+        },
+        {
+          "line": 826,
+          "text": "{"
+        },
+        {
+          "line": 827,
+          "text": "\tstruct client\t*c = item->client;"
+        },
+        {
+          "line": 828,
+          "text": "\tlong\t\t t = item->time;"
+        },
+        {
+          "line": 829,
+          "text": "\tu_int\t\t number = item->number;"
+        },
+        {
+          "line": 830,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\tmux__tmux\\status.c",
+      "line": 199,
+      "col": 48,
+      "message": "explicit conversion of time_t to 'int' may truncate after 2038",
+      "context": [
+        {
+          "line": 193,
+          "text": ""
+        },
+        {
+          "line": 194,
+          "text": "\ttimerclear(&tv);"
+        },
+        {
+          "line": 195,
+          "text": "\ttv.tv_sec = options_get_number(s->options, \"status-interval\");"
+        },
+        {
+          "line": 196,
+          "text": ""
+        },
+        {
+          "line": 197,
+          "text": "\tif (tv.tv_sec != 0)"
+        },
+        {
+          "line": 198,
+          "text": "\t\tevtimer_add(&c->status.timer, &tv);"
+        },
+        {
+          "line": 199,
+          "text": "\tlog_debug(\"client %p, status interval %d\", c, (int)tv.tv_sec);"
+        },
+        {
+          "line": 200,
+          "text": "}"
+        },
+        {
+          "line": 201,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\tmux__tmux\\tty.c",
+      "line": 413,
+      "col": 14,
+      "message": "implicit conversion of time_t to 'u_int' may truncate after 2106",
+      "context": [
+        {
+          "line": 407,
+          "text": ""
+        },
+        {
+          "line": 408,
+          "text": "void"
+        },
+        {
+          "line": 409,
+          "text": "tty_repeat_requests(struct tty *tty, int force)"
+        },
+        {
+          "line": 410,
+          "text": "{"
+        },
+        {
+          "line": 411,
+          "text": "\tstruct client\t*c = tty->client;"
+        },
+        {
+          "line": 412,
+          "text": "\ttime_t\t\t t = time(NULL);"
+        },
+        {
+          "line": 413,
+          "text": "\tu_int\t\t n = t - tty->last_requests;"
+        },
+        {
+          "line": 414,
+          "text": ""
+        },
+        {
+          "line": 415,
+          "text": "\tif (~tty->flags & TTY_STARTED)"
+        }
+      ]
+    }
+  ],
+  "issues_strict": [
+    {
+      "file": "evaluation\\repos\\tmux__tmux\\alerts.c",
+      "line": 152,
+      "col": 48,
+      "message": "explicit conversion of time_t to 'u_int' may truncate after 2106",
+      "context": [
+        {
+          "line": 146,
+          "text": "\tw->flags &= ~WINDOW_SILENCE;"
+        },
+        {
+          "line": 147,
+          "text": "\tevent_del(&w->alerts_timer);"
+        },
+        {
+          "line": 148,
+          "text": ""
+        },
+        {
+          "line": 149,
+          "text": "\ttimerclear(&tv);"
+        },
+        {
+          "line": 150,
+          "text": "\ttv.tv_sec = options_get_number(w->options, \"monitor-silence\");"
+        },
+        {
+          "line": 151,
+          "text": ""
+        },
+        {
+          "line": 152,
+          "text": "\tlog_debug(\"@%u alerts timer reset %u\", w->id, (u_int)tv.tv_sec);"
+        },
+        {
+          "line": 153,
+          "text": "\tif (tv.tv_sec != 0)"
+        },
+        {
+          "line": 154,
+          "text": "\t\tevent_add(&w->alerts_timer, &tv);"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\tmux__tmux\\cmd-queue.c",
+      "line": 828,
+      "col": 19,
+      "message": "implicit conversion of time_t to 'long' may truncate after 2038",
+      "context": [
+        {
+          "line": 822,
+          "text": ""
+        },
+        {
+          "line": 823,
+          "text": "/* Print a guard line. */"
+        },
+        {
+          "line": 824,
+          "text": "void"
+        },
+        {
+          "line": 825,
+          "text": "cmdq_guard(struct cmdq_item *item, const char *guard, int flags)"
+        },
+        {
+          "line": 826,
+          "text": "{"
+        },
+        {
+          "line": 827,
+          "text": "\tstruct client\t*c = item->client;"
+        },
+        {
+          "line": 828,
+          "text": "\tlong\t\t t = item->time;"
+        },
+        {
+          "line": 829,
+          "text": "\tu_int\t\t number = item->number;"
+        },
+        {
+          "line": 830,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\tmux__tmux\\status.c",
+      "line": 199,
+      "col": 48,
+      "message": "explicit conversion of time_t to 'int' may truncate after 2038",
+      "context": [
+        {
+          "line": 193,
+          "text": ""
+        },
+        {
+          "line": 194,
+          "text": "\ttimerclear(&tv);"
+        },
+        {
+          "line": 195,
+          "text": "\ttv.tv_sec = options_get_number(s->options, \"status-interval\");"
+        },
+        {
+          "line": 196,
+          "text": ""
+        },
+        {
+          "line": 197,
+          "text": "\tif (tv.tv_sec != 0)"
+        },
+        {
+          "line": 198,
+          "text": "\t\tevtimer_add(&c->status.timer, &tv);"
+        },
+        {
+          "line": 199,
+          "text": "\tlog_debug(\"client %p, status interval %d\", c, (int)tv.tv_sec);"
+        },
+        {
+          "line": 200,
+          "text": "}"
+        },
+        {
+          "line": 201,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\tmux__tmux\\tty.c",
+      "line": 413,
+      "col": 14,
+      "message": "implicit conversion of time_t to 'u_int' may truncate after 2106",
+      "context": [
+        {
+          "line": 407,
+          "text": ""
+        },
+        {
+          "line": 408,
+          "text": "void"
+        },
+        {
+          "line": 409,
+          "text": "tty_repeat_requests(struct tty *tty, int force)"
+        },
+        {
+          "line": 410,
+          "text": "{"
+        },
+        {
+          "line": 411,
+          "text": "\tstruct client\t*c = tty->client;"
+        },
+        {
+          "line": 412,
+          "text": "\ttime_t\t\t t = time(NULL);"
+        },
+        {
+          "line": 413,
+          "text": "\tu_int\t\t n = t - tty->last_requests;"
+        },
+        {
+          "line": 414,
+          "text": ""
+        },
+        {
+          "line": 415,
+          "text": "\tif (~tty->flags & TTY_STARTED)"
+        }
+      ]
+    }
+  ]
+}

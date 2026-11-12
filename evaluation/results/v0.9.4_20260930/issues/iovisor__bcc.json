@@ -1,0 +1,1599 @@
+{
+  "repo": "iovisor/bcc",
+  "stars": 22439,
+  "y2038detect_version": "0.9.4",
+  "scanned_at": "2026-09-30T14:57:50Z",
+  "scan_sec": 12.14,
+  "c_files": 157,
+  "c_lines": 40606,
+  "parse_errors": 16008,
+  "scan_errors": 0,
+  "issues": [
+    {
+      "file": "evaluation\\repos\\iovisor__bcc\\libbpf-tools\\biolatency.c",
+      "line": 367,
+      "col": 13,
+      "message": "implicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 361,
+          "text": "\tsignal(SIGINT, sig_handler);"
+        },
+        {
+          "line": 362,
+          "text": ""
+        },
+        {
+          "line": 363,
+          "text": "\tprintf(\"Tracing block device I/O... Hit Ctrl-C to end.\\n\");"
+        },
+        {
+          "line": 364,
+          "text": ""
+        },
+        {
+          "line": 365,
+          "text": "\t/* main: poll */"
+        },
+        {
+          "line": 366,
+          "text": "\twhile (1) {"
+        },
+        {
+          "line": 367,
+          "text": "\t\tsleep(env.interval);"
+        },
+        {
+          "line": 368,
+          "text": "\t\tprintf(\"\\n\");"
+        },
+        {
+          "line": 369,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\iovisor__bcc\\libbpf-tools\\biopattern.c",
+      "line": 227,
+      "col": 13,
+      "message": "implicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 221,
+          "text": "\t\tprintf(\"%-9s \", \"TIME\");"
+        },
+        {
+          "line": 222,
+          "text": "\tprintf(\"%-7s %5s %5s %8s %10s\\n\", \"DISK\", \"%RND\", \"%SEQ\","
+        },
+        {
+          "line": 223,
+          "text": "\t\t\"COUNT\", \"KBYTES\");"
+        },
+        {
+          "line": 224,
+          "text": ""
+        },
+        {
+          "line": 225,
+          "text": "\t/* main: poll */"
+        },
+        {
+          "line": 226,
+          "text": "\twhile (1) {"
+        },
+        {
+          "line": 227,
+          "text": "\t\tsleep(env.interval);"
+        },
+        {
+          "line": 228,
+          "text": ""
+        },
+        {
+          "line": 229,
+          "text": "\t\terr = print_map(obj->maps.counters, partitions);"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\iovisor__bcc\\libbpf-tools\\bitesize.c",
+      "line": 215,
+      "col": 13,
+      "message": "implicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 209,
+          "text": "\tsignal(SIGINT, sig_handler);"
+        },
+        {
+          "line": 210,
+          "text": ""
+        },
+        {
+          "line": 211,
+          "text": "\tprintf(\"Tracing block device I/O... Hit Ctrl-C to end.\\n\");"
+        },
+        {
+          "line": 212,
+          "text": ""
+        },
+        {
+          "line": 213,
+          "text": "\t/* main: poll */"
+        },
+        {
+          "line": 214,
+          "text": "\twhile (1) {"
+        },
+        {
+          "line": 215,
+          "text": "\t\tsleep(env.interval);"
+        },
+        {
+          "line": 216,
+          "text": "\t\tprintf(\"\\n\");"
+        },
+        {
+          "line": 217,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\iovisor__bcc\\libbpf-tools\\cachestat.c",
+      "line": 232,
+      "col": 13,
+      "message": "implicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 226,
+          "text": "\tif (env.timestamp)"
+        },
+        {
+          "line": 227,
+          "text": "\t\tprintf(\"%-8s \", \"TIME\");"
+        },
+        {
+          "line": 228,
+          "text": "\tprintf(\"%8s %8s %8s %8s %12s %10s\\n\", \"HITS\", \"MISSES\", \"DIRTIES\","
+        },
+        {
+          "line": 229,
+          "text": "\t\t\"HITRATIO\", \"BUFFERS_MB\", \"CACHED_MB\");"
+        },
+        {
+          "line": 230,
+          "text": ""
+        },
+        {
+          "line": 231,
+          "text": "\twhile (1) {"
+        },
+        {
+          "line": 232,
+          "text": "\t\tsleep(env.interval);"
+        },
+        {
+          "line": 233,
+          "text": ""
+        },
+        {
+          "line": 234,
+          "text": "\t\t/* total = total cache accesses without counting dirties */"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\iovisor__bcc\\libbpf-tools\\cpudist.c",
+      "line": 277,
+      "col": 13,
+      "message": "implicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 271,
+          "text": "\tsignal(SIGINT, sig_handler);"
+        },
+        {
+          "line": 272,
+          "text": ""
+        },
+        {
+          "line": 273,
+          "text": "\tprintf(\"Tracing %s-CPU time... Hit Ctrl-C to end.\\n\", env.offcpu ? \"off\" : \"on\");"
+        },
+        {
+          "line": 274,
+          "text": ""
+        },
+        {
+          "line": 275,
+          "text": "\t/* main: poll */"
+        },
+        {
+          "line": 276,
+          "text": "\twhile (1) {"
+        },
+        {
+          "line": 277,
+          "text": "\t\tsleep(env.interval);"
+        },
+        {
+          "line": 278,
+          "text": "\t\tprintf(\"\\n\");"
+        },
+        {
+          "line": 279,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\iovisor__bcc\\libbpf-tools\\drsnoop.c",
+      "line": 211,
+      "col": 30,
+      "message": "time_t passed to printf-family function with incompatible format specifier: may truncate after 2038",
+      "context": [
+        {
+          "line": 205,
+          "text": "\t\tfprintf(stderr, \"failed to attach BPF programs\\n\");"
+        },
+        {
+          "line": 206,
+          "text": "\t\tgoto cleanup;"
+        },
+        {
+          "line": 207,
+          "text": "\t}"
+        },
+        {
+          "line": 208,
+          "text": ""
+        },
+        {
+          "line": 209,
+          "text": "\tprintf(\"Tracing direct reclaim events\");"
+        },
+        {
+          "line": 210,
+          "text": "\tif (env.duration)"
+        },
+        {
+          "line": 211,
+          "text": "\t\tprintf(\" for %ld secs.\\n\", env.duration);"
+        },
+        {
+          "line": 212,
+          "text": "\telse"
+        },
+        {
+          "line": 213,
+          "text": "\t\tprintf(\"... Hit Ctrl-C to end.\\n\");"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\iovisor__bcc\\libbpf-tools\\execsnoop.c",
+      "line": 165,
+      "col": 8,
+      "message": "implicit conversion of time_t to 'long' may truncate after 2038",
+      "context": [
+        {
+          "line": 159,
+          "text": "\tlong nsec, sec;"
+        },
+        {
+          "line": 160,
+          "text": "\tstatic struct timespec cur_time;"
+        },
+        {
+          "line": 161,
+          "text": "\tdouble time_diff;"
+        },
+        {
+          "line": 162,
+          "text": ""
+        },
+        {
+          "line": 163,
+          "text": "\tclock_gettime(CLOCK_MONOTONIC, &cur_time);"
+        },
+        {
+          "line": 164,
+          "text": "\tnsec = cur_time.tv_nsec - start_time.tv_nsec;"
+        },
+        {
+          "line": 165,
+          "text": "\tsec = cur_time.tv_sec - start_time.tv_sec;"
+        },
+        {
+          "line": 166,
+          "text": "\tif (nsec < 0) {"
+        },
+        {
+          "line": 167,
+          "text": "\t\tnsec += NSEC_PER_SEC;"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\iovisor__bcc\\libbpf-tools\\fsslower.c",
+      "line": 354,
+      "col": 30,
+      "message": "time_t passed to printf-family function with incompatible format specifier: may truncate after 2038",
+      "context": [
+        {
+          "line": 348,
+          "text": "\tif (min_lat_ms)"
+        },
+        {
+          "line": 349,
+          "text": "\t\tprintf(\"Tracing %s operations slower than %llu ms\", fs, min_lat_ms);"
+        },
+        {
+          "line": 350,
+          "text": "\telse"
+        },
+        {
+          "line": 351,
+          "text": "\t\tprintf(\"Tracing %s operations\", fs);"
+        },
+        {
+          "line": 352,
+          "text": ""
+        },
+        {
+          "line": 353,
+          "text": "\tif (duration)"
+        },
+        {
+          "line": 354,
+          "text": "\t\tprintf(\" for %ld secs.\\n\", duration);"
+        },
+        {
+          "line": 355,
+          "text": "\telse"
+        },
+        {
+          "line": 356,
+          "text": "\t\tprintf(\"... Hit Ctrl-C to end.\\n\");"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\iovisor__bcc\\libbpf-tools\\futexctn.c",
+      "line": 378,
+      "col": 13,
+      "message": "implicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 372,
+          "text": "\tsignal(SIGINT, sig_handler);"
+        },
+        {
+          "line": 373,
+          "text": ""
+        },
+        {
+          "line": 374,
+          "text": "\tfprintf(stderr, \"Summarize futex contention latency, hit ctrl-c to exit\\n\");"
+        },
+        {
+          "line": 375,
+          "text": ""
+        },
+        {
+          "line": 376,
+          "text": "\t/* main: poll */"
+        },
+        {
+          "line": 377,
+          "text": "\twhile (1) {"
+        },
+        {
+          "line": 378,
+          "text": "\t\tsleep(env.interval);"
+        },
+        {
+          "line": 379,
+          "text": "\t\tprintf(\"\\n\");"
+        },
+        {
+          "line": 380,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\iovisor__bcc\\libbpf-tools\\hardirqs.c",
+      "line": 268,
+      "col": 13,
+      "message": "implicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 262,
+          "text": "\tsignal(SIGINT, sig_handler);"
+        },
+        {
+          "line": 263,
+          "text": ""
+        },
+        {
+          "line": 264,
+          "text": "\tprintf(\"Tracing hard irq event time... Hit Ctrl-C to end.\\n\");"
+        },
+        {
+          "line": 265,
+          "text": ""
+        },
+        {
+          "line": 266,
+          "text": "\t/* main: poll */"
+        },
+        {
+          "line": 267,
+          "text": "\twhile (1) {"
+        },
+        {
+          "line": 268,
+          "text": "\t\tsleep(env.interval);"
+        },
+        {
+          "line": 269,
+          "text": "\t\tprintf(\"\\n\");"
+        },
+        {
+          "line": 270,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\iovisor__bcc\\libbpf-tools\\llcstat.c",
+      "line": 247,
+      "col": 12,
+      "message": "implicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 241,
+          "text": "\t\tgoto cleanup;"
+        },
+        {
+          "line": 242,
+          "text": ""
+        },
+        {
+          "line": 243,
+          "text": "\tprintf(\"Running for %ld seconds or Hit Ctrl-C to end.\\n\", env.duration);"
+        },
+        {
+          "line": 244,
+          "text": ""
+        },
+        {
+          "line": 245,
+          "text": "\tsignal(SIGINT, sig_handler);"
+        },
+        {
+          "line": 246,
+          "text": ""
+        },
+        {
+          "line": 247,
+          "text": "\tsleep(env.duration);"
+        },
+        {
+          "line": 248,
+          "text": ""
+        },
+        {
+          "line": 249,
+          "text": "\tprintf(\"%-8s \", \"PID\");"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\iovisor__bcc\\libbpf-tools\\llcstat.c",
+      "line": 243,
+      "col": 60,
+      "message": "time_t passed to printf-family function with incompatible format specifier: may truncate after 2038",
+      "context": [
+        {
+          "line": 237,
+          "text": "\t\tgoto cleanup;"
+        },
+        {
+          "line": 238,
+          "text": "\tif (open_and_attach_perf_event(PERF_COUNT_HW_CACHE_REFERENCES,"
+        },
+        {
+          "line": 239,
+          "text": "\t\t\t\t\tenv.sample_period,"
+        },
+        {
+          "line": 240,
+          "text": "\t\t\t\t\tobj->progs.on_cache_ref, rlinks))"
+        },
+        {
+          "line": 241,
+          "text": "\t\tgoto cleanup;"
+        },
+        {
+          "line": 242,
+          "text": ""
+        },
+        {
+          "line": 243,
+          "text": "\tprintf(\"Running for %ld seconds or Hit Ctrl-C to end.\\n\", env.duration);"
+        },
+        {
+          "line": 244,
+          "text": ""
+        },
+        {
+          "line": 245,
+          "text": "\tsignal(SIGINT, sig_handler);"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\iovisor__bcc\\libbpf-tools\\runqlat.c",
+      "line": 264,
+      "col": 13,
+      "message": "implicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 258,
+          "text": "\tprintf(\"Tracing run queue latency... Hit Ctrl-C to end.\\n\");"
+        },
+        {
+          "line": 259,
+          "text": ""
+        },
+        {
+          "line": 260,
+          "text": "\tsignal(SIGINT, sig_handler);"
+        },
+        {
+          "line": 261,
+          "text": ""
+        },
+        {
+          "line": 262,
+          "text": "\t/* main: poll */"
+        },
+        {
+          "line": 263,
+          "text": "\twhile (1) {"
+        },
+        {
+          "line": 264,
+          "text": "\t\tsleep(env.interval);"
+        },
+        {
+          "line": 265,
+          "text": "\t\tprintf(\"\\n\");"
+        },
+        {
+          "line": 266,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\iovisor__bcc\\libbpf-tools\\runqlen.c",
+      "line": 289,
+      "col": 13,
+      "message": "implicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 283,
+          "text": ""
+        },
+        {
+          "line": 284,
+          "text": "\tprintf(\"Sampling run queue length... Hit Ctrl-C to end.\\n\");"
+        },
+        {
+          "line": 285,
+          "text": ""
+        },
+        {
+          "line": 286,
+          "text": "\tsignal(SIGINT, sig_handler);"
+        },
+        {
+          "line": 287,
+          "text": ""
+        },
+        {
+          "line": 288,
+          "text": "\twhile (1) {"
+        },
+        {
+          "line": 289,
+          "text": "\t\tsleep(env.interval);"
+        },
+        {
+          "line": 290,
+          "text": "\t\tprintf(\"\\n\");"
+        },
+        {
+          "line": 291,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\iovisor__bcc\\libbpf-tools\\softirqs.c",
+      "line": 266,
+      "col": 13,
+      "message": "implicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 260,
+          "text": "\tsignal(SIGINT, sig_handler);"
+        },
+        {
+          "line": 261,
+          "text": ""
+        },
+        {
+          "line": 262,
+          "text": "\tprintf(\"Tracing soft irq event time... Hit Ctrl-C to end.\\n\");"
+        },
+        {
+          "line": 263,
+          "text": ""
+        },
+        {
+          "line": 264,
+          "text": "\t/* main: poll */"
+        },
+        {
+          "line": 265,
+          "text": "\twhile (1) {"
+        },
+        {
+          "line": 266,
+          "text": "\t\tsleep(env.interval);"
+        },
+        {
+          "line": 267,
+          "text": "\t\tprintf(\"\\n\");"
+        },
+        {
+          "line": 268,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\iovisor__bcc\\libbpf-tools\\tcprtt.c",
+      "line": 315,
+      "col": 13,
+      "message": "implicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 309,
+          "text": "\t/* setup duration */"
+        },
+        {
+          "line": 310,
+          "text": "\tif (env.duration)"
+        },
+        {
+          "line": 311,
+          "text": "\t\ttime_end = get_ktime_ns() + env.duration * NSEC_PER_SEC;"
+        },
+        {
+          "line": 312,
+          "text": ""
+        },
+        {
+          "line": 313,
+          "text": "\t/* main: poll */"
+        },
+        {
+          "line": 314,
+          "text": "\twhile (1) {"
+        },
+        {
+          "line": 315,
+          "text": "\t\tsleep(env.interval);"
+        },
+        {
+          "line": 316,
+          "text": "\t\tprintf(\"\\n\");"
+        },
+        {
+          "line": 317,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\iovisor__bcc\\libbpf-tools\\tcprtt.c",
+      "line": 305,
+      "col": 30,
+      "message": "time_t passed to printf-family function with incompatible format specifier: may truncate after 2038",
+      "context": [
+        {
+          "line": 299,
+          "text": "\t}"
+        },
+        {
+          "line": 300,
+          "text": ""
+        },
+        {
+          "line": 301,
+          "text": "\tsignal(SIGINT, sig_handler);"
+        },
+        {
+          "line": 302,
+          "text": ""
+        },
+        {
+          "line": 303,
+          "text": "\tprintf(\"Tracing TCP RTT\");"
+        },
+        {
+          "line": 304,
+          "text": "\tif (env.duration)"
+        },
+        {
+          "line": 305,
+          "text": "\t\tprintf(\" for %ld secs.\\n\", env.duration);"
+        },
+        {
+          "line": 306,
+          "text": "\telse"
+        },
+        {
+          "line": 307,
+          "text": "\t\tprintf(\"... Hit Ctrl-C to end.\\n\");"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\iovisor__bcc\\libbpf-tools\\tcpsynbl.c",
+      "line": 234,
+      "col": 13,
+      "message": "implicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 228,
+          "text": "\tsignal(SIGINT, sig_handler);"
+        },
+        {
+          "line": 229,
+          "text": ""
+        },
+        {
+          "line": 230,
+          "text": "\tprintf(\"Tracing SYN backlog size. Ctrl-C to end.\\n\");"
+        },
+        {
+          "line": 231,
+          "text": ""
+        },
+        {
+          "line": 232,
+          "text": "\t/* main: poll */"
+        },
+        {
+          "line": 233,
+          "text": "\twhile (1) {"
+        },
+        {
+          "line": 234,
+          "text": "\t\tsleep(env.interval);"
+        },
+        {
+          "line": 235,
+          "text": "\t\tprintf(\"\\n\");"
+        },
+        {
+          "line": 236,
+          "text": ""
+        }
+      ]
+    }
+  ],
+  "issues_strict": [
+    {
+      "file": "evaluation\\repos\\iovisor__bcc\\libbpf-tools\\biolatency.c",
+      "line": 367,
+      "col": 13,
+      "message": "implicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 361,
+          "text": "\tsignal(SIGINT, sig_handler);"
+        },
+        {
+          "line": 362,
+          "text": ""
+        },
+        {
+          "line": 363,
+          "text": "\tprintf(\"Tracing block device I/O... Hit Ctrl-C to end.\\n\");"
+        },
+        {
+          "line": 364,
+          "text": ""
+        },
+        {
+          "line": 365,
+          "text": "\t/* main: poll */"
+        },
+        {
+          "line": 366,
+          "text": "\twhile (1) {"
+        },
+        {
+          "line": 367,
+          "text": "\t\tsleep(env.interval);"
+        },
+        {
+          "line": 368,
+          "text": "\t\tprintf(\"\\n\");"
+        },
+        {
+          "line": 369,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\iovisor__bcc\\libbpf-tools\\biopattern.c",
+      "line": 227,
+      "col": 13,
+      "message": "implicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 221,
+          "text": "\t\tprintf(\"%-9s \", \"TIME\");"
+        },
+        {
+          "line": 222,
+          "text": "\tprintf(\"%-7s %5s %5s %8s %10s\\n\", \"DISK\", \"%RND\", \"%SEQ\","
+        },
+        {
+          "line": 223,
+          "text": "\t\t\"COUNT\", \"KBYTES\");"
+        },
+        {
+          "line": 224,
+          "text": ""
+        },
+        {
+          "line": 225,
+          "text": "\t/* main: poll */"
+        },
+        {
+          "line": 226,
+          "text": "\twhile (1) {"
+        },
+        {
+          "line": 227,
+          "text": "\t\tsleep(env.interval);"
+        },
+        {
+          "line": 228,
+          "text": ""
+        },
+        {
+          "line": 229,
+          "text": "\t\terr = print_map(obj->maps.counters, partitions);"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\iovisor__bcc\\libbpf-tools\\bitesize.c",
+      "line": 215,
+      "col": 13,
+      "message": "implicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 209,
+          "text": "\tsignal(SIGINT, sig_handler);"
+        },
+        {
+          "line": 210,
+          "text": ""
+        },
+        {
+          "line": 211,
+          "text": "\tprintf(\"Tracing block device I/O... Hit Ctrl-C to end.\\n\");"
+        },
+        {
+          "line": 212,
+          "text": ""
+        },
+        {
+          "line": 213,
+          "text": "\t/* main: poll */"
+        },
+        {
+          "line": 214,
+          "text": "\twhile (1) {"
+        },
+        {
+          "line": 215,
+          "text": "\t\tsleep(env.interval);"
+        },
+        {
+          "line": 216,
+          "text": "\t\tprintf(\"\\n\");"
+        },
+        {
+          "line": 217,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\iovisor__bcc\\libbpf-tools\\cachestat.c",
+      "line": 232,
+      "col": 13,
+      "message": "implicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 226,
+          "text": "\tif (env.timestamp)"
+        },
+        {
+          "line": 227,
+          "text": "\t\tprintf(\"%-8s \", \"TIME\");"
+        },
+        {
+          "line": 228,
+          "text": "\tprintf(\"%8s %8s %8s %8s %12s %10s\\n\", \"HITS\", \"MISSES\", \"DIRTIES\","
+        },
+        {
+          "line": 229,
+          "text": "\t\t\"HITRATIO\", \"BUFFERS_MB\", \"CACHED_MB\");"
+        },
+        {
+          "line": 230,
+          "text": ""
+        },
+        {
+          "line": 231,
+          "text": "\twhile (1) {"
+        },
+        {
+          "line": 232,
+          "text": "\t\tsleep(env.interval);"
+        },
+        {
+          "line": 233,
+          "text": ""
+        },
+        {
+          "line": 234,
+          "text": "\t\t/* total = total cache accesses without counting dirties */"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\iovisor__bcc\\libbpf-tools\\cpudist.c",
+      "line": 277,
+      "col": 13,
+      "message": "implicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 271,
+          "text": "\tsignal(SIGINT, sig_handler);"
+        },
+        {
+          "line": 272,
+          "text": ""
+        },
+        {
+          "line": 273,
+          "text": "\tprintf(\"Tracing %s-CPU time... Hit Ctrl-C to end.\\n\", env.offcpu ? \"off\" : \"on\");"
+        },
+        {
+          "line": 274,
+          "text": ""
+        },
+        {
+          "line": 275,
+          "text": "\t/* main: poll */"
+        },
+        {
+          "line": 276,
+          "text": "\twhile (1) {"
+        },
+        {
+          "line": 277,
+          "text": "\t\tsleep(env.interval);"
+        },
+        {
+          "line": 278,
+          "text": "\t\tprintf(\"\\n\");"
+        },
+        {
+          "line": 279,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\iovisor__bcc\\libbpf-tools\\drsnoop.c",
+      "line": 211,
+      "col": 30,
+      "message": "time_t passed to printf-family function with incompatible format specifier: may truncate after 2038",
+      "context": [
+        {
+          "line": 205,
+          "text": "\t\tfprintf(stderr, \"failed to attach BPF programs\\n\");"
+        },
+        {
+          "line": 206,
+          "text": "\t\tgoto cleanup;"
+        },
+        {
+          "line": 207,
+          "text": "\t}"
+        },
+        {
+          "line": 208,
+          "text": ""
+        },
+        {
+          "line": 209,
+          "text": "\tprintf(\"Tracing direct reclaim events\");"
+        },
+        {
+          "line": 210,
+          "text": "\tif (env.duration)"
+        },
+        {
+          "line": 211,
+          "text": "\t\tprintf(\" for %ld secs.\\n\", env.duration);"
+        },
+        {
+          "line": 212,
+          "text": "\telse"
+        },
+        {
+          "line": 213,
+          "text": "\t\tprintf(\"... Hit Ctrl-C to end.\\n\");"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\iovisor__bcc\\libbpf-tools\\execsnoop.c",
+      "line": 165,
+      "col": 8,
+      "message": "implicit conversion of time_t to 'long' may truncate after 2038",
+      "context": [
+        {
+          "line": 159,
+          "text": "\tlong nsec, sec;"
+        },
+        {
+          "line": 160,
+          "text": "\tstatic struct timespec cur_time;"
+        },
+        {
+          "line": 161,
+          "text": "\tdouble time_diff;"
+        },
+        {
+          "line": 162,
+          "text": ""
+        },
+        {
+          "line": 163,
+          "text": "\tclock_gettime(CLOCK_MONOTONIC, &cur_time);"
+        },
+        {
+          "line": 164,
+          "text": "\tnsec = cur_time.tv_nsec - start_time.tv_nsec;"
+        },
+        {
+          "line": 165,
+          "text": "\tsec = cur_time.tv_sec - start_time.tv_sec;"
+        },
+        {
+          "line": 166,
+          "text": "\tif (nsec < 0) {"
+        },
+        {
+          "line": 167,
+          "text": "\t\tnsec += NSEC_PER_SEC;"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\iovisor__bcc\\libbpf-tools\\fsslower.c",
+      "line": 354,
+      "col": 30,
+      "message": "time_t passed to printf-family function with incompatible format specifier: may truncate after 2038",
+      "context": [
+        {
+          "line": 348,
+          "text": "\tif (min_lat_ms)"
+        },
+        {
+          "line": 349,
+          "text": "\t\tprintf(\"Tracing %s operations slower than %llu ms\", fs, min_lat_ms);"
+        },
+        {
+          "line": 350,
+          "text": "\telse"
+        },
+        {
+          "line": 351,
+          "text": "\t\tprintf(\"Tracing %s operations\", fs);"
+        },
+        {
+          "line": 352,
+          "text": ""
+        },
+        {
+          "line": 353,
+          "text": "\tif (duration)"
+        },
+        {
+          "line": 354,
+          "text": "\t\tprintf(\" for %ld secs.\\n\", duration);"
+        },
+        {
+          "line": 355,
+          "text": "\telse"
+        },
+        {
+          "line": 356,
+          "text": "\t\tprintf(\"... Hit Ctrl-C to end.\\n\");"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\iovisor__bcc\\libbpf-tools\\futexctn.c",
+      "line": 378,
+      "col": 13,
+      "message": "implicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 372,
+          "text": "\tsignal(SIGINT, sig_handler);"
+        },
+        {
+          "line": 373,
+          "text": ""
+        },
+        {
+          "line": 374,
+          "text": "\tfprintf(stderr, \"Summarize futex contention latency, hit ctrl-c to exit\\n\");"
+        },
+        {
+          "line": 375,
+          "text": ""
+        },
+        {
+          "line": 376,
+          "text": "\t/* main: poll */"
+        },
+        {
+          "line": 377,
+          "text": "\twhile (1) {"
+        },
+        {
+          "line": 378,
+          "text": "\t\tsleep(env.interval);"
+        },
+        {
+          "line": 379,
+          "text": "\t\tprintf(\"\\n\");"
+        },
+        {
+          "line": 380,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\iovisor__bcc\\libbpf-tools\\hardirqs.c",
+      "line": 268,
+      "col": 13,
+      "message": "implicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 262,
+          "text": "\tsignal(SIGINT, sig_handler);"
+        },
+        {
+          "line": 263,
+          "text": ""
+        },
+        {
+          "line": 264,
+          "text": "\tprintf(\"Tracing hard irq event time... Hit Ctrl-C to end.\\n\");"
+        },
+        {
+          "line": 265,
+          "text": ""
+        },
+        {
+          "line": 266,
+          "text": "\t/* main: poll */"
+        },
+        {
+          "line": 267,
+          "text": "\twhile (1) {"
+        },
+        {
+          "line": 268,
+          "text": "\t\tsleep(env.interval);"
+        },
+        {
+          "line": 269,
+          "text": "\t\tprintf(\"\\n\");"
+        },
+        {
+          "line": 270,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\iovisor__bcc\\libbpf-tools\\llcstat.c",
+      "line": 247,
+      "col": 12,
+      "message": "implicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 241,
+          "text": "\t\tgoto cleanup;"
+        },
+        {
+          "line": 242,
+          "text": ""
+        },
+        {
+          "line": 243,
+          "text": "\tprintf(\"Running for %ld seconds or Hit Ctrl-C to end.\\n\", env.duration);"
+        },
+        {
+          "line": 244,
+          "text": ""
+        },
+        {
+          "line": 245,
+          "text": "\tsignal(SIGINT, sig_handler);"
+        },
+        {
+          "line": 246,
+          "text": ""
+        },
+        {
+          "line": 247,
+          "text": "\tsleep(env.duration);"
+        },
+        {
+          "line": 248,
+          "text": ""
+        },
+        {
+          "line": 249,
+          "text": "\tprintf(\"%-8s \", \"PID\");"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\iovisor__bcc\\libbpf-tools\\llcstat.c",
+      "line": 243,
+      "col": 60,
+      "message": "time_t passed to printf-family function with incompatible format specifier: may truncate after 2038",
+      "context": [
+        {
+          "line": 237,
+          "text": "\t\tgoto cleanup;"
+        },
+        {
+          "line": 238,
+          "text": "\tif (open_and_attach_perf_event(PERF_COUNT_HW_CACHE_REFERENCES,"
+        },
+        {
+          "line": 239,
+          "text": "\t\t\t\t\tenv.sample_period,"
+        },
+        {
+          "line": 240,
+          "text": "\t\t\t\t\tobj->progs.on_cache_ref, rlinks))"
+        },
+        {
+          "line": 241,
+          "text": "\t\tgoto cleanup;"
+        },
+        {
+          "line": 242,
+          "text": ""
+        },
+        {
+          "line": 243,
+          "text": "\tprintf(\"Running for %ld seconds or Hit Ctrl-C to end.\\n\", env.duration);"
+        },
+        {
+          "line": 244,
+          "text": ""
+        },
+        {
+          "line": 245,
+          "text": "\tsignal(SIGINT, sig_handler);"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\iovisor__bcc\\libbpf-tools\\runqlat.c",
+      "line": 264,
+      "col": 13,
+      "message": "implicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 258,
+          "text": "\tprintf(\"Tracing run queue latency... Hit Ctrl-C to end.\\n\");"
+        },
+        {
+          "line": 259,
+          "text": ""
+        },
+        {
+          "line": 260,
+          "text": "\tsignal(SIGINT, sig_handler);"
+        },
+        {
+          "line": 261,
+          "text": ""
+        },
+        {
+          "line": 262,
+          "text": "\t/* main: poll */"
+        },
+        {
+          "line": 263,
+          "text": "\twhile (1) {"
+        },
+        {
+          "line": 264,
+          "text": "\t\tsleep(env.interval);"
+        },
+        {
+          "line": 265,
+          "text": "\t\tprintf(\"\\n\");"
+        },
+        {
+          "line": 266,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\iovisor__bcc\\libbpf-tools\\runqlen.c",
+      "line": 289,
+      "col": 13,
+      "message": "implicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 283,
+          "text": ""
+        },
+        {
+          "line": 284,
+          "text": "\tprintf(\"Sampling run queue length... Hit Ctrl-C to end.\\n\");"
+        },
+        {
+          "line": 285,
+          "text": ""
+        },
+        {
+          "line": 286,
+          "text": "\tsignal(SIGINT, sig_handler);"
+        },
+        {
+          "line": 287,
+          "text": ""
+        },
+        {
+          "line": 288,
+          "text": "\twhile (1) {"
+        },
+        {
+          "line": 289,
+          "text": "\t\tsleep(env.interval);"
+        },
+        {
+          "line": 290,
+          "text": "\t\tprintf(\"\\n\");"
+        },
+        {
+          "line": 291,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\iovisor__bcc\\libbpf-tools\\softirqs.c",
+      "line": 266,
+      "col": 13,
+      "message": "implicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 260,
+          "text": "\tsignal(SIGINT, sig_handler);"
+        },
+        {
+          "line": 261,
+          "text": ""
+        },
+        {
+          "line": 262,
+          "text": "\tprintf(\"Tracing soft irq event time... Hit Ctrl-C to end.\\n\");"
+        },
+        {
+          "line": 263,
+          "text": ""
+        },
+        {
+          "line": 264,
+          "text": "\t/* main: poll */"
+        },
+        {
+          "line": 265,
+          "text": "\twhile (1) {"
+        },
+        {
+          "line": 266,
+          "text": "\t\tsleep(env.interval);"
+        },
+        {
+          "line": 267,
+          "text": "\t\tprintf(\"\\n\");"
+        },
+        {
+          "line": 268,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\iovisor__bcc\\libbpf-tools\\tcprtt.c",
+      "line": 315,
+      "col": 13,
+      "message": "implicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 309,
+          "text": "\t/* setup duration */"
+        },
+        {
+          "line": 310,
+          "text": "\tif (env.duration)"
+        },
+        {
+          "line": 311,
+          "text": "\t\ttime_end = get_ktime_ns() + env.duration * NSEC_PER_SEC;"
+        },
+        {
+          "line": 312,
+          "text": ""
+        },
+        {
+          "line": 313,
+          "text": "\t/* main: poll */"
+        },
+        {
+          "line": 314,
+          "text": "\twhile (1) {"
+        },
+        {
+          "line": 315,
+          "text": "\t\tsleep(env.interval);"
+        },
+        {
+          "line": 316,
+          "text": "\t\tprintf(\"\\n\");"
+        },
+        {
+          "line": 317,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\iovisor__bcc\\libbpf-tools\\tcprtt.c",
+      "line": 305,
+      "col": 30,
+      "message": "time_t passed to printf-family function with incompatible format specifier: may truncate after 2038",
+      "context": [
+        {
+          "line": 299,
+          "text": "\t}"
+        },
+        {
+          "line": 300,
+          "text": ""
+        },
+        {
+          "line": 301,
+          "text": "\tsignal(SIGINT, sig_handler);"
+        },
+        {
+          "line": 302,
+          "text": ""
+        },
+        {
+          "line": 303,
+          "text": "\tprintf(\"Tracing TCP RTT\");"
+        },
+        {
+          "line": 304,
+          "text": "\tif (env.duration)"
+        },
+        {
+          "line": 305,
+          "text": "\t\tprintf(\" for %ld secs.\\n\", env.duration);"
+        },
+        {
+          "line": 306,
+          "text": "\telse"
+        },
+        {
+          "line": 307,
+          "text": "\t\tprintf(\"... Hit Ctrl-C to end.\\n\");"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\iovisor__bcc\\libbpf-tools\\tcpsynbl.c",
+      "line": 234,
+      "col": 13,
+      "message": "implicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 228,
+          "text": "\tsignal(SIGINT, sig_handler);"
+        },
+        {
+          "line": 229,
+          "text": ""
+        },
+        {
+          "line": 230,
+          "text": "\tprintf(\"Tracing SYN backlog size. Ctrl-C to end.\\n\");"
+        },
+        {
+          "line": 231,
+          "text": ""
+        },
+        {
+          "line": 232,
+          "text": "\t/* main: poll */"
+        },
+        {
+          "line": 233,
+          "text": "\twhile (1) {"
+        },
+        {
+          "line": 234,
+          "text": "\t\tsleep(env.interval);"
+        },
+        {
+          "line": 235,
+          "text": "\t\tprintf(\"\\n\");"
+        },
+        {
+          "line": 236,
+          "text": ""
+        }
+      ]
+    }
+  ]
+}

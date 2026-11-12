@@ -1,0 +1,367 @@
+{
+  "repo": "micropython/micropython",
+  "stars": 21765,
+  "y2038detect_version": "0.9.4",
+  "scanned_at": "2026-09-30T14:58:55Z",
+  "scan_sec": 39.44,
+  "c_files": 1114,
+  "c_lines": 353115,
+  "parse_errors": 75253,
+  "scan_errors": 0,
+  "issues": [
+    {
+      "file": "evaluation\\repos\\micropython__micropython\\ports\\unix\\unix_mphal.c",
+      "line": 230,
+      "col": 12,
+      "message": "implicit conversion of time_t to 'int' may truncate after 2038",
+      "context": [
+        {
+          "line": 224,
+          "text": "    struct timespec tv;"
+        },
+        {
+          "line": 225,
+          "text": "    clock_gettime(CLOCK_MONOTONIC, &tv);"
+        },
+        {
+          "line": 226,
+          "text": "    return tv.tv_sec * 1000000 + tv.tv_nsec / 1000;"
+        },
+        {
+          "line": 227,
+          "text": "    #else"
+        },
+        {
+          "line": 228,
+          "text": "    struct timeval tv;"
+        },
+        {
+          "line": 229,
+          "text": "    gettimeofday(&tv, NULL);"
+        },
+        {
+          "line": 230,
+          "text": "    return tv.tv_sec * 1000000 + tv.tv_usec;"
+        },
+        {
+          "line": 231,
+          "text": "    #endif"
+        },
+        {
+          "line": 232,
+          "text": "}"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\micropython__micropython\\ports\\unix\\unix_mphal.c",
+      "line": 216,
+      "col": 12,
+      "message": "implicit conversion of time_t to 'int' may truncate after 2038",
+      "context": [
+        {
+          "line": 210,
+          "text": "    struct timespec tv;"
+        },
+        {
+          "line": 211,
+          "text": "    clock_gettime(CLOCK_MONOTONIC, &tv);"
+        },
+        {
+          "line": 212,
+          "text": "    return tv.tv_sec * 1000 + tv.tv_nsec / 1000000;"
+        },
+        {
+          "line": 213,
+          "text": "    #else"
+        },
+        {
+          "line": 214,
+          "text": "    struct timeval tv;"
+        },
+        {
+          "line": 215,
+          "text": "    gettimeofday(&tv, NULL);"
+        },
+        {
+          "line": 216,
+          "text": "    return tv.tv_sec * 1000 + tv.tv_usec / 1000;"
+        },
+        {
+          "line": 217,
+          "text": "    #endif"
+        },
+        {
+          "line": 218,
+          "text": "}"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\micropython__micropython\\ports\\windows\\windows_mphal.c",
+      "line": 248,
+      "col": 12,
+      "message": "implicit conversion of time_t to 'int' may truncate after 2038",
+      "context": [
+        {
+          "line": 242,
+          "text": "    return tv.tv_sec * 1000 + tv.tv_usec / 1000;"
+        },
+        {
+          "line": 243,
+          "text": "}"
+        },
+        {
+          "line": 244,
+          "text": ""
+        },
+        {
+          "line": 245,
+          "text": "mp_uint_t mp_hal_ticks_us(void) {"
+        },
+        {
+          "line": 246,
+          "text": "    struct timeval tv;"
+        },
+        {
+          "line": 247,
+          "text": "    gettimeofday(&tv, NULL);"
+        },
+        {
+          "line": 248,
+          "text": "    return tv.tv_sec * 1000000 + tv.tv_usec;"
+        },
+        {
+          "line": 249,
+          "text": "}"
+        },
+        {
+          "line": 250,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\micropython__micropython\\ports\\windows\\windows_mphal.c",
+      "line": 242,
+      "col": 12,
+      "message": "implicit conversion of time_t to 'int' may truncate after 2038",
+      "context": [
+        {
+          "line": 236,
+          "text": "    mp_hal_stdout_tx_strn(str, strlen(str));"
+        },
+        {
+          "line": 237,
+          "text": "}"
+        },
+        {
+          "line": 238,
+          "text": ""
+        },
+        {
+          "line": 239,
+          "text": "mp_uint_t mp_hal_ticks_ms(void) {"
+        },
+        {
+          "line": 240,
+          "text": "    struct timeval tv;"
+        },
+        {
+          "line": 241,
+          "text": "    gettimeofday(&tv, NULL);"
+        },
+        {
+          "line": 242,
+          "text": "    return tv.tv_sec * 1000 + tv.tv_usec / 1000;"
+        },
+        {
+          "line": 243,
+          "text": "}"
+        },
+        {
+          "line": 244,
+          "text": ""
+        }
+      ]
+    }
+  ],
+  "issues_strict": [
+    {
+      "file": "evaluation\\repos\\micropython__micropython\\ports\\unix\\unix_mphal.c",
+      "line": 230,
+      "col": 12,
+      "message": "implicit conversion of time_t to 'int' may truncate after 2038",
+      "context": [
+        {
+          "line": 224,
+          "text": "    struct timespec tv;"
+        },
+        {
+          "line": 225,
+          "text": "    clock_gettime(CLOCK_MONOTONIC, &tv);"
+        },
+        {
+          "line": 226,
+          "text": "    return tv.tv_sec * 1000000 + tv.tv_nsec / 1000;"
+        },
+        {
+          "line": 227,
+          "text": "    #else"
+        },
+        {
+          "line": 228,
+          "text": "    struct timeval tv;"
+        },
+        {
+          "line": 229,
+          "text": "    gettimeofday(&tv, NULL);"
+        },
+        {
+          "line": 230,
+          "text": "    return tv.tv_sec * 1000000 + tv.tv_usec;"
+        },
+        {
+          "line": 231,
+          "text": "    #endif"
+        },
+        {
+          "line": 232,
+          "text": "}"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\micropython__micropython\\ports\\unix\\unix_mphal.c",
+      "line": 216,
+      "col": 12,
+      "message": "implicit conversion of time_t to 'int' may truncate after 2038",
+      "context": [
+        {
+          "line": 210,
+          "text": "    struct timespec tv;"
+        },
+        {
+          "line": 211,
+          "text": "    clock_gettime(CLOCK_MONOTONIC, &tv);"
+        },
+        {
+          "line": 212,
+          "text": "    return tv.tv_sec * 1000 + tv.tv_nsec / 1000000;"
+        },
+        {
+          "line": 213,
+          "text": "    #else"
+        },
+        {
+          "line": 214,
+          "text": "    struct timeval tv;"
+        },
+        {
+          "line": 215,
+          "text": "    gettimeofday(&tv, NULL);"
+        },
+        {
+          "line": 216,
+          "text": "    return tv.tv_sec * 1000 + tv.tv_usec / 1000;"
+        },
+        {
+          "line": 217,
+          "text": "    #endif"
+        },
+        {
+          "line": 218,
+          "text": "}"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\micropython__micropython\\ports\\windows\\windows_mphal.c",
+      "line": 248,
+      "col": 12,
+      "message": "implicit conversion of time_t to 'int' may truncate after 2038",
+      "context": [
+        {
+          "line": 242,
+          "text": "    return tv.tv_sec * 1000 + tv.tv_usec / 1000;"
+        },
+        {
+          "line": 243,
+          "text": "}"
+        },
+        {
+          "line": 244,
+          "text": ""
+        },
+        {
+          "line": 245,
+          "text": "mp_uint_t mp_hal_ticks_us(void) {"
+        },
+        {
+          "line": 246,
+          "text": "    struct timeval tv;"
+        },
+        {
+          "line": 247,
+          "text": "    gettimeofday(&tv, NULL);"
+        },
+        {
+          "line": 248,
+          "text": "    return tv.tv_sec * 1000000 + tv.tv_usec;"
+        },
+        {
+          "line": 249,
+          "text": "}"
+        },
+        {
+          "line": 250,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\micropython__micropython\\ports\\windows\\windows_mphal.c",
+      "line": 242,
+      "col": 12,
+      "message": "implicit conversion of time_t to 'int' may truncate after 2038",
+      "context": [
+        {
+          "line": 236,
+          "text": "    mp_hal_stdout_tx_strn(str, strlen(str));"
+        },
+        {
+          "line": 237,
+          "text": "}"
+        },
+        {
+          "line": 238,
+          "text": ""
+        },
+        {
+          "line": 239,
+          "text": "mp_uint_t mp_hal_ticks_ms(void) {"
+        },
+        {
+          "line": 240,
+          "text": "    struct timeval tv;"
+        },
+        {
+          "line": 241,
+          "text": "    gettimeofday(&tv, NULL);"
+        },
+        {
+          "line": 242,
+          "text": "    return tv.tv_sec * 1000 + tv.tv_usec / 1000;"
+        },
+        {
+          "line": 243,
+          "text": "}"
+        },
+        {
+          "line": 244,
+          "text": ""
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1511 @@
+{
+  "repo": "git/git",
+  "stars": 61234,
+  "y2038detect_version": "0.9.4",
+  "scanned_at": "2026-09-30T14:08:03Z",
+  "scan_sec": 221.74,
+  "c_files": 635,
+  "c_lines": 388776,
+  "parse_errors": 83902,
+  "scan_errors": 0,
+  "issues": [
+    {
+      "file": "evaluation\\repos\\git__git\\date.c",
+      "line": 1065,
+      "col": 11,
+      "message": "implicit conversion of time_t to 'int' may truncate after 2038",
+      "context": [
+        {
+          "line": 1059,
+          "text": "\ttime_t now;"
+        },
+        {
+          "line": 1060,
+          "text": "\tint offset;"
+        },
+        {
+          "line": 1061,
+          "text": "\tstruct tm tm = { 0 };"
+        },
+        {
+          "line": 1062,
+          "text": ""
+        },
+        {
+          "line": 1063,
+          "text": "\ttime(&now);"
+        },
+        {
+          "line": 1064,
+          "text": ""
+        },
+        {
+          "line": 1065,
+          "text": "\toffset = tm_to_time_t(localtime_r(&now, &tm)) - now;"
+        },
+        {
+          "line": 1066,
+          "text": "\toffset /= 60;"
+        },
+        {
+          "line": 1067,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\git__git\\date.c",
+      "line": 942,
+      "col": 15,
+      "message": "explicit conversion of time_t to 'int' may truncate after 2038",
+      "context": [
+        {
+          "line": 936,
+          "text": "\t\t/* gmtime_r() in match_digit() may have clobbered it */"
+        },
+        {
+          "line": 937,
+          "text": "\t\ttm.tm_isdst = -1;"
+        },
+        {
+          "line": 938,
+          "text": "\t\ttemp_time = mktime(&tm);"
+        },
+        {
+          "line": 939,
+          "text": "\t\tif ((time_t)*timestamp > temp_time) {"
+        },
+        {
+          "line": 940,
+          "text": "\t\t\t*offset = ((time_t)*timestamp - temp_time) / 60;"
+        },
+        {
+          "line": 941,
+          "text": "\t\t} else {"
+        },
+        {
+          "line": 942,
+          "text": "\t\t\t*offset = -(int)((temp_time - (time_t)*timestamp) / 60);"
+        },
+        {
+          "line": 943,
+          "text": "\t\t}"
+        },
+        {
+          "line": 944,
+          "text": "\t}"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\git__git\\date.c",
+      "line": 940,
+      "col": 14,
+      "message": "implicit conversion of time_t to 'int' may truncate after 2038",
+      "context": [
+        {
+          "line": 934,
+          "text": "\t\ttime_t temp_time;"
+        },
+        {
+          "line": 935,
+          "text": ""
+        },
+        {
+          "line": 936,
+          "text": "\t\t/* gmtime_r() in match_digit() may have clobbered it */"
+        },
+        {
+          "line": 937,
+          "text": "\t\ttm.tm_isdst = -1;"
+        },
+        {
+          "line": 938,
+          "text": "\t\ttemp_time = mktime(&tm);"
+        },
+        {
+          "line": 939,
+          "text": "\t\tif ((time_t)*timestamp > temp_time) {"
+        },
+        {
+          "line": 940,
+          "text": "\t\t\t*offset = ((time_t)*timestamp - temp_time) / 60;"
+        },
+        {
+          "line": 941,
+          "text": "\t\t} else {"
+        },
+        {
+          "line": 942,
+          "text": "\t\t\t*offset = -(int)((temp_time - (time_t)*timestamp) / 60);"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\git__git\\date.c",
+      "line": 103,
+      "col": 12,
+      "message": "implicit conversion of time_t to 'int' may truncate after 2038",
+      "context": [
+        {
+          "line": 97,
+          "text": "\t\treturn 0; /* error; just use +0000 */"
+        },
+        {
+          "line": 98,
+          "text": "\tif (t_local < t) {"
+        },
+        {
+          "line": 99,
+          "text": "\t\teastwest = -1;"
+        },
+        {
+          "line": 100,
+          "text": "\t\toffset = t - t_local;"
+        },
+        {
+          "line": 101,
+          "text": "\t} else {"
+        },
+        {
+          "line": 102,
+          "text": "\t\teastwest = 1;"
+        },
+        {
+          "line": 103,
+          "text": "\t\toffset = t_local - t;"
+        },
+        {
+          "line": 104,
+          "text": "\t}"
+        },
+        {
+          "line": 105,
+          "text": "\toffset /= 60; /* in minutes */"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\git__git\\date.c",
+      "line": 100,
+      "col": 12,
+      "message": "implicit conversion of time_t to 'int' may truncate after 2038",
+      "context": [
+        {
+          "line": 94,
+          "text": "\tlocaltime_r(&t, tm);"
+        },
+        {
+          "line": 95,
+          "text": "\tt_local = tm_to_time_t(tm);"
+        },
+        {
+          "line": 96,
+          "text": "\tif (t_local == -1)"
+        },
+        {
+          "line": 97,
+          "text": "\t\treturn 0; /* error; just use +0000 */"
+        },
+        {
+          "line": 98,
+          "text": "\tif (t_local < t) {"
+        },
+        {
+          "line": 99,
+          "text": "\t\teastwest = -1;"
+        },
+        {
+          "line": 100,
+          "text": "\t\toffset = t - t_local;"
+        },
+        {
+          "line": 101,
+          "text": "\t} else {"
+        },
+        {
+          "line": 102,
+          "text": "\t\teastwest = 1;"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\git__git\\http-push.c",
+      "line": 490,
+      "col": 20,
+      "message": "implicit conversion of time_t to 'int' may truncate after 2038",
+      "context": [
+        {
+          "line": 484,
+          "text": "{"
+        },
+        {
+          "line": 485,
+          "text": "\tstruct remote_lock *lock = repo->locks;"
+        },
+        {
+          "line": 486,
+          "text": "\ttime_t current_time = time(NULL);"
+        },
+        {
+          "line": 487,
+          "text": "\tint time_remaining;"
+        },
+        {
+          "line": 488,
+          "text": ""
+        },
+        {
+          "line": 489,
+          "text": "\twhile (lock) {"
+        },
+        {
+          "line": 490,
+          "text": "\t\ttime_remaining = lock->start_time + lock->timeout -"
+        },
+        {
+          "line": 491,
+          "text": "\t\t\tcurrent_time;"
+        },
+        {
+          "line": 492,
+          "text": "\t\tif (!lock->refreshing && time_remaining < LOCK_REFRESH) {"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\git__git\\read-cache.c",
+      "line": 3088,
+      "col": 26,
+      "message": "explicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 3082,
+          "text": "\t\tgoto out;"
+        },
+        {
+          "line": 3083,
+          "text": "\t}"
+        },
+        {
+          "line": 3084,
+          "text": "\tif (stat(get_tempfile_path(tempfile), &st)) {"
+        },
+        {
+          "line": 3085,
+          "text": "\t\tret = -1;"
+        },
+        {
+          "line": 3086,
+          "text": "\t\tgoto out;"
+        },
+        {
+          "line": 3087,
+          "text": "\t}"
+        },
+        {
+          "line": 3088,
+          "text": "\tistate->timestamp.sec = (unsigned int)st.st_mtime;"
+        },
+        {
+          "line": 3089,
+          "text": "\tistate->timestamp.nsec = ST_MTIME_NSEC(st);"
+        },
+        {
+          "line": 3090,
+          "text": "\ttrace_performance_since(start, \"write index, changed mask = %x\", istate->cache_changed);"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\git__git\\read-cache.c",
+      "line": 2299,
+      "col": 29,
+      "message": "implicit conversion of time_t to 'uint32_t' may truncate after 2106",
+      "context": [
+        {
+          "line": 2293,
+          "text": "\t\tsrc_offset += load_cache_entries_threaded(istate, mmap, mmap_size, nr_threads, ieot);"
+        },
+        {
+          "line": 2294,
+          "text": "\t\tfree(ieot);"
+        },
+        {
+          "line": 2295,
+          "text": "\t} else {"
+        },
+        {
+          "line": 2296,
+          "text": "\t\tsrc_offset += load_all_cache_entries(istate, mmap, mmap_size, src_offset);"
+        },
+        {
+          "line": 2297,
+          "text": "\t}"
+        },
+        {
+          "line": 2298,
+          "text": ""
+        },
+        {
+          "line": 2299,
+          "text": "\tistate->timestamp.sec = st.st_mtime;"
+        },
+        {
+          "line": 2300,
+          "text": "\tistate->timestamp.nsec = ST_MTIME_NSEC(st);"
+        },
+        {
+          "line": 2301,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\git__git\\statinfo.c",
+      "line": 70,
+      "col": 26,
+      "message": "explicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 64,
+          "text": "{"
+        },
+        {
+          "line": 65,
+          "text": "\tint changed = 0;"
+        },
+        {
+          "line": 66,
+          "text": ""
+        },
+        {
+          "line": 67,
+          "text": "\tif (sd->sd_mtime.sec != (unsigned int)st->st_mtime)"
+        },
+        {
+          "line": 68,
+          "text": "\t\tchanged |= MTIME_CHANGED;"
+        },
+        {
+          "line": 69,
+          "text": "\tif (trust_ctime && check_stat &&"
+        },
+        {
+          "line": 70,
+          "text": "\t    sd->sd_ctime.sec != (unsigned int)st->st_ctime)"
+        },
+        {
+          "line": 71,
+          "text": "\t\tchanged |= CTIME_CHANGED;"
+        },
+        {
+          "line": 72,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\git__git\\statinfo.c",
+      "line": 67,
+      "col": 26,
+      "message": "explicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 61,
+          "text": "}"
+        },
+        {
+          "line": 62,
+          "text": ""
+        },
+        {
+          "line": 63,
+          "text": "int match_stat_data(const struct stat_data *sd, struct stat *st)"
+        },
+        {
+          "line": 64,
+          "text": "{"
+        },
+        {
+          "line": 65,
+          "text": "\tint changed = 0;"
+        },
+        {
+          "line": 66,
+          "text": ""
+        },
+        {
+          "line": 67,
+          "text": "\tif (sd->sd_mtime.sec != (unsigned int)st->st_mtime)"
+        },
+        {
+          "line": 68,
+          "text": "\t\tchanged |= MTIME_CHANGED;"
+        },
+        {
+          "line": 69,
+          "text": "\tif (trust_ctime && check_stat &&"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\git__git\\statinfo.c",
+      "line": 26,
+      "col": 21,
+      "message": "explicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 20,
+          "text": "\t\treturn sd_size;"
+        },
+        {
+          "line": 21,
+          "text": "}"
+        },
+        {
+          "line": 22,
+          "text": ""
+        },
+        {
+          "line": 23,
+          "text": "void fill_stat_data(struct stat_data *sd, struct stat *st)"
+        },
+        {
+          "line": 24,
+          "text": "{"
+        },
+        {
+          "line": 25,
+          "text": "\tsd->sd_ctime.sec = (unsigned int)st->st_ctime;"
+        },
+        {
+          "line": 26,
+          "text": "\tsd->sd_mtime.sec = (unsigned int)st->st_mtime;"
+        },
+        {
+          "line": 27,
+          "text": "\tsd->sd_ctime.nsec = ST_CTIME_NSEC(*st);"
+        },
+        {
+          "line": 28,
+          "text": "\tsd->sd_mtime.nsec = ST_MTIME_NSEC(*st);"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\git__git\\statinfo.c",
+      "line": 25,
+      "col": 21,
+      "message": "explicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 19,
+          "text": "\telse"
+        },
+        {
+          "line": 20,
+          "text": "\t\treturn sd_size;"
+        },
+        {
+          "line": 21,
+          "text": "}"
+        },
+        {
+          "line": 22,
+          "text": ""
+        },
+        {
+          "line": 23,
+          "text": "void fill_stat_data(struct stat_data *sd, struct stat *st)"
+        },
+        {
+          "line": 24,
+          "text": "{"
+        },
+        {
+          "line": 25,
+          "text": "\tsd->sd_ctime.sec = (unsigned int)st->st_ctime;"
+        },
+        {
+          "line": 26,
+          "text": "\tsd->sd_mtime.sec = (unsigned int)st->st_mtime;"
+        },
+        {
+          "line": 27,
+          "text": "\tsd->sd_ctime.nsec = ST_CTIME_NSEC(*st);"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\git__git\\builtin\\pack-objects.c",
+      "line": 1437,
+      "col": 9,
+      "message": "call to utime() uses time_t timestamps; limited to 32-bit range — use utimensat() instead",
+      "context": [
+        {
+          "line": 1431,
+          "text": "\t\t\t} else if (!last_mtime) {"
+        },
+        {
+          "line": 1432,
+          "text": "\t\t\t\tlast_mtime = st.st_mtime;"
+        },
+        {
+          "line": 1433,
+          "text": "\t\t\t} else {"
+        },
+        {
+          "line": 1434,
+          "text": "\t\t\t\tstruct utimbuf utb;"
+        },
+        {
+          "line": 1435,
+          "text": "\t\t\t\tutb.actime = st.st_atime;"
+        },
+        {
+          "line": 1436,
+          "text": "\t\t\t\tutb.modtime = --last_mtime;"
+        },
+        {
+          "line": 1437,
+          "text": "\t\t\t\tif (utime(pack_tmp_name, &utb) < 0)"
+        },
+        {
+          "line": 1438,
+          "text": "\t\t\t\t\twarning_errno(_(\"failed utime() on %s\"), pack_tmp_name);"
+        },
+        {
+          "line": 1439,
+          "text": "\t\t\t}"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\git__git\\t\\helper\\test-chmtime.c",
+      "line": 64,
+      "col": 3,
+      "message": "compound assignment of time_t to 'long' may truncate after 2038",
+      "context": [
+        {
+          "line": 58,
+          "text": "\t*set_time = strtol(timespec, &test, 10);"
+        },
+        {
+          "line": 59,
+          "text": "\tif (*test) {"
+        },
+        {
+          "line": 60,
+          "text": "\t\treturn 0;"
+        },
+        {
+          "line": 61,
+          "text": "\t}"
+        },
+        {
+          "line": 62,
+          "text": "\tif ((*set_eq && *set_time < 0) || *set_eq == 2) {"
+        },
+        {
+          "line": 63,
+          "text": "\t\ttime_t now = time(NULL);"
+        },
+        {
+          "line": 64,
+          "text": "\t\t*set_time += now;"
+        },
+        {
+          "line": 65,
+          "text": "\t}"
+        },
+        {
+          "line": 66,
+          "text": "\treturn 1;"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\git__git\\t\\helper\\test-chmtime.c",
+      "line": 136,
+      "col": 37,
+      "message": "call to utime() uses time_t timestamps; limited to 32-bit range — use utimensat() instead",
+      "context": [
+        {
+          "line": 130,
+          "text": "\t\tif (get) {"
+        },
+        {
+          "line": 131,
+          "text": "\t\t\tprintf(\"%\"PRIuMAX\"\\n\", mtime);"
+        },
+        {
+          "line": 132,
+          "text": "\t\t} else if (verbose) {"
+        },
+        {
+          "line": 133,
+          "text": "\t\t\tprintf(\"%\"PRIuMAX\"\\t%s\\n\", mtime, argv[i]);"
+        },
+        {
+          "line": 134,
+          "text": "\t\t}"
+        },
+        {
+          "line": 135,
+          "text": ""
+        },
+        {
+          "line": 136,
+          "text": "\t\tif (utb.modtime != sb.st_mtime && utime(argv[i], &utb) < 0) {"
+        },
+        {
+          "line": 137,
+          "text": "#ifdef GIT_WINDOWS_NATIVE"
+        },
+        {
+          "line": 138,
+          "text": "\t\t\tif (S_ISDIR(sb.st_mode)) {"
+        }
+      ]
+    }
+  ],
+  "issues_strict": [
+    {
+      "file": "evaluation\\repos\\git__git\\date.c",
+      "line": 1109,
+      "col": 12,
+      "message": "tm_year compared with 0 (year 1900): upper bound excludes dates beyond 1900",
+      "context": [
+        {
+          "line": 1103,
+          "text": "\tif (number) {"
+        },
+        {
+          "line": 1104,
+          "text": "\t\t*num = 0;"
+        },
+        {
+          "line": 1105,
+          "text": "\t\tif (tm->tm_mday < 0 && number < 32)"
+        },
+        {
+          "line": 1106,
+          "text": "\t\t\ttm->tm_mday = number;"
+        },
+        {
+          "line": 1107,
+          "text": "\t\telse if (tm->tm_mon < 0 && number < 13)"
+        },
+        {
+          "line": 1108,
+          "text": "\t\t\ttm->tm_mon = number-1;"
+        },
+        {
+          "line": 1109,
+          "text": "\t\telse if (tm->tm_year < 0) {"
+        },
+        {
+          "line": 1110,
+          "text": "\t\t\tif (number > 1969 && number < 2100)"
+        },
+        {
+          "line": 1111,
+          "text": "\t\t\t\ttm->tm_year = number - 1900;"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\git__git\\date.c",
+      "line": 1083,
+      "col": 6,
+      "message": "tm_year compared with 0 (year 1900): upper bound excludes dates beyond 1900",
+      "context": [
+        {
+          "line": 1077,
+          "text": "\ttime_t n;"
+        },
+        {
+          "line": 1078,
+          "text": ""
+        },
+        {
+          "line": 1079,
+          "text": "\tif (tm->tm_mday < 0)"
+        },
+        {
+          "line": 1080,
+          "text": "\t\ttm->tm_mday = now->tm_mday;"
+        },
+        {
+          "line": 1081,
+          "text": "\tif (tm->tm_mon < 0)"
+        },
+        {
+          "line": 1082,
+          "text": "\t\ttm->tm_mon = now->tm_mon;"
+        },
+        {
+          "line": 1083,
+          "text": "\tif (tm->tm_year < 0) {"
+        },
+        {
+          "line": 1084,
+          "text": "\t\ttm->tm_year = now->tm_year;"
+        },
+        {
+          "line": 1085,
+          "text": "\t\tif (tm->tm_mon > now->tm_mon)"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\git__git\\date.c",
+      "line": 1065,
+      "col": 11,
+      "message": "implicit conversion of time_t to 'int' may truncate after 2038",
+      "context": [
+        {
+          "line": 1059,
+          "text": "\ttime_t now;"
+        },
+        {
+          "line": 1060,
+          "text": "\tint offset;"
+        },
+        {
+          "line": 1061,
+          "text": "\tstruct tm tm = { 0 };"
+        },
+        {
+          "line": 1062,
+          "text": ""
+        },
+        {
+          "line": 1063,
+          "text": "\ttime(&now);"
+        },
+        {
+          "line": 1064,
+          "text": ""
+        },
+        {
+          "line": 1065,
+          "text": "\toffset = tm_to_time_t(localtime_r(&now, &tm)) - now;"
+        },
+        {
+          "line": 1066,
+          "text": "\toffset /= 60;"
+        },
+        {
+          "line": 1067,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\git__git\\date.c",
+      "line": 942,
+      "col": 15,
+      "message": "explicit conversion of time_t to 'int' may truncate after 2038",
+      "context": [
+        {
+          "line": 936,
+          "text": "\t\t/* gmtime_r() in match_digit() may have clobbered it */"
+        },
+        {
+          "line": 937,
+          "text": "\t\ttm.tm_isdst = -1;"
+        },
+        {
+          "line": 938,
+          "text": "\t\ttemp_time = mktime(&tm);"
+        },
+        {
+          "line": 939,
+          "text": "\t\tif ((time_t)*timestamp > temp_time) {"
+        },
+        {
+          "line": 940,
+          "text": "\t\t\t*offset = ((time_t)*timestamp - temp_time) / 60;"
+        },
+        {
+          "line": 941,
+          "text": "\t\t} else {"
+        },
+        {
+          "line": 942,
+          "text": "\t\t\t*offset = -(int)((temp_time - (time_t)*timestamp) / 60);"
+        },
+        {
+          "line": 943,
+          "text": "\t\t}"
+        },
+        {
+          "line": 944,
+          "text": "\t}"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\git__git\\date.c",
+      "line": 940,
+      "col": 14,
+      "message": "implicit conversion of time_t to 'int' may truncate after 2038",
+      "context": [
+        {
+          "line": 934,
+          "text": "\t\ttime_t temp_time;"
+        },
+        {
+          "line": 935,
+          "text": ""
+        },
+        {
+          "line": 936,
+          "text": "\t\t/* gmtime_r() in match_digit() may have clobbered it */"
+        },
+        {
+          "line": 937,
+          "text": "\t\ttm.tm_isdst = -1;"
+        },
+        {
+          "line": 938,
+          "text": "\t\ttemp_time = mktime(&tm);"
+        },
+        {
+          "line": 939,
+          "text": "\t\tif ((time_t)*timestamp > temp_time) {"
+        },
+        {
+          "line": 940,
+          "text": "\t\t\t*offset = ((time_t)*timestamp - temp_time) / 60;"
+        },
+        {
+          "line": 941,
+          "text": "\t\t} else {"
+        },
+        {
+          "line": 942,
+          "text": "\t\t\t*offset = -(int)((temp_time - (time_t)*timestamp) / 60);"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\git__git\\date.c",
+      "line": 781,
+      "col": 16,
+      "message": "tm_year compared with 0 (year 1900): upper bound excludes dates beyond 1900",
+      "context": [
+        {
+          "line": 775,
+          "text": "\tif (num > 0 && num < 32 && tm->tm_mday < 0) {"
+        },
+        {
+          "line": 776,
+          "text": "\t\ttm->tm_mday = num;"
+        },
+        {
+          "line": 777,
+          "text": "\t\treturn n;"
+        },
+        {
+          "line": 778,
+          "text": "\t}"
+        },
+        {
+          "line": 779,
+          "text": ""
+        },
+        {
+          "line": 780,
+          "text": "\t/* Two-digit year? */"
+        },
+        {
+          "line": 781,
+          "text": "\tif (n == 2 && tm->tm_year < 0) {"
+        },
+        {
+          "line": 782,
+          "text": "\t\tif (num < 10 && tm->tm_mday >= 0) {"
+        },
+        {
+          "line": 783,
+          "text": "\t\t\ttm->tm_year = num + 100;"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\git__git\\date.c",
+      "line": 648,
+      "col": 9,
+      "message": "tm_year compared with 0 (year 1900): upper bound excludes dates beyond 1900",
+      "context": [
+        {
+          "line": 642,
+          "text": " * Have we filled in any part of the time/date yet?"
+        },
+        {
+          "line": 643,
+          "text": " * We just do a binary 'and' to see if the sign bit"
+        },
+        {
+          "line": 644,
+          "text": " * is set in all the values."
+        },
+        {
+          "line": 645,
+          "text": " */"
+        },
+        {
+          "line": 646,
+          "text": "static inline int nodate(struct tm *tm)"
+        },
+        {
+          "line": 647,
+          "text": "{"
+        },
+        {
+          "line": 648,
+          "text": "\treturn (tm->tm_year &"
+        },
+        {
+          "line": 649,
+          "text": "\t\ttm->tm_mon &"
+        },
+        {
+          "line": 650,
+          "text": "\t\ttm->tm_mday &"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\git__git\\date.c",
+      "line": 103,
+      "col": 12,
+      "message": "implicit conversion of time_t to 'int' may truncate after 2038",
+      "context": [
+        {
+          "line": 97,
+          "text": "\t\treturn 0; /* error; just use +0000 */"
+        },
+        {
+          "line": 98,
+          "text": "\tif (t_local < t) {"
+        },
+        {
+          "line": 99,
+          "text": "\t\teastwest = -1;"
+        },
+        {
+          "line": 100,
+          "text": "\t\toffset = t - t_local;"
+        },
+        {
+          "line": 101,
+          "text": "\t} else {"
+        },
+        {
+          "line": 102,
+          "text": "\t\teastwest = 1;"
+        },
+        {
+          "line": 103,
+          "text": "\t\toffset = t_local - t;"
+        },
+        {
+          "line": 104,
+          "text": "\t}"
+        },
+        {
+          "line": 105,
+          "text": "\toffset /= 60; /* in minutes */"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\git__git\\date.c",
+      "line": 100,
+      "col": 12,
+      "message": "implicit conversion of time_t to 'int' may truncate after 2038",
+      "context": [
+        {
+          "line": 94,
+          "text": "\tlocaltime_r(&t, tm);"
+        },
+        {
+          "line": 95,
+          "text": "\tt_local = tm_to_time_t(tm);"
+        },
+        {
+          "line": 96,
+          "text": "\tif (t_local == -1)"
+        },
+        {
+          "line": 97,
+          "text": "\t\treturn 0; /* error; just use +0000 */"
+        },
+        {
+          "line": 98,
+          "text": "\tif (t_local < t) {"
+        },
+        {
+          "line": 99,
+          "text": "\t\teastwest = -1;"
+        },
+        {
+          "line": 100,
+          "text": "\t\toffset = t - t_local;"
+        },
+        {
+          "line": 101,
+          "text": "\t} else {"
+        },
+        {
+          "line": 102,
+          "text": "\t\teastwest = 1;"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\git__git\\http-push.c",
+      "line": 490,
+      "col": 20,
+      "message": "implicit conversion of time_t to 'int' may truncate after 2038",
+      "context": [
+        {
+          "line": 484,
+          "text": "{"
+        },
+        {
+          "line": 485,
+          "text": "\tstruct remote_lock *lock = repo->locks;"
+        },
+        {
+          "line": 486,
+          "text": "\ttime_t current_time = time(NULL);"
+        },
+        {
+          "line": 487,
+          "text": "\tint time_remaining;"
+        },
+        {
+          "line": 488,
+          "text": ""
+        },
+        {
+          "line": 489,
+          "text": "\twhile (lock) {"
+        },
+        {
+          "line": 490,
+          "text": "\t\ttime_remaining = lock->start_time + lock->timeout -"
+        },
+        {
+          "line": 491,
+          "text": "\t\t\tcurrent_time;"
+        },
+        {
+          "line": 492,
+          "text": "\t\tif (!lock->refreshing && time_remaining < LOCK_REFRESH) {"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\git__git\\read-cache.c",
+      "line": 3088,
+      "col": 26,
+      "message": "explicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 3082,
+          "text": "\t\tgoto out;"
+        },
+        {
+          "line": 3083,
+          "text": "\t}"
+        },
+        {
+          "line": 3084,
+          "text": "\tif (stat(get_tempfile_path(tempfile), &st)) {"
+        },
+        {
+          "line": 3085,
+          "text": "\t\tret = -1;"
+        },
+        {
+          "line": 3086,
+          "text": "\t\tgoto out;"
+        },
+        {
+          "line": 3087,
+          "text": "\t}"
+        },
+        {
+          "line": 3088,
+          "text": "\tistate->timestamp.sec = (unsigned int)st.st_mtime;"
+        },
+        {
+          "line": 3089,
+          "text": "\tistate->timestamp.nsec = ST_MTIME_NSEC(st);"
+        },
+        {
+          "line": 3090,
+          "text": "\ttrace_performance_since(start, \"write index, changed mask = %x\", istate->cache_changed);"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\git__git\\read-cache.c",
+      "line": 2299,
+      "col": 29,
+      "message": "implicit conversion of time_t to 'uint32_t' may truncate after 2106",
+      "context": [
+        {
+          "line": 2293,
+          "text": "\t\tsrc_offset += load_cache_entries_threaded(istate, mmap, mmap_size, nr_threads, ieot);"
+        },
+        {
+          "line": 2294,
+          "text": "\t\tfree(ieot);"
+        },
+        {
+          "line": 2295,
+          "text": "\t} else {"
+        },
+        {
+          "line": 2296,
+          "text": "\t\tsrc_offset += load_all_cache_entries(istate, mmap, mmap_size, src_offset);"
+        },
+        {
+          "line": 2297,
+          "text": "\t}"
+        },
+        {
+          "line": 2298,
+          "text": ""
+        },
+        {
+          "line": 2299,
+          "text": "\tistate->timestamp.sec = st.st_mtime;"
+        },
+        {
+          "line": 2300,
+          "text": "\tistate->timestamp.nsec = ST_MTIME_NSEC(st);"
+        },
+        {
+          "line": 2301,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\git__git\\statinfo.c",
+      "line": 70,
+      "col": 26,
+      "message": "explicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 64,
+          "text": "{"
+        },
+        {
+          "line": 65,
+          "text": "\tint changed = 0;"
+        },
+        {
+          "line": 66,
+          "text": ""
+        },
+        {
+          "line": 67,
+          "text": "\tif (sd->sd_mtime.sec != (unsigned int)st->st_mtime)"
+        },
+        {
+          "line": 68,
+          "text": "\t\tchanged |= MTIME_CHANGED;"
+        },
+        {
+          "line": 69,
+          "text": "\tif (trust_ctime && check_stat &&"
+        },
+        {
+          "line": 70,
+          "text": "\t    sd->sd_ctime.sec != (unsigned int)st->st_ctime)"
+        },
+        {
+          "line": 71,
+          "text": "\t\tchanged |= CTIME_CHANGED;"
+        },
+        {
+          "line": 72,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\git__git\\statinfo.c",
+      "line": 67,
+      "col": 26,
+      "message": "explicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 61,
+          "text": "}"
+        },
+        {
+          "line": 62,
+          "text": ""
+        },
+        {
+          "line": 63,
+          "text": "int match_stat_data(const struct stat_data *sd, struct stat *st)"
+        },
+        {
+          "line": 64,
+          "text": "{"
+        },
+        {
+          "line": 65,
+          "text": "\tint changed = 0;"
+        },
+        {
+          "line": 66,
+          "text": ""
+        },
+        {
+          "line": 67,
+          "text": "\tif (sd->sd_mtime.sec != (unsigned int)st->st_mtime)"
+        },
+        {
+          "line": 68,
+          "text": "\t\tchanged |= MTIME_CHANGED;"
+        },
+        {
+          "line": 69,
+          "text": "\tif (trust_ctime && check_stat &&"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\git__git\\statinfo.c",
+      "line": 26,
+      "col": 21,
+      "message": "explicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 20,
+          "text": "\t\treturn sd_size;"
+        },
+        {
+          "line": 21,
+          "text": "}"
+        },
+        {
+          "line": 22,
+          "text": ""
+        },
+        {
+          "line": 23,
+          "text": "void fill_stat_data(struct stat_data *sd, struct stat *st)"
+        },
+        {
+          "line": 24,
+          "text": "{"
+        },
+        {
+          "line": 25,
+          "text": "\tsd->sd_ctime.sec = (unsigned int)st->st_ctime;"
+        },
+        {
+          "line": 26,
+          "text": "\tsd->sd_mtime.sec = (unsigned int)st->st_mtime;"
+        },
+        {
+          "line": 27,
+          "text": "\tsd->sd_ctime.nsec = ST_CTIME_NSEC(*st);"
+        },
+        {
+          "line": 28,
+          "text": "\tsd->sd_mtime.nsec = ST_MTIME_NSEC(*st);"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\git__git\\statinfo.c",
+      "line": 25,
+      "col": 21,
+      "message": "explicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 19,
+          "text": "\telse"
+        },
+        {
+          "line": 20,
+          "text": "\t\treturn sd_size;"
+        },
+        {
+          "line": 21,
+          "text": "}"
+        },
+        {
+          "line": 22,
+          "text": ""
+        },
+        {
+          "line": 23,
+          "text": "void fill_stat_data(struct stat_data *sd, struct stat *st)"
+        },
+        {
+          "line": 24,
+          "text": "{"
+        },
+        {
+          "line": 25,
+          "text": "\tsd->sd_ctime.sec = (unsigned int)st->st_ctime;"
+        },
+        {
+          "line": 26,
+          "text": "\tsd->sd_mtime.sec = (unsigned int)st->st_mtime;"
+        },
+        {
+          "line": 27,
+          "text": "\tsd->sd_ctime.nsec = ST_CTIME_NSEC(*st);"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\git__git\\builtin\\pack-objects.c",
+      "line": 1437,
+      "col": 9,
+      "message": "call to utime() uses time_t timestamps; limited to 32-bit range — use utimensat() instead",
+      "context": [
+        {
+          "line": 1431,
+          "text": "\t\t\t} else if (!last_mtime) {"
+        },
+        {
+          "line": 1432,
+          "text": "\t\t\t\tlast_mtime = st.st_mtime;"
+        },
+        {
+          "line": 1433,
+          "text": "\t\t\t} else {"
+        },
+        {
+          "line": 1434,
+          "text": "\t\t\t\tstruct utimbuf utb;"
+        },
+        {
+          "line": 1435,
+          "text": "\t\t\t\tutb.actime = st.st_atime;"
+        },
+        {
+          "line": 1436,
+          "text": "\t\t\t\tutb.modtime = --last_mtime;"
+        },
+        {
+          "line": 1437,
+          "text": "\t\t\t\tif (utime(pack_tmp_name, &utb) < 0)"
+        },
+        {
+          "line": 1438,
+          "text": "\t\t\t\t\twarning_errno(_(\"failed utime() on %s\"), pack_tmp_name);"
+        },
+        {
+          "line": 1439,
+          "text": "\t\t\t}"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\git__git\\t\\helper\\test-chmtime.c",
+      "line": 64,
+      "col": 3,
+      "message": "compound assignment of time_t to 'long' may truncate after 2038",
+      "context": [
+        {
+          "line": 58,
+          "text": "\t*set_time = strtol(timespec, &test, 10);"
+        },
+        {
+          "line": 59,
+          "text": "\tif (*test) {"
+        },
+        {
+          "line": 60,
+          "text": "\t\treturn 0;"
+        },
+        {
+          "line": 61,
+          "text": "\t}"
+        },
+        {
+          "line": 62,
+          "text": "\tif ((*set_eq && *set_time < 0) || *set_eq == 2) {"
+        },
+        {
+          "line": 63,
+          "text": "\t\ttime_t now = time(NULL);"
+        },
+        {
+          "line": 64,
+          "text": "\t\t*set_time += now;"
+        },
+        {
+          "line": 65,
+          "text": "\t}"
+        },
+        {
+          "line": 66,
+          "text": "\treturn 1;"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\git__git\\t\\helper\\test-chmtime.c",
+      "line": 136,
+      "col": 37,
+      "message": "call to utime() uses time_t timestamps; limited to 32-bit range — use utimensat() instead",
+      "context": [
+        {
+          "line": 130,
+          "text": "\t\tif (get) {"
+        },
+        {
+          "line": 131,
+          "text": "\t\t\tprintf(\"%\"PRIuMAX\"\\n\", mtime);"
+        },
+        {
+          "line": 132,
+          "text": "\t\t} else if (verbose) {"
+        },
+        {
+          "line": 133,
+          "text": "\t\t\tprintf(\"%\"PRIuMAX\"\\t%s\\n\", mtime, argv[i]);"
+        },
+        {
+          "line": 134,
+          "text": "\t\t}"
+        },
+        {
+          "line": 135,
+          "text": ""
+        },
+        {
+          "line": 136,
+          "text": "\t\tif (utb.modtime != sb.st_mtime && utime(argv[i], &utb) < 0) {"
+        },
+        {
+          "line": 137,
+          "text": "#ifdef GIT_WINDOWS_NATIVE"
+        },
+        {
+          "line": 138,
+          "text": "\t\t\tif (S_ISDIR(sb.st_mode)) {"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+name: Refresh stubs
+
+# Manual trigger only — run when you need to regenerate stubs after an OS update
+# or when a new project scan reveals missing headers.
+#
+# After the run:
+#   1. Download the "extracted-stubs" artifact
+#   2. Review diffs against _stubs/ and _stubs_linux/
+#   3. Copy changed files and commit manually
+on:
+  workflow_dispatch:
+
+jobs:
+  extract:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: |
+          pip install libclang
+          sudo apt-get install -y --no-install-recommends clang
+
+      # POSIX / de facto standard headers → mirrors _stubs/
+      - name: Extract POSIX stubs
+        run: |
+          python extract_stubs.py --outdir extracted_posix \
+            time.h sys/time.h sys/types.h unistd.h sched.h \
+            stdint.h inttypes.h stddef.h stdbool.h stdarg.h \
+            stdio.h stdlib.h string.h strings.h \
+            errno.h signal.h fcntl.h \
+            sys/stat.h sys/mman.h sys/select.h sys/socket.h \
+            sys/wait.h sys/resource.h sys/uio.h sys/ioctl.h \
+            sys/un.h sys/utsname.h \
+            pthread.h dlfcn.h dirent.h \
+            poll.h netdb.h pwd.h grp.h \
+            arpa/inet.h netinet/in.h netinet/tcp.h \
+            assert.h limits.h float.h math.h \
+            ctype.h locale.h langinfo.h wchar.h \
+            termios.h regex.h fnmatch.h glob.h \
+            err.h getopt.h libgen.h syslog.h \
+            resolv.h utmpx.h \
+            sys/cdefs.h sys/param.h \
+            stdatomic.h
+
+      # Linux-specific headers → mirrors _stubs_linux/ (extend as scan failures appear)
+      - name: Extract Linux-specific stubs
+        run: |
+          python extract_stubs.py --outdir extracted_linux \
+            sys/epoll.h \
+            sys/inotify.h \
+            sys/timerfd.h \
+            sys/eventfd.h \
+            sys/signalfd.h \
+            sys/prctl.h \
+            sys/sendfile.h \
+            sys/sysinfo.h
+
+      - name: Upload extracted stubs
+        uses: actions/upload-artifact@v6
+        with:
+          name: extracted-stubs
+          path: |
+            extracted_posix/
+            extracted_linux/

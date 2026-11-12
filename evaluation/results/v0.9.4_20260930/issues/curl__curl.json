@@ -1,0 +1,367 @@
+{
+  "repo": "curl/curl",
+  "stars": 42026,
+  "y2038detect_version": "0.9.4",
+  "scanned_at": "2026-09-30T14:27:25Z",
+  "scan_sec": 53.36,
+  "c_files": 737,
+  "c_lines": 254887,
+  "parse_errors": 104226,
+  "scan_errors": 0,
+  "issues": [
+    {
+      "file": "evaluation\\repos\\curl__curl\\lib\\cookie.c",
+      "line": 55,
+      "col": 22,
+      "message": "implicit conversion of time_t to 'timediff_t' may truncate after 2038",
+      "context": [
+        {
+          "line": 49,
+          "text": "   For the sake of easier testing, align the capped time to an even 60 second"
+        },
+        {
+          "line": 50,
+          "text": "   boundary."
+        },
+        {
+          "line": 51,
+          "text": "*/"
+        },
+        {
+          "line": 52,
+          "text": "static void cap_expires(time_t now, struct Cookie *co)"
+        },
+        {
+          "line": 53,
+          "text": "{"
+        },
+        {
+          "line": 54,
+          "text": "  if(co->expires && (TIME_T_MAX - COOKIES_MAXAGE - 30) > now) {"
+        },
+        {
+          "line": 55,
+          "text": "    timediff_t cap = now + COOKIES_MAXAGE;"
+        },
+        {
+          "line": 56,
+          "text": "    if(co->expires > cap) {"
+        },
+        {
+          "line": 57,
+          "text": "      cap += 30;"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\curl__curl\\lib\\rand.c",
+      "line": 86,
+      "col": 47,
+      "message": "explicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 80,
+          "text": "    static unsigned int randseed;"
+        },
+        {
+          "line": 81,
+          "text": "    static bool seeded = FALSE;"
+        },
+        {
+          "line": 82,
+          "text": "    unsigned int rnd;"
+        },
+        {
+          "line": 83,
+          "text": "    if(!seeded) {"
+        },
+        {
+          "line": 84,
+          "text": "      struct curltime now;"
+        },
+        {
+          "line": 85,
+          "text": "      curlx_pnow(&now);"
+        },
+        {
+          "line": 86,
+          "text": "      randseed += (unsigned int)now.tv_usec + (unsigned int)now.tv_sec;"
+        },
+        {
+          "line": 87,
+          "text": "      randseed = randseed * 1103515245 + 12345;"
+        },
+        {
+          "line": 88,
+          "text": "      randseed = randseed * 1103515245 + 12345;"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\curl__curl\\lib\\tftp.c",
+      "line": 187,
+      "col": 23,
+      "message": "explicit conversion of time_t to 'int' may truncate after 2038",
+      "context": [
+        {
+          "line": 181,
+          "text": "    state->retry_max = 3;"
+        },
+        {
+          "line": 182,
+          "text": ""
+        },
+        {
+          "line": 183,
+          "text": "  if(state->retry_max > 50)"
+        },
+        {
+          "line": 184,
+          "text": "    state->retry_max = 50;"
+        },
+        {
+          "line": 185,
+          "text": ""
+        },
+        {
+          "line": 186,
+          "text": "  /* Compute the re-ACK interval to suit the timeout */"
+        },
+        {
+          "line": 187,
+          "text": "  state->retry_time = (int)(timeout / state->retry_max);"
+        },
+        {
+          "line": 188,
+          "text": "  if(state->retry_time < 1)"
+        },
+        {
+          "line": 189,
+          "text": "    state->retry_time = 1;"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\curl__curl\\lib\\tftp.c",
+      "line": 177,
+      "col": 22,
+      "message": "explicit conversion of time_t to 'int' may truncate after 2038",
+      "context": [
+        {
+          "line": 171,
+          "text": "    /* do the calculation only if the timeout is \"reasonable\" */"
+        },
+        {
+          "line": 172,
+          "text": "    timeout = (time_t)(timeout_ms + 500) / 1000;"
+        },
+        {
+          "line": 173,
+          "text": "  else"
+        },
+        {
+          "line": 174,
+          "text": "    timeout = 15;"
+        },
+        {
+          "line": 175,
+          "text": ""
+        },
+        {
+          "line": 176,
+          "text": "  /* Average reposting an ACK after 5 seconds */"
+        },
+        {
+          "line": 177,
+          "text": "  state->retry_max = (int)timeout / 5;"
+        },
+        {
+          "line": 178,
+          "text": ""
+        },
+        {
+          "line": 179,
+          "text": "  /* Bound the total number */"
+        }
+      ]
+    }
+  ],
+  "issues_strict": [
+    {
+      "file": "evaluation\\repos\\curl__curl\\lib\\cookie.c",
+      "line": 55,
+      "col": 22,
+      "message": "implicit conversion of time_t to 'timediff_t' may truncate after 2038",
+      "context": [
+        {
+          "line": 49,
+          "text": "   For the sake of easier testing, align the capped time to an even 60 second"
+        },
+        {
+          "line": 50,
+          "text": "   boundary."
+        },
+        {
+          "line": 51,
+          "text": "*/"
+        },
+        {
+          "line": 52,
+          "text": "static void cap_expires(time_t now, struct Cookie *co)"
+        },
+        {
+          "line": 53,
+          "text": "{"
+        },
+        {
+          "line": 54,
+          "text": "  if(co->expires && (TIME_T_MAX - COOKIES_MAXAGE - 30) > now) {"
+        },
+        {
+          "line": 55,
+          "text": "    timediff_t cap = now + COOKIES_MAXAGE;"
+        },
+        {
+          "line": 56,
+          "text": "    if(co->expires > cap) {"
+        },
+        {
+          "line": 57,
+          "text": "      cap += 30;"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\curl__curl\\lib\\rand.c",
+      "line": 86,
+      "col": 47,
+      "message": "explicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 80,
+          "text": "    static unsigned int randseed;"
+        },
+        {
+          "line": 81,
+          "text": "    static bool seeded = FALSE;"
+        },
+        {
+          "line": 82,
+          "text": "    unsigned int rnd;"
+        },
+        {
+          "line": 83,
+          "text": "    if(!seeded) {"
+        },
+        {
+          "line": 84,
+          "text": "      struct curltime now;"
+        },
+        {
+          "line": 85,
+          "text": "      curlx_pnow(&now);"
+        },
+        {
+          "line": 86,
+          "text": "      randseed += (unsigned int)now.tv_usec + (unsigned int)now.tv_sec;"
+        },
+        {
+          "line": 87,
+          "text": "      randseed = randseed * 1103515245 + 12345;"
+        },
+        {
+          "line": 88,
+          "text": "      randseed = randseed * 1103515245 + 12345;"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\curl__curl\\lib\\tftp.c",
+      "line": 187,
+      "col": 23,
+      "message": "explicit conversion of time_t to 'int' may truncate after 2038",
+      "context": [
+        {
+          "line": 181,
+          "text": "    state->retry_max = 3;"
+        },
+        {
+          "line": 182,
+          "text": ""
+        },
+        {
+          "line": 183,
+          "text": "  if(state->retry_max > 50)"
+        },
+        {
+          "line": 184,
+          "text": "    state->retry_max = 50;"
+        },
+        {
+          "line": 185,
+          "text": ""
+        },
+        {
+          "line": 186,
+          "text": "  /* Compute the re-ACK interval to suit the timeout */"
+        },
+        {
+          "line": 187,
+          "text": "  state->retry_time = (int)(timeout / state->retry_max);"
+        },
+        {
+          "line": 188,
+          "text": "  if(state->retry_time < 1)"
+        },
+        {
+          "line": 189,
+          "text": "    state->retry_time = 1;"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\curl__curl\\lib\\tftp.c",
+      "line": 177,
+      "col": 22,
+      "message": "explicit conversion of time_t to 'int' may truncate after 2038",
+      "context": [
+        {
+          "line": 171,
+          "text": "    /* do the calculation only if the timeout is \"reasonable\" */"
+        },
+        {
+          "line": 172,
+          "text": "    timeout = (time_t)(timeout_ms + 500) / 1000;"
+        },
+        {
+          "line": 173,
+          "text": "  else"
+        },
+        {
+          "line": 174,
+          "text": "    timeout = 15;"
+        },
+        {
+          "line": 175,
+          "text": ""
+        },
+        {
+          "line": 176,
+          "text": "  /* Average reposting an ACK after 5 seconds */"
+        },
+        {
+          "line": 177,
+          "text": "  state->retry_max = (int)timeout / 5;"
+        },
+        {
+          "line": 178,
+          "text": ""
+        },
+        {
+          "line": 179,
+          "text": "  /* Bound the total number */"
+        }
+      ]
+    }
+  ]
+}

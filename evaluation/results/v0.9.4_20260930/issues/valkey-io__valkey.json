@@ -1,0 +1,2919 @@
+{
+  "repo": "valkey-io/valkey",
+  "stars": 25976,
+  "y2038detect_version": "0.9.4",
+  "scanned_at": "2026-09-30T14:43:17Z",
+  "scan_sec": 118.45,
+  "c_files": 488,
+  "c_lines": 288297,
+  "parse_errors": 64308,
+  "scan_errors": 0,
+  "issues": [
+    {
+      "file": "evaluation\\repos\\valkey-io__valkey\\src\\config.c",
+      "line": 2935,
+      "col": 28,
+      "message": "explicit conversion of time_t to 'long' may truncate after 2038",
+      "context": [
+        {
+          "line": 2929,
+          "text": "    UNUSED(config);"
+        },
+        {
+          "line": 2930,
+          "text": "    sds buf = sdsempty();"
+        },
+        {
+          "line": 2931,
+          "text": "    int j;"
+        },
+        {
+          "line": 2932,
+          "text": "    for (j = 0; j < CLIENT_TYPE_OBUF_COUNT; j++) {"
+        },
+        {
+          "line": 2933,
+          "text": "        buf = sdscatprintf(buf, \"%s %llu %llu %ld\", getClientTypeName(j), server.client_obuf_limits[j].hard_limit_bytes,"
+        },
+        {
+          "line": 2934,
+          "text": "                           server.client_obuf_limits[j].soft_limit_bytes,"
+        },
+        {
+          "line": 2935,
+          "text": "                           (long)server.client_obuf_limits[j].soft_limit_seconds);"
+        },
+        {
+          "line": 2936,
+          "text": "        if (j != CLIENT_TYPE_OBUF_COUNT - 1) buf = sdscatlen(buf, \" \", 1);"
+        },
+        {
+          "line": 2937,
+          "text": "    }"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\valkey-io__valkey\\src\\config.c",
+      "line": 1542,
+      "col": 29,
+      "message": "explicit conversion of time_t to 'long' may truncate after 2038",
+      "context": [
+        {
+          "line": 1536,
+          "text": "        rewriteConfigFormatMemory(hard, sizeof(hard), server.client_obuf_limits[j].hard_limit_bytes);"
+        },
+        {
+          "line": 1537,
+          "text": "        rewriteConfigFormatMemory(soft, sizeof(soft), server.client_obuf_limits[j].soft_limit_bytes);"
+        },
+        {
+          "line": 1538,
+          "text": ""
+        },
+        {
+          "line": 1539,
+          "text": "        char *typename = getClientTypeName(j);"
+        },
+        {
+          "line": 1540,
+          "text": "        if (!strcmp(typename, \"slave\")) typename = \"replica\";"
+        },
+        {
+          "line": 1541,
+          "text": "        line = sdscatprintf(sdsempty(), \"%s %s %s %s %ld\", name, typename, hard, soft,"
+        },
+        {
+          "line": 1542,
+          "text": "                            (long)server.client_obuf_limits[j].soft_limit_seconds);"
+        },
+        {
+          "line": 1543,
+          "text": "        rewriteConfigRewriteLine(state, name, line, force);"
+        },
+        {
+          "line": 1544,
+          "text": "    }"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\valkey-io__valkey\\src\\config.c",
+      "line": 1437,
+      "col": 50,
+      "message": "explicit conversion of time_t to 'long' may truncate after 2038",
+      "context": [
+        {
+          "line": 1431,
+          "text": "     */"
+        },
+        {
+          "line": 1432,
+          "text": "    if (!server.saveparamslen) {"
+        },
+        {
+          "line": 1433,
+          "text": "        rewriteConfigRewriteLine(state, name, sdsnew(\"save \\\"\\\"\"), 1);"
+        },
+        {
+          "line": 1434,
+          "text": "    } else {"
+        },
+        {
+          "line": 1435,
+          "text": "        line = sdsnew(name);"
+        },
+        {
+          "line": 1436,
+          "text": "        for (j = 0; j < server.saveparamslen; j++) {"
+        },
+        {
+          "line": 1437,
+          "text": "            line = sdscatprintf(line, \" %ld %d\", (long)server.saveparams[j].seconds, server.saveparams[j].changes);"
+        },
+        {
+          "line": 1438,
+          "text": "        }"
+        },
+        {
+          "line": 1439,
+          "text": "        rewriteConfigRewriteLine(state, name, line, 1);"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\valkey-io__valkey\\src\\latency.c",
+      "line": 651,
+      "col": 19,
+      "message": "implicit conversion of time_t to 'int' may truncate after 2038",
+      "context": [
+        {
+          "line": 645,
+          "text": "        } else {"
+        },
+        {
+          "line": 646,
+          "text": "            if (ts->samples[i].latency > max) max = ts->samples[i].latency;"
+        },
+        {
+          "line": 647,
+          "text": "            if (ts->samples[i].latency < min) min = ts->samples[i].latency;"
+        },
+        {
+          "line": 648,
+          "text": "        }"
+        },
+        {
+          "line": 649,
+          "text": "        /* Use as label the number of seconds / minutes / hours / days"
+        },
+        {
+          "line": 650,
+          "text": "         * ago the event happened. */"
+        },
+        {
+          "line": 651,
+          "text": "        elapsed = time(NULL) - ts->samples[i].time;"
+        },
+        {
+          "line": 652,
+          "text": "        if (elapsed < 60)"
+        },
+        {
+          "line": 653,
+          "text": "            snprintf(buf, sizeof(buf), \"%ds\", elapsed);"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\valkey-io__valkey\\src\\latency.c",
+      "line": 106,
+      "col": 33,
+      "message": "implicit conversion of time_t to 'int32_t' may truncate after 2038",
+      "context": [
+        {
+          "line": 100,
+          "text": "    prev = (ts->idx + LATENCY_TS_LEN - 1) % LATENCY_TS_LEN;"
+        },
+        {
+          "line": 101,
+          "text": "    if (ts->samples[prev].time == now) {"
+        },
+        {
+          "line": 102,
+          "text": "        if (latency > ts->samples[prev].latency) ts->samples[prev].latency = latency;"
+        },
+        {
+          "line": 103,
+          "text": "        return;"
+        },
+        {
+          "line": 104,
+          "text": "    }"
+        },
+        {
+          "line": 105,
+          "text": ""
+        },
+        {
+          "line": 106,
+          "text": "    ts->samples[ts->idx].time = now;"
+        },
+        {
+          "line": 107,
+          "text": "    ts->samples[ts->idx].latency = latency;"
+        },
+        {
+          "line": 108,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\valkey-io__valkey\\src\\localtime.c",
+      "line": 106,
+      "col": 20,
+      "message": "implicit conversion of time_t to 'int' may truncate after 2038",
+      "context": [
+        {
+          "line": 100,
+          "text": "    tmp->tm_mon = 0;"
+        },
+        {
+          "line": 101,
+          "text": "    while (days >= mdays[tmp->tm_mon]) {"
+        },
+        {
+          "line": 102,
+          "text": "        days -= mdays[tmp->tm_mon];"
+        },
+        {
+          "line": 103,
+          "text": "        tmp->tm_mon++;"
+        },
+        {
+          "line": 104,
+          "text": "    }"
+        },
+        {
+          "line": 105,
+          "text": ""
+        },
+        {
+          "line": 106,
+          "text": "    tmp->tm_mday = days + 1; /* Add 1 since our 'days' is zero-based. */"
+        },
+        {
+          "line": 107,
+          "text": "    tmp->tm_year -= 1900;    /* Surprisingly tm_year is year-1900. */"
+        },
+        {
+          "line": 108,
+          "text": "}"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\valkey-io__valkey\\src\\localtime.c",
+      "line": 92,
+      "col": 20,
+      "message": "implicit conversion of time_t to 'int' may truncate after 2038",
+      "context": [
+        {
+          "line": 86,
+          "text": "        /* Leap years have one day more. */"
+        },
+        {
+          "line": 87,
+          "text": "        time_t days_this_year = 365 + is_leap_year(tmp->tm_year);"
+        },
+        {
+          "line": 88,
+          "text": "        if (days_this_year > days) break;"
+        },
+        {
+          "line": 89,
+          "text": "        days -= days_this_year;"
+        },
+        {
+          "line": 90,
+          "text": "        tmp->tm_year++;"
+        },
+        {
+          "line": 91,
+          "text": "    }"
+        },
+        {
+          "line": 92,
+          "text": "    tmp->tm_yday = days; /* Number of day of the current year. */"
+        },
+        {
+          "line": 93,
+          "text": ""
+        },
+        {
+          "line": 94,
+          "text": "    /* We need to calculate in which month and day of the month we are. To do"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\valkey-io__valkey\\src\\networking.c",
+      "line": 2374,
+      "col": 13,
+      "message": "explicit conversion of time_t to 'long' may truncate after 2038",
+      "context": [
+        {
+          "line": 2368,
+          "text": "                if (c->conn) connSetReadHandler(c->conn, NULL);"
+        },
+        {
+          "line": 2369,
+          "text": "                c->repl_data->rdb_client_disconnect_time = server.unixtime;"
+        },
+        {
+          "line": 2370,
+          "text": "                dualChannelServerLog(LL_VERBOSE, \"Postpone RDB client id=%llu (%s) free for %d seconds\","
+        },
+        {
+          "line": 2371,
+          "text": "                                     (unsigned long long)c->id, replicationGetReplicaName(c), server.wait_before_rdb_client_free);"
+        },
+        {
+          "line": 2372,
+          "text": "            }"
+        },
+        {
+          "line": 2373,
+          "text": "            if (server.unixtime - c->repl_data->rdb_client_disconnect_time <= server.wait_before_rdb_client_free) continue;"
+        },
+        {
+          "line": 2374,
+          "text": "            dualChannelServerLog("
+        },
+        {
+          "line": 2375,
+          "text": "                LL_NOTICE,"
+        },
+        {
+          "line": 2376,
+          "text": "                \"Replica main channel failed to establish PSYNC within the grace period (%ld seconds). \""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\valkey-io__valkey\\src\\rdb.c",
+      "line": 3297,
+      "col": 17,
+      "message": "explicit conversion of time_t to 'unsigned long' may truncate after 2106",
+      "context": [
+        {
+          "line": 3291,
+          "text": "                serverLog(LL_NOTICE, \"Loading RDB produced by Redis version %s\", (char *)objectGetVal(auxval));"
+        },
+        {
+          "line": 3292,
+          "text": "            } else if (!strcasecmp(objectGetVal(auxkey), \"valkey-ver\")) {"
+        },
+        {
+          "line": 3293,
+          "text": "                serverLog(LL_NOTICE, \"Loading RDB produced by Valkey version %s\", (char *)objectGetVal(auxval));"
+        },
+        {
+          "line": 3294,
+          "text": "            } else if (!strcasecmp(objectGetVal(auxkey), \"ctime\")) {"
+        },
+        {
+          "line": 3295,
+          "text": "                time_t age = time(NULL) - strtol(objectGetVal(auxval), NULL, 10);"
+        },
+        {
+          "line": 3296,
+          "text": "                if (age < 0) age = 0;"
+        },
+        {
+          "line": 3297,
+          "text": "                serverLog(LL_NOTICE, \"RDB age %ld seconds\", (unsigned long)age);"
+        },
+        {
+          "line": 3298,
+          "text": "            } else if (!strcasecmp(objectGetVal(auxkey), \"used-mem\")) {"
+        },
+        {
+          "line": 3299,
+          "text": "                long long usedmem = strtoll(objectGetVal(auxval), NULL, 10);"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\valkey-io__valkey\\src\\replication.c",
+      "line": 5411,
+      "col": 13,
+      "message": "explicit conversion of time_t to 'int' may truncate after 2038",
+      "context": [
+        {
+          "line": 5405,
+          "text": "             *    primary that will accept our PSYNC request by second"
+        },
+        {
+          "line": 5406,
+          "text": "             *    replication ID, but there will be data inconsistency"
+        },
+        {
+          "line": 5407,
+          "text": "             *    because we received writes. */"
+        },
+        {
+          "line": 5408,
+          "text": "            changeReplicationId();"
+        },
+        {
+          "line": 5409,
+          "text": "            clearReplicationId2();"
+        },
+        {
+          "line": 5410,
+          "text": "            freeReplicationBacklog();"
+        },
+        {
+          "line": 5411,
+          "text": "            serverLog(LL_NOTICE,"
+        },
+        {
+          "line": 5412,
+          "text": "                      \"Replication backlog freed after %d seconds \""
+        },
+        {
+          "line": 5413,
+          "text": "                      \"without connected replicas.\","
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\valkey-io__valkey\\src\\replication.c",
+      "line": 4265,
+      "col": 55,
+      "message": "explicit conversion of time_t to 'int' may truncate after 2038",
+      "context": [
+        {
+          "line": 4259,
+          "text": "    }"
+        },
+        {
+          "line": 4260,
+          "text": ""
+        },
+        {
+          "line": 4261,
+          "text": "    /* Prepare a suitable temp file for bulk transfer */"
+        },
+        {
+          "line": 4262,
+          "text": "    if (!useDisklessLoad()) {"
+        },
+        {
+          "line": 4263,
+          "text": "        int dfd = -1, maxtries = 5;"
+        },
+        {
+          "line": 4264,
+          "text": "        while (maxtries--) {"
+        },
+        {
+          "line": 4265,
+          "text": "            snprintf(tmpfile, 256, \"temp-%d.%ld.rdb\", (int)server.unixtime, (long int)getpid());"
+        },
+        {
+          "line": 4266,
+          "text": "            dfd = open(tmpfile, O_CREAT | O_WRONLY | O_EXCL, 0666);"
+        },
+        {
+          "line": 4267,
+          "text": "            if (dfd != -1) break;"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\valkey-io__valkey\\src\\replication.c",
+      "line": 705,
+      "col": 51,
+      "message": "explicit conversion of time_t to 'long' may truncate after 2038",
+      "context": [
+        {
+          "line": 699,
+          "text": "    int j;"
+        },
+        {
+          "line": 700,
+          "text": "    sds cmdrepr = sdsnew(\"+\");"
+        },
+        {
+          "line": 701,
+          "text": "    robj *cmdobj;"
+        },
+        {
+          "line": 702,
+          "text": "    struct timeval tv;"
+        },
+        {
+          "line": 703,
+          "text": ""
+        },
+        {
+          "line": 704,
+          "text": "    gettimeofday(&tv, NULL);"
+        },
+        {
+          "line": 705,
+          "text": "    cmdrepr = sdscatprintf(cmdrepr, \"%ld.%06ld \", (long)tv.tv_sec, (long)tv.tv_usec);"
+        },
+        {
+          "line": 706,
+          "text": "    if (c->flag.script) {"
+        },
+        {
+          "line": 707,
+          "text": "        cmdrepr = sdscatprintf(cmdrepr, \"[%d lua] \", dictid);"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\valkey-io__valkey\\src\\server.c",
+      "line": 6693,
+      "col": 58,
+      "message": "explicit conversion of time_t to 'long' may truncate after 2038",
+      "context": [
+        {
+          "line": 6687,
+          "text": "                            \"used_cpu_sys:%ld.%06ld\\r\\n\""
+        },
+        {
+          "line": 6688,
+          "text": "                            \"used_cpu_user:%ld.%06ld\\r\\n\""
+        },
+        {
+          "line": 6689,
+          "text": "                            \"used_cpu_sys_children:%ld.%06ld\\r\\n\""
+        },
+        {
+          "line": 6690,
+          "text": "                            \"used_cpu_user_children:%ld.%06ld\\r\\n\","
+        },
+        {
+          "line": 6691,
+          "text": "                            (long)self_ru.ru_stime.tv_sec, (long)self_ru.ru_stime.tv_usec,"
+        },
+        {
+          "line": 6692,
+          "text": "                            (long)self_ru.ru_utime.tv_sec, (long)self_ru.ru_utime.tv_usec, (long)c_ru.ru_stime.tv_sec,"
+        },
+        {
+          "line": 6693,
+          "text": "                            (long)c_ru.ru_stime.tv_usec, (long)c_ru.ru_utime.tv_sec, (long)c_ru.ru_utime.tv_usec);"
+        },
+        {
+          "line": 6694,
+          "text": "#ifdef RUSAGE_THREAD"
+        },
+        {
+          "line": 6695,
+          "text": "        struct rusage m_ru;"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\valkey-io__valkey\\src\\server.c",
+      "line": 6692,
+      "col": 92,
+      "message": "explicit conversion of time_t to 'long' may truncate after 2038",
+      "context": [
+        {
+          "line": 6686,
+          "text": "                            \"# CPU\\r\\n\""
+        },
+        {
+          "line": 6687,
+          "text": "                            \"used_cpu_sys:%ld.%06ld\\r\\n\""
+        },
+        {
+          "line": 6688,
+          "text": "                            \"used_cpu_user:%ld.%06ld\\r\\n\""
+        },
+        {
+          "line": 6689,
+          "text": "                            \"used_cpu_sys_children:%ld.%06ld\\r\\n\""
+        },
+        {
+          "line": 6690,
+          "text": "                            \"used_cpu_user_children:%ld.%06ld\\r\\n\","
+        },
+        {
+          "line": 6691,
+          "text": "                            (long)self_ru.ru_stime.tv_sec, (long)self_ru.ru_stime.tv_usec,"
+        },
+        {
+          "line": 6692,
+          "text": "                            (long)self_ru.ru_utime.tv_sec, (long)self_ru.ru_utime.tv_usec, (long)c_ru.ru_stime.tv_sec,"
+        },
+        {
+          "line": 6693,
+          "text": "                            (long)c_ru.ru_stime.tv_usec, (long)c_ru.ru_utime.tv_sec, (long)c_ru.ru_utime.tv_usec);"
+        },
+        {
+          "line": 6694,
+          "text": "#ifdef RUSAGE_THREAD"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\valkey-io__valkey\\src\\server.c",
+      "line": 6692,
+      "col": 29,
+      "message": "explicit conversion of time_t to 'long' may truncate after 2038",
+      "context": [
+        {
+          "line": 6686,
+          "text": "                            \"# CPU\\r\\n\""
+        },
+        {
+          "line": 6687,
+          "text": "                            \"used_cpu_sys:%ld.%06ld\\r\\n\""
+        },
+        {
+          "line": 6688,
+          "text": "                            \"used_cpu_user:%ld.%06ld\\r\\n\""
+        },
+        {
+          "line": 6689,
+          "text": "                            \"used_cpu_sys_children:%ld.%06ld\\r\\n\""
+        },
+        {
+          "line": 6690,
+          "text": "                            \"used_cpu_user_children:%ld.%06ld\\r\\n\","
+        },
+        {
+          "line": 6691,
+          "text": "                            (long)self_ru.ru_stime.tv_sec, (long)self_ru.ru_stime.tv_usec,"
+        },
+        {
+          "line": 6692,
+          "text": "                            (long)self_ru.ru_utime.tv_sec, (long)self_ru.ru_utime.tv_usec, (long)c_ru.ru_stime.tv_sec,"
+        },
+        {
+          "line": 6693,
+          "text": "                            (long)c_ru.ru_stime.tv_usec, (long)c_ru.ru_utime.tv_sec, (long)c_ru.ru_utime.tv_usec);"
+        },
+        {
+          "line": 6694,
+          "text": "#ifdef RUSAGE_THREAD"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\valkey-io__valkey\\src\\server.c",
+      "line": 6691,
+      "col": 29,
+      "message": "explicit conversion of time_t to 'long' may truncate after 2038",
+      "context": [
+        {
+          "line": 6685,
+          "text": "        info = sdscatprintf(info,"
+        },
+        {
+          "line": 6686,
+          "text": "                            \"# CPU\\r\\n\""
+        },
+        {
+          "line": 6687,
+          "text": "                            \"used_cpu_sys:%ld.%06ld\\r\\n\""
+        },
+        {
+          "line": 6688,
+          "text": "                            \"used_cpu_user:%ld.%06ld\\r\\n\""
+        },
+        {
+          "line": 6689,
+          "text": "                            \"used_cpu_sys_children:%ld.%06ld\\r\\n\""
+        },
+        {
+          "line": 6690,
+          "text": "                            \"used_cpu_user_children:%ld.%06ld\\r\\n\","
+        },
+        {
+          "line": 6691,
+          "text": "                            (long)self_ru.ru_stime.tv_sec, (long)self_ru.ru_stime.tv_usec,"
+        },
+        {
+          "line": 6692,
+          "text": "                            (long)self_ru.ru_utime.tv_sec, (long)self_ru.ru_utime.tv_usec, (long)c_ru.ru_stime.tv_sec,"
+        },
+        {
+          "line": 6693,
+          "text": "                            (long)c_ru.ru_stime.tv_usec, (long)c_ru.ru_utime.tv_sec, (long)c_ru.ru_utime.tv_usec);"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\valkey-io__valkey\\src\\server.c",
+      "line": 6604,
+      "col": 21,
+      "message": "explicit conversion of time_t to 'int' may truncate after 2038",
+      "context": [
+        {
+          "line": 6598,
+          "text": "                double perc = 0;"
+        },
+        {
+          "line": 6599,
+          "text": "                if (repl_transfer_size_stat) {"
+        },
+        {
+          "line": 6600,
+          "text": "                    perc = ((double)repl_transfer_read_stat / repl_transfer_size_stat) * 100;"
+        },
+        {
+          "line": 6601,
+          "text": "                }"
+        },
+        {
+          "line": 6602,
+          "text": "                info = sdscatprintf("
+        },
+        {
+          "line": 6603,
+          "text": "                    info,"
+        },
+        {
+          "line": 6604,
+          "text": "                    FMTARGS("
+        },
+        {
+          "line": 6605,
+          "text": "                        \"master_sync_total_bytes:%lld\\r\\n\", (long long)repl_transfer_size_stat,"
+        },
+        {
+          "line": 6606,
+          "text": "                        \"master_sync_read_bytes:%lld\\r\\n\", (long long)repl_transfer_read_stat,"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\valkey-io__valkey\\src\\server.c",
+      "line": 6577,
+      "col": 17,
+      "message": "explicit conversion of time_t to 'int' may truncate after 2038",
+      "context": [
+        {
+          "line": 6571,
+          "text": "                replica_repl_offset = server.cached_primary->repl_data->reploff;"
+        },
+        {
+          "line": 6572,
+          "text": "                replica_read_repl_offset = server.cached_primary->repl_data->read_reploff;"
+        },
+        {
+          "line": 6573,
+          "text": "            }"
+        },
+        {
+          "line": 6574,
+          "text": ""
+        },
+        {
+          "line": 6575,
+          "text": "            info = sdscatprintf("
+        },
+        {
+          "line": 6576,
+          "text": "                info,"
+        },
+        {
+          "line": 6577,
+          "text": "                FMTARGS("
+        },
+        {
+          "line": 6578,
+          "text": "                    \"master_host:%s\\r\\n\", server.primary_host,"
+        },
+        {
+          "line": 6579,
+          "text": "                    \"master_port:%d\\r\\n\", server.primary_port,"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\valkey-io__valkey\\src\\server.c",
+      "line": 6167,
+      "col": 28,
+      "message": "explicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 6161,
+          "text": "            uname(&name);"
+        },
+        {
+          "line": 6162,
+          "text": "            call_uname = 0;"
+        },
+        {
+          "line": 6163,
+          "text": "        }"
+        },
+        {
+          "line": 6164,
+          "text": ""
+        },
+        {
+          "line": 6165,
+          "text": "        info = sdscatfmt("
+        },
+        {
+          "line": 6166,
+          "text": "            info,"
+        },
+        {
+          "line": 6167,
+          "text": "            \"# Server\\r\\n\" FMTARGS("
+        },
+        {
+          "line": 6168,
+          "text": "                \"redis_version:%s\\r\\n\", REDIS_VERSION,"
+        },
+        {
+          "line": 6169,
+          "text": "                \"server_name:%s\\r\\n\", SERVER_NAME,"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\valkey-io__valkey\\src\\server.c",
+      "line": 1647,
+      "col": 17,
+      "message": "explicit conversion of time_t to 'int' may truncate after 2038",
+      "context": [
+        {
+          "line": 1641,
+          "text": "             * the given amount of seconds, and if the latest bgsave was"
+        },
+        {
+          "line": 1642,
+          "text": "             * successful or if, in case of an error, at least"
+        },
+        {
+          "line": 1643,
+          "text": "             * CONFIG_BGSAVE_RETRY_DELAY seconds already elapsed. */"
+        },
+        {
+          "line": 1644,
+          "text": "            if (server.dirty >= sp->changes && server.unixtime - server.lastsave > sp->seconds &&"
+        },
+        {
+          "line": 1645,
+          "text": "                (server.unixtime - server.lastbgsave_try > CONFIG_BGSAVE_RETRY_DELAY ||"
+        },
+        {
+          "line": 1646,
+          "text": "                 server.lastbgsave_status == C_OK)) {"
+        },
+        {
+          "line": 1647,
+          "text": "                serverLog(LL_NOTICE, \"%d changes in %d seconds. Saving...\", sp->changes, (int)sp->seconds);"
+        },
+        {
+          "line": 1648,
+          "text": "                rdbSaveInfo rsi, *rsiptr;"
+        },
+        {
+          "line": 1649,
+          "text": "                rsiptr = rdbPopulateSaveInfo(&rsi);"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\valkey-io__valkey\\src\\server.c",
+      "line": 1211,
+      "col": 36,
+      "message": "implicit conversion of time_t to 'int' may truncate after 2038",
+      "context": [
+        {
+          "line": 1205,
+          "text": "static void clientsCron(int clients_this_cycle) {"
+        },
+        {
+          "line": 1206,
+          "text": "    /* for debug purposes: skip actual cron work if pause_cron is on */"
+        },
+        {
+          "line": 1207,
+          "text": "    if (server.pause_cron) return;"
+        },
+        {
+          "line": 1208,
+          "text": ""
+        },
+        {
+          "line": 1209,
+          "text": "    mstime_t now = mstime();"
+        },
+        {
+          "line": 1210,
+          "text": ""
+        },
+        {
+          "line": 1211,
+          "text": "    int curr_peak_mem_usage_slot = server.unixtime % CLIENTS_PEAK_MEM_USAGE_SLOTS;"
+        },
+        {
+          "line": 1212,
+          "text": "    /* Always zero the next sample, so that when we switch to that second, we'll"
+        },
+        {
+          "line": 1213,
+          "text": "     * only register samples that are greater in that second without considering"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\valkey-io__valkey\\src\\server.c",
+      "line": 223,
+      "col": 57,
+      "message": "implicit conversion of time_t to 'int' may truncate after 2038",
+      "context": [
+        {
+          "line": 217,
+          "text": "            snprintf(buf + off, sizeof(buf) - off, \"%03d\", (int)tv.tv_usec / 1000);"
+        },
+        {
+          "line": 218,
+          "text": "            break;"
+        },
+        {
+          "line": 219,
+          "text": ""
+        },
+        {
+          "line": 220,
+          "text": "        case LOG_TIMESTAMP_ISO8601:"
+        },
+        {
+          "line": 221,
+          "text": "            off = strftime(buf, sizeof(buf), \"%Y-%m-%dT%H:%M:%S.\", &tm);"
+        },
+        {
+          "line": 222,
+          "text": "            char tzbuf[7];"
+        },
+        {
+          "line": 223,
+          "text": "            formatTimezone(tzbuf, sizeof(tzbuf), server.timezone, server.daylight_active);"
+        },
+        {
+          "line": 224,
+          "text": "            snprintf(buf + off, sizeof(buf) - off, \"%03d%s\", (int)tv.tv_usec / 1000, tzbuf);"
+        },
+        {
+          "line": 225,
+          "text": "            break;"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\valkey-io__valkey\\src\\util.c",
+      "line": 1110,
+      "col": 23,
+      "message": "implicit conversion of time_t to 'unsigned char' may truncate after 2038",
+      "context": [
+        {
+          "line": 1104,
+          "text": "        /* Revert to a weaker seed, and in this case reseed again"
+        },
+        {
+          "line": 1105,
+          "text": "         * at every call.*/"
+        },
+        {
+          "line": 1106,
+          "text": "        for (unsigned int j = 0; j < sizeof(seed); j++) {"
+        },
+        {
+          "line": 1107,
+          "text": "            struct timeval tv;"
+        },
+        {
+          "line": 1108,
+          "text": "            gettimeofday(&tv, NULL);"
+        },
+        {
+          "line": 1109,
+          "text": "            pid_t pid = getpid();"
+        },
+        {
+          "line": 1110,
+          "text": "            seed[j] = tv.tv_sec ^ tv.tv_usec ^ pid ^ (long)fp;"
+        },
+        {
+          "line": 1111,
+          "text": "        }"
+        },
+        {
+          "line": 1112,
+          "text": "    } else {"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\valkey-io__valkey\\utils\\lru\\lfu-simulation.c",
+      "line": 144,
+      "col": 50,
+      "message": "explicit conversion of time_t to 'int' may truncate after 2038",
+      "context": [
+        {
+          "line": 138,
+          "text": "            new_entry_time = now+10;"
+        },
+        {
+          "line": 139,
+          "text": "        }"
+        },
+        {
+          "line": 140,
+          "text": ""
+        },
+        {
+          "line": 141,
+          "text": "        /* Show the first 20 entries and the last 20 entries. */"
+        },
+        {
+          "line": 142,
+          "text": "        if (display_time != now) {"
+        },
+        {
+          "line": 143,
+          "text": "            printf(\"=============================\\n\");"
+        },
+        {
+          "line": 144,
+          "text": "            printf(\"Current minutes time: %d\\n\", (int)to_16bit_minutes(now));"
+        },
+        {
+          "line": 145,
+          "text": "            printf(\"Access method: %s\\n\","
+        },
+        {
+          "line": 146,
+          "text": "                (now-start < switch_after) ? \"power-law\" : \"flat\");"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\valkey-io__valkey\\utils\\lru\\lfu-simulation.c",
+      "line": 135,
+      "col": 37,
+      "message": "implicit conversion of time_t to 'uint16_t' may truncate after 2038",
+      "context": [
+        {
+          "line": 129,
+          "text": ""
+        },
+        {
+          "line": 130,
+          "text": "        /* Simulate the addition of new entries at positions between"
+        },
+        {
+          "line": 131,
+          "text": "         * 10 and 19, a random one every 10 seconds. */"
+        },
+        {
+          "line": 132,
+          "text": "        if (new_entry_time <= now) {"
+        },
+        {
+          "line": 133,
+          "text": "            idx = 10+(rand()%10);"
+        },
+        {
+          "line": 134,
+          "text": "            entries[idx].counter = LFU_INIT_VAL;"
+        },
+        {
+          "line": 135,
+          "text": "            entries[idx].decrtime = to_16bit_minutes(time(NULL));"
+        },
+        {
+          "line": 136,
+          "text": "            entries[idx].hits = 0;"
+        },
+        {
+          "line": 137,
+          "text": "            entries[idx].ctime = time(NULL);"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\valkey-io__valkey\\utils\\lru\\lfu-simulation.c",
+      "line": 93,
+      "col": 31,
+      "message": "implicit conversion of time_t to 'uint16_t' may truncate after 2038",
+      "context": [
+        {
+          "line": 87,
+          "text": "    struct entry *entries = malloc(sizeof(*entries)*keyspace_size);"
+        },
+        {
+          "line": 88,
+          "text": "    long j;"
+        },
+        {
+          "line": 89,
+          "text": ""
+        },
+        {
+          "line": 90,
+          "text": "    /* Initialize. */"
+        },
+        {
+          "line": 91,
+          "text": "    for (j = 0; j < keyspace_size; j++) {"
+        },
+        {
+          "line": 92,
+          "text": "        entries[j].counter = LFU_INIT_VAL;"
+        },
+        {
+          "line": 93,
+          "text": "        entries[j].decrtime = to_16bit_minutes(start);"
+        },
+        {
+          "line": 94,
+          "text": "        entries[j].hits = 0;"
+        },
+        {
+          "line": 95,
+          "text": "        entries[j].ctime = time(NULL);"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\valkey-io__valkey\\utils\\lru\\lfu-simulation.c",
+      "line": 65,
+      "col": 23,
+      "message": "implicit conversion of time_t to 'uint16_t' may truncate after 2038",
+      "context": [
+        {
+          "line": 59,
+          "text": "            if (e->counter > LFU_INIT_VAL*2) {"
+        },
+        {
+          "line": 60,
+          "text": "                e->counter /= 2;"
+        },
+        {
+          "line": 61,
+          "text": "            } else {"
+        },
+        {
+          "line": 62,
+          "text": "                e->counter--;"
+        },
+        {
+          "line": 63,
+          "text": "            }"
+        },
+        {
+          "line": 64,
+          "text": "        }"
+        },
+        {
+          "line": 65,
+          "text": "        e->decrtime = to_16bit_minutes(time(NULL));"
+        },
+        {
+          "line": 66,
+          "text": "    }"
+        },
+        {
+          "line": 67,
+          "text": "    return e->counter;"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\valkey-io__valkey\\utils\\lru\\lfu-simulation.c",
+      "line": 55,
+      "col": 22,
+      "message": "implicit conversion of time_t to 'uint16_t' may truncate after 2038",
+      "context": [
+        {
+          "line": 49,
+          "text": "    e->hits++;"
+        },
+        {
+          "line": 50,
+          "text": "}"
+        },
+        {
+          "line": 51,
+          "text": ""
+        },
+        {
+          "line": 52,
+          "text": "/* Return the entry LFU value and as a side effect decrement the"
+        },
+        {
+          "line": 53,
+          "text": " * entry value if the decrement time was reached. */"
+        },
+        {
+          "line": 54,
+          "text": "uint8_t scan_entry(struct entry *e) {"
+        },
+        {
+          "line": 55,
+          "text": "    if (minutes_diff(to_16bit_minutes(time(NULL)),e->decrtime)"
+        },
+        {
+          "line": 56,
+          "text": "        >= decr_every)"
+        },
+        {
+          "line": 57,
+          "text": "    {"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\valkey-io__valkey\\utils\\lru\\lfu-simulation.c",
+      "line": 80,
+      "col": 13,
+      "message": "time_t passed to printf-family function with incompatible format specifier: may truncate after 2038",
+      "context": [
+        {
+          "line": 74,
+          "text": "    if (pos >= 10 && pos <= 14) tag = \"new no access\";"
+        },
+        {
+          "line": 75,
+          "text": "    if (pos >= 15 && pos <= 19) tag = \"new accessed \";"
+        },
+        {
+          "line": 76,
+          "text": "    if (pos >= keyspace_size -5) tag= \"old no access\";"
+        },
+        {
+          "line": 77,
+          "text": ""
+        },
+        {
+          "line": 78,
+          "text": "    printf(\"%ld] <%s> frequency:%d decrtime:%d [%lu hits | age:%ld sec]\\n\","
+        },
+        {
+          "line": 79,
+          "text": "        pos, tag, e->counter, e->decrtime, (unsigned long)e->hits,"
+        },
+        {
+          "line": 80,
+          "text": "            time(NULL) - e->ctime);"
+        },
+        {
+          "line": 81,
+          "text": "}"
+        },
+        {
+          "line": 82,
+          "text": ""
+        }
+      ]
+    }
+  ],
+  "issues_strict": [
+    {
+      "file": "evaluation\\repos\\valkey-io__valkey\\src\\config.c",
+      "line": 2935,
+      "col": 28,
+      "message": "explicit conversion of time_t to 'long' may truncate after 2038",
+      "context": [
+        {
+          "line": 2929,
+          "text": "    UNUSED(config);"
+        },
+        {
+          "line": 2930,
+          "text": "    sds buf = sdsempty();"
+        },
+        {
+          "line": 2931,
+          "text": "    int j;"
+        },
+        {
+          "line": 2932,
+          "text": "    for (j = 0; j < CLIENT_TYPE_OBUF_COUNT; j++) {"
+        },
+        {
+          "line": 2933,
+          "text": "        buf = sdscatprintf(buf, \"%s %llu %llu %ld\", getClientTypeName(j), server.client_obuf_limits[j].hard_limit_bytes,"
+        },
+        {
+          "line": 2934,
+          "text": "                           server.client_obuf_limits[j].soft_limit_bytes,"
+        },
+        {
+          "line": 2935,
+          "text": "                           (long)server.client_obuf_limits[j].soft_limit_seconds);"
+        },
+        {
+          "line": 2936,
+          "text": "        if (j != CLIENT_TYPE_OBUF_COUNT - 1) buf = sdscatlen(buf, \" \", 1);"
+        },
+        {
+          "line": 2937,
+          "text": "    }"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\valkey-io__valkey\\src\\config.c",
+      "line": 1542,
+      "col": 29,
+      "message": "explicit conversion of time_t to 'long' may truncate after 2038",
+      "context": [
+        {
+          "line": 1536,
+          "text": "        rewriteConfigFormatMemory(hard, sizeof(hard), server.client_obuf_limits[j].hard_limit_bytes);"
+        },
+        {
+          "line": 1537,
+          "text": "        rewriteConfigFormatMemory(soft, sizeof(soft), server.client_obuf_limits[j].soft_limit_bytes);"
+        },
+        {
+          "line": 1538,
+          "text": ""
+        },
+        {
+          "line": 1539,
+          "text": "        char *typename = getClientTypeName(j);"
+        },
+        {
+          "line": 1540,
+          "text": "        if (!strcmp(typename, \"slave\")) typename = \"replica\";"
+        },
+        {
+          "line": 1541,
+          "text": "        line = sdscatprintf(sdsempty(), \"%s %s %s %s %ld\", name, typename, hard, soft,"
+        },
+        {
+          "line": 1542,
+          "text": "                            (long)server.client_obuf_limits[j].soft_limit_seconds);"
+        },
+        {
+          "line": 1543,
+          "text": "        rewriteConfigRewriteLine(state, name, line, force);"
+        },
+        {
+          "line": 1544,
+          "text": "    }"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\valkey-io__valkey\\src\\config.c",
+      "line": 1437,
+      "col": 50,
+      "message": "explicit conversion of time_t to 'long' may truncate after 2038",
+      "context": [
+        {
+          "line": 1431,
+          "text": "     */"
+        },
+        {
+          "line": 1432,
+          "text": "    if (!server.saveparamslen) {"
+        },
+        {
+          "line": 1433,
+          "text": "        rewriteConfigRewriteLine(state, name, sdsnew(\"save \\\"\\\"\"), 1);"
+        },
+        {
+          "line": 1434,
+          "text": "    } else {"
+        },
+        {
+          "line": 1435,
+          "text": "        line = sdsnew(name);"
+        },
+        {
+          "line": 1436,
+          "text": "        for (j = 0; j < server.saveparamslen; j++) {"
+        },
+        {
+          "line": 1437,
+          "text": "            line = sdscatprintf(line, \" %ld %d\", (long)server.saveparams[j].seconds, server.saveparams[j].changes);"
+        },
+        {
+          "line": 1438,
+          "text": "        }"
+        },
+        {
+          "line": 1439,
+          "text": "        rewriteConfigRewriteLine(state, name, line, 1);"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\valkey-io__valkey\\src\\fuzzer_command_generator.c",
+      "line": 1046,
+      "col": 11,
+      "message": "implicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 1040,
+          "text": "    }"
+        },
+        {
+          "line": 1041,
+          "text": "}"
+        },
+        {
+          "line": 1042,
+          "text": ""
+        },
+        {
+          "line": 1043,
+          "text": "void initializeRandomSeed(void) {"
+        },
+        {
+          "line": 1044,
+          "text": "    struct timeval tv;"
+        },
+        {
+          "line": 1045,
+          "text": "    gettimeofday(&tv, NULL);"
+        },
+        {
+          "line": 1046,
+          "text": "    srand(time(NULL) ^ (unsigned long)pthread_self() ^ tv.tv_usec);"
+        },
+        {
+          "line": 1047,
+          "text": "}"
+        },
+        {
+          "line": 1048,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\valkey-io__valkey\\src\\latency.c",
+      "line": 651,
+      "col": 19,
+      "message": "implicit conversion of time_t to 'int' may truncate after 2038",
+      "context": [
+        {
+          "line": 645,
+          "text": "        } else {"
+        },
+        {
+          "line": 646,
+          "text": "            if (ts->samples[i].latency > max) max = ts->samples[i].latency;"
+        },
+        {
+          "line": 647,
+          "text": "            if (ts->samples[i].latency < min) min = ts->samples[i].latency;"
+        },
+        {
+          "line": 648,
+          "text": "        }"
+        },
+        {
+          "line": 649,
+          "text": "        /* Use as label the number of seconds / minutes / hours / days"
+        },
+        {
+          "line": 650,
+          "text": "         * ago the event happened. */"
+        },
+        {
+          "line": 651,
+          "text": "        elapsed = time(NULL) - ts->samples[i].time;"
+        },
+        {
+          "line": 652,
+          "text": "        if (elapsed < 60)"
+        },
+        {
+          "line": 653,
+          "text": "            snprintf(buf, sizeof(buf), \"%ds\", elapsed);"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\valkey-io__valkey\\src\\latency.c",
+      "line": 106,
+      "col": 33,
+      "message": "implicit conversion of time_t to 'int32_t' may truncate after 2038",
+      "context": [
+        {
+          "line": 100,
+          "text": "    prev = (ts->idx + LATENCY_TS_LEN - 1) % LATENCY_TS_LEN;"
+        },
+        {
+          "line": 101,
+          "text": "    if (ts->samples[prev].time == now) {"
+        },
+        {
+          "line": 102,
+          "text": "        if (latency > ts->samples[prev].latency) ts->samples[prev].latency = latency;"
+        },
+        {
+          "line": 103,
+          "text": "        return;"
+        },
+        {
+          "line": 104,
+          "text": "    }"
+        },
+        {
+          "line": 105,
+          "text": ""
+        },
+        {
+          "line": 106,
+          "text": "    ts->samples[ts->idx].time = now;"
+        },
+        {
+          "line": 107,
+          "text": "    ts->samples[ts->idx].latency = latency;"
+        },
+        {
+          "line": 108,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\valkey-io__valkey\\src\\localtime.c",
+      "line": 106,
+      "col": 20,
+      "message": "implicit conversion of time_t to 'int' may truncate after 2038",
+      "context": [
+        {
+          "line": 100,
+          "text": "    tmp->tm_mon = 0;"
+        },
+        {
+          "line": 101,
+          "text": "    while (days >= mdays[tmp->tm_mon]) {"
+        },
+        {
+          "line": 102,
+          "text": "        days -= mdays[tmp->tm_mon];"
+        },
+        {
+          "line": 103,
+          "text": "        tmp->tm_mon++;"
+        },
+        {
+          "line": 104,
+          "text": "    }"
+        },
+        {
+          "line": 105,
+          "text": ""
+        },
+        {
+          "line": 106,
+          "text": "    tmp->tm_mday = days + 1; /* Add 1 since our 'days' is zero-based. */"
+        },
+        {
+          "line": 107,
+          "text": "    tmp->tm_year -= 1900;    /* Surprisingly tm_year is year-1900. */"
+        },
+        {
+          "line": 108,
+          "text": "}"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\valkey-io__valkey\\src\\localtime.c",
+      "line": 92,
+      "col": 20,
+      "message": "implicit conversion of time_t to 'int' may truncate after 2038",
+      "context": [
+        {
+          "line": 86,
+          "text": "        /* Leap years have one day more. */"
+        },
+        {
+          "line": 87,
+          "text": "        time_t days_this_year = 365 + is_leap_year(tmp->tm_year);"
+        },
+        {
+          "line": 88,
+          "text": "        if (days_this_year > days) break;"
+        },
+        {
+          "line": 89,
+          "text": "        days -= days_this_year;"
+        },
+        {
+          "line": 90,
+          "text": "        tmp->tm_year++;"
+        },
+        {
+          "line": 91,
+          "text": "    }"
+        },
+        {
+          "line": 92,
+          "text": "    tmp->tm_yday = days; /* Number of day of the current year. */"
+        },
+        {
+          "line": 93,
+          "text": ""
+        },
+        {
+          "line": 94,
+          "text": "    /* We need to calculate in which month and day of the month we are. To do"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\valkey-io__valkey\\src\\localtime.c",
+      "line": 81,
+      "col": 20,
+      "message": "implicit conversion of time_t to 'int' may truncate after 2038",
+      "context": [
+        {
+          "line": 75,
+          "text": "    tmp->tm_min = (seconds % secs_hour) / secs_min;"
+        },
+        {
+          "line": 76,
+          "text": "    tmp->tm_sec = (seconds % secs_hour) % secs_min;"
+        },
+        {
+          "line": 77,
+          "text": ""
+        },
+        {
+          "line": 78,
+          "text": "    /* 1/1/1970 was a Thursday, that is, day 4 from the POV of the tm structure"
+        },
+        {
+          "line": 79,
+          "text": "     * where sunday = 0, so to calculate the day of the week we have to add 4"
+        },
+        {
+          "line": 80,
+          "text": "     * and take the modulo by 7. */"
+        },
+        {
+          "line": 81,
+          "text": "    tmp->tm_wday = (days + 4) % 7;"
+        },
+        {
+          "line": 82,
+          "text": ""
+        },
+        {
+          "line": 83,
+          "text": "    /* Calculate the current year. */"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\valkey-io__valkey\\src\\localtime.c",
+      "line": 76,
+      "col": 19,
+      "message": "implicit conversion of time_t to 'int' may truncate after 2038",
+      "context": [
+        {
+          "line": 70,
+          "text": "    time_t days = t / secs_day;    /* Days passed since epoch. */"
+        },
+        {
+          "line": 71,
+          "text": "    time_t seconds = t % secs_day; /* Remaining seconds. */"
+        },
+        {
+          "line": 72,
+          "text": ""
+        },
+        {
+          "line": 73,
+          "text": "    tmp->tm_isdst = dst;"
+        },
+        {
+          "line": 74,
+          "text": "    tmp->tm_hour = seconds / secs_hour;"
+        },
+        {
+          "line": 75,
+          "text": "    tmp->tm_min = (seconds % secs_hour) / secs_min;"
+        },
+        {
+          "line": 76,
+          "text": "    tmp->tm_sec = (seconds % secs_hour) % secs_min;"
+        },
+        {
+          "line": 77,
+          "text": ""
+        },
+        {
+          "line": 78,
+          "text": "    /* 1/1/1970 was a Thursday, that is, day 4 from the POV of the tm structure"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\valkey-io__valkey\\src\\localtime.c",
+      "line": 75,
+      "col": 19,
+      "message": "implicit conversion of time_t to 'int' may truncate after 2038",
+      "context": [
+        {
+          "line": 69,
+          "text": "    t += 3600 * dst;               /* Adjust for daylight time. */"
+        },
+        {
+          "line": 70,
+          "text": "    time_t days = t / secs_day;    /* Days passed since epoch. */"
+        },
+        {
+          "line": 71,
+          "text": "    time_t seconds = t % secs_day; /* Remaining seconds. */"
+        },
+        {
+          "line": 72,
+          "text": ""
+        },
+        {
+          "line": 73,
+          "text": "    tmp->tm_isdst = dst;"
+        },
+        {
+          "line": 74,
+          "text": "    tmp->tm_hour = seconds / secs_hour;"
+        },
+        {
+          "line": 75,
+          "text": "    tmp->tm_min = (seconds % secs_hour) / secs_min;"
+        },
+        {
+          "line": 76,
+          "text": "    tmp->tm_sec = (seconds % secs_hour) % secs_min;"
+        },
+        {
+          "line": 77,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\valkey-io__valkey\\src\\localtime.c",
+      "line": 74,
+      "col": 20,
+      "message": "implicit conversion of time_t to 'int' may truncate after 2038",
+      "context": [
+        {
+          "line": 68,
+          "text": "    t -= tz;                       /* Adjust for timezone. */"
+        },
+        {
+          "line": 69,
+          "text": "    t += 3600 * dst;               /* Adjust for daylight time. */"
+        },
+        {
+          "line": 70,
+          "text": "    time_t days = t / secs_day;    /* Days passed since epoch. */"
+        },
+        {
+          "line": 71,
+          "text": "    time_t seconds = t % secs_day; /* Remaining seconds. */"
+        },
+        {
+          "line": 72,
+          "text": ""
+        },
+        {
+          "line": 73,
+          "text": "    tmp->tm_isdst = dst;"
+        },
+        {
+          "line": 74,
+          "text": "    tmp->tm_hour = seconds / secs_hour;"
+        },
+        {
+          "line": 75,
+          "text": "    tmp->tm_min = (seconds % secs_hour) / secs_min;"
+        },
+        {
+          "line": 76,
+          "text": "    tmp->tm_sec = (seconds % secs_hour) % secs_min;"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\valkey-io__valkey\\src\\networking.c",
+      "line": 2374,
+      "col": 13,
+      "message": "explicit conversion of time_t to 'long' may truncate after 2038",
+      "context": [
+        {
+          "line": 2368,
+          "text": "                if (c->conn) connSetReadHandler(c->conn, NULL);"
+        },
+        {
+          "line": 2369,
+          "text": "                c->repl_data->rdb_client_disconnect_time = server.unixtime;"
+        },
+        {
+          "line": 2370,
+          "text": "                dualChannelServerLog(LL_VERBOSE, \"Postpone RDB client id=%llu (%s) free for %d seconds\","
+        },
+        {
+          "line": 2371,
+          "text": "                                     (unsigned long long)c->id, replicationGetReplicaName(c), server.wait_before_rdb_client_free);"
+        },
+        {
+          "line": 2372,
+          "text": "            }"
+        },
+        {
+          "line": 2373,
+          "text": "            if (server.unixtime - c->repl_data->rdb_client_disconnect_time <= server.wait_before_rdb_client_free) continue;"
+        },
+        {
+          "line": 2374,
+          "text": "            dualChannelServerLog("
+        },
+        {
+          "line": 2375,
+          "text": "                LL_NOTICE,"
+        },
+        {
+          "line": 2376,
+          "text": "                \"Replica main channel failed to establish PSYNC within the grace period (%ld seconds). \""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\valkey-io__valkey\\src\\rdb.c",
+      "line": 3297,
+      "col": 17,
+      "message": "explicit conversion of time_t to 'unsigned long' may truncate after 2106",
+      "context": [
+        {
+          "line": 3291,
+          "text": "                serverLog(LL_NOTICE, \"Loading RDB produced by Redis version %s\", (char *)objectGetVal(auxval));"
+        },
+        {
+          "line": 3292,
+          "text": "            } else if (!strcasecmp(objectGetVal(auxkey), \"valkey-ver\")) {"
+        },
+        {
+          "line": 3293,
+          "text": "                serverLog(LL_NOTICE, \"Loading RDB produced by Valkey version %s\", (char *)objectGetVal(auxval));"
+        },
+        {
+          "line": 3294,
+          "text": "            } else if (!strcasecmp(objectGetVal(auxkey), \"ctime\")) {"
+        },
+        {
+          "line": 3295,
+          "text": "                time_t age = time(NULL) - strtol(objectGetVal(auxval), NULL, 10);"
+        },
+        {
+          "line": 3296,
+          "text": "                if (age < 0) age = 0;"
+        },
+        {
+          "line": 3297,
+          "text": "                serverLog(LL_NOTICE, \"RDB age %ld seconds\", (unsigned long)age);"
+        },
+        {
+          "line": 3298,
+          "text": "            } else if (!strcasecmp(objectGetVal(auxkey), \"used-mem\")) {"
+        },
+        {
+          "line": 3299,
+          "text": "                long long usedmem = strtoll(objectGetVal(auxval), NULL, 10);"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\valkey-io__valkey\\src\\replication.c",
+      "line": 5411,
+      "col": 13,
+      "message": "explicit conversion of time_t to 'int' may truncate after 2038",
+      "context": [
+        {
+          "line": 5405,
+          "text": "             *    primary that will accept our PSYNC request by second"
+        },
+        {
+          "line": 5406,
+          "text": "             *    replication ID, but there will be data inconsistency"
+        },
+        {
+          "line": 5407,
+          "text": "             *    because we received writes. */"
+        },
+        {
+          "line": 5408,
+          "text": "            changeReplicationId();"
+        },
+        {
+          "line": 5409,
+          "text": "            clearReplicationId2();"
+        },
+        {
+          "line": 5410,
+          "text": "            freeReplicationBacklog();"
+        },
+        {
+          "line": 5411,
+          "text": "            serverLog(LL_NOTICE,"
+        },
+        {
+          "line": 5412,
+          "text": "                      \"Replication backlog freed after %d seconds \""
+        },
+        {
+          "line": 5413,
+          "text": "                      \"without connected replicas.\","
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\valkey-io__valkey\\src\\replication.c",
+      "line": 4265,
+      "col": 55,
+      "message": "explicit conversion of time_t to 'int' may truncate after 2038",
+      "context": [
+        {
+          "line": 4259,
+          "text": "    }"
+        },
+        {
+          "line": 4260,
+          "text": ""
+        },
+        {
+          "line": 4261,
+          "text": "    /* Prepare a suitable temp file for bulk transfer */"
+        },
+        {
+          "line": 4262,
+          "text": "    if (!useDisklessLoad()) {"
+        },
+        {
+          "line": 4263,
+          "text": "        int dfd = -1, maxtries = 5;"
+        },
+        {
+          "line": 4264,
+          "text": "        while (maxtries--) {"
+        },
+        {
+          "line": 4265,
+          "text": "            snprintf(tmpfile, 256, \"temp-%d.%ld.rdb\", (int)server.unixtime, (long int)getpid());"
+        },
+        {
+          "line": 4266,
+          "text": "            dfd = open(tmpfile, O_CREAT | O_WRONLY | O_EXCL, 0666);"
+        },
+        {
+          "line": 4267,
+          "text": "            if (dfd != -1) break;"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\valkey-io__valkey\\src\\replication.c",
+      "line": 705,
+      "col": 51,
+      "message": "explicit conversion of time_t to 'long' may truncate after 2038",
+      "context": [
+        {
+          "line": 699,
+          "text": "    int j;"
+        },
+        {
+          "line": 700,
+          "text": "    sds cmdrepr = sdsnew(\"+\");"
+        },
+        {
+          "line": 701,
+          "text": "    robj *cmdobj;"
+        },
+        {
+          "line": 702,
+          "text": "    struct timeval tv;"
+        },
+        {
+          "line": 703,
+          "text": ""
+        },
+        {
+          "line": 704,
+          "text": "    gettimeofday(&tv, NULL);"
+        },
+        {
+          "line": 705,
+          "text": "    cmdrepr = sdscatprintf(cmdrepr, \"%ld.%06ld \", (long)tv.tv_sec, (long)tv.tv_usec);"
+        },
+        {
+          "line": 706,
+          "text": "    if (c->flag.script) {"
+        },
+        {
+          "line": 707,
+          "text": "        cmdrepr = sdscatprintf(cmdrepr, \"[%d lua] \", dictid);"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\valkey-io__valkey\\src\\server.c",
+      "line": 7514,
+      "col": 11,
+      "message": "implicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 7508,
+          "text": "    int res = allocatorDefragInit();"
+        },
+        {
+          "line": 7509,
+          "text": "    serverAssert(res == 0);"
+        },
+        {
+          "line": 7510,
+          "text": "#endif"
+        },
+        {
+          "line": 7511,
+          "text": "    /* To achieve entropy, in case of containers, their time() and getpid() can"
+        },
+        {
+          "line": 7512,
+          "text": "     * be the same. But value of tv_usec is fast enough to make the difference */"
+        },
+        {
+          "line": 7513,
+          "text": "    gettimeofday(&tv, NULL);"
+        },
+        {
+          "line": 7514,
+          "text": "    srand(time(NULL) ^ getpid() ^ tv.tv_usec);"
+        },
+        {
+          "line": 7515,
+          "text": "    srandom(time(NULL) ^ getpid() ^ tv.tv_usec);"
+        },
+        {
+          "line": 7516,
+          "text": "    init_genrand64(((long long)tv.tv_sec * 1000000 + tv.tv_usec) ^ getpid());"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\valkey-io__valkey\\src\\server.c",
+      "line": 6693,
+      "col": 58,
+      "message": "explicit conversion of time_t to 'long' may truncate after 2038",
+      "context": [
+        {
+          "line": 6687,
+          "text": "                            \"used_cpu_sys:%ld.%06ld\\r\\n\""
+        },
+        {
+          "line": 6688,
+          "text": "                            \"used_cpu_user:%ld.%06ld\\r\\n\""
+        },
+        {
+          "line": 6689,
+          "text": "                            \"used_cpu_sys_children:%ld.%06ld\\r\\n\""
+        },
+        {
+          "line": 6690,
+          "text": "                            \"used_cpu_user_children:%ld.%06ld\\r\\n\","
+        },
+        {
+          "line": 6691,
+          "text": "                            (long)self_ru.ru_stime.tv_sec, (long)self_ru.ru_stime.tv_usec,"
+        },
+        {
+          "line": 6692,
+          "text": "                            (long)self_ru.ru_utime.tv_sec, (long)self_ru.ru_utime.tv_usec, (long)c_ru.ru_stime.tv_sec,"
+        },
+        {
+          "line": 6693,
+          "text": "                            (long)c_ru.ru_stime.tv_usec, (long)c_ru.ru_utime.tv_sec, (long)c_ru.ru_utime.tv_usec);"
+        },
+        {
+          "line": 6694,
+          "text": "#ifdef RUSAGE_THREAD"
+        },
+        {
+          "line": 6695,
+          "text": "        struct rusage m_ru;"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\valkey-io__valkey\\src\\server.c",
+      "line": 6692,
+      "col": 92,
+      "message": "explicit conversion of time_t to 'long' may truncate after 2038",
+      "context": [
+        {
+          "line": 6686,
+          "text": "                            \"# CPU\\r\\n\""
+        },
+        {
+          "line": 6687,
+          "text": "                            \"used_cpu_sys:%ld.%06ld\\r\\n\""
+        },
+        {
+          "line": 6688,
+          "text": "                            \"used_cpu_user:%ld.%06ld\\r\\n\""
+        },
+        {
+          "line": 6689,
+          "text": "                            \"used_cpu_sys_children:%ld.%06ld\\r\\n\""
+        },
+        {
+          "line": 6690,
+          "text": "                            \"used_cpu_user_children:%ld.%06ld\\r\\n\","
+        },
+        {
+          "line": 6691,
+          "text": "                            (long)self_ru.ru_stime.tv_sec, (long)self_ru.ru_stime.tv_usec,"
+        },
+        {
+          "line": 6692,
+          "text": "                            (long)self_ru.ru_utime.tv_sec, (long)self_ru.ru_utime.tv_usec, (long)c_ru.ru_stime.tv_sec,"
+        },
+        {
+          "line": 6693,
+          "text": "                            (long)c_ru.ru_stime.tv_usec, (long)c_ru.ru_utime.tv_sec, (long)c_ru.ru_utime.tv_usec);"
+        },
+        {
+          "line": 6694,
+          "text": "#ifdef RUSAGE_THREAD"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\valkey-io__valkey\\src\\server.c",
+      "line": 6692,
+      "col": 29,
+      "message": "explicit conversion of time_t to 'long' may truncate after 2038",
+      "context": [
+        {
+          "line": 6686,
+          "text": "                            \"# CPU\\r\\n\""
+        },
+        {
+          "line": 6687,
+          "text": "                            \"used_cpu_sys:%ld.%06ld\\r\\n\""
+        },
+        {
+          "line": 6688,
+          "text": "                            \"used_cpu_user:%ld.%06ld\\r\\n\""
+        },
+        {
+          "line": 6689,
+          "text": "                            \"used_cpu_sys_children:%ld.%06ld\\r\\n\""
+        },
+        {
+          "line": 6690,
+          "text": "                            \"used_cpu_user_children:%ld.%06ld\\r\\n\","
+        },
+        {
+          "line": 6691,
+          "text": "                            (long)self_ru.ru_stime.tv_sec, (long)self_ru.ru_stime.tv_usec,"
+        },
+        {
+          "line": 6692,
+          "text": "                            (long)self_ru.ru_utime.tv_sec, (long)self_ru.ru_utime.tv_usec, (long)c_ru.ru_stime.tv_sec,"
+        },
+        {
+          "line": 6693,
+          "text": "                            (long)c_ru.ru_stime.tv_usec, (long)c_ru.ru_utime.tv_sec, (long)c_ru.ru_utime.tv_usec);"
+        },
+        {
+          "line": 6694,
+          "text": "#ifdef RUSAGE_THREAD"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\valkey-io__valkey\\src\\server.c",
+      "line": 6691,
+      "col": 29,
+      "message": "explicit conversion of time_t to 'long' may truncate after 2038",
+      "context": [
+        {
+          "line": 6685,
+          "text": "        info = sdscatprintf(info,"
+        },
+        {
+          "line": 6686,
+          "text": "                            \"# CPU\\r\\n\""
+        },
+        {
+          "line": 6687,
+          "text": "                            \"used_cpu_sys:%ld.%06ld\\r\\n\""
+        },
+        {
+          "line": 6688,
+          "text": "                            \"used_cpu_user:%ld.%06ld\\r\\n\""
+        },
+        {
+          "line": 6689,
+          "text": "                            \"used_cpu_sys_children:%ld.%06ld\\r\\n\""
+        },
+        {
+          "line": 6690,
+          "text": "                            \"used_cpu_user_children:%ld.%06ld\\r\\n\","
+        },
+        {
+          "line": 6691,
+          "text": "                            (long)self_ru.ru_stime.tv_sec, (long)self_ru.ru_stime.tv_usec,"
+        },
+        {
+          "line": 6692,
+          "text": "                            (long)self_ru.ru_utime.tv_sec, (long)self_ru.ru_utime.tv_usec, (long)c_ru.ru_stime.tv_sec,"
+        },
+        {
+          "line": 6693,
+          "text": "                            (long)c_ru.ru_stime.tv_usec, (long)c_ru.ru_utime.tv_sec, (long)c_ru.ru_utime.tv_usec);"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\valkey-io__valkey\\src\\server.c",
+      "line": 6604,
+      "col": 21,
+      "message": "explicit conversion of time_t to 'int' may truncate after 2038",
+      "context": [
+        {
+          "line": 6598,
+          "text": "                double perc = 0;"
+        },
+        {
+          "line": 6599,
+          "text": "                if (repl_transfer_size_stat) {"
+        },
+        {
+          "line": 6600,
+          "text": "                    perc = ((double)repl_transfer_read_stat / repl_transfer_size_stat) * 100;"
+        },
+        {
+          "line": 6601,
+          "text": "                }"
+        },
+        {
+          "line": 6602,
+          "text": "                info = sdscatprintf("
+        },
+        {
+          "line": 6603,
+          "text": "                    info,"
+        },
+        {
+          "line": 6604,
+          "text": "                    FMTARGS("
+        },
+        {
+          "line": 6605,
+          "text": "                        \"master_sync_total_bytes:%lld\\r\\n\", (long long)repl_transfer_size_stat,"
+        },
+        {
+          "line": 6606,
+          "text": "                        \"master_sync_read_bytes:%lld\\r\\n\", (long long)repl_transfer_read_stat,"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\valkey-io__valkey\\src\\server.c",
+      "line": 6577,
+      "col": 17,
+      "message": "explicit conversion of time_t to 'int' may truncate after 2038",
+      "context": [
+        {
+          "line": 6571,
+          "text": "                replica_repl_offset = server.cached_primary->repl_data->reploff;"
+        },
+        {
+          "line": 6572,
+          "text": "                replica_read_repl_offset = server.cached_primary->repl_data->read_reploff;"
+        },
+        {
+          "line": 6573,
+          "text": "            }"
+        },
+        {
+          "line": 6574,
+          "text": ""
+        },
+        {
+          "line": 6575,
+          "text": "            info = sdscatprintf("
+        },
+        {
+          "line": 6576,
+          "text": "                info,"
+        },
+        {
+          "line": 6577,
+          "text": "                FMTARGS("
+        },
+        {
+          "line": 6578,
+          "text": "                    \"master_host:%s\\r\\n\", server.primary_host,"
+        },
+        {
+          "line": 6579,
+          "text": "                    \"master_port:%d\\r\\n\", server.primary_port,"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\valkey-io__valkey\\src\\server.c",
+      "line": 6167,
+      "col": 28,
+      "message": "explicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 6161,
+          "text": "            uname(&name);"
+        },
+        {
+          "line": 6162,
+          "text": "            call_uname = 0;"
+        },
+        {
+          "line": 6163,
+          "text": "        }"
+        },
+        {
+          "line": 6164,
+          "text": ""
+        },
+        {
+          "line": 6165,
+          "text": "        info = sdscatfmt("
+        },
+        {
+          "line": 6166,
+          "text": "            info,"
+        },
+        {
+          "line": 6167,
+          "text": "            \"# Server\\r\\n\" FMTARGS("
+        },
+        {
+          "line": 6168,
+          "text": "                \"redis_version:%s\\r\\n\", REDIS_VERSION,"
+        },
+        {
+          "line": 6169,
+          "text": "                \"server_name:%s\\r\\n\", SERVER_NAME,"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\valkey-io__valkey\\src\\server.c",
+      "line": 1647,
+      "col": 17,
+      "message": "explicit conversion of time_t to 'int' may truncate after 2038",
+      "context": [
+        {
+          "line": 1641,
+          "text": "             * the given amount of seconds, and if the latest bgsave was"
+        },
+        {
+          "line": 1642,
+          "text": "             * successful or if, in case of an error, at least"
+        },
+        {
+          "line": 1643,
+          "text": "             * CONFIG_BGSAVE_RETRY_DELAY seconds already elapsed. */"
+        },
+        {
+          "line": 1644,
+          "text": "            if (server.dirty >= sp->changes && server.unixtime - server.lastsave > sp->seconds &&"
+        },
+        {
+          "line": 1645,
+          "text": "                (server.unixtime - server.lastbgsave_try > CONFIG_BGSAVE_RETRY_DELAY ||"
+        },
+        {
+          "line": 1646,
+          "text": "                 server.lastbgsave_status == C_OK)) {"
+        },
+        {
+          "line": 1647,
+          "text": "                serverLog(LL_NOTICE, \"%d changes in %d seconds. Saving...\", sp->changes, (int)sp->seconds);"
+        },
+        {
+          "line": 1648,
+          "text": "                rdbSaveInfo rsi, *rsiptr;"
+        },
+        {
+          "line": 1649,
+          "text": "                rsiptr = rdbPopulateSaveInfo(&rsi);"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\valkey-io__valkey\\src\\server.c",
+      "line": 1211,
+      "col": 36,
+      "message": "implicit conversion of time_t to 'int' may truncate after 2038",
+      "context": [
+        {
+          "line": 1205,
+          "text": "static void clientsCron(int clients_this_cycle) {"
+        },
+        {
+          "line": 1206,
+          "text": "    /* for debug purposes: skip actual cron work if pause_cron is on */"
+        },
+        {
+          "line": 1207,
+          "text": "    if (server.pause_cron) return;"
+        },
+        {
+          "line": 1208,
+          "text": ""
+        },
+        {
+          "line": 1209,
+          "text": "    mstime_t now = mstime();"
+        },
+        {
+          "line": 1210,
+          "text": ""
+        },
+        {
+          "line": 1211,
+          "text": "    int curr_peak_mem_usage_slot = server.unixtime % CLIENTS_PEAK_MEM_USAGE_SLOTS;"
+        },
+        {
+          "line": 1212,
+          "text": "    /* Always zero the next sample, so that when we switch to that second, we'll"
+        },
+        {
+          "line": 1213,
+          "text": "     * only register samples that are greater in that second without considering"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\valkey-io__valkey\\src\\server.c",
+      "line": 223,
+      "col": 57,
+      "message": "implicit conversion of time_t to 'int' may truncate after 2038",
+      "context": [
+        {
+          "line": 217,
+          "text": "            snprintf(buf + off, sizeof(buf) - off, \"%03d\", (int)tv.tv_usec / 1000);"
+        },
+        {
+          "line": 218,
+          "text": "            break;"
+        },
+        {
+          "line": 219,
+          "text": ""
+        },
+        {
+          "line": 220,
+          "text": "        case LOG_TIMESTAMP_ISO8601:"
+        },
+        {
+          "line": 221,
+          "text": "            off = strftime(buf, sizeof(buf), \"%Y-%m-%dT%H:%M:%S.\", &tm);"
+        },
+        {
+          "line": 222,
+          "text": "            char tzbuf[7];"
+        },
+        {
+          "line": 223,
+          "text": "            formatTimezone(tzbuf, sizeof(tzbuf), server.timezone, server.daylight_active);"
+        },
+        {
+          "line": 224,
+          "text": "            snprintf(buf + off, sizeof(buf) - off, \"%03d%s\", (int)tv.tv_usec / 1000, tzbuf);"
+        },
+        {
+          "line": 225,
+          "text": "            break;"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\valkey-io__valkey\\src\\util.c",
+      "line": 1110,
+      "col": 23,
+      "message": "implicit conversion of time_t to 'unsigned char' may truncate after 2038",
+      "context": [
+        {
+          "line": 1104,
+          "text": "        /* Revert to a weaker seed, and in this case reseed again"
+        },
+        {
+          "line": 1105,
+          "text": "         * at every call.*/"
+        },
+        {
+          "line": 1106,
+          "text": "        for (unsigned int j = 0; j < sizeof(seed); j++) {"
+        },
+        {
+          "line": 1107,
+          "text": "            struct timeval tv;"
+        },
+        {
+          "line": 1108,
+          "text": "            gettimeofday(&tv, NULL);"
+        },
+        {
+          "line": 1109,
+          "text": "            pid_t pid = getpid();"
+        },
+        {
+          "line": 1110,
+          "text": "            seed[j] = tv.tv_sec ^ tv.tv_usec ^ pid ^ (long)fp;"
+        },
+        {
+          "line": 1111,
+          "text": "        }"
+        },
+        {
+          "line": 1112,
+          "text": "    } else {"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\valkey-io__valkey\\src\\valkey-cli.c",
+      "line": 10053,
+      "col": 11,
+      "message": "implicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 10047,
+          "text": " *--------------------------------------------------------------------------- */"
+        },
+        {
+          "line": 10048,
+          "text": ""
+        },
+        {
+          "line": 10049,
+          "text": "int main(int argc, char **argv) {"
+        },
+        {
+          "line": 10050,
+          "text": "    int firstarg;"
+        },
+        {
+          "line": 10051,
+          "text": "    struct timeval tv;"
+        },
+        {
+          "line": 10052,
+          "text": ""
+        },
+        {
+          "line": 10053,
+          "text": "    srand(time(NULL) ^ getpid());"
+        },
+        {
+          "line": 10054,
+          "text": ""
+        },
+        {
+          "line": 10055,
+          "text": "    /* Valkey defaults */"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\valkey-io__valkey\\utils\\corrupt_rdb.c",
+      "line": 23,
+      "col": 11,
+      "message": "implicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 17,
+          "text": ""
+        },
+        {
+          "line": 18,
+          "text": "    if (argc != 3) {"
+        },
+        {
+          "line": 19,
+          "text": "        fprintf(stderr,\"Usage: <filename> <cycles>\\n\");"
+        },
+        {
+          "line": 20,
+          "text": "        exit(1);"
+        },
+        {
+          "line": 21,
+          "text": "    }"
+        },
+        {
+          "line": 22,
+          "text": ""
+        },
+        {
+          "line": 23,
+          "text": "    srand(time(NULL));"
+        },
+        {
+          "line": 24,
+          "text": "    char *filename = argv[1];"
+        },
+        {
+          "line": 25,
+          "text": "    cycles = atoi(argv[2]);"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\valkey-io__valkey\\utils\\lru\\lfu-simulation.c",
+      "line": 144,
+      "col": 50,
+      "message": "explicit conversion of time_t to 'int' may truncate after 2038",
+      "context": [
+        {
+          "line": 138,
+          "text": "            new_entry_time = now+10;"
+        },
+        {
+          "line": 139,
+          "text": "        }"
+        },
+        {
+          "line": 140,
+          "text": ""
+        },
+        {
+          "line": 141,
+          "text": "        /* Show the first 20 entries and the last 20 entries. */"
+        },
+        {
+          "line": 142,
+          "text": "        if (display_time != now) {"
+        },
+        {
+          "line": 143,
+          "text": "            printf(\"=============================\\n\");"
+        },
+        {
+          "line": 144,
+          "text": "            printf(\"Current minutes time: %d\\n\", (int)to_16bit_minutes(now));"
+        },
+        {
+          "line": 145,
+          "text": "            printf(\"Access method: %s\\n\","
+        },
+        {
+          "line": 146,
+          "text": "                (now-start < switch_after) ? \"power-law\" : \"flat\");"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\valkey-io__valkey\\utils\\lru\\lfu-simulation.c",
+      "line": 135,
+      "col": 37,
+      "message": "implicit conversion of time_t to 'uint16_t' may truncate after 2038",
+      "context": [
+        {
+          "line": 129,
+          "text": ""
+        },
+        {
+          "line": 130,
+          "text": "        /* Simulate the addition of new entries at positions between"
+        },
+        {
+          "line": 131,
+          "text": "         * 10 and 19, a random one every 10 seconds. */"
+        },
+        {
+          "line": 132,
+          "text": "        if (new_entry_time <= now) {"
+        },
+        {
+          "line": 133,
+          "text": "            idx = 10+(rand()%10);"
+        },
+        {
+          "line": 134,
+          "text": "            entries[idx].counter = LFU_INIT_VAL;"
+        },
+        {
+          "line": 135,
+          "text": "            entries[idx].decrtime = to_16bit_minutes(time(NULL));"
+        },
+        {
+          "line": 136,
+          "text": "            entries[idx].hits = 0;"
+        },
+        {
+          "line": 137,
+          "text": "            entries[idx].ctime = time(NULL);"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\valkey-io__valkey\\utils\\lru\\lfu-simulation.c",
+      "line": 93,
+      "col": 31,
+      "message": "implicit conversion of time_t to 'uint16_t' may truncate after 2038",
+      "context": [
+        {
+          "line": 87,
+          "text": "    struct entry *entries = malloc(sizeof(*entries)*keyspace_size);"
+        },
+        {
+          "line": 88,
+          "text": "    long j;"
+        },
+        {
+          "line": 89,
+          "text": ""
+        },
+        {
+          "line": 90,
+          "text": "    /* Initialize. */"
+        },
+        {
+          "line": 91,
+          "text": "    for (j = 0; j < keyspace_size; j++) {"
+        },
+        {
+          "line": 92,
+          "text": "        entries[j].counter = LFU_INIT_VAL;"
+        },
+        {
+          "line": 93,
+          "text": "        entries[j].decrtime = to_16bit_minutes(start);"
+        },
+        {
+          "line": 94,
+          "text": "        entries[j].hits = 0;"
+        },
+        {
+          "line": 95,
+          "text": "        entries[j].ctime = time(NULL);"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\valkey-io__valkey\\utils\\lru\\lfu-simulation.c",
+      "line": 65,
+      "col": 23,
+      "message": "implicit conversion of time_t to 'uint16_t' may truncate after 2038",
+      "context": [
+        {
+          "line": 59,
+          "text": "            if (e->counter > LFU_INIT_VAL*2) {"
+        },
+        {
+          "line": 60,
+          "text": "                e->counter /= 2;"
+        },
+        {
+          "line": 61,
+          "text": "            } else {"
+        },
+        {
+          "line": 62,
+          "text": "                e->counter--;"
+        },
+        {
+          "line": 63,
+          "text": "            }"
+        },
+        {
+          "line": 64,
+          "text": "        }"
+        },
+        {
+          "line": 65,
+          "text": "        e->decrtime = to_16bit_minutes(time(NULL));"
+        },
+        {
+          "line": 66,
+          "text": "    }"
+        },
+        {
+          "line": 67,
+          "text": "    return e->counter;"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\valkey-io__valkey\\utils\\lru\\lfu-simulation.c",
+      "line": 55,
+      "col": 22,
+      "message": "implicit conversion of time_t to 'uint16_t' may truncate after 2038",
+      "context": [
+        {
+          "line": 49,
+          "text": "    e->hits++;"
+        },
+        {
+          "line": 50,
+          "text": "}"
+        },
+        {
+          "line": 51,
+          "text": ""
+        },
+        {
+          "line": 52,
+          "text": "/* Return the entry LFU value and as a side effect decrement the"
+        },
+        {
+          "line": 53,
+          "text": " * entry value if the decrement time was reached. */"
+        },
+        {
+          "line": 54,
+          "text": "uint8_t scan_entry(struct entry *e) {"
+        },
+        {
+          "line": 55,
+          "text": "    if (minutes_diff(to_16bit_minutes(time(NULL)),e->decrtime)"
+        },
+        {
+          "line": 56,
+          "text": "        >= decr_every)"
+        },
+        {
+          "line": 57,
+          "text": "    {"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\valkey-io__valkey\\utils\\lru\\lfu-simulation.c",
+      "line": 80,
+      "col": 13,
+      "message": "time_t passed to printf-family function with incompatible format specifier: may truncate after 2038",
+      "context": [
+        {
+          "line": 74,
+          "text": "    if (pos >= 10 && pos <= 14) tag = \"new no access\";"
+        },
+        {
+          "line": 75,
+          "text": "    if (pos >= 15 && pos <= 19) tag = \"new accessed \";"
+        },
+        {
+          "line": 76,
+          "text": "    if (pos >= keyspace_size -5) tag= \"old no access\";"
+        },
+        {
+          "line": 77,
+          "text": ""
+        },
+        {
+          "line": 78,
+          "text": "    printf(\"%ld] <%s> frequency:%d decrtime:%d [%lu hits | age:%ld sec]\\n\","
+        },
+        {
+          "line": 79,
+          "text": "        pos, tag, e->counter, e->decrtime, (unsigned long)e->hits,"
+        },
+        {
+          "line": 80,
+          "text": "            time(NULL) - e->ctime);"
+        },
+        {
+          "line": 81,
+          "text": "}"
+        },
+        {
+          "line": 82,
+          "text": ""
+        }
+      ]
+    }
+  ]
+}

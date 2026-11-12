@@ -1,0 +1,499 @@
+{
+  "repo": "netdata/netdata",
+  "stars": 79008,
+  "y2038detect_version": "0.9.4",
+  "scanned_at": "2026-09-30T13:58:40Z",
+  "scan_sec": 261.38,
+  "c_files": 776,
+  "c_lines": 645092,
+  "parse_errors": 253401,
+  "scan_errors": 0,
+  "issues": [
+    {
+      "file": "evaluation\\repos\\netdata__netdata\\src\\aclk\\aclk.c",
+      "line": 446,
+      "col": 27,
+      "message": "implicit conversion of time_t to 'unsigned long' may truncate after 2106",
+      "context": [
+        {
+          "line": 440,
+          "text": "        return 60 * MSEC_PER_SEC;"
+        },
+        {
+          "line": 441,
+          "text": "    }"
+        },
+        {
+          "line": 442,
+          "text": ""
+        },
+        {
+          "line": 443,
+          "text": "    now = now_monotonic_sec();"
+        },
+        {
+          "line": 444,
+          "text": "    if (aclk_block_until) {"
+        },
+        {
+          "line": 445,
+          "text": "        if (now < aclk_block_until) {"
+        },
+        {
+          "line": 446,
+          "text": "            recon_delay = aclk_block_until - now;"
+        },
+        {
+          "line": 447,
+          "text": "            recon_delay *= MSEC_PER_SEC;"
+        },
+        {
+          "line": 448,
+          "text": "            aclk_block_until = 0;"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\netdata__netdata\\src\\collectors\\proc.plugin\\proc_diskstats.c",
+      "line": 1364,
+      "col": 53,
+      "message": "explicit conversion of time_t to 'int' may truncate after 2038",
+      "context": [
+        {
+          "line": 1358,
+          "text": "        global_do_iotime  = inicfg_get_boolean_ondemand(&netdata_config, CONFIG_SECTION_PLUGIN_PROC_DISKSTATS, \"i/o time for all disks\", global_do_iotime);"
+        },
+        {
+          "line": 1359,
+          "text": "        global_do_qops    = inicfg_get_boolean_ondemand(&netdata_config, CONFIG_SECTION_PLUGIN_PROC_DISKSTATS, \"queued operations for all disks\", global_do_qops);"
+        },
+        {
+          "line": 1360,
+          "text": "        global_do_util    = inicfg_get_boolean_ondemand(&netdata_config, CONFIG_SECTION_PLUGIN_PROC_DISKSTATS, \"utilization percentage for all disks\", global_do_util);"
+        },
+        {
+          "line": 1361,
+          "text": "        global_do_ext     = inicfg_get_boolean_ondemand(&netdata_config, CONFIG_SECTION_PLUGIN_PROC_DISKSTATS, \"extended operations for all disks\", global_do_ext);"
+        },
+        {
+          "line": 1362,
+          "text": "        global_do_backlog = inicfg_get_boolean_ondemand(&netdata_config, CONFIG_SECTION_PLUGIN_PROC_DISKSTATS, \"backlog for all disks\", global_do_backlog);"
+        },
+        {
+          "line": 1363,
+          "text": "        global_do_bcache  = inicfg_get_boolean_ondemand(&netdata_config, CONFIG_SECTION_PLUGIN_PROC_DISKSTATS, \"bcache for all disks\", global_do_bcache);"
+        },
+        {
+          "line": 1364,
+          "text": "        global_bcache_priority_stats_update_every = (int)inicfg_get_duration_seconds(&netdata_config, CONFIG_SECTION_PLUGIN_PROC_DISKSTATS, \"bcache priority stats update every\", global_bcache_priority_stats_update_every);"
+        },
+        {
+          "line": 1365,
+          "text": ""
+        },
+        {
+          "line": 1366,
+          "text": "        global_cleanup_removed_disks = inicfg_get_boolean(&netdata_config, CONFIG_SECTION_PLUGIN_PROC_DISKSTATS, \"remove charts of removed disks\" , global_cleanup_removed_disks);"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\netdata__netdata\\src\\database\\sqlite\\sqlite_aclk_alert.c",
+      "line": 427,
+      "col": 28,
+      "message": "implicit conversion of time_t to 'uint32_t' may truncate after 2106",
+      "context": [
+        {
+          "line": 421,
+          "text": "                               strdupz((char *)sqlite3_column_text(res, EXEC)) :"
+        },
+        {
+          "line": 422,
+          "text": "                               strdupz((char *)string2str(host->health.default_exec));"
+        },
+        {
+          "line": 423,
+          "text": ""
+        },
+        {
+          "line": 424,
+          "text": "    alarm_log->conf_source = source ? strdupz(source) : strdupz(\"\");"
+        },
+        {
+          "line": 425,
+          "text": ""
+        },
+        {
+          "line": 426,
+          "text": "    time_t duration = sqlite3_column_int64(res, DURATION);"
+        },
+        {
+          "line": 427,
+          "text": "    alarm_log->duration =  (duration > 0) ? duration : 0;"
+        },
+        {
+          "line": 428,
+          "text": ""
+        },
+        {
+          "line": 429,
+          "text": "    int64_t non_clear_duration = sqlite3_column_int64(res, NON_CLEAR_DURATION);"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\netdata__netdata\\src\\libnetdata\\functions_evloop\\functions_evloop.c",
+      "line": 410,
+      "col": 5,
+      "message": "explicit conversion of time_t to 'long' may truncate after 2038",
+      "context": [
+        {
+          "line": 404,
+          "text": ""
+        },
+        {
+          "line": 405,
+          "text": "    CLEAN_BUFFER *result = buffer_create(1024, NULL);"
+        },
+        {
+          "line": 406,
+          "text": "    int code = dyncfg_node_find_and_call(wg->dyncfg.nodes, transaction, function, stop_monotonic_ut,"
+        },
+        {
+          "line": 407,
+          "text": "                                         cancelled, payload, access, source, result);"
+        },
+        {
+          "line": 408,
+          "text": ""
+        },
+        {
+          "line": 409,
+          "text": "    netdata_mutex_lock(wg->stdout_mutex);"
+        },
+        {
+          "line": 410,
+          "text": "    pluginsd_function_result_begin_to_stdout(transaction, code, content_type_id2string(result->content_type), result->expires);"
+        },
+        {
+          "line": 411,
+          "text": "    printf(\"%s\", buffer_tostring(result));"
+        },
+        {
+          "line": 412,
+          "text": "    pluginsd_function_result_end_to_stdout();"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\netdata__netdata\\src\\libnetdata\\functions_evloop\\functions_evloop.c",
+      "line": 162,
+      "col": 31,
+      "message": "explicit conversion of time_t to 'int' may truncate after 2038",
+      "context": [
+        {
+          "line": 156,
+          "text": "        const char *msg = \"No function with this name found\";"
+        },
+        {
+          "line": 157,
+          "text": "        bool found = false;"
+        },
+        {
+          "line": 158,
+          "text": "        struct rrd_functions_expectation *we;"
+        },
+        {
+          "line": 159,
+          "text": "        for(we = wg->expectations; we ;we = we->next) {"
+        },
+        {
+          "line": 160,
+          "text": "            if(strncmp(function, we->function, we->function_length) == 0) {"
+        },
+        {
+          "line": 161,
+          "text": "                if(timeout <= 0)"
+        },
+        {
+          "line": 162,
+          "text": "                    timeout = (int)we->default_timeout;"
+        },
+        {
+          "line": 163,
+          "text": ""
+        },
+        {
+          "line": 164,
+          "text": "                struct functions_evloop_worker_job t = {"
+        }
+      ]
+    }
+  ],
+  "issues_strict": [
+    {
+      "file": "evaluation\\repos\\netdata__netdata\\src\\aclk\\aclk.c",
+      "line": 446,
+      "col": 27,
+      "message": "implicit conversion of time_t to 'unsigned long' may truncate after 2106",
+      "context": [
+        {
+          "line": 440,
+          "text": "        return 60 * MSEC_PER_SEC;"
+        },
+        {
+          "line": 441,
+          "text": "    }"
+        },
+        {
+          "line": 442,
+          "text": ""
+        },
+        {
+          "line": 443,
+          "text": "    now = now_monotonic_sec();"
+        },
+        {
+          "line": 444,
+          "text": "    if (aclk_block_until) {"
+        },
+        {
+          "line": 445,
+          "text": "        if (now < aclk_block_until) {"
+        },
+        {
+          "line": 446,
+          "text": "            recon_delay = aclk_block_until - now;"
+        },
+        {
+          "line": 447,
+          "text": "            recon_delay *= MSEC_PER_SEC;"
+        },
+        {
+          "line": 448,
+          "text": "            aclk_block_until = 0;"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\netdata__netdata\\src\\collectors\\proc.plugin\\proc_diskstats.c",
+      "line": 1364,
+      "col": 53,
+      "message": "explicit conversion of time_t to 'int' may truncate after 2038",
+      "context": [
+        {
+          "line": 1358,
+          "text": "        global_do_iotime  = inicfg_get_boolean_ondemand(&netdata_config, CONFIG_SECTION_PLUGIN_PROC_DISKSTATS, \"i/o time for all disks\", global_do_iotime);"
+        },
+        {
+          "line": 1359,
+          "text": "        global_do_qops    = inicfg_get_boolean_ondemand(&netdata_config, CONFIG_SECTION_PLUGIN_PROC_DISKSTATS, \"queued operations for all disks\", global_do_qops);"
+        },
+        {
+          "line": 1360,
+          "text": "        global_do_util    = inicfg_get_boolean_ondemand(&netdata_config, CONFIG_SECTION_PLUGIN_PROC_DISKSTATS, \"utilization percentage for all disks\", global_do_util);"
+        },
+        {
+          "line": 1361,
+          "text": "        global_do_ext     = inicfg_get_boolean_ondemand(&netdata_config, CONFIG_SECTION_PLUGIN_PROC_DISKSTATS, \"extended operations for all disks\", global_do_ext);"
+        },
+        {
+          "line": 1362,
+          "text": "        global_do_backlog = inicfg_get_boolean_ondemand(&netdata_config, CONFIG_SECTION_PLUGIN_PROC_DISKSTATS, \"backlog for all disks\", global_do_backlog);"
+        },
+        {
+          "line": 1363,
+          "text": "        global_do_bcache  = inicfg_get_boolean_ondemand(&netdata_config, CONFIG_SECTION_PLUGIN_PROC_DISKSTATS, \"bcache for all disks\", global_do_bcache);"
+        },
+        {
+          "line": 1364,
+          "text": "        global_bcache_priority_stats_update_every = (int)inicfg_get_duration_seconds(&netdata_config, CONFIG_SECTION_PLUGIN_PROC_DISKSTATS, \"bcache priority stats update every\", global_bcache_priority_stats_update_every);"
+        },
+        {
+          "line": 1365,
+          "text": ""
+        },
+        {
+          "line": 1366,
+          "text": "        global_cleanup_removed_disks = inicfg_get_boolean(&netdata_config, CONFIG_SECTION_PLUGIN_PROC_DISKSTATS, \"remove charts of removed disks\" , global_cleanup_removed_disks);"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\netdata__netdata\\src\\database\\sqlite\\sqlite_aclk_alert.c",
+      "line": 427,
+      "col": 28,
+      "message": "implicit conversion of time_t to 'uint32_t' may truncate after 2106",
+      "context": [
+        {
+          "line": 421,
+          "text": "                               strdupz((char *)sqlite3_column_text(res, EXEC)) :"
+        },
+        {
+          "line": 422,
+          "text": "                               strdupz((char *)string2str(host->health.default_exec));"
+        },
+        {
+          "line": 423,
+          "text": ""
+        },
+        {
+          "line": 424,
+          "text": "    alarm_log->conf_source = source ? strdupz(source) : strdupz(\"\");"
+        },
+        {
+          "line": 425,
+          "text": ""
+        },
+        {
+          "line": 426,
+          "text": "    time_t duration = sqlite3_column_int64(res, DURATION);"
+        },
+        {
+          "line": 427,
+          "text": "    alarm_log->duration =  (duration > 0) ? duration : 0;"
+        },
+        {
+          "line": 428,
+          "text": ""
+        },
+        {
+          "line": 429,
+          "text": "    int64_t non_clear_duration = sqlite3_column_int64(res, NON_CLEAR_DURATION);"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\netdata__netdata\\src\\libnetdata\\functions_evloop\\functions_evloop.c",
+      "line": 410,
+      "col": 5,
+      "message": "explicit conversion of time_t to 'long' may truncate after 2038",
+      "context": [
+        {
+          "line": 404,
+          "text": ""
+        },
+        {
+          "line": 405,
+          "text": "    CLEAN_BUFFER *result = buffer_create(1024, NULL);"
+        },
+        {
+          "line": 406,
+          "text": "    int code = dyncfg_node_find_and_call(wg->dyncfg.nodes, transaction, function, stop_monotonic_ut,"
+        },
+        {
+          "line": 407,
+          "text": "                                         cancelled, payload, access, source, result);"
+        },
+        {
+          "line": 408,
+          "text": ""
+        },
+        {
+          "line": 409,
+          "text": "    netdata_mutex_lock(wg->stdout_mutex);"
+        },
+        {
+          "line": 410,
+          "text": "    pluginsd_function_result_begin_to_stdout(transaction, code, content_type_id2string(result->content_type), result->expires);"
+        },
+        {
+          "line": 411,
+          "text": "    printf(\"%s\", buffer_tostring(result));"
+        },
+        {
+          "line": 412,
+          "text": "    pluginsd_function_result_end_to_stdout();"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\netdata__netdata\\src\\libnetdata\\functions_evloop\\functions_evloop.c",
+      "line": 162,
+      "col": 31,
+      "message": "explicit conversion of time_t to 'int' may truncate after 2038",
+      "context": [
+        {
+          "line": 156,
+          "text": "        const char *msg = \"No function with this name found\";"
+        },
+        {
+          "line": 157,
+          "text": "        bool found = false;"
+        },
+        {
+          "line": 158,
+          "text": "        struct rrd_functions_expectation *we;"
+        },
+        {
+          "line": 159,
+          "text": "        for(we = wg->expectations; we ;we = we->next) {"
+        },
+        {
+          "line": 160,
+          "text": "            if(strncmp(function, we->function, we->function_length) == 0) {"
+        },
+        {
+          "line": 161,
+          "text": "                if(timeout <= 0)"
+        },
+        {
+          "line": 162,
+          "text": "                    timeout = (int)we->default_timeout;"
+        },
+        {
+          "line": 163,
+          "text": ""
+        },
+        {
+          "line": 164,
+          "text": "                struct functions_evloop_worker_job t = {"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\netdata__netdata\\tests\\profile\\statsd-stress.c",
+      "line": 122,
+      "col": 8,
+      "message": "implicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 116,
+          "text": ""
+        },
+        {
+          "line": 117,
+          "text": "\tstruct thread_data data[run_threads];"
+        },
+        {
+          "line": 118,
+          "text": "\tstruct sockaddr_in si_other;"
+        },
+        {
+          "line": 119,
+          "text": "\tpthread_t threads[run_threads], report;"
+        },
+        {
+          "line": 120,
+          "text": "\tsize_t i;"
+        },
+        {
+          "line": 121,
+          "text": ""
+        },
+        {
+          "line": 122,
+          "text": "\tsrand(time(NULL));"
+        },
+        {
+          "line": 123,
+          "text": ""
+        },
+        {
+          "line": 124,
+          "text": "\tmemset(&si_other, 0, sizeof(si_other));"
+        }
+      ]
+    }
+  ]
+}

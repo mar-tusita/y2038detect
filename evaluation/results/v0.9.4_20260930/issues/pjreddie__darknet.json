@@ -1,0 +1,190 @@
+{
+  "repo": "pjreddie/darknet",
+  "stars": 26459,
+  "y2038detect_version": "0.9.4",
+  "scanned_at": "2026-09-30T14:40:13Z",
+  "scan_sec": 11.89,
+  "c_files": 69,
+  "c_lines": 25142,
+  "parse_errors": 15443,
+  "scan_errors": 0,
+  "issues": [],
+  "issues_strict": [
+    {
+      "file": "evaluation\\repos\\pjreddie__darknet\\src\\compare.c",
+      "line": 266,
+      "col": 11,
+      "message": "implicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 260,
+          "text": "    int classes = 20;"
+        },
+        {
+          "line": 261,
+          "text": "    int i,j;"
+        },
+        {
+          "line": 262,
+          "text": "    network net = parse_network_cfg(filename);"
+        },
+        {
+          "line": 263,
+          "text": "    if(weightfile){"
+        },
+        {
+          "line": 264,
+          "text": "        load_weights(&net, weightfile);"
+        },
+        {
+          "line": 265,
+          "text": "    }"
+        },
+        {
+          "line": 266,
+          "text": "    srand(time(0));"
+        },
+        {
+          "line": 267,
+          "text": "    set_batch_network(&net, 1);"
+        },
+        {
+          "line": 268,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\pjreddie__darknet\\src\\compare.c",
+      "line": 234,
+      "col": 11,
+      "message": "implicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 228,
+          "text": "{"
+        },
+        {
+          "line": 229,
+          "text": "    int i = 0;"
+        },
+        {
+          "line": 230,
+          "text": "    network net = parse_network_cfg(filename);"
+        },
+        {
+          "line": 231,
+          "text": "    if(weightfile){"
+        },
+        {
+          "line": 232,
+          "text": "        load_weights(&net, weightfile);"
+        },
+        {
+          "line": 233,
+          "text": "    }"
+        },
+        {
+          "line": 234,
+          "text": "    srand(time(0));"
+        },
+        {
+          "line": 235,
+          "text": "    set_batch_network(&net, 1);"
+        },
+        {
+          "line": 236,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\pjreddie__darknet\\src\\compare.c",
+      "line": 88,
+      "col": 11,
+      "message": "implicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 82,
+          "text": "{"
+        },
+        {
+          "line": 83,
+          "text": "    int i = 0;"
+        },
+        {
+          "line": 84,
+          "text": "    network net = parse_network_cfg(filename);"
+        },
+        {
+          "line": 85,
+          "text": "    if(weightfile){"
+        },
+        {
+          "line": 86,
+          "text": "        load_weights(&net, weightfile);"
+        },
+        {
+          "line": 87,
+          "text": "    }"
+        },
+        {
+          "line": 88,
+          "text": "    srand(time(0));"
+        },
+        {
+          "line": 89,
+          "text": ""
+        },
+        {
+          "line": 90,
+          "text": "    list *plist = get_paths(\"data/compare.val.list\");"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\pjreddie__darknet\\src\\compare.c",
+      "line": 12,
+      "col": 11,
+      "message": "implicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 6,
+          "text": "#include \"utils.h\""
+        },
+        {
+          "line": 7,
+          "text": "#include \"parser.h\""
+        },
+        {
+          "line": 8,
+          "text": "#include \"box.h\""
+        },
+        {
+          "line": 9,
+          "text": ""
+        },
+        {
+          "line": 10,
+          "text": "void train_compare(char *cfgfile, char *weightfile)"
+        },
+        {
+          "line": 11,
+          "text": "{"
+        },
+        {
+          "line": 12,
+          "text": "    srand(time(0));"
+        },
+        {
+          "line": 13,
+          "text": "    float avg_loss = -1;"
+        },
+        {
+          "line": 14,
+          "text": "    char *base = basecfg(cfgfile);"
+        }
+      ]
+    }
+  ]
+}

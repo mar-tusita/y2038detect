@@ -1,0 +1,366 @@
+{
+  "repo": "jarun/nnn",
+  "stars": 21604,
+  "y2038detect_version": "0.9.4",
+  "scanned_at": "2026-09-30T15:00:41Z",
+  "scan_sec": 2.97,
+  "c_files": 3,
+  "c_lines": 11134,
+  "parse_errors": 1608,
+  "scan_errors": 0,
+  "issues": [],
+  "issues_strict": [
+    {
+      "file": "evaluation\\repos\\jarun__nnn\\src\\nnn.c",
+      "line": 7278,
+      "col": 18,
+      "message": "access to struct stat timestamp field 'st_ctim': filesystem may not preserve timestamps beyond 2038",
+      "context": [
+        {
+          "line": 7272,
+          "text": "\t\t\tdentp->nsec = NSEC_MTIME(sb);"
+        },
+        {
+          "line": 7273,
+          "text": "\t\t} else if (cfg.timetype == T_ACCESS) {"
+        },
+        {
+          "line": 7274,
+          "text": "\t\t\tdentp->sec = sb.st_atime;"
+        },
+        {
+          "line": 7275,
+          "text": "\t\t\tdentp->nsec = NSEC_ATIME(sb);"
+        },
+        {
+          "line": 7276,
+          "text": "\t\t} else {"
+        },
+        {
+          "line": 7277,
+          "text": "\t\t\tdentp->sec = sb.st_ctime;"
+        },
+        {
+          "line": 7278,
+          "text": "\t\t\tdentp->nsec = NSEC_CTIME(sb);"
+        },
+        {
+          "line": 7279,
+          "text": "\t\t}"
+        },
+        {
+          "line": 7280,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\jarun__nnn\\src\\nnn.c",
+      "line": 7277,
+      "col": 20,
+      "message": "access to struct stat timestamp field 'st_ctime': filesystem may not preserve timestamps beyond 2038",
+      "context": [
+        {
+          "line": 7271,
+          "text": "\t\t\tdentp->sec = sb.st_mtime;"
+        },
+        {
+          "line": 7272,
+          "text": "\t\t\tdentp->nsec = NSEC_MTIME(sb);"
+        },
+        {
+          "line": 7273,
+          "text": "\t\t} else if (cfg.timetype == T_ACCESS) {"
+        },
+        {
+          "line": 7274,
+          "text": "\t\t\tdentp->sec = sb.st_atime;"
+        },
+        {
+          "line": 7275,
+          "text": "\t\t\tdentp->nsec = NSEC_ATIME(sb);"
+        },
+        {
+          "line": 7276,
+          "text": "\t\t} else {"
+        },
+        {
+          "line": 7277,
+          "text": "\t\t\tdentp->sec = sb.st_ctime;"
+        },
+        {
+          "line": 7278,
+          "text": "\t\t\tdentp->nsec = NSEC_CTIME(sb);"
+        },
+        {
+          "line": 7279,
+          "text": "\t\t}"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\jarun__nnn\\src\\nnn.c",
+      "line": 7275,
+      "col": 18,
+      "message": "access to struct stat timestamp field 'st_atim': filesystem may not preserve timestamps beyond 2038",
+      "context": [
+        {
+          "line": 7269,
+          "text": "\t\t/* Copy other fields */"
+        },
+        {
+          "line": 7270,
+          "text": "\t\tif (cfg.timetype == T_MOD) {"
+        },
+        {
+          "line": 7271,
+          "text": "\t\t\tdentp->sec = sb.st_mtime;"
+        },
+        {
+          "line": 7272,
+          "text": "\t\t\tdentp->nsec = NSEC_MTIME(sb);"
+        },
+        {
+          "line": 7273,
+          "text": "\t\t} else if (cfg.timetype == T_ACCESS) {"
+        },
+        {
+          "line": 7274,
+          "text": "\t\t\tdentp->sec = sb.st_atime;"
+        },
+        {
+          "line": 7275,
+          "text": "\t\t\tdentp->nsec = NSEC_ATIME(sb);"
+        },
+        {
+          "line": 7276,
+          "text": "\t\t} else {"
+        },
+        {
+          "line": 7277,
+          "text": "\t\t\tdentp->sec = sb.st_ctime;"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\jarun__nnn\\src\\nnn.c",
+      "line": 7274,
+      "col": 20,
+      "message": "access to struct stat timestamp field 'st_atime': filesystem may not preserve timestamps beyond 2038",
+      "context": [
+        {
+          "line": 7268,
+          "text": ""
+        },
+        {
+          "line": 7269,
+          "text": "\t\t/* Copy other fields */"
+        },
+        {
+          "line": 7270,
+          "text": "\t\tif (cfg.timetype == T_MOD) {"
+        },
+        {
+          "line": 7271,
+          "text": "\t\t\tdentp->sec = sb.st_mtime;"
+        },
+        {
+          "line": 7272,
+          "text": "\t\t\tdentp->nsec = NSEC_MTIME(sb);"
+        },
+        {
+          "line": 7273,
+          "text": "\t\t} else if (cfg.timetype == T_ACCESS) {"
+        },
+        {
+          "line": 7274,
+          "text": "\t\t\tdentp->sec = sb.st_atime;"
+        },
+        {
+          "line": 7275,
+          "text": "\t\t\tdentp->nsec = NSEC_ATIME(sb);"
+        },
+        {
+          "line": 7276,
+          "text": "\t\t} else {"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\jarun__nnn\\src\\nnn.c",
+      "line": 7272,
+      "col": 18,
+      "message": "access to struct stat timestamp field 'st_mtim': filesystem may not preserve timestamps beyond 2038",
+      "context": [
+        {
+          "line": 7266,
+          "text": "\t\tdentp->nlen = xstrsncpy(dentp->name, namep, NAME_MAX + 1);"
+        },
+        {
+          "line": 7267,
+          "text": "\t\toff += dentp->nlen;"
+        },
+        {
+          "line": 7268,
+          "text": ""
+        },
+        {
+          "line": 7269,
+          "text": "\t\t/* Copy other fields */"
+        },
+        {
+          "line": 7270,
+          "text": "\t\tif (cfg.timetype == T_MOD) {"
+        },
+        {
+          "line": 7271,
+          "text": "\t\t\tdentp->sec = sb.st_mtime;"
+        },
+        {
+          "line": 7272,
+          "text": "\t\t\tdentp->nsec = NSEC_MTIME(sb);"
+        },
+        {
+          "line": 7273,
+          "text": "\t\t} else if (cfg.timetype == T_ACCESS) {"
+        },
+        {
+          "line": 7274,
+          "text": "\t\t\tdentp->sec = sb.st_atime;"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\jarun__nnn\\src\\nnn.c",
+      "line": 7271,
+      "col": 20,
+      "message": "access to struct stat timestamp field 'st_mtime': filesystem may not preserve timestamps beyond 2038",
+      "context": [
+        {
+          "line": 7265,
+          "text": "\t\tdentp->name = (char *)((size_t)pnamebuf + off);"
+        },
+        {
+          "line": 7266,
+          "text": "\t\tdentp->nlen = xstrsncpy(dentp->name, namep, NAME_MAX + 1);"
+        },
+        {
+          "line": 7267,
+          "text": "\t\toff += dentp->nlen;"
+        },
+        {
+          "line": 7268,
+          "text": ""
+        },
+        {
+          "line": 7269,
+          "text": "\t\t/* Copy other fields */"
+        },
+        {
+          "line": 7270,
+          "text": "\t\tif (cfg.timetype == T_MOD) {"
+        },
+        {
+          "line": 7271,
+          "text": "\t\t\tdentp->sec = sb.st_mtime;"
+        },
+        {
+          "line": 7272,
+          "text": "\t\t\tdentp->nsec = NSEC_MTIME(sb);"
+        },
+        {
+          "line": 7273,
+          "text": "\t\t} else if (cfg.timetype == T_ACCESS) {"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\jarun__nnn\\src\\nnn.c",
+      "line": 2264,
+      "col": 18,
+      "message": "access to struct stat timestamp field 'st_mtime': filesystem may not preserve timestamps beyond 2038",
+      "context": [
+        {
+          "line": 2258,
+          "text": "\t\trmtmpfile();"
+        },
+        {
+          "line": 2259,
+          "text": "\t\treturn -1;"
+        },
+        {
+          "line": 2260,
+          "text": "\t}"
+        },
+        {
+          "line": 2261,
+          "text": ""
+        },
+        {
+          "line": 2262,
+          "text": "\tfstat(fd, &sb);"
+        },
+        {
+          "line": 2263,
+          "text": ""
+        },
+        {
+          "line": 2264,
+          "text": "\tif (mtime == sb.st_mtime) {"
+        },
+        {
+          "line": 2265,
+          "text": "\t\tDPRINTF_S(\"selection is not modified\");"
+        },
+        {
+          "line": 2266,
+          "text": "\t\tif (unlink(g_tmpfpath)) {"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\jarun__nnn\\src\\nnn.c",
+      "line": 2251,
+      "col": 13,
+      "message": "access to struct stat timestamp field 'st_mtime': filesystem may not preserve timestamps beyond 2038",
+      "context": [
+        {
+          "line": 2245,
+          "text": "\t/* Save the last modification time */"
+        },
+        {
+          "line": 2246,
+          "text": "\tif (stat(g_tmpfpath, &sb)) {"
+        },
+        {
+          "line": 2247,
+          "text": "\t\tDPRINTF_S(strerror(errno));"
+        },
+        {
+          "line": 2248,
+          "text": "\t\trmtmpfile();"
+        },
+        {
+          "line": 2249,
+          "text": "\t\treturn -1;"
+        },
+        {
+          "line": 2250,
+          "text": "\t}"
+        },
+        {
+          "line": 2251,
+          "text": "\tmtime = sb.st_mtime;"
+        },
+        {
+          "line": 2252,
+          "text": ""
+        },
+        {
+          "line": 2253,
+          "text": "\tspawn((cfg.waitedit ? enveditor : editor), g_tmpfpath, NULL, NULL, F_CLI);"
+        }
+      ]
+    }
+  ]
+}

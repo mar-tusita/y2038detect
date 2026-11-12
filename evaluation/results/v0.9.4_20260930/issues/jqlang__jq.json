@@ -1,0 +1,235 @@
+{
+  "repo": "jqlang/jq",
+  "stars": 34787,
+  "y2038detect_version": "0.9.4",
+  "scanned_at": "2026-09-30T14:30:01Z",
+  "scan_sec": 20.05,
+  "c_files": 45,
+  "c_lines": 41795,
+  "parse_errors": 2675,
+  "scan_errors": 0,
+  "issues": [
+    {
+      "file": "evaluation\\repos\\jqlang__jq\\src\\jv.c",
+      "line": 1225,
+      "col": 33,
+      "message": "explicit conversion of time_t to 'uint32_t' may truncate after 2106",
+      "context": [
+        {
+          "line": 1219,
+          "text": "  int fd = open(\"/dev/urandom\", O_RDONLY);"
+        },
+        {
+          "line": 1220,
+          "text": "  if (fd >= 0) {"
+        },
+        {
+          "line": 1221,
+          "text": "    if (read(fd, &seed, sizeof(seed)) != 4)"
+        },
+        {
+          "line": 1222,
+          "text": "      seed = (uint32_t)getpid() ^ (uint32_t)time(NULL);"
+        },
+        {
+          "line": 1223,
+          "text": "    close(fd);"
+        },
+        {
+          "line": 1224,
+          "text": "  } else {"
+        },
+        {
+          "line": 1225,
+          "text": "    seed = (uint32_t)getpid() ^ (uint32_t)time(NULL);"
+        },
+        {
+          "line": 1226,
+          "text": "  }"
+        },
+        {
+          "line": 1227,
+          "text": "#endif"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\jqlang__jq\\src\\jv.c",
+      "line": 1222,
+      "col": 35,
+      "message": "explicit conversion of time_t to 'uint32_t' may truncate after 2106",
+      "context": [
+        {
+          "line": 1216,
+          "text": "  if (getentropy(&seed, sizeof(seed)) != 0)"
+        },
+        {
+          "line": 1217,
+          "text": "    seed = (uint32_t)getpid() ^ (uint32_t)time(NULL);"
+        },
+        {
+          "line": 1218,
+          "text": "#else"
+        },
+        {
+          "line": 1219,
+          "text": "  int fd = open(\"/dev/urandom\", O_RDONLY);"
+        },
+        {
+          "line": 1220,
+          "text": "  if (fd >= 0) {"
+        },
+        {
+          "line": 1221,
+          "text": "    if (read(fd, &seed, sizeof(seed)) != 4)"
+        },
+        {
+          "line": 1222,
+          "text": "      seed = (uint32_t)getpid() ^ (uint32_t)time(NULL);"
+        },
+        {
+          "line": 1223,
+          "text": "    close(fd);"
+        },
+        {
+          "line": 1224,
+          "text": "  } else {"
+        }
+      ]
+    }
+  ],
+  "issues_strict": [
+    {
+      "file": "evaluation\\repos\\jqlang__jq\\src\\jv.c",
+      "line": 1225,
+      "col": 33,
+      "message": "explicit conversion of time_t to 'uint32_t' may truncate after 2106",
+      "context": [
+        {
+          "line": 1219,
+          "text": "  int fd = open(\"/dev/urandom\", O_RDONLY);"
+        },
+        {
+          "line": 1220,
+          "text": "  if (fd >= 0) {"
+        },
+        {
+          "line": 1221,
+          "text": "    if (read(fd, &seed, sizeof(seed)) != 4)"
+        },
+        {
+          "line": 1222,
+          "text": "      seed = (uint32_t)getpid() ^ (uint32_t)time(NULL);"
+        },
+        {
+          "line": 1223,
+          "text": "    close(fd);"
+        },
+        {
+          "line": 1224,
+          "text": "  } else {"
+        },
+        {
+          "line": 1225,
+          "text": "    seed = (uint32_t)getpid() ^ (uint32_t)time(NULL);"
+        },
+        {
+          "line": 1226,
+          "text": "  }"
+        },
+        {
+          "line": 1227,
+          "text": "#endif"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\jqlang__jq\\src\\jv.c",
+      "line": 1222,
+      "col": 35,
+      "message": "explicit conversion of time_t to 'uint32_t' may truncate after 2106",
+      "context": [
+        {
+          "line": 1216,
+          "text": "  if (getentropy(&seed, sizeof(seed)) != 0)"
+        },
+        {
+          "line": 1217,
+          "text": "    seed = (uint32_t)getpid() ^ (uint32_t)time(NULL);"
+        },
+        {
+          "line": 1218,
+          "text": "#else"
+        },
+        {
+          "line": 1219,
+          "text": "  int fd = open(\"/dev/urandom\", O_RDONLY);"
+        },
+        {
+          "line": 1220,
+          "text": "  if (fd >= 0) {"
+        },
+        {
+          "line": 1221,
+          "text": "    if (read(fd, &seed, sizeof(seed)) != 4)"
+        },
+        {
+          "line": 1222,
+          "text": "      seed = (uint32_t)getpid() ^ (uint32_t)time(NULL);"
+        },
+        {
+          "line": 1223,
+          "text": "    close(fd);"
+        },
+        {
+          "line": 1224,
+          "text": "  } else {"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\jqlang__jq\\src\\util.c",
+      "line": 718,
+      "col": 31,
+      "message": "tm_year compared with 68 (year 1968): upper bound excludes dates beyond 1968",
+      "context": [
+        {
+          "line": 712,
+          "text": "            const int year = split_year ? tm->tm_year : 0;"
+        },
+        {
+          "line": 713,
+          "text": ""
+        },
+        {
+          "line": 714,
+          "text": "            bp = (const unsigned char *)strptime((const char *)bp,"
+        },
+        {
+          "line": 715,
+          "text": "                                new_fmt, tm);"
+        },
+        {
+          "line": 716,
+          "text": "            LEGAL_ALT(ALT_E);"
+        },
+        {
+          "line": 717,
+          "text": "            tm->tm_year += year;"
+        },
+        {
+          "line": 718,
+          "text": "            if (split_year && tm->tm_year % (2000 - TM_YEAR_BASE) <= 68)"
+        },
+        {
+          "line": 719,
+          "text": "                tm->tm_year -= 2000 - TM_YEAR_BASE;"
+        },
+        {
+          "line": 720,
+          "text": "            split_year = 1;"
+        }
+      ]
+    }
+  ]
+}

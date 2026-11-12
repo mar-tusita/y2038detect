@@ -1,0 +1,1987 @@
+{
+  "repo": "ventoy/Ventoy",
+  "stars": 76955,
+  "y2038detect_version": "0.9.4",
+  "scanned_at": "2026-09-30T13:59:52Z",
+  "scan_sec": 71.33,
+  "c_files": 405,
+  "c_lines": 277658,
+  "parse_errors": 72870,
+  "scan_errors": 0,
+  "issues": [
+    {
+      "file": "evaluation\\repos\\ventoy__Ventoy\\LinuxGUI\\Ventoy2Disk\\Lib\\exfat\\src\\libexfat\\time.c",
+      "line": 163,
+      "col": 19,
+      "message": "implicit conversion of time_t to 'long' may truncate after 2038",
+      "context": [
+        {
+          "line": 157,
+          "text": "\tnow = time(NULL);"
+        },
+        {
+          "line": 158,
+          "text": "\tutc = gmtime(&now);"
+        },
+        {
+          "line": 159,
+          "text": "\t/* gmtime() always sets tm_isdst to 0 because daylight savings never"
+        },
+        {
+          "line": 160,
+          "text": "\t   affect UTC. Setting tm_isdst to -1 makes mktime() to determine whether"
+        },
+        {
+          "line": 161,
+          "text": "\t   summer time is in effect. */"
+        },
+        {
+          "line": 162,
+          "text": "\tutc->tm_isdst = -1;"
+        },
+        {
+          "line": 163,
+          "text": "\texfat_timezone = mktime(utc) - now;"
+        },
+        {
+          "line": 164,
+          "text": "}"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\ventoy__Ventoy\\LinuxGUI\\Ventoy2Disk\\Lib\\exfat\\src\\libexfat\\time.c",
+      "line": 148,
+      "col": 15,
+      "message": "implicit conversion of time_t to 'uint8_t' may truncate after 2038",
+      "context": [
+        {
+          "line": 142,
+          "text": "\tmin = (unix_time % SEC_IN_HOUR) / SEC_IN_MIN;"
+        },
+        {
+          "line": 143,
+          "text": "\ttwosec = (unix_time % SEC_IN_MIN) / 2;"
+        },
+        {
+          "line": 144,
+          "text": ""
+        },
+        {
+          "line": 145,
+          "text": "\t*date = cpu_to_le16(day | (month << 5) | (year << 9));"
+        },
+        {
+          "line": 146,
+          "text": "\t*time = cpu_to_le16(twosec | (min << 5) | (hour << 11));"
+        },
+        {
+          "line": 147,
+          "text": "\tif (centisec)"
+        },
+        {
+          "line": 148,
+          "text": "\t\t*centisec = (unix_time % 2) * 100;"
+        },
+        {
+          "line": 149,
+          "text": "}"
+        },
+        {
+          "line": 150,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\ventoy__Ventoy\\LinuxGUI\\Ventoy2Disk\\Lib\\exfat\\src\\libexfat\\time.c",
+      "line": 135,
+      "col": 4,
+      "message": "compound assignment of time_t to 'int' may truncate after 2038",
+      "context": [
+        {
+          "line": 129,
+          "text": "\t\tint leap_day = (IS_LEAP_YEAR(year) && i == 2);"
+        },
+        {
+          "line": 130,
+          "text": "\t\tint leap_sub = (IS_LEAP_YEAR(year) && i >= 3);"
+        },
+        {
+          "line": 131,
+          "text": ""
+        },
+        {
+          "line": 132,
+          "text": "\t\tif (i == 12 || days - leap_sub < days_in_year[i + 1] + leap_day)"
+        },
+        {
+          "line": 133,
+          "text": "\t\t{"
+        },
+        {
+          "line": 134,
+          "text": "\t\t\tmonth = i;"
+        },
+        {
+          "line": 135,
+          "text": "\t\t\tdays -= days_in_year[i] + leap_sub;"
+        },
+        {
+          "line": 136,
+          "text": "\t\t\tbreak;"
+        },
+        {
+          "line": 137,
+          "text": "\t\t}"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\ventoy__Ventoy\\LinuxGUI\\Ventoy2Disk\\Lib\\exfat\\src\\mkfs\\mkexfat_main.c",
+      "line": 157,
+      "col": 9,
+      "message": "implicit conversion of time_t to 'uint32_t' may truncate after 2106",
+      "context": [
+        {
+          "line": 151,
+          "text": ""
+        },
+        {
+          "line": 152,
+          "text": "\tif (gettimeofday(&now, NULL) != 0)"
+        },
+        {
+          "line": 153,
+          "text": "\t{"
+        },
+        {
+          "line": 154,
+          "text": "\t\texfat_error(\"failed to form volume id\");"
+        },
+        {
+          "line": 155,
+          "text": "\t\treturn 0;"
+        },
+        {
+          "line": 156,
+          "text": "\t}"
+        },
+        {
+          "line": 157,
+          "text": "\treturn (now.tv_sec << 20) | now.tv_usec;"
+        },
+        {
+          "line": 158,
+          "text": "}"
+        },
+        {
+          "line": 159,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\ventoy__Ventoy\\LinuxGUI\\Ventoy2Disk\\Lib\\libhttp\\include\\civetweb.c",
+      "line": 10778,
+      "col": 7,
+      "message": "explicit conversion of time_t to 'long' may truncate after 2038",
+      "context": [
+        {
+          "line": 10772,
+          "text": "\t    && conn->ctx->callbacks.init_ssl == NULL) {"
+        },
+        {
+          "line": 10773,
+          "text": "\t\treturn 0;"
+        },
+        {
+          "line": 10774,
+          "text": "\t}"
+        },
+        {
+          "line": 10775,
+          "text": ""
+        },
+        {
+          "line": 10776,
+          "text": "\tt = data_check;"
+        },
+        {
+          "line": 10777,
+          "text": "\tif (stat(pem, &cert_buf) != -1) {"
+        },
+        {
+          "line": 10778,
+          "text": "\t\tt = (long int)cert_buf.st_mtime;"
+        },
+        {
+          "line": 10779,
+          "text": "\t}"
+        },
+        {
+          "line": 10780,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\ventoy__Ventoy\\LinuxGUI\\Ventoy2Disk\\Lib\\libhttp\\include\\civetweb.c",
+      "line": 6495,
+      "col": 15,
+      "message": "explicit conversion of time_t to 'unsigned long' may truncate after 2106",
+      "context": [
+        {
+          "line": 6489,
+          "text": "\tif (filep != NULL && buf != NULL) {"
+        },
+        {
+          "line": 6490,
+          "text": "\t\tmg_snprintf(NULL,"
+        },
+        {
+          "line": 6491,
+          "text": "\t\t            NULL, /* All calls to construct_etag use 64 byte buffer */"
+        },
+        {
+          "line": 6492,
+          "text": "\t\t            buf,"
+        },
+        {
+          "line": 6493,
+          "text": "\t\t            buf_len,"
+        },
+        {
+          "line": 6494,
+          "text": "\t\t            \"\\\"%lx.%\" INT64_FMT \"\\\"\","
+        },
+        {
+          "line": 6495,
+          "text": "\t\t            (unsigned long)filep->last_modified,"
+        },
+        {
+          "line": 6496,
+          "text": "\t\t            filep->size);"
+        },
+        {
+          "line": 6497,
+          "text": "\t}"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\ventoy__Ventoy\\LinuxGUI\\Ventoy2Disk\\Lib\\libhttp\\include\\civetweb.c",
+      "line": 1929,
+      "col": 12,
+      "message": "explicit conversion of time_t to 'unsigned long' may truncate after 2106",
+      "context": [
+        {
+          "line": 1923,
+          "text": "\t\t\tflockfile(fi.fp);"
+        },
+        {
+          "line": 1924,
+          "text": "\t\t\ttimestamp = time(NULL);"
+        },
+        {
+          "line": 1925,
+          "text": ""
+        },
+        {
+          "line": 1926,
+          "text": "\t\t\tsockaddr_to_string(src_addr, sizeof(src_addr), &conn->client.rsa);"
+        },
+        {
+          "line": 1927,
+          "text": "\t\t\tfprintf(fi.fp,"
+        },
+        {
+          "line": 1928,
+          "text": "\t\t\t        \"[%010lu] [error] [client %s] \","
+        },
+        {
+          "line": 1929,
+          "text": "\t\t\t        (unsigned long)timestamp,"
+        },
+        {
+          "line": 1930,
+          "text": "\t\t\t        src_addr);"
+        },
+        {
+          "line": 1931,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\ventoy__Ventoy\\Plugson\\src\\Lib\\libhttp\\include\\civetweb.c",
+      "line": 10792,
+      "col": 7,
+      "message": "explicit conversion of time_t to 'long' may truncate after 2038",
+      "context": [
+        {
+          "line": 10786,
+          "text": "\t    && conn->ctx->callbacks.init_ssl == NULL) {"
+        },
+        {
+          "line": 10787,
+          "text": "\t\treturn 0;"
+        },
+        {
+          "line": 10788,
+          "text": "\t}"
+        },
+        {
+          "line": 10789,
+          "text": ""
+        },
+        {
+          "line": 10790,
+          "text": "\tt = data_check;"
+        },
+        {
+          "line": 10791,
+          "text": "\tif (stat(pem, &cert_buf) != -1) {"
+        },
+        {
+          "line": 10792,
+          "text": "\t\tt = (long int)cert_buf.st_mtime;"
+        },
+        {
+          "line": 10793,
+          "text": "\t}"
+        },
+        {
+          "line": 10794,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\ventoy__Ventoy\\Plugson\\src\\Lib\\libhttp\\include\\civetweb.c",
+      "line": 6509,
+      "col": 15,
+      "message": "explicit conversion of time_t to 'unsigned long' may truncate after 2106",
+      "context": [
+        {
+          "line": 6503,
+          "text": "\tif (filep != NULL && buf != NULL) {"
+        },
+        {
+          "line": 6504,
+          "text": "\t\tmg_snprintf(NULL,"
+        },
+        {
+          "line": 6505,
+          "text": "\t\t            NULL, /* All calls to construct_etag use 64 byte buffer */"
+        },
+        {
+          "line": 6506,
+          "text": "\t\t            buf,"
+        },
+        {
+          "line": 6507,
+          "text": "\t\t            buf_len,"
+        },
+        {
+          "line": 6508,
+          "text": "\t\t            \"\\\"%lx.%\" INT64_FMT \"\\\"\","
+        },
+        {
+          "line": 6509,
+          "text": "\t\t            (unsigned long)filep->last_modified,"
+        },
+        {
+          "line": 6510,
+          "text": "\t\t            filep->size);"
+        },
+        {
+          "line": 6511,
+          "text": "\t}"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\ventoy__Ventoy\\Plugson\\src\\Lib\\libhttp\\include\\civetweb.c",
+      "line": 1929,
+      "col": 12,
+      "message": "explicit conversion of time_t to 'unsigned long' may truncate after 2106",
+      "context": [
+        {
+          "line": 1923,
+          "text": "\t\t\tflockfile(fi.fp);"
+        },
+        {
+          "line": 1924,
+          "text": "\t\t\ttimestamp = time(NULL);"
+        },
+        {
+          "line": 1925,
+          "text": ""
+        },
+        {
+          "line": 1926,
+          "text": "\t\t\tsockaddr_to_string(src_addr, sizeof(src_addr), &conn->client.rsa);"
+        },
+        {
+          "line": 1927,
+          "text": "\t\t\tfprintf(fi.fp,"
+        },
+        {
+          "line": 1928,
+          "text": "\t\t\t        \"[%010lu] [error] [client %s] \","
+        },
+        {
+          "line": 1929,
+          "text": "\t\t\t        (unsigned long)timestamp,"
+        },
+        {
+          "line": 1930,
+          "text": "\t\t\t        src_addr);"
+        },
+        {
+          "line": 1931,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\ventoy__Ventoy\\SQUASHFS\\squashfs-tools-4.4\\squashfs-tools\\mksquashfs.c",
+      "line": 6343,
+      "col": 19,
+      "message": "implicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 6337,
+          "text": "\tsBlk.s_minor = SQUASHFS_MINOR;"
+        },
+        {
+          "line": 6338,
+          "text": "\tsBlk.block_size = block_size;"
+        },
+        {
+          "line": 6339,
+          "text": "\tsBlk.block_log = block_log;"
+        },
+        {
+          "line": 6340,
+          "text": "\tsBlk.flags = SQUASHFS_MKFLAGS(noI, noD, noF, noX, noId, no_fragments,"
+        },
+        {
+          "line": 6341,
+          "text": "\t\talways_use_fragments, duplicate_checking, exportable,"
+        },
+        {
+          "line": 6342,
+          "text": "\t\tno_xattrs, comp_opts);"
+        },
+        {
+          "line": 6343,
+          "text": "\tsBlk.mkfs_time = mkfs_time_opt ? mkfs_time : time(NULL);"
+        },
+        {
+          "line": 6344,
+          "text": ""
+        },
+        {
+          "line": 6345,
+          "text": "\tdisable_info();"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\ventoy__Ventoy\\SQUASHFS\\squashfs-tools-4.4\\squashfs-tools\\mksquashfs.c",
+      "line": 937,
+      "col": 16,
+      "message": "implicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 931,
+          "text": "\tbase->mode = SQUASHFS_MODE(buf->st_mode);"
+        },
+        {
+          "line": 932,
+          "text": "\tbase->uid = get_uid((unsigned int) global_uid == -1 ?"
+        },
+        {
+          "line": 933,
+          "text": "\t\tbuf->st_uid : global_uid);"
+        },
+        {
+          "line": 934,
+          "text": "\tbase->inode_type = type;"
+        },
+        {
+          "line": 935,
+          "text": "\tbase->guid = get_guid((unsigned int) global_gid == -1 ?"
+        },
+        {
+          "line": 936,
+          "text": "\t\tbuf->st_gid : global_gid);"
+        },
+        {
+          "line": 937,
+          "text": "\tbase->mtime = get_time(buf->st_mtime);"
+        },
+        {
+          "line": 938,
+          "text": "\tbase->inode_number = get_inode_no(dir_ent->inode);"
+        },
+        {
+          "line": 939,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\ventoy__Ventoy\\SQUASHFS\\squashfs-tools-4.4\\squashfs-tools\\unsquash-1.c",
+      "line": 227,
+      "col": 21,
+      "message": "implicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 221,
+          "text": ""
+        },
+        {
+          "line": 222,
+          "text": "\tdir->dir_count = 0;"
+        },
+        {
+          "line": 223,
+          "text": "\tdir->cur_entry = 0;"
+        },
+        {
+          "line": 224,
+          "text": "\tdir->mode = (*i)->mode;"
+        },
+        {
+          "line": 225,
+          "text": "\tdir->uid = (*i)->uid;"
+        },
+        {
+          "line": 226,
+          "text": "\tdir->guid = (*i)->gid;"
+        },
+        {
+          "line": 227,
+          "text": "\tdir->mtime = (*i)->time;"
+        },
+        {
+          "line": 228,
+          "text": "\tdir->xattr = (*i)->xattr;"
+        },
+        {
+          "line": 229,
+          "text": "\tdir->dirs = NULL;"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\ventoy__Ventoy\\SQUASHFS\\squashfs-tools-4.4\\squashfs-tools\\unsquash-2.c",
+      "line": 328,
+      "col": 21,
+      "message": "implicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 322,
+          "text": ""
+        },
+        {
+          "line": 323,
+          "text": "\tdir->dir_count = 0;"
+        },
+        {
+          "line": 324,
+          "text": "\tdir->cur_entry = 0;"
+        },
+        {
+          "line": 325,
+          "text": "\tdir->mode = (*i)->mode;"
+        },
+        {
+          "line": 326,
+          "text": "\tdir->uid = (*i)->uid;"
+        },
+        {
+          "line": 327,
+          "text": "\tdir->guid = (*i)->gid;"
+        },
+        {
+          "line": 328,
+          "text": "\tdir->mtime = (*i)->time;"
+        },
+        {
+          "line": 329,
+          "text": "\tdir->xattr = (*i)->xattr;"
+        },
+        {
+          "line": 330,
+          "text": "\tdir->dirs = NULL;"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\ventoy__Ventoy\\SQUASHFS\\squashfs-tools-4.4\\squashfs-tools\\unsquash-3.c",
+      "line": 354,
+      "col": 21,
+      "message": "implicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 348,
+          "text": ""
+        },
+        {
+          "line": 349,
+          "text": "\tdir->dir_count = 0;"
+        },
+        {
+          "line": 350,
+          "text": "\tdir->cur_entry = 0;"
+        },
+        {
+          "line": 351,
+          "text": "\tdir->mode = (*i)->mode;"
+        },
+        {
+          "line": 352,
+          "text": "\tdir->uid = (*i)->uid;"
+        },
+        {
+          "line": 353,
+          "text": "\tdir->guid = (*i)->gid;"
+        },
+        {
+          "line": 354,
+          "text": "\tdir->mtime = (*i)->time;"
+        },
+        {
+          "line": 355,
+          "text": "\tdir->xattr = (*i)->xattr;"
+        },
+        {
+          "line": 356,
+          "text": "\tdir->dirs = NULL;"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\ventoy__Ventoy\\SQUASHFS\\squashfs-tools-4.4\\squashfs-tools\\unsquash-4.c",
+      "line": 301,
+      "col": 21,
+      "message": "implicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 295,
+          "text": ""
+        },
+        {
+          "line": 296,
+          "text": "\tdir->dir_count = 0;"
+        },
+        {
+          "line": 297,
+          "text": "\tdir->cur_entry = 0;"
+        },
+        {
+          "line": 298,
+          "text": "\tdir->mode = (*i)->mode;"
+        },
+        {
+          "line": 299,
+          "text": "\tdir->uid = (*i)->uid;"
+        },
+        {
+          "line": 300,
+          "text": "\tdir->guid = (*i)->gid;"
+        },
+        {
+          "line": 301,
+          "text": "\tdir->mtime = (*i)->time;"
+        },
+        {
+          "line": 302,
+          "text": "\tdir->xattr = (*i)->xattr;"
+        },
+        {
+          "line": 303,
+          "text": "\tdir->dirs = NULL;"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\ventoy__Ventoy\\SQUASHFS\\squashfs-tools-4.4\\squashfs-tools\\unsquashfs.c",
+      "line": 921,
+      "col": 5,
+      "message": "call to utime() uses time_t timestamps; limited to 32-bit range — use utimensat() instead",
+      "context": [
+        {
+          "line": 915,
+          "text": ""
+        },
+        {
+          "line": 916,
+          "text": "int set_attributes(char *pathname, int mode, uid_t uid, gid_t guid, time_t time,"
+        },
+        {
+          "line": 917,
+          "text": "\tunsigned int xattr, unsigned int set_mode)"
+        },
+        {
+          "line": 918,
+          "text": "{"
+        },
+        {
+          "line": 919,
+          "text": "\tstruct utimbuf times = { time, time };"
+        },
+        {
+          "line": 920,
+          "text": ""
+        },
+        {
+          "line": 921,
+          "text": "\tif(utime(pathname, &times) == -1) {"
+        },
+        {
+          "line": 922,
+          "text": "\t\tEXIT_UNSQUASH_STRICT(\"set_attributes: failed to set time on %s, because %s\\n\","
+        },
+        {
+          "line": 923,
+          "text": "\t\t\tpathname, strerror(errno));"
+        }
+      ]
+    }
+  ],
+  "issues_strict": [
+    {
+      "file": "evaluation\\repos\\ventoy__Ventoy\\LinuxGUI\\Ventoy2Disk\\Core\\ventoy_util.c",
+      "line": 49,
+      "col": 15,
+      "message": "implicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 43,
+          "text": "    int i;"
+        },
+        {
+          "line": 44,
+          "text": "    int fd;"
+        },
+        {
+          "line": 45,
+          "text": ""
+        },
+        {
+          "line": 46,
+          "text": "    fd = open(\"/dev/urandom\", O_RDONLY | O_BINARY);"
+        },
+        {
+          "line": 47,
+          "text": "    if (fd < 0)"
+        },
+        {
+          "line": 48,
+          "text": "    {"
+        },
+        {
+          "line": 49,
+          "text": "        srand(time(NULL));"
+        },
+        {
+          "line": 50,
+          "text": "        for (i = 0; i < 8; i++)"
+        },
+        {
+          "line": 51,
+          "text": "        {"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\ventoy__Ventoy\\LinuxGUI\\Ventoy2Disk\\Lib\\exfat\\src\\libexfat\\time.c",
+      "line": 163,
+      "col": 19,
+      "message": "implicit conversion of time_t to 'long' may truncate after 2038",
+      "context": [
+        {
+          "line": 157,
+          "text": "\tnow = time(NULL);"
+        },
+        {
+          "line": 158,
+          "text": "\tutc = gmtime(&now);"
+        },
+        {
+          "line": 159,
+          "text": "\t/* gmtime() always sets tm_isdst to 0 because daylight savings never"
+        },
+        {
+          "line": 160,
+          "text": "\t   affect UTC. Setting tm_isdst to -1 makes mktime() to determine whether"
+        },
+        {
+          "line": 161,
+          "text": "\t   summer time is in effect. */"
+        },
+        {
+          "line": 162,
+          "text": "\tutc->tm_isdst = -1;"
+        },
+        {
+          "line": 163,
+          "text": "\texfat_timezone = mktime(utc) - now;"
+        },
+        {
+          "line": 164,
+          "text": "}"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\ventoy__Ventoy\\LinuxGUI\\Ventoy2Disk\\Lib\\exfat\\src\\libexfat\\time.c",
+      "line": 148,
+      "col": 15,
+      "message": "implicit conversion of time_t to 'uint8_t' may truncate after 2038",
+      "context": [
+        {
+          "line": 142,
+          "text": "\tmin = (unix_time % SEC_IN_HOUR) / SEC_IN_MIN;"
+        },
+        {
+          "line": 143,
+          "text": "\ttwosec = (unix_time % SEC_IN_MIN) / 2;"
+        },
+        {
+          "line": 144,
+          "text": ""
+        },
+        {
+          "line": 145,
+          "text": "\t*date = cpu_to_le16(day | (month << 5) | (year << 9));"
+        },
+        {
+          "line": 146,
+          "text": "\t*time = cpu_to_le16(twosec | (min << 5) | (hour << 11));"
+        },
+        {
+          "line": 147,
+          "text": "\tif (centisec)"
+        },
+        {
+          "line": 148,
+          "text": "\t\t*centisec = (unix_time % 2) * 100;"
+        },
+        {
+          "line": 149,
+          "text": "}"
+        },
+        {
+          "line": 150,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\ventoy__Ventoy\\LinuxGUI\\Ventoy2Disk\\Lib\\exfat\\src\\libexfat\\time.c",
+      "line": 135,
+      "col": 4,
+      "message": "compound assignment of time_t to 'int' may truncate after 2038",
+      "context": [
+        {
+          "line": 129,
+          "text": "\t\tint leap_day = (IS_LEAP_YEAR(year) && i == 2);"
+        },
+        {
+          "line": 130,
+          "text": "\t\tint leap_sub = (IS_LEAP_YEAR(year) && i >= 3);"
+        },
+        {
+          "line": 131,
+          "text": ""
+        },
+        {
+          "line": 132,
+          "text": "\t\tif (i == 12 || days - leap_sub < days_in_year[i + 1] + leap_day)"
+        },
+        {
+          "line": 133,
+          "text": "\t\t{"
+        },
+        {
+          "line": 134,
+          "text": "\t\t\tmonth = i;"
+        },
+        {
+          "line": 135,
+          "text": "\t\t\tdays -= days_in_year[i] + leap_sub;"
+        },
+        {
+          "line": 136,
+          "text": "\t\t\tbreak;"
+        },
+        {
+          "line": 137,
+          "text": "\t\t}"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\ventoy__Ventoy\\LinuxGUI\\Ventoy2Disk\\Lib\\exfat\\src\\libexfat\\utils.c",
+      "line": 45,
+      "col": 9,
+      "message": "access to struct stat timestamp field 'st_ctime': filesystem may not preserve timestamps beyond 2038",
+      "context": [
+        {
+          "line": 39,
+          "text": "\tstbuf->st_size = node->size;"
+        },
+        {
+          "line": 40,
+          "text": "\tstbuf->st_blocks = ROUND_UP(node->size, CLUSTER_SIZE(*ef->sb)) / 512;"
+        },
+        {
+          "line": 41,
+          "text": "\tstbuf->st_mtime = node->mtime;"
+        },
+        {
+          "line": 42,
+          "text": "\tstbuf->st_atime = node->atime;"
+        },
+        {
+          "line": 43,
+          "text": "\t/* set ctime to mtime to ensure we don't break programs that rely on ctime"
+        },
+        {
+          "line": 44,
+          "text": "\t   (e.g. rsync) */"
+        },
+        {
+          "line": 45,
+          "text": "\tstbuf->st_ctime = node->mtime;"
+        },
+        {
+          "line": 46,
+          "text": "}"
+        },
+        {
+          "line": 47,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\ventoy__Ventoy\\LinuxGUI\\Ventoy2Disk\\Lib\\exfat\\src\\libexfat\\utils.c",
+      "line": 42,
+      "col": 9,
+      "message": "access to struct stat timestamp field 'st_atime': filesystem may not preserve timestamps beyond 2038",
+      "context": [
+        {
+          "line": 36,
+          "text": "\tstbuf->st_nlink = 1;"
+        },
+        {
+          "line": 37,
+          "text": "\tstbuf->st_uid = ef->uid;"
+        },
+        {
+          "line": 38,
+          "text": "\tstbuf->st_gid = ef->gid;"
+        },
+        {
+          "line": 39,
+          "text": "\tstbuf->st_size = node->size;"
+        },
+        {
+          "line": 40,
+          "text": "\tstbuf->st_blocks = ROUND_UP(node->size, CLUSTER_SIZE(*ef->sb)) / 512;"
+        },
+        {
+          "line": 41,
+          "text": "\tstbuf->st_mtime = node->mtime;"
+        },
+        {
+          "line": 42,
+          "text": "\tstbuf->st_atime = node->atime;"
+        },
+        {
+          "line": 43,
+          "text": "\t/* set ctime to mtime to ensure we don't break programs that rely on ctime"
+        },
+        {
+          "line": 44,
+          "text": "\t   (e.g. rsync) */"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\ventoy__Ventoy\\LinuxGUI\\Ventoy2Disk\\Lib\\exfat\\src\\libexfat\\utils.c",
+      "line": 41,
+      "col": 9,
+      "message": "access to struct stat timestamp field 'st_mtime': filesystem may not preserve timestamps beyond 2038",
+      "context": [
+        {
+          "line": 35,
+          "text": "\t\tstbuf->st_mode = S_IFREG | (0777 & ~ef->fmask);"
+        },
+        {
+          "line": 36,
+          "text": "\tstbuf->st_nlink = 1;"
+        },
+        {
+          "line": 37,
+          "text": "\tstbuf->st_uid = ef->uid;"
+        },
+        {
+          "line": 38,
+          "text": "\tstbuf->st_gid = ef->gid;"
+        },
+        {
+          "line": 39,
+          "text": "\tstbuf->st_size = node->size;"
+        },
+        {
+          "line": 40,
+          "text": "\tstbuf->st_blocks = ROUND_UP(node->size, CLUSTER_SIZE(*ef->sb)) / 512;"
+        },
+        {
+          "line": 41,
+          "text": "\tstbuf->st_mtime = node->mtime;"
+        },
+        {
+          "line": 42,
+          "text": "\tstbuf->st_atime = node->atime;"
+        },
+        {
+          "line": 43,
+          "text": "\t/* set ctime to mtime to ensure we don't break programs that rely on ctime"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\ventoy__Ventoy\\LinuxGUI\\Ventoy2Disk\\Lib\\exfat\\src\\mkfs\\mkexfat_main.c",
+      "line": 157,
+      "col": 9,
+      "message": "implicit conversion of time_t to 'uint32_t' may truncate after 2106",
+      "context": [
+        {
+          "line": 151,
+          "text": ""
+        },
+        {
+          "line": 152,
+          "text": "\tif (gettimeofday(&now, NULL) != 0)"
+        },
+        {
+          "line": 153,
+          "text": "\t{"
+        },
+        {
+          "line": 154,
+          "text": "\t\texfat_error(\"failed to form volume id\");"
+        },
+        {
+          "line": 155,
+          "text": "\t\treturn 0;"
+        },
+        {
+          "line": 156,
+          "text": "\t}"
+        },
+        {
+          "line": 157,
+          "text": "\treturn (now.tv_sec << 20) | now.tv_usec;"
+        },
+        {
+          "line": 158,
+          "text": "}"
+        },
+        {
+          "line": 159,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\ventoy__Ventoy\\LinuxGUI\\Ventoy2Disk\\Lib\\libhttp\\include\\civetweb.c",
+      "line": 10778,
+      "col": 7,
+      "message": "explicit conversion of time_t to 'long' may truncate after 2038",
+      "context": [
+        {
+          "line": 10772,
+          "text": "\t    && conn->ctx->callbacks.init_ssl == NULL) {"
+        },
+        {
+          "line": 10773,
+          "text": "\t\treturn 0;"
+        },
+        {
+          "line": 10774,
+          "text": "\t}"
+        },
+        {
+          "line": 10775,
+          "text": ""
+        },
+        {
+          "line": 10776,
+          "text": "\tt = data_check;"
+        },
+        {
+          "line": 10777,
+          "text": "\tif (stat(pem, &cert_buf) != -1) {"
+        },
+        {
+          "line": 10778,
+          "text": "\t\tt = (long int)cert_buf.st_mtime;"
+        },
+        {
+          "line": 10779,
+          "text": "\t}"
+        },
+        {
+          "line": 10780,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\ventoy__Ventoy\\LinuxGUI\\Ventoy2Disk\\Lib\\libhttp\\include\\civetweb.c",
+      "line": 10778,
+      "col": 26,
+      "message": "access to struct stat timestamp field 'st_mtime': filesystem may not preserve timestamps beyond 2038",
+      "context": [
+        {
+          "line": 10772,
+          "text": "\t    && conn->ctx->callbacks.init_ssl == NULL) {"
+        },
+        {
+          "line": 10773,
+          "text": "\t\treturn 0;"
+        },
+        {
+          "line": 10774,
+          "text": "\t}"
+        },
+        {
+          "line": 10775,
+          "text": ""
+        },
+        {
+          "line": 10776,
+          "text": "\tt = data_check;"
+        },
+        {
+          "line": 10777,
+          "text": "\tif (stat(pem, &cert_buf) != -1) {"
+        },
+        {
+          "line": 10778,
+          "text": "\t\tt = (long int)cert_buf.st_mtime;"
+        },
+        {
+          "line": 10779,
+          "text": "\t}"
+        },
+        {
+          "line": 10780,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\ventoy__Ventoy\\LinuxGUI\\Ventoy2Disk\\Lib\\libhttp\\include\\civetweb.c",
+      "line": 6495,
+      "col": 15,
+      "message": "explicit conversion of time_t to 'unsigned long' may truncate after 2106",
+      "context": [
+        {
+          "line": 6489,
+          "text": "\tif (filep != NULL && buf != NULL) {"
+        },
+        {
+          "line": 6490,
+          "text": "\t\tmg_snprintf(NULL,"
+        },
+        {
+          "line": 6491,
+          "text": "\t\t            NULL, /* All calls to construct_etag use 64 byte buffer */"
+        },
+        {
+          "line": 6492,
+          "text": "\t\t            buf,"
+        },
+        {
+          "line": 6493,
+          "text": "\t\t            buf_len,"
+        },
+        {
+          "line": 6494,
+          "text": "\t\t            \"\\\"%lx.%\" INT64_FMT \"\\\"\","
+        },
+        {
+          "line": 6495,
+          "text": "\t\t            (unsigned long)filep->last_modified,"
+        },
+        {
+          "line": 6496,
+          "text": "\t\t            filep->size);"
+        },
+        {
+          "line": 6497,
+          "text": "\t}"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\ventoy__Ventoy\\LinuxGUI\\Ventoy2Disk\\Lib\\libhttp\\include\\civetweb.c",
+      "line": 1929,
+      "col": 12,
+      "message": "explicit conversion of time_t to 'unsigned long' may truncate after 2106",
+      "context": [
+        {
+          "line": 1923,
+          "text": "\t\t\tflockfile(fi.fp);"
+        },
+        {
+          "line": 1924,
+          "text": "\t\t\ttimestamp = time(NULL);"
+        },
+        {
+          "line": 1925,
+          "text": ""
+        },
+        {
+          "line": 1926,
+          "text": "\t\t\tsockaddr_to_string(src_addr, sizeof(src_addr), &conn->client.rsa);"
+        },
+        {
+          "line": 1927,
+          "text": "\t\t\tfprintf(fi.fp,"
+        },
+        {
+          "line": 1928,
+          "text": "\t\t\t        \"[%010lu] [error] [client %s] \","
+        },
+        {
+          "line": 1929,
+          "text": "\t\t\t        (unsigned long)timestamp,"
+        },
+        {
+          "line": 1930,
+          "text": "\t\t\t        src_addr);"
+        },
+        {
+          "line": 1931,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\ventoy__Ventoy\\Plugson\\src\\Core\\ventoy_util_linux.c",
+      "line": 48,
+      "col": 15,
+      "message": "implicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 42,
+          "text": "    int i;"
+        },
+        {
+          "line": 43,
+          "text": "    int fd;"
+        },
+        {
+          "line": 44,
+          "text": ""
+        },
+        {
+          "line": 45,
+          "text": "    fd = open(\"/dev/urandom\", O_RDONLY | O_BINARY);"
+        },
+        {
+          "line": 46,
+          "text": "    if (fd < 0)"
+        },
+        {
+          "line": 47,
+          "text": "    {"
+        },
+        {
+          "line": 48,
+          "text": "        srand(time(NULL));"
+        },
+        {
+          "line": 49,
+          "text": "        for (i = 0; i < 8; i++)"
+        },
+        {
+          "line": 50,
+          "text": "        {"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\ventoy__Ventoy\\Plugson\\src\\Lib\\libhttp\\include\\civetweb.c",
+      "line": 10792,
+      "col": 7,
+      "message": "explicit conversion of time_t to 'long' may truncate after 2038",
+      "context": [
+        {
+          "line": 10786,
+          "text": "\t    && conn->ctx->callbacks.init_ssl == NULL) {"
+        },
+        {
+          "line": 10787,
+          "text": "\t\treturn 0;"
+        },
+        {
+          "line": 10788,
+          "text": "\t}"
+        },
+        {
+          "line": 10789,
+          "text": ""
+        },
+        {
+          "line": 10790,
+          "text": "\tt = data_check;"
+        },
+        {
+          "line": 10791,
+          "text": "\tif (stat(pem, &cert_buf) != -1) {"
+        },
+        {
+          "line": 10792,
+          "text": "\t\tt = (long int)cert_buf.st_mtime;"
+        },
+        {
+          "line": 10793,
+          "text": "\t}"
+        },
+        {
+          "line": 10794,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\ventoy__Ventoy\\Plugson\\src\\Lib\\libhttp\\include\\civetweb.c",
+      "line": 10792,
+      "col": 26,
+      "message": "access to struct stat timestamp field 'st_mtime': filesystem may not preserve timestamps beyond 2038",
+      "context": [
+        {
+          "line": 10786,
+          "text": "\t    && conn->ctx->callbacks.init_ssl == NULL) {"
+        },
+        {
+          "line": 10787,
+          "text": "\t\treturn 0;"
+        },
+        {
+          "line": 10788,
+          "text": "\t}"
+        },
+        {
+          "line": 10789,
+          "text": ""
+        },
+        {
+          "line": 10790,
+          "text": "\tt = data_check;"
+        },
+        {
+          "line": 10791,
+          "text": "\tif (stat(pem, &cert_buf) != -1) {"
+        },
+        {
+          "line": 10792,
+          "text": "\t\tt = (long int)cert_buf.st_mtime;"
+        },
+        {
+          "line": 10793,
+          "text": "\t}"
+        },
+        {
+          "line": 10794,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\ventoy__Ventoy\\Plugson\\src\\Lib\\libhttp\\include\\civetweb.c",
+      "line": 6509,
+      "col": 15,
+      "message": "explicit conversion of time_t to 'unsigned long' may truncate after 2106",
+      "context": [
+        {
+          "line": 6503,
+          "text": "\tif (filep != NULL && buf != NULL) {"
+        },
+        {
+          "line": 6504,
+          "text": "\t\tmg_snprintf(NULL,"
+        },
+        {
+          "line": 6505,
+          "text": "\t\t            NULL, /* All calls to construct_etag use 64 byte buffer */"
+        },
+        {
+          "line": 6506,
+          "text": "\t\t            buf,"
+        },
+        {
+          "line": 6507,
+          "text": "\t\t            buf_len,"
+        },
+        {
+          "line": 6508,
+          "text": "\t\t            \"\\\"%lx.%\" INT64_FMT \"\\\"\","
+        },
+        {
+          "line": 6509,
+          "text": "\t\t            (unsigned long)filep->last_modified,"
+        },
+        {
+          "line": 6510,
+          "text": "\t\t            filep->size);"
+        },
+        {
+          "line": 6511,
+          "text": "\t}"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\ventoy__Ventoy\\Plugson\\src\\Lib\\libhttp\\include\\civetweb.c",
+      "line": 1929,
+      "col": 12,
+      "message": "explicit conversion of time_t to 'unsigned long' may truncate after 2106",
+      "context": [
+        {
+          "line": 1923,
+          "text": "\t\t\tflockfile(fi.fp);"
+        },
+        {
+          "line": 1924,
+          "text": "\t\t\ttimestamp = time(NULL);"
+        },
+        {
+          "line": 1925,
+          "text": ""
+        },
+        {
+          "line": 1926,
+          "text": "\t\t\tsockaddr_to_string(src_addr, sizeof(src_addr), &conn->client.rsa);"
+        },
+        {
+          "line": 1927,
+          "text": "\t\t\tfprintf(fi.fp,"
+        },
+        {
+          "line": 1928,
+          "text": "\t\t\t        \"[%010lu] [error] [client %s] \","
+        },
+        {
+          "line": 1929,
+          "text": "\t\t\t        (unsigned long)timestamp,"
+        },
+        {
+          "line": 1930,
+          "text": "\t\t\t        src_addr);"
+        },
+        {
+          "line": 1931,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\ventoy__Ventoy\\SQUASHFS\\squashfs-tools-4.4\\squashfs-tools\\mksquashfs.c",
+      "line": 6343,
+      "col": 19,
+      "message": "implicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 6337,
+          "text": "\tsBlk.s_minor = SQUASHFS_MINOR;"
+        },
+        {
+          "line": 6338,
+          "text": "\tsBlk.block_size = block_size;"
+        },
+        {
+          "line": 6339,
+          "text": "\tsBlk.block_log = block_log;"
+        },
+        {
+          "line": 6340,
+          "text": "\tsBlk.flags = SQUASHFS_MKFLAGS(noI, noD, noF, noX, noId, no_fragments,"
+        },
+        {
+          "line": 6341,
+          "text": "\t\talways_use_fragments, duplicate_checking, exportable,"
+        },
+        {
+          "line": 6342,
+          "text": "\t\tno_xattrs, comp_opts);"
+        },
+        {
+          "line": 6343,
+          "text": "\tsBlk.mkfs_time = mkfs_time_opt ? mkfs_time : time(NULL);"
+        },
+        {
+          "line": 6344,
+          "text": ""
+        },
+        {
+          "line": 6345,
+          "text": "\tdisable_info();"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\ventoy__Ventoy\\SQUASHFS\\squashfs-tools-4.4\\squashfs-tools\\mksquashfs.c",
+      "line": 3708,
+      "col": 7,
+      "message": "access to struct stat timestamp field 'st_mtime': filesystem may not preserve timestamps beyond 2038",
+      "context": [
+        {
+          "line": 3702,
+          "text": "\t\tmemset(&buf, 0, sizeof(buf));"
+        },
+        {
+          "line": 3703,
+          "text": "\t\tbuf.st_mode = pseudo_ent->dev->mode;"
+        },
+        {
+          "line": 3704,
+          "text": "\t\tbuf.st_uid = pseudo_ent->dev->uid;"
+        },
+        {
+          "line": 3705,
+          "text": "\t\tbuf.st_gid = pseudo_ent->dev->gid;"
+        },
+        {
+          "line": 3706,
+          "text": "\t\tbuf.st_rdev = makedev(pseudo_ent->dev->major,"
+        },
+        {
+          "line": 3707,
+          "text": "\t\t\tpseudo_ent->dev->minor);"
+        },
+        {
+          "line": 3708,
+          "text": "\t\tbuf.st_mtime = time(NULL);"
+        },
+        {
+          "line": 3709,
+          "text": "\t\tbuf.st_ino = pseudo_ino ++;"
+        },
+        {
+          "line": 3710,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\ventoy__Ventoy\\SQUASHFS\\squashfs-tools-4.4\\squashfs-tools\\mksquashfs.c",
+      "line": 3262,
+      "col": 7,
+      "message": "access to struct stat timestamp field 'st_mtime': filesystem may not preserve timestamps beyond 2038",
+      "context": [
+        {
+          "line": 3256,
+          "text": "\t\t * command line"
+        },
+        {
+          "line": 3257,
+          "text": "\t\t */"
+        },
+        {
+          "line": 3258,
+          "text": "\t\tmemset(&buf, 0, sizeof(buf));"
+        },
+        {
+          "line": 3259,
+          "text": "\t\tbuf.st_mode = (root_mode_opt) ? root_mode | S_IFDIR : S_IRWXU | S_IRWXG | S_IRWXO | S_IFDIR;"
+        },
+        {
+          "line": 3260,
+          "text": "\t\tbuf.st_uid = getuid();"
+        },
+        {
+          "line": 3261,
+          "text": "\t\tbuf.st_gid = getgid();"
+        },
+        {
+          "line": 3262,
+          "text": "\t\tbuf.st_mtime = time(NULL);"
+        },
+        {
+          "line": 3263,
+          "text": "\t\tbuf.st_dev = 0;"
+        },
+        {
+          "line": 3264,
+          "text": "\t\tbuf.st_ino = 0;"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\ventoy__Ventoy\\SQUASHFS\\squashfs-tools-4.4\\squashfs-tools\\mksquashfs.c",
+      "line": 937,
+      "col": 16,
+      "message": "implicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 931,
+          "text": "\tbase->mode = SQUASHFS_MODE(buf->st_mode);"
+        },
+        {
+          "line": 932,
+          "text": "\tbase->uid = get_uid((unsigned int) global_uid == -1 ?"
+        },
+        {
+          "line": 933,
+          "text": "\t\tbuf->st_uid : global_uid);"
+        },
+        {
+          "line": 934,
+          "text": "\tbase->inode_type = type;"
+        },
+        {
+          "line": 935,
+          "text": "\tbase->guid = get_guid((unsigned int) global_gid == -1 ?"
+        },
+        {
+          "line": 936,
+          "text": "\t\tbuf->st_gid : global_gid);"
+        },
+        {
+          "line": 937,
+          "text": "\tbase->mtime = get_time(buf->st_mtime);"
+        },
+        {
+          "line": 938,
+          "text": "\tbase->inode_number = get_inode_no(dir_ent->inode);"
+        },
+        {
+          "line": 939,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\ventoy__Ventoy\\SQUASHFS\\squashfs-tools-4.4\\squashfs-tools\\mksquashfs.c",
+      "line": 937,
+      "col": 30,
+      "message": "access to struct stat timestamp field 'st_mtime': filesystem may not preserve timestamps beyond 2038",
+      "context": [
+        {
+          "line": 931,
+          "text": "\tbase->mode = SQUASHFS_MODE(buf->st_mode);"
+        },
+        {
+          "line": 932,
+          "text": "\tbase->uid = get_uid((unsigned int) global_uid == -1 ?"
+        },
+        {
+          "line": 933,
+          "text": "\t\tbuf->st_uid : global_uid);"
+        },
+        {
+          "line": 934,
+          "text": "\tbase->inode_type = type;"
+        },
+        {
+          "line": 935,
+          "text": "\tbase->guid = get_guid((unsigned int) global_gid == -1 ?"
+        },
+        {
+          "line": 936,
+          "text": "\t\tbuf->st_gid : global_gid);"
+        },
+        {
+          "line": 937,
+          "text": "\tbase->mtime = get_time(buf->st_mtime);"
+        },
+        {
+          "line": 938,
+          "text": "\tbase->inode_number = get_inode_no(dir_ent->inode);"
+        },
+        {
+          "line": 939,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\ventoy__Ventoy\\SQUASHFS\\squashfs-tools-4.4\\squashfs-tools\\unsquash-1.c",
+      "line": 227,
+      "col": 21,
+      "message": "implicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 221,
+          "text": ""
+        },
+        {
+          "line": 222,
+          "text": "\tdir->dir_count = 0;"
+        },
+        {
+          "line": 223,
+          "text": "\tdir->cur_entry = 0;"
+        },
+        {
+          "line": 224,
+          "text": "\tdir->mode = (*i)->mode;"
+        },
+        {
+          "line": 225,
+          "text": "\tdir->uid = (*i)->uid;"
+        },
+        {
+          "line": 226,
+          "text": "\tdir->guid = (*i)->gid;"
+        },
+        {
+          "line": 227,
+          "text": "\tdir->mtime = (*i)->time;"
+        },
+        {
+          "line": 228,
+          "text": "\tdir->xattr = (*i)->xattr;"
+        },
+        {
+          "line": 229,
+          "text": "\tdir->dirs = NULL;"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\ventoy__Ventoy\\SQUASHFS\\squashfs-tools-4.4\\squashfs-tools\\unsquash-2.c",
+      "line": 328,
+      "col": 21,
+      "message": "implicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 322,
+          "text": ""
+        },
+        {
+          "line": 323,
+          "text": "\tdir->dir_count = 0;"
+        },
+        {
+          "line": 324,
+          "text": "\tdir->cur_entry = 0;"
+        },
+        {
+          "line": 325,
+          "text": "\tdir->mode = (*i)->mode;"
+        },
+        {
+          "line": 326,
+          "text": "\tdir->uid = (*i)->uid;"
+        },
+        {
+          "line": 327,
+          "text": "\tdir->guid = (*i)->gid;"
+        },
+        {
+          "line": 328,
+          "text": "\tdir->mtime = (*i)->time;"
+        },
+        {
+          "line": 329,
+          "text": "\tdir->xattr = (*i)->xattr;"
+        },
+        {
+          "line": 330,
+          "text": "\tdir->dirs = NULL;"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\ventoy__Ventoy\\SQUASHFS\\squashfs-tools-4.4\\squashfs-tools\\unsquash-3.c",
+      "line": 354,
+      "col": 21,
+      "message": "implicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 348,
+          "text": ""
+        },
+        {
+          "line": 349,
+          "text": "\tdir->dir_count = 0;"
+        },
+        {
+          "line": 350,
+          "text": "\tdir->cur_entry = 0;"
+        },
+        {
+          "line": 351,
+          "text": "\tdir->mode = (*i)->mode;"
+        },
+        {
+          "line": 352,
+          "text": "\tdir->uid = (*i)->uid;"
+        },
+        {
+          "line": 353,
+          "text": "\tdir->guid = (*i)->gid;"
+        },
+        {
+          "line": 354,
+          "text": "\tdir->mtime = (*i)->time;"
+        },
+        {
+          "line": 355,
+          "text": "\tdir->xattr = (*i)->xattr;"
+        },
+        {
+          "line": 356,
+          "text": "\tdir->dirs = NULL;"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\ventoy__Ventoy\\SQUASHFS\\squashfs-tools-4.4\\squashfs-tools\\unsquash-4.c",
+      "line": 301,
+      "col": 21,
+      "message": "implicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 295,
+          "text": ""
+        },
+        {
+          "line": 296,
+          "text": "\tdir->dir_count = 0;"
+        },
+        {
+          "line": 297,
+          "text": "\tdir->cur_entry = 0;"
+        },
+        {
+          "line": 298,
+          "text": "\tdir->mode = (*i)->mode;"
+        },
+        {
+          "line": 299,
+          "text": "\tdir->uid = (*i)->uid;"
+        },
+        {
+          "line": 300,
+          "text": "\tdir->guid = (*i)->gid;"
+        },
+        {
+          "line": 301,
+          "text": "\tdir->mtime = (*i)->time;"
+        },
+        {
+          "line": 302,
+          "text": "\tdir->xattr = (*i)->xattr;"
+        },
+        {
+          "line": 303,
+          "text": "\tdir->dirs = NULL;"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\ventoy__Ventoy\\SQUASHFS\\squashfs-tools-4.4\\squashfs-tools\\unsquashfs.c",
+      "line": 921,
+      "col": 5,
+      "message": "call to utime() uses time_t timestamps; limited to 32-bit range — use utimensat() instead",
+      "context": [
+        {
+          "line": 915,
+          "text": ""
+        },
+        {
+          "line": 916,
+          "text": "int set_attributes(char *pathname, int mode, uid_t uid, gid_t guid, time_t time,"
+        },
+        {
+          "line": 917,
+          "text": "\tunsigned int xattr, unsigned int set_mode)"
+        },
+        {
+          "line": 918,
+          "text": "{"
+        },
+        {
+          "line": 919,
+          "text": "\tstruct utimbuf times = { time, time };"
+        },
+        {
+          "line": 920,
+          "text": ""
+        },
+        {
+          "line": 921,
+          "text": "\tif(utime(pathname, &times) == -1) {"
+        },
+        {
+          "line": 922,
+          "text": "\t\tEXIT_UNSQUASH_STRICT(\"set_attributes: failed to set time on %s, because %s\\n\","
+        },
+        {
+          "line": 923,
+          "text": "\t\t\tpathname, strerror(errno));"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\ventoy__Ventoy\\vtoycli\\vtoycli.c",
+      "line": 47,
+      "col": 15,
+      "message": "implicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 41,
+          "text": "    int i;"
+        },
+        {
+          "line": 42,
+          "text": "    int fd;"
+        },
+        {
+          "line": 43,
+          "text": ""
+        },
+        {
+          "line": 44,
+          "text": "    fd = open(\"/dev/urandom\", O_RDONLY);"
+        },
+        {
+          "line": 45,
+          "text": "    if (fd < 0)"
+        },
+        {
+          "line": 46,
+          "text": "    {"
+        },
+        {
+          "line": 47,
+          "text": "        srand(time(NULL));"
+        },
+        {
+          "line": 48,
+          "text": "        for (i = 0; i < 8; i++)"
+        },
+        {
+          "line": 49,
+          "text": "        {"
+        }
+      ]
+    }
+  ]
+}

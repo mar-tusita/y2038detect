@@ -1,0 +1,455 @@
+{
+  "repo": "mpv-player/mpv",
+  "stars": 35420,
+  "y2038detect_version": "0.9.4",
+  "scanned_at": "2026-09-30T14:29:40Z",
+  "scan_sec": 56.86,
+  "c_files": 373,
+  "c_lines": 191391,
+  "parse_errors": 68938,
+  "scan_errors": 0,
+  "issues": [
+    {
+      "file": "evaluation\\repos\\mpv-player__mpv\\player\\configfiles.c",
+      "line": 196,
+      "col": 9,
+      "message": "call to utime() uses time_t timestamps; limited to 32-bit range — use utimensat() instead",
+      "context": [
+        {
+          "line": 190,
+          "text": ""
+        },
+        {
+          "line": 191,
+          "text": "    struct utimbuf ut = {"
+        },
+        {
+          "line": 192,
+          "text": "        .actime = st2.st_atime,  // we want to pass this through intact"
+        },
+        {
+          "line": 193,
+          "text": "        .modtime = st1.st_mtime,"
+        },
+        {
+          "line": 194,
+          "text": "    };"
+        },
+        {
+          "line": 195,
+          "text": ""
+        },
+        {
+          "line": 196,
+          "text": "    if (utime(f2, &ut) != 0)"
+        },
+        {
+          "line": 197,
+          "text": "        return false;"
+        },
+        {
+          "line": 198,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\mpv-player__mpv\\video\\out\\vo_gpu_next.c",
+      "line": 2097,
+      "col": 12,
+      "message": "implicit conversion of time_t to 'int' may truncate after 2038",
+      "context": [
+        {
+          "line": 2091,
+          "text": "    size_t size;"
+        },
+        {
+          "line": 2092,
+          "text": "    time_t atime;"
+        },
+        {
+          "line": 2093,
+          "text": "};"
+        },
+        {
+          "line": 2094,
+          "text": ""
+        },
+        {
+          "line": 2095,
+          "text": "static int compare_atime(const void *a, const void *b)"
+        },
+        {
+          "line": 2096,
+          "text": "{"
+        },
+        {
+          "line": 2097,
+          "text": "    return (((struct file_entry *)b)->atime - ((struct file_entry *)a)->atime);"
+        },
+        {
+          "line": 2098,
+          "text": "}"
+        },
+        {
+          "line": 2099,
+          "text": ""
+        }
+      ]
+    }
+  ],
+  "issues_strict": [
+    {
+      "file": "evaluation\\repos\\mpv-player__mpv\\player\\configfiles.c",
+      "line": 181,
+      "col": 32,
+      "message": "access to struct stat timestamp field 'st_mtime': filesystem may not preserve timestamps beyond 2038",
+      "context": [
+        {
+          "line": 175,
+          "text": ""
+        },
+        {
+          "line": 176,
+          "text": "static bool check_mtime(const char *f1, const char *f2)"
+        },
+        {
+          "line": 177,
+          "text": "{"
+        },
+        {
+          "line": 178,
+          "text": "    struct stat st1, st2;"
+        },
+        {
+          "line": 179,
+          "text": "    if (stat(f1, &st1) != 0 || stat(f2, &st2) != 0)"
+        },
+        {
+          "line": 180,
+          "text": "        return false;"
+        },
+        {
+          "line": 181,
+          "text": "    return st1.st_mtime == st2.st_mtime;"
+        },
+        {
+          "line": 182,
+          "text": "}"
+        },
+        {
+          "line": 183,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\mpv-player__mpv\\player\\configfiles.c",
+      "line": 181,
+      "col": 16,
+      "message": "access to struct stat timestamp field 'st_mtime': filesystem may not preserve timestamps beyond 2038",
+      "context": [
+        {
+          "line": 175,
+          "text": ""
+        },
+        {
+          "line": 176,
+          "text": "static bool check_mtime(const char *f1, const char *f2)"
+        },
+        {
+          "line": 177,
+          "text": "{"
+        },
+        {
+          "line": 178,
+          "text": "    struct stat st1, st2;"
+        },
+        {
+          "line": 179,
+          "text": "    if (stat(f1, &st1) != 0 || stat(f2, &st2) != 0)"
+        },
+        {
+          "line": 180,
+          "text": "        return false;"
+        },
+        {
+          "line": 181,
+          "text": "    return st1.st_mtime == st2.st_mtime;"
+        },
+        {
+          "line": 182,
+          "text": "}"
+        },
+        {
+          "line": 183,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\mpv-player__mpv\\player\\configfiles.c",
+      "line": 196,
+      "col": 9,
+      "message": "call to utime() uses time_t timestamps; limited to 32-bit range — use utimensat() instead",
+      "context": [
+        {
+          "line": 190,
+          "text": ""
+        },
+        {
+          "line": 191,
+          "text": "    struct utimbuf ut = {"
+        },
+        {
+          "line": 192,
+          "text": "        .actime = st2.st_atime,  // we want to pass this through intact"
+        },
+        {
+          "line": 193,
+          "text": "        .modtime = st1.st_mtime,"
+        },
+        {
+          "line": 194,
+          "text": "    };"
+        },
+        {
+          "line": 195,
+          "text": ""
+        },
+        {
+          "line": 196,
+          "text": "    if (utime(f2, &ut) != 0)"
+        },
+        {
+          "line": 197,
+          "text": "        return false;"
+        },
+        {
+          "line": 198,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\mpv-player__mpv\\player\\javascript.c",
+      "line": 926,
+      "col": 17,
+      "message": "access to struct stat timestamp field 'st_ctime': filesystem may not preserve timestamps beyond 2038",
+      "context": [
+        {
+          "line": 920,
+          "text": "    };"
+        },
+        {
+          "line": 921,
+          "text": "    const double stat_values[] = {"
+        },
+        {
+          "line": 922,
+          "text": "        statbuf.st_mode,"
+        },
+        {
+          "line": 923,
+          "text": "        statbuf.st_size,"
+        },
+        {
+          "line": 924,
+          "text": "        statbuf.st_atime,"
+        },
+        {
+          "line": 925,
+          "text": "        statbuf.st_mtime,"
+        },
+        {
+          "line": 926,
+          "text": "        statbuf.st_ctime"
+        },
+        {
+          "line": 927,
+          "text": "    };"
+        },
+        {
+          "line": 928,
+          "text": "    // Create an object and add all fields"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\mpv-player__mpv\\player\\javascript.c",
+      "line": 925,
+      "col": 17,
+      "message": "access to struct stat timestamp field 'st_mtime': filesystem may not preserve timestamps beyond 2038",
+      "context": [
+        {
+          "line": 919,
+          "text": "        \"atime\", \"mtime\", \"ctime\", NULL"
+        },
+        {
+          "line": 920,
+          "text": "    };"
+        },
+        {
+          "line": 921,
+          "text": "    const double stat_values[] = {"
+        },
+        {
+          "line": 922,
+          "text": "        statbuf.st_mode,"
+        },
+        {
+          "line": 923,
+          "text": "        statbuf.st_size,"
+        },
+        {
+          "line": 924,
+          "text": "        statbuf.st_atime,"
+        },
+        {
+          "line": 925,
+          "text": "        statbuf.st_mtime,"
+        },
+        {
+          "line": 926,
+          "text": "        statbuf.st_ctime"
+        },
+        {
+          "line": 927,
+          "text": "    };"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\mpv-player__mpv\\player\\javascript.c",
+      "line": 924,
+      "col": 17,
+      "message": "access to struct stat timestamp field 'st_atime': filesystem may not preserve timestamps beyond 2038",
+      "context": [
+        {
+          "line": 918,
+          "text": "        \"mode\", \"size\","
+        },
+        {
+          "line": 919,
+          "text": "        \"atime\", \"mtime\", \"ctime\", NULL"
+        },
+        {
+          "line": 920,
+          "text": "    };"
+        },
+        {
+          "line": 921,
+          "text": "    const double stat_values[] = {"
+        },
+        {
+          "line": 922,
+          "text": "        statbuf.st_mode,"
+        },
+        {
+          "line": 923,
+          "text": "        statbuf.st_size,"
+        },
+        {
+          "line": 924,
+          "text": "        statbuf.st_atime,"
+        },
+        {
+          "line": 925,
+          "text": "        statbuf.st_mtime,"
+        },
+        {
+          "line": 926,
+          "text": "        statbuf.st_ctime"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\mpv-player__mpv\\video\\out\\vo_gpu_next.c",
+      "line": 2136,
+      "col": 51,
+      "message": "access to struct stat timestamp field 'st_atime': filesystem may not preserve timestamps beyond 2038",
+      "context": [
+        {
+          "line": 2130,
+          "text": "        if (fname.len != 16) // %016x"
+        },
+        {
+          "line": 2131,
+          "text": "            continue;"
+        },
+        {
+          "line": 2132,
+          "text": "        MP_TARRAY_APPEND(ta_ctx, files, num_files,"
+        },
+        {
+          "line": 2133,
+          "text": "                         (struct file_entry){"
+        },
+        {
+          "line": 2134,
+          "text": "                             .filepath = filepath,"
+        },
+        {
+          "line": 2135,
+          "text": "                             .size     = filestat.st_size,"
+        },
+        {
+          "line": 2136,
+          "text": "                             .atime    = filestat.st_atime,"
+        },
+        {
+          "line": 2137,
+          "text": "                         });"
+        },
+        {
+          "line": 2138,
+          "text": "    }"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\mpv-player__mpv\\video\\out\\vo_gpu_next.c",
+      "line": 2097,
+      "col": 12,
+      "message": "implicit conversion of time_t to 'int' may truncate after 2038",
+      "context": [
+        {
+          "line": 2091,
+          "text": "    size_t size;"
+        },
+        {
+          "line": 2092,
+          "text": "    time_t atime;"
+        },
+        {
+          "line": 2093,
+          "text": "};"
+        },
+        {
+          "line": 2094,
+          "text": ""
+        },
+        {
+          "line": 2095,
+          "text": "static int compare_atime(const void *a, const void *b)"
+        },
+        {
+          "line": 2096,
+          "text": "{"
+        },
+        {
+          "line": 2097,
+          "text": "    return (((struct file_entry *)b)->atime - ((struct file_entry *)a)->atime);"
+        },
+        {
+          "line": 2098,
+          "text": "}"
+        },
+        {
+          "line": 2099,
+          "text": ""
+        }
+      ]
+    }
+  ]
+}

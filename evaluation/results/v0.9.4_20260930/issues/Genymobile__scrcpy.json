@@ -1,0 +1,13 @@
+{
+  "repo": "Genymobile/scrcpy",
+  "stars": 142789,
+  "y2038detect_version": "0.9.4",
+  "scanned_at": "2026-09-30T13:54:18Z",
+  "scan_sec": 8.64,
+  "c_files": 91,
+  "c_lines": 24160,
+  "parse_errors": 7622,
+  "scan_errors": 0,
+  "issues": [],
+  "issues_strict": []
+}

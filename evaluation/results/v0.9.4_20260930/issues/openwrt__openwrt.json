@@ -1,0 +1,851 @@
+{
+  "repo": "openwrt/openwrt",
+  "stars": 27063,
+  "y2038detect_version": "0.9.4",
+  "scanned_at": "2026-09-30T14:39:30Z",
+  "scan_sec": 45.88,
+  "c_files": 422,
+  "c_lines": 253487,
+  "parse_errors": 102510,
+  "scan_errors": 0,
+  "issues": [
+    {
+      "file": "evaluation\\repos\\openwrt__openwrt\\package\\network\\utils\\iwcap\\src\\iwcap.c",
+      "line": 234,
+      "col": 13,
+      "message": "implicit conversion of time_t to 'uint32_t' may truncate after 2106",
+      "context": [
+        {
+          "line": 228,
+          "text": ""
+        },
+        {
+          "line": 229,
+          "text": "\te = r->buf + (r->fill++ * r->slen);"
+        },
+        {
+          "line": 230,
+          "text": "\tr->fill %= r->len;"
+        },
+        {
+          "line": 231,
+          "text": ""
+        },
+        {
+          "line": 232,
+          "text": "\tmemset(e, 0, r->slen);"
+        },
+        {
+          "line": 233,
+          "text": ""
+        },
+        {
+          "line": 234,
+          "text": "\te->sec = t.tv_sec;"
+        },
+        {
+          "line": 235,
+          "text": "\te->usec = t.tv_usec;"
+        },
+        {
+          "line": 236,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\openwrt__openwrt\\package\\network\\utils\\iwcap\\src\\iwcap.c",
+      "line": 190,
+      "col": 21,
+      "message": "implicit conversion of time_t to 'uint32_t' may truncate after 2106",
+      "context": [
+        {
+          "line": 184,
+          "text": "\telse"
+        },
+        {
+          "line": 185,
+          "text": "\t{"
+        },
+        {
+          "line": 186,
+          "text": "\t\ttv.tv_sec  = *sec;"
+        },
+        {
+          "line": 187,
+          "text": "\t\ttv.tv_usec = *usec;"
+        },
+        {
+          "line": 188,
+          "text": "\t}"
+        },
+        {
+          "line": 189,
+          "text": ""
+        },
+        {
+          "line": 190,
+          "text": "\tfhdr.ts_sec   = tv.tv_sec;"
+        },
+        {
+          "line": 191,
+          "text": "\tfhdr.ts_usec  = tv.tv_usec;"
+        },
+        {
+          "line": 192,
+          "text": "\tfhdr.incl_len = len;"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\openwrt__openwrt\\package\\system\\mtd\\src\\jffs2.c",
+      "line": 192,
+      "col": 16,
+      "message": "implicit conversion of time_t to 'jint32_t' may truncate after 2106",
+      "context": [
+        {
+          "line": 186,
+          "text": ""
+        },
+        {
+          "line": 187,
+          "text": "\tri.ino = inode;"
+        },
+        {
+          "line": 188,
+          "text": "\tri.mode = st.st_mode;"
+        },
+        {
+          "line": 189,
+          "text": "\tri.uid = ri.gid = 0;"
+        },
+        {
+          "line": 190,
+          "text": "\tri.atime = st.st_atime;"
+        },
+        {
+          "line": 191,
+          "text": "\tri.ctime = st.st_ctime;"
+        },
+        {
+          "line": 192,
+          "text": "\tri.mtime = st.st_mtime;"
+        },
+        {
+          "line": 193,
+          "text": "\tri.isize = st.st_size;"
+        },
+        {
+          "line": 194,
+          "text": "\tri.compr = 0;"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\openwrt__openwrt\\package\\system\\mtd\\src\\jffs2.c",
+      "line": 191,
+      "col": 16,
+      "message": "implicit conversion of time_t to 'jint32_t' may truncate after 2106",
+      "context": [
+        {
+          "line": 185,
+          "text": "\tri.nodetype = JFFS2_NODETYPE_INODE;"
+        },
+        {
+          "line": 186,
+          "text": ""
+        },
+        {
+          "line": 187,
+          "text": "\tri.ino = inode;"
+        },
+        {
+          "line": 188,
+          "text": "\tri.mode = st.st_mode;"
+        },
+        {
+          "line": 189,
+          "text": "\tri.uid = ri.gid = 0;"
+        },
+        {
+          "line": 190,
+          "text": "\tri.atime = st.st_atime;"
+        },
+        {
+          "line": 191,
+          "text": "\tri.ctime = st.st_ctime;"
+        },
+        {
+          "line": 192,
+          "text": "\tri.mtime = st.st_mtime;"
+        },
+        {
+          "line": 193,
+          "text": "\tri.isize = st.st_size;"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\openwrt__openwrt\\package\\system\\mtd\\src\\jffs2.c",
+      "line": 190,
+      "col": 16,
+      "message": "implicit conversion of time_t to 'jint32_t' may truncate after 2106",
+      "context": [
+        {
+          "line": 184,
+          "text": "\tri.magic = JFFS2_MAGIC_BITMASK;"
+        },
+        {
+          "line": 185,
+          "text": "\tri.nodetype = JFFS2_NODETYPE_INODE;"
+        },
+        {
+          "line": 186,
+          "text": ""
+        },
+        {
+          "line": 187,
+          "text": "\tri.ino = inode;"
+        },
+        {
+          "line": 188,
+          "text": "\tri.mode = st.st_mode;"
+        },
+        {
+          "line": 189,
+          "text": "\tri.uid = ri.gid = 0;"
+        },
+        {
+          "line": 190,
+          "text": "\tri.atime = st.st_atime;"
+        },
+        {
+          "line": 191,
+          "text": "\tri.ctime = st.st_ctime;"
+        },
+        {
+          "line": 192,
+          "text": "\tri.mtime = st.st_mtime;"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\openwrt__openwrt\\package\\utils\\px5g-wolfssl\\px5g-wolfssl.c",
+      "line": 142,
+      "col": 28,
+      "message": "implicit conversion of time_t to 'unsigned long' may truncate after 2106",
+      "context": [
+        {
+          "line": 136,
+          "text": "  char fstr[20], tstr[20];"
+        },
+        {
+          "line": 137,
+          "text": "  bool pem = true;"
+        },
+        {
+          "line": 138,
+          "text": "  Cert newCert;"
+        },
+        {
+          "line": 139,
+          "text": "#ifdef __USE_TIME_BITS64"
+        },
+        {
+          "line": 140,
+          "text": "  time_t to, from = time(NULL);"
+        },
+        {
+          "line": 141,
+          "text": "#else"
+        },
+        {
+          "line": 142,
+          "text": "  unsigned long to, from = time(NULL);"
+        },
+        {
+          "line": 143,
+          "text": "#endif"
+        },
+        {
+          "line": 144,
+          "text": "  byte derBuf[FOURK_SZ] = {};"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\openwrt__openwrt\\scripts\\config\\conf.c",
+      "line": 110,
+      "col": 10,
+      "message": "implicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 104,
+          "text": ""
+        },
+        {
+          "line": 105,
+          "text": "\t\t/*"
+        },
+        {
+          "line": 106,
+          "text": "\t\t * Use microseconds derived seed, compensate for systems where it may"
+        },
+        {
+          "line": 107,
+          "text": "\t\t * be zero."
+        },
+        {
+          "line": 108,
+          "text": "\t\t */"
+        },
+        {
+          "line": 109,
+          "text": "\t\tgettimeofday(&now, NULL);"
+        },
+        {
+          "line": 110,
+          "text": "\t\tseed = (now.tv_sec + 1) * (now.tv_usec + 1);"
+        },
+        {
+          "line": 111,
+          "text": "\t}"
+        },
+        {
+          "line": 112,
+          "text": ""
+        }
+      ]
+    }
+  ],
+  "issues_strict": [
+    {
+      "file": "evaluation\\repos\\openwrt__openwrt\\package\\network\\services\\hostapd\\src\\hostapd\\radius.c",
+      "line": 181,
+      "col": 23,
+      "message": "access to struct stat timestamp field 'st_mtime': filesystem may not preserve timestamps beyond 2038",
+      "context": [
+        {
+          "line": 175,
+          "text": "\tif (stat(s->user_file, &st))"
+        },
+        {
+          "line": 176,
+          "text": "\t\treturn;"
+        },
+        {
+          "line": 177,
+          "text": ""
+        },
+        {
+          "line": 178,
+          "text": "\tif (s->user_file_ts == st.st_mtime)"
+        },
+        {
+          "line": 179,
+          "text": "\t\treturn;"
+        },
+        {
+          "line": 180,
+          "text": ""
+        },
+        {
+          "line": 181,
+          "text": "\ts->user_file_ts = st.st_mtime;"
+        },
+        {
+          "line": 182,
+          "text": "\tradius_userdata_free(&s->phase1);"
+        },
+        {
+          "line": 183,
+          "text": "\tradius_userdata_free(&s->phase2);"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\openwrt__openwrt\\package\\network\\services\\hostapd\\src\\hostapd\\radius.c",
+      "line": 178,
+      "col": 28,
+      "message": "access to struct stat timestamp field 'st_mtime': filesystem may not preserve timestamps beyond 2038",
+      "context": [
+        {
+          "line": 172,
+          "text": "\tstruct stat st;"
+        },
+        {
+          "line": 173,
+          "text": "\tint rem;"
+        },
+        {
+          "line": 174,
+          "text": ""
+        },
+        {
+          "line": 175,
+          "text": "\tif (stat(s->user_file, &st))"
+        },
+        {
+          "line": 176,
+          "text": "\t\treturn;"
+        },
+        {
+          "line": 177,
+          "text": ""
+        },
+        {
+          "line": 178,
+          "text": "\tif (s->user_file_ts == st.st_mtime)"
+        },
+        {
+          "line": 179,
+          "text": "\t\treturn;"
+        },
+        {
+          "line": 180,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\openwrt__openwrt\\package\\network\\utils\\iwcap\\src\\iwcap.c",
+      "line": 234,
+      "col": 13,
+      "message": "implicit conversion of time_t to 'uint32_t' may truncate after 2106",
+      "context": [
+        {
+          "line": 228,
+          "text": ""
+        },
+        {
+          "line": 229,
+          "text": "\te = r->buf + (r->fill++ * r->slen);"
+        },
+        {
+          "line": 230,
+          "text": "\tr->fill %= r->len;"
+        },
+        {
+          "line": 231,
+          "text": ""
+        },
+        {
+          "line": 232,
+          "text": "\tmemset(e, 0, r->slen);"
+        },
+        {
+          "line": 233,
+          "text": ""
+        },
+        {
+          "line": 234,
+          "text": "\te->sec = t.tv_sec;"
+        },
+        {
+          "line": 235,
+          "text": "\te->usec = t.tv_usec;"
+        },
+        {
+          "line": 236,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\openwrt__openwrt\\package\\network\\utils\\iwcap\\src\\iwcap.c",
+      "line": 190,
+      "col": 21,
+      "message": "implicit conversion of time_t to 'uint32_t' may truncate after 2106",
+      "context": [
+        {
+          "line": 184,
+          "text": "\telse"
+        },
+        {
+          "line": 185,
+          "text": "\t{"
+        },
+        {
+          "line": 186,
+          "text": "\t\ttv.tv_sec  = *sec;"
+        },
+        {
+          "line": 187,
+          "text": "\t\ttv.tv_usec = *usec;"
+        },
+        {
+          "line": 188,
+          "text": "\t}"
+        },
+        {
+          "line": 189,
+          "text": ""
+        },
+        {
+          "line": 190,
+          "text": "\tfhdr.ts_sec   = tv.tv_sec;"
+        },
+        {
+          "line": 191,
+          "text": "\tfhdr.ts_usec  = tv.tv_usec;"
+        },
+        {
+          "line": 192,
+          "text": "\tfhdr.incl_len = len;"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\openwrt__openwrt\\package\\system\\mtd\\src\\jffs2.c",
+      "line": 192,
+      "col": 16,
+      "message": "implicit conversion of time_t to 'jint32_t' may truncate after 2106",
+      "context": [
+        {
+          "line": 186,
+          "text": ""
+        },
+        {
+          "line": 187,
+          "text": "\tri.ino = inode;"
+        },
+        {
+          "line": 188,
+          "text": "\tri.mode = st.st_mode;"
+        },
+        {
+          "line": 189,
+          "text": "\tri.uid = ri.gid = 0;"
+        },
+        {
+          "line": 190,
+          "text": "\tri.atime = st.st_atime;"
+        },
+        {
+          "line": 191,
+          "text": "\tri.ctime = st.st_ctime;"
+        },
+        {
+          "line": 192,
+          "text": "\tri.mtime = st.st_mtime;"
+        },
+        {
+          "line": 193,
+          "text": "\tri.isize = st.st_size;"
+        },
+        {
+          "line": 194,
+          "text": "\tri.compr = 0;"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\openwrt__openwrt\\package\\system\\mtd\\src\\jffs2.c",
+      "line": 192,
+      "col": 16,
+      "message": "access to struct stat timestamp field 'st_mtime': filesystem may not preserve timestamps beyond 2038",
+      "context": [
+        {
+          "line": 186,
+          "text": ""
+        },
+        {
+          "line": 187,
+          "text": "\tri.ino = inode;"
+        },
+        {
+          "line": 188,
+          "text": "\tri.mode = st.st_mode;"
+        },
+        {
+          "line": 189,
+          "text": "\tri.uid = ri.gid = 0;"
+        },
+        {
+          "line": 190,
+          "text": "\tri.atime = st.st_atime;"
+        },
+        {
+          "line": 191,
+          "text": "\tri.ctime = st.st_ctime;"
+        },
+        {
+          "line": 192,
+          "text": "\tri.mtime = st.st_mtime;"
+        },
+        {
+          "line": 193,
+          "text": "\tri.isize = st.st_size;"
+        },
+        {
+          "line": 194,
+          "text": "\tri.compr = 0;"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\openwrt__openwrt\\package\\system\\mtd\\src\\jffs2.c",
+      "line": 191,
+      "col": 16,
+      "message": "implicit conversion of time_t to 'jint32_t' may truncate after 2106",
+      "context": [
+        {
+          "line": 185,
+          "text": "\tri.nodetype = JFFS2_NODETYPE_INODE;"
+        },
+        {
+          "line": 186,
+          "text": ""
+        },
+        {
+          "line": 187,
+          "text": "\tri.ino = inode;"
+        },
+        {
+          "line": 188,
+          "text": "\tri.mode = st.st_mode;"
+        },
+        {
+          "line": 189,
+          "text": "\tri.uid = ri.gid = 0;"
+        },
+        {
+          "line": 190,
+          "text": "\tri.atime = st.st_atime;"
+        },
+        {
+          "line": 191,
+          "text": "\tri.ctime = st.st_ctime;"
+        },
+        {
+          "line": 192,
+          "text": "\tri.mtime = st.st_mtime;"
+        },
+        {
+          "line": 193,
+          "text": "\tri.isize = st.st_size;"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\openwrt__openwrt\\package\\system\\mtd\\src\\jffs2.c",
+      "line": 191,
+      "col": 16,
+      "message": "access to struct stat timestamp field 'st_ctime': filesystem may not preserve timestamps beyond 2038",
+      "context": [
+        {
+          "line": 185,
+          "text": "\tri.nodetype = JFFS2_NODETYPE_INODE;"
+        },
+        {
+          "line": 186,
+          "text": ""
+        },
+        {
+          "line": 187,
+          "text": "\tri.ino = inode;"
+        },
+        {
+          "line": 188,
+          "text": "\tri.mode = st.st_mode;"
+        },
+        {
+          "line": 189,
+          "text": "\tri.uid = ri.gid = 0;"
+        },
+        {
+          "line": 190,
+          "text": "\tri.atime = st.st_atime;"
+        },
+        {
+          "line": 191,
+          "text": "\tri.ctime = st.st_ctime;"
+        },
+        {
+          "line": 192,
+          "text": "\tri.mtime = st.st_mtime;"
+        },
+        {
+          "line": 193,
+          "text": "\tri.isize = st.st_size;"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\openwrt__openwrt\\package\\system\\mtd\\src\\jffs2.c",
+      "line": 190,
+      "col": 16,
+      "message": "implicit conversion of time_t to 'jint32_t' may truncate after 2106",
+      "context": [
+        {
+          "line": 184,
+          "text": "\tri.magic = JFFS2_MAGIC_BITMASK;"
+        },
+        {
+          "line": 185,
+          "text": "\tri.nodetype = JFFS2_NODETYPE_INODE;"
+        },
+        {
+          "line": 186,
+          "text": ""
+        },
+        {
+          "line": 187,
+          "text": "\tri.ino = inode;"
+        },
+        {
+          "line": 188,
+          "text": "\tri.mode = st.st_mode;"
+        },
+        {
+          "line": 189,
+          "text": "\tri.uid = ri.gid = 0;"
+        },
+        {
+          "line": 190,
+          "text": "\tri.atime = st.st_atime;"
+        },
+        {
+          "line": 191,
+          "text": "\tri.ctime = st.st_ctime;"
+        },
+        {
+          "line": 192,
+          "text": "\tri.mtime = st.st_mtime;"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\openwrt__openwrt\\package\\system\\mtd\\src\\jffs2.c",
+      "line": 190,
+      "col": 16,
+      "message": "access to struct stat timestamp field 'st_atime': filesystem may not preserve timestamps beyond 2038",
+      "context": [
+        {
+          "line": 184,
+          "text": "\tri.magic = JFFS2_MAGIC_BITMASK;"
+        },
+        {
+          "line": 185,
+          "text": "\tri.nodetype = JFFS2_NODETYPE_INODE;"
+        },
+        {
+          "line": 186,
+          "text": ""
+        },
+        {
+          "line": 187,
+          "text": "\tri.ino = inode;"
+        },
+        {
+          "line": 188,
+          "text": "\tri.mode = st.st_mode;"
+        },
+        {
+          "line": 189,
+          "text": "\tri.uid = ri.gid = 0;"
+        },
+        {
+          "line": 190,
+          "text": "\tri.atime = st.st_atime;"
+        },
+        {
+          "line": 191,
+          "text": "\tri.ctime = st.st_ctime;"
+        },
+        {
+          "line": 192,
+          "text": "\tri.mtime = st.st_mtime;"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\openwrt__openwrt\\package\\utils\\px5g-wolfssl\\px5g-wolfssl.c",
+      "line": 142,
+      "col": 28,
+      "message": "implicit conversion of time_t to 'unsigned long' may truncate after 2106",
+      "context": [
+        {
+          "line": 136,
+          "text": "  char fstr[20], tstr[20];"
+        },
+        {
+          "line": 137,
+          "text": "  bool pem = true;"
+        },
+        {
+          "line": 138,
+          "text": "  Cert newCert;"
+        },
+        {
+          "line": 139,
+          "text": "#ifdef __USE_TIME_BITS64"
+        },
+        {
+          "line": 140,
+          "text": "  time_t to, from = time(NULL);"
+        },
+        {
+          "line": 141,
+          "text": "#else"
+        },
+        {
+          "line": 142,
+          "text": "  unsigned long to, from = time(NULL);"
+        },
+        {
+          "line": 143,
+          "text": "#endif"
+        },
+        {
+          "line": 144,
+          "text": "  byte derBuf[FOURK_SZ] = {};"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\openwrt__openwrt\\scripts\\config\\conf.c",
+      "line": 110,
+      "col": 10,
+      "message": "implicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 104,
+          "text": ""
+        },
+        {
+          "line": 105,
+          "text": "\t\t/*"
+        },
+        {
+          "line": 106,
+          "text": "\t\t * Use microseconds derived seed, compensate for systems where it may"
+        },
+        {
+          "line": 107,
+          "text": "\t\t * be zero."
+        },
+        {
+          "line": 108,
+          "text": "\t\t */"
+        },
+        {
+          "line": 109,
+          "text": "\t\tgettimeofday(&now, NULL);"
+        },
+        {
+          "line": 110,
+          "text": "\t\tseed = (now.tv_sec + 1) * (now.tv_usec + 1);"
+        },
+        {
+          "line": 111,
+          "text": "\t}"
+        },
+        {
+          "line": 112,
+          "text": ""
+        }
+      ]
+    }
+  ]
+}

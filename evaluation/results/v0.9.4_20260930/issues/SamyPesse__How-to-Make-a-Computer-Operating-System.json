@@ -1,0 +1,271 @@
+{
+  "repo": "SamyPesse/How-to-Make-a-Computer-Operating-System",
+  "stars": 22420,
+  "y2038detect_version": "0.9.4",
+  "scanned_at": "2026-09-30T14:57:58Z",
+  "scan_sec": 8.64,
+  "c_files": 239,
+  "c_lines": 18948,
+  "parse_errors": 657,
+  "scan_errors": 0,
+  "issues": [
+    {
+      "file": "evaluation\\repos\\SamyPesse__How-to-Make-a-Computer-Operating-System\\src\\sdk\\src\\libc\\src\\sys\\utimes.c",
+      "line": 17,
+      "col": 12,
+      "message": "call to utime() uses time_t timestamps; limited to 32-bit range — use utimensat() instead",
+      "context": [
+        {
+          "line": 11,
+          "text": ""
+        },
+        {
+          "line": 12,
+          "text": "    /* NOTE: no microsecond precision */"
+        },
+        {
+          "line": 13,
+          "text": "    tmp.actime = times[ 0 ].tv_sec;"
+        },
+        {
+          "line": 14,
+          "text": "    tmp.modtime = times[ 1 ].tv_sec;"
+        },
+        {
+          "line": 15,
+          "text": ""
+        },
+        {
+          "line": 16,
+          "text": "    /* This is a wrapper around utime() */"
+        },
+        {
+          "line": 17,
+          "text": "    return utime( filename, &tmp );"
+        },
+        {
+          "line": 18,
+          "text": "}"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\SamyPesse__How-to-Make-a-Computer-Operating-System\\src\\sdk\\src\\libc\\src\\time\\time_int.c",
+      "line": 71,
+      "col": 20,
+      "message": "explicit conversion of time_t to 'int' may truncate after 2038",
+      "context": [
+        {
+          "line": 65,
+          "text": "                timeval -= monthdays[ --ret->tm_mon ];"
+        },
+        {
+          "line": 66,
+          "text": "                break;"
+        },
+        {
+          "line": 67,
+          "text": "            }"
+        },
+        {
+          "line": 68,
+          "text": "        }"
+        },
+        {
+          "line": 69,
+          "text": "    }"
+        },
+        {
+          "line": 70,
+          "text": ""
+        },
+        {
+          "line": 71,
+          "text": "    ret->tm_mday = ( int )timeval + 1;"
+        },
+        {
+          "line": 72,
+          "text": "    ret->tm_isdst = -1;"
+        },
+        {
+          "line": 73,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\SamyPesse__How-to-Make-a-Computer-Operating-System\\src\\sdk\\src\\libc\\src\\time\\time_int.c",
+      "line": 53,
+      "col": 20,
+      "message": "explicit conversion of time_t to 'int' may truncate after 2038",
+      "context": [
+        {
+          "line": 47,
+          "text": "            timeval -= sumofdays[ i - 1 ];"
+        },
+        {
+          "line": 48,
+          "text": ""
+        },
+        {
+          "line": 49,
+          "text": "            break;"
+        },
+        {
+          "line": 50,
+          "text": "        }"
+        },
+        {
+          "line": 51,
+          "text": "    }"
+        },
+        {
+          "line": 52,
+          "text": ""
+        },
+        {
+          "line": 53,
+          "text": "    ret->tm_yday = ( int )timeval;"
+        },
+        {
+          "line": 54,
+          "text": ""
+        },
+        {
+          "line": 55,
+          "text": "    if ( ret->tm_year % 4 == 0 ) {"
+        }
+      ]
+    }
+  ],
+  "issues_strict": [
+    {
+      "file": "evaluation\\repos\\SamyPesse__How-to-Make-a-Computer-Operating-System\\src\\sdk\\src\\libc\\src\\sys\\utimes.c",
+      "line": 17,
+      "col": 12,
+      "message": "call to utime() uses time_t timestamps; limited to 32-bit range — use utimensat() instead",
+      "context": [
+        {
+          "line": 11,
+          "text": ""
+        },
+        {
+          "line": 12,
+          "text": "    /* NOTE: no microsecond precision */"
+        },
+        {
+          "line": 13,
+          "text": "    tmp.actime = times[ 0 ].tv_sec;"
+        },
+        {
+          "line": 14,
+          "text": "    tmp.modtime = times[ 1 ].tv_sec;"
+        },
+        {
+          "line": 15,
+          "text": ""
+        },
+        {
+          "line": 16,
+          "text": "    /* This is a wrapper around utime() */"
+        },
+        {
+          "line": 17,
+          "text": "    return utime( filename, &tmp );"
+        },
+        {
+          "line": 18,
+          "text": "}"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\SamyPesse__How-to-Make-a-Computer-Operating-System\\src\\sdk\\src\\libc\\src\\time\\time_int.c",
+      "line": 71,
+      "col": 20,
+      "message": "explicit conversion of time_t to 'int' may truncate after 2038",
+      "context": [
+        {
+          "line": 65,
+          "text": "                timeval -= monthdays[ --ret->tm_mon ];"
+        },
+        {
+          "line": 66,
+          "text": "                break;"
+        },
+        {
+          "line": 67,
+          "text": "            }"
+        },
+        {
+          "line": 68,
+          "text": "        }"
+        },
+        {
+          "line": 69,
+          "text": "    }"
+        },
+        {
+          "line": 70,
+          "text": ""
+        },
+        {
+          "line": 71,
+          "text": "    ret->tm_mday = ( int )timeval + 1;"
+        },
+        {
+          "line": 72,
+          "text": "    ret->tm_isdst = -1;"
+        },
+        {
+          "line": 73,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\SamyPesse__How-to-Make-a-Computer-Operating-System\\src\\sdk\\src\\libc\\src\\time\\time_int.c",
+      "line": 53,
+      "col": 20,
+      "message": "explicit conversion of time_t to 'int' may truncate after 2038",
+      "context": [
+        {
+          "line": 47,
+          "text": "            timeval -= sumofdays[ i - 1 ];"
+        },
+        {
+          "line": 48,
+          "text": ""
+        },
+        {
+          "line": 49,
+          "text": "            break;"
+        },
+        {
+          "line": 50,
+          "text": "        }"
+        },
+        {
+          "line": 51,
+          "text": "    }"
+        },
+        {
+          "line": 52,
+          "text": ""
+        },
+        {
+          "line": 53,
+          "text": "    ret->tm_yday = ( int )timeval;"
+        },
+        {
+          "line": 54,
+          "text": ""
+        },
+        {
+          "line": 55,
+          "text": "    if ( ret->tm_year % 4 == 0 ) {"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "repo": "nothings/stb",
+  "stars": 33809,
+  "y2038detect_version": "0.9.4",
+  "scanned_at": "2026-09-30T14:30:15Z",
+  "scan_sec": 14.78,
+  "c_files": 53,
+  "c_lines": 24239,
+  "parse_errors": 9400,
+  "scan_errors": 0,
+  "issues": [],
+  "issues_strict": []
+}

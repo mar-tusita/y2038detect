@@ -1,0 +1,13 @@
+{
+  "repo": "valinet/ExplorerPatcher",
+  "stars": 32691,
+  "y2038detect_version": "0.9.4",
+  "scanned_at": "2026-09-30T14:32:07Z",
+  "scan_sec": 4.11,
+  "c_files": 23,
+  "c_lines": 28719,
+  "parse_errors": 19229,
+  "scan_errors": 0,
+  "issues": [],
+  "issues_strict": []
+}

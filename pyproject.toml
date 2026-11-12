@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "y2038detect"
+dynamic = ["version"]
+description = "Detect Year 2038 (time_t narrowing) problems in C source files"
+requires-python = ">=3.10"
+dependencies = ["libclang"]
+
+[project.scripts]
+y2038detect = "y2038detect:main"
+
+[tool.setuptools]
+py-modules = ["y2038detect", "_version"]
+
+[tool.setuptools.dynamic]
+version = {attr = "_version.__version__"}

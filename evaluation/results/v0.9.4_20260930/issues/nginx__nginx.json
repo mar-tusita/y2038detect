@@ -1,0 +1,103 @@
+{
+  "repo": "nginx/nginx",
+  "stars": 30524,
+  "y2038detect_version": "0.9.4",
+  "scanned_at": "2026-09-30T14:35:15Z",
+  "scan_sec": 24.74,
+  "c_files": 263,
+  "c_lines": 232222,
+  "parse_errors": 161409,
+  "scan_errors": 0,
+  "issues": [
+    {
+      "file": "evaluation\\repos\\nginx__nginx\\src\\os\\unix\\ngx_files.c",
+      "line": 614,
+      "col": 9,
+      "message": "call to utimes() uses struct timeval with long tv_sec; limited to 32-bit range — use utimensat() instead",
+      "context": [
+        {
+          "line": 608,
+          "text": ""
+        },
+        {
+          "line": 609,
+          "text": "    tv[0].tv_sec = ngx_time();"
+        },
+        {
+          "line": 610,
+          "text": "    tv[0].tv_usec = 0;"
+        },
+        {
+          "line": 611,
+          "text": "    tv[1].tv_sec = s;"
+        },
+        {
+          "line": 612,
+          "text": "    tv[1].tv_usec = 0;"
+        },
+        {
+          "line": 613,
+          "text": ""
+        },
+        {
+          "line": 614,
+          "text": "    if (utimes((char *) name, tv) != -1) {"
+        },
+        {
+          "line": 615,
+          "text": "        return NGX_OK;"
+        },
+        {
+          "line": 616,
+          "text": "    }"
+        }
+      ]
+    }
+  ],
+  "issues_strict": [
+    {
+      "file": "evaluation\\repos\\nginx__nginx\\src\\os\\unix\\ngx_files.c",
+      "line": 614,
+      "col": 9,
+      "message": "call to utimes() uses struct timeval with long tv_sec; limited to 32-bit range — use utimensat() instead",
+      "context": [
+        {
+          "line": 608,
+          "text": ""
+        },
+        {
+          "line": 609,
+          "text": "    tv[0].tv_sec = ngx_time();"
+        },
+        {
+          "line": 610,
+          "text": "    tv[0].tv_usec = 0;"
+        },
+        {
+          "line": 611,
+          "text": "    tv[1].tv_sec = s;"
+        },
+        {
+          "line": 612,
+          "text": "    tv[1].tv_usec = 0;"
+        },
+        {
+          "line": 613,
+          "text": ""
+        },
+        {
+          "line": 614,
+          "text": "    if (utimes((char *) name, tv) != -1) {"
+        },
+        {
+          "line": 615,
+          "text": "        return NGX_OK;"
+        },
+        {
+          "line": 616,
+          "text": "    }"
+        }
+      ]
+    }
+  ]
+}

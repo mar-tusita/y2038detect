@@ -1,0 +1,279 @@
+{
+  "repo": "allinurl/goaccess",
+  "stars": 20601,
+  "y2038detect_version": "0.9.4",
+  "scanned_at": "2026-09-30T15:07:54Z",
+  "scan_sec": 23.12,
+  "c_files": 40,
+  "c_lines": 36383,
+  "parse_errors": 6070,
+  "scan_errors": 0,
+  "issues": [
+    {
+      "file": "evaluation\\repos\\allinurl__goaccess\\src\\goaccess.c",
+      "line": 1476,
+      "col": 42,
+      "message": "implicit conversion of time_t to 'uint32_t' may truncate after 2106",
+      "context": [
+        {
+          "line": 1470,
+          "text": " * if elapsed time == 0, we will bump it to 1."
+        },
+        {
+          "line": 1471,
+          "text": " */"
+        },
+        {
+          "line": 1472,
+          "text": "static void"
+        },
+        {
+          "line": 1473,
+          "text": "set_accumulated_time (void) {"
+        },
+        {
+          "line": 1474,
+          "text": "  time_t elapsed = end_proc - start_proc;"
+        },
+        {
+          "line": 1475,
+          "text": "  elapsed = (!elapsed) ? !elapsed : elapsed;"
+        },
+        {
+          "line": 1476,
+          "text": "  ht_inc_cnt_overall (\"processing_time\", elapsed);"
+        },
+        {
+          "line": 1477,
+          "text": "}"
+        },
+        {
+          "line": 1478,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\allinurl__goaccess\\src\\wsauth.c",
+      "line": 139,
+      "col": 14,
+      "message": "implicit conversion of time_t to 'long' may truncate after 2038",
+      "context": [
+        {
+          "line": 133,
+          "text": "  char *jwt = NULL, *payload = NULL, report_id[50];"
+        },
+        {
+          "line": 134,
+          "text": "  time_t now = time (NULL);"
+        },
+        {
+          "line": 135,
+          "text": "  struct tm *jwt_now_tm = localtime (&now);"
+        },
+        {
+          "line": 136,
+          "text": "  // Configure token lifetime in seconds"
+        },
+        {
+          "line": 137,
+          "text": "  long token_lifetime = conf.ws_auth_expire > 0 ? conf.ws_auth_expire : DEFAULT_EXPIRE_TIME;"
+        },
+        {
+          "line": 138,
+          "text": "  long iat = now;"
+        },
+        {
+          "line": 139,
+          "text": "  long exp = now + token_lifetime;"
+        },
+        {
+          "line": 140,
+          "text": ""
+        },
+        {
+          "line": 141,
+          "text": "  // Format the date as \"YYYYMMDD\" for the report ID"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\allinurl__goaccess\\src\\wsauth.c",
+      "line": 138,
+      "col": 14,
+      "message": "implicit conversion of time_t to 'long' may truncate after 2038",
+      "context": [
+        {
+          "line": 132,
+          "text": "create_jwt_token (void) {"
+        },
+        {
+          "line": 133,
+          "text": "  char *jwt = NULL, *payload = NULL, report_id[50];"
+        },
+        {
+          "line": 134,
+          "text": "  time_t now = time (NULL);"
+        },
+        {
+          "line": 135,
+          "text": "  struct tm *jwt_now_tm = localtime (&now);"
+        },
+        {
+          "line": 136,
+          "text": "  // Configure token lifetime in seconds"
+        },
+        {
+          "line": 137,
+          "text": "  long token_lifetime = conf.ws_auth_expire > 0 ? conf.ws_auth_expire : DEFAULT_EXPIRE_TIME;"
+        },
+        {
+          "line": 138,
+          "text": "  long iat = now;"
+        },
+        {
+          "line": 139,
+          "text": "  long exp = now + token_lifetime;"
+        },
+        {
+          "line": 140,
+          "text": ""
+        }
+      ]
+    }
+  ],
+  "issues_strict": [
+    {
+      "file": "evaluation\\repos\\allinurl__goaccess\\src\\goaccess.c",
+      "line": 1476,
+      "col": 42,
+      "message": "implicit conversion of time_t to 'uint32_t' may truncate after 2106",
+      "context": [
+        {
+          "line": 1470,
+          "text": " * if elapsed time == 0, we will bump it to 1."
+        },
+        {
+          "line": 1471,
+          "text": " */"
+        },
+        {
+          "line": 1472,
+          "text": "static void"
+        },
+        {
+          "line": 1473,
+          "text": "set_accumulated_time (void) {"
+        },
+        {
+          "line": 1474,
+          "text": "  time_t elapsed = end_proc - start_proc;"
+        },
+        {
+          "line": 1475,
+          "text": "  elapsed = (!elapsed) ? !elapsed : elapsed;"
+        },
+        {
+          "line": 1476,
+          "text": "  ht_inc_cnt_overall (\"processing_time\", elapsed);"
+        },
+        {
+          "line": 1477,
+          "text": "}"
+        },
+        {
+          "line": 1478,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\allinurl__goaccess\\src\\wsauth.c",
+      "line": 139,
+      "col": 14,
+      "message": "implicit conversion of time_t to 'long' may truncate after 2038",
+      "context": [
+        {
+          "line": 133,
+          "text": "  char *jwt = NULL, *payload = NULL, report_id[50];"
+        },
+        {
+          "line": 134,
+          "text": "  time_t now = time (NULL);"
+        },
+        {
+          "line": 135,
+          "text": "  struct tm *jwt_now_tm = localtime (&now);"
+        },
+        {
+          "line": 136,
+          "text": "  // Configure token lifetime in seconds"
+        },
+        {
+          "line": 137,
+          "text": "  long token_lifetime = conf.ws_auth_expire > 0 ? conf.ws_auth_expire : DEFAULT_EXPIRE_TIME;"
+        },
+        {
+          "line": 138,
+          "text": "  long iat = now;"
+        },
+        {
+          "line": 139,
+          "text": "  long exp = now + token_lifetime;"
+        },
+        {
+          "line": 140,
+          "text": ""
+        },
+        {
+          "line": 141,
+          "text": "  // Format the date as \"YYYYMMDD\" for the report ID"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\allinurl__goaccess\\src\\wsauth.c",
+      "line": 138,
+      "col": 14,
+      "message": "implicit conversion of time_t to 'long' may truncate after 2038",
+      "context": [
+        {
+          "line": 132,
+          "text": "create_jwt_token (void) {"
+        },
+        {
+          "line": 133,
+          "text": "  char *jwt = NULL, *payload = NULL, report_id[50];"
+        },
+        {
+          "line": 134,
+          "text": "  time_t now = time (NULL);"
+        },
+        {
+          "line": 135,
+          "text": "  struct tm *jwt_now_tm = localtime (&now);"
+        },
+        {
+          "line": 136,
+          "text": "  // Configure token lifetime in seconds"
+        },
+        {
+          "line": 137,
+          "text": "  long token_lifetime = conf.ws_auth_expire > 0 ? conf.ws_auth_expire : DEFAULT_EXPIRE_TIME;"
+        },
+        {
+          "line": 138,
+          "text": "  long iat = now;"
+        },
+        {
+          "line": 139,
+          "text": "  long exp = now + token_lifetime;"
+        },
+        {
+          "line": 140,
+          "text": ""
+        }
+      ]
+    }
+  ]
+}

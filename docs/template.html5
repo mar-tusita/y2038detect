@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="$if(lang_en)$en$else$ja$endif$">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>$if(title)$$title$ — y2038detect$else$y2038detect — $if(lang_en)$Year 2038 Problem Detector$else$2038年問題検出ツール$endif$$endif$</title>
+  <link rel="stylesheet" href="$if(css_href)$$css_href$$else$style.css$endif$">
+$if(highlighting-css)$
+  <style>$highlighting-css$</style>
+$endif$
+</head>
+<body>
+$if(no_lang_switch)$
+$else$
+<nav class="lang-switcher">
+$if(lang_en)$
+  <a href="../">日本語</a>
+$else$
+  <a href="en/">English</a>
+$endif$
+</nav>
+$endif$
+<article class="content">
+$body$
+</article>
+</body>
+</html>

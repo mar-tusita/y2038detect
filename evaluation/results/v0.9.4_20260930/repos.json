@@ -1,0 +1,402 @@
+[
+  {
+    "repo": "Genymobile/scrcpy",
+    "stars": 142789,
+    "size_kb": 8676,
+    "c_ratio": 0.6307,
+    "collected_at": "2026-06-01T08:54:39Z",
+    "domain": "system-tool"
+  },
+  {
+    "repo": "netdata/netdata",
+    "stars": 79008,
+    "size_kb": 272272,
+    "c_ratio": 0.5334,
+    "collected_at": "2026-06-01T08:54:40Z",
+    "domain": "system-tool"
+  },
+  {
+    "repo": "ventoy/Ventoy",
+    "stars": 76955,
+    "size_kb": 218541,
+    "c_ratio": 0.8453,
+    "collected_at": "2026-06-01T08:54:41Z",
+    "domain": "system-tool"
+  },
+  {
+    "repo": "redis/redis",
+    "stars": 74645,
+    "size_kb": 212445,
+    "c_ratio": 0.6983,
+    "collected_at": "2026-06-01T08:54:42Z",
+    "domain": "database"
+  },
+  {
+    "repo": "obsproject/obs-studio",
+    "stars": 72869,
+    "size_kb": 80626,
+    "c_ratio": 0.519,
+    "collected_at": "2026-06-01T08:54:43Z",
+    "domain": "multimedia"
+  },
+  {
+    "repo": "git/git",
+    "stars": 61234,
+    "size_kb": 307697,
+    "c_ratio": 0.5007,
+    "collected_at": "2026-06-01T08:54:44Z",
+    "domain": "system-tool"
+  },
+  {
+    "repo": "FFmpeg/FFmpeg",
+    "stars": 60668,
+    "size_kb": 479543,
+    "c_ratio": 0.8929,
+    "collected_at": "2026-06-01T08:54:45Z",
+    "domain": "multimedia"
+  },
+  {
+    "repo": "tmux/tmux",
+    "stars": 46170,
+    "size_kb": 20027,
+    "c_ratio": 0.8737,
+    "collected_at": "2026-06-01T08:54:46Z",
+    "domain": "system-tool"
+  },
+  {
+    "repo": "curl/curl",
+    "stars": 42026,
+    "size_kb": 138411,
+    "c_ratio": 0.747,
+    "collected_at": "2026-06-01T08:54:47Z",
+    "domain": "network-tool"
+  },
+  {
+    "repo": "wg/wrk",
+    "stars": 40312,
+    "size_kb": 38743,
+    "c_ratio": 0.9596,
+    "collected_at": "2026-06-01T08:54:48Z",
+    "domain": "network-tool"
+  },
+  {
+    "repo": "pbatard/rufus",
+    "stars": 36262,
+    "size_kb": 46032,
+    "c_ratio": 0.8689,
+    "collected_at": "2026-06-01T08:54:49Z",
+    "domain": "system-tool"
+  },
+  {
+    "repo": "mpv-player/mpv",
+    "stars": 35420,
+    "size_kb": 118976,
+    "c_ratio": 0.8769,
+    "collected_at": "2026-06-01T08:54:50Z",
+    "domain": "multimedia"
+  },
+  {
+    "repo": "jqlang/jq",
+    "stars": 34787,
+    "size_kb": 7928,
+    "c_ratio": 0.7905,
+    "collected_at": "2026-06-01T08:54:51Z",
+    "domain": "system-tool"
+  },
+  {
+    "repo": "nothings/stb",
+    "stars": 33809,
+    "size_kb": 5854,
+    "c_ratio": 0.9013,
+    "collected_at": "2026-06-01T08:54:53Z",
+    "domain": "library"
+  },
+  {
+    "repo": "raysan5/raylib",
+    "stars": 33222,
+    "size_kb": 419862,
+    "c_ratio": 0.8592,
+    "collected_at": "2026-06-01T08:54:54Z",
+    "domain": "library"
+  },
+  {
+    "repo": "bilibili/ijkplayer",
+    "stars": 33154,
+    "size_kb": 8283,
+    "c_ratio": 0.5741,
+    "collected_at": "2026-06-01T08:54:55Z",
+    "domain": "multimedia"
+  },
+  {
+    "repo": "valinet/ExplorerPatcher",
+    "stars": 32691,
+    "size_kb": 9378,
+    "c_ratio": 0.7425,
+    "collected_at": "2026-06-01T08:54:56Z",
+    "domain": "system-tool"
+  },
+  {
+    "repo": "lizongying/my-tv",
+    "stars": 32085,
+    "size_kb": 72954,
+    "c_ratio": 0.8006,
+    "collected_at": "2026-06-01T08:54:57Z",
+    "domain": "multimedia"
+  },
+  {
+    "repo": "coolsnowwolf/lede",
+    "stars": 31454,
+    "size_kb": 316625,
+    "c_ratio": 0.9285,
+    "collected_at": "2026-06-01T08:54:58Z",
+    "domain": "embedded-firmware"
+  },
+  {
+    "repo": "kingToolbox/WindTerm",
+    "stars": 31165,
+    "size_kb": 18742,
+    "c_ratio": 0.8552,
+    "collected_at": "2026-06-01T08:54:59Z",
+    "domain": "system-tool"
+  },
+  {
+    "repo": "nginx/nginx",
+    "stars": 30524,
+    "size_kb": 75793,
+    "c_ratio": 0.9771,
+    "collected_at": "2026-06-01T08:55:00Z",
+    "domain": "network-tool"
+  },
+  {
+    "repo": "cfenollosa/os-tutorial",
+    "stars": 30466,
+    "size_kb": 107,
+    "c_ratio": 0.5182,
+    "collected_at": "2026-06-01T08:55:01Z",
+    "domain": "educational"
+  },
+  {
+    "repo": "openssl/openssl",
+    "stars": 30246,
+    "size_kb": 343922,
+    "c_ratio": 0.7374,
+    "collected_at": "2026-06-01T08:55:02Z",
+    "domain": "security"
+  },
+  {
+    "repo": "asmvik/yabai",
+    "stars": 28984,
+    "size_kb": 7499,
+    "c_ratio": 0.831,
+    "collected_at": "2026-06-01T08:55:03Z",
+    "domain": "system-tool"
+  },
+  {
+    "repo": "ValdikSS/GoodbyeDPI",
+    "stars": 28337,
+    "size_kb": 222,
+    "c_ratio": 0.9907,
+    "collected_at": "2026-06-01T08:55:04Z",
+    "domain": "network-tool"
+  },
+  {
+    "repo": "facebook/zstd",
+    "stars": 27179,
+    "size_kb": 40390,
+    "c_ratio": 0.7622,
+    "collected_at": "2026-06-01T08:55:05Z",
+    "domain": "library"
+  },
+  {
+    "repo": "ggreer/the_silver_searcher",
+    "stars": 27069,
+    "size_kb": 2426,
+    "c_ratio": 0.8096,
+    "collected_at": "2026-06-01T08:55:06Z",
+    "domain": "system-tool"
+  },
+  {
+    "repo": "openwrt/openwrt",
+    "stars": 27063,
+    "size_kb": 296647,
+    "c_ratio": 0.6698,
+    "collected_at": "2026-06-01T08:55:07Z",
+    "domain": "embedded-firmware"
+  },
+  {
+    "repo": "libuv/libuv",
+    "stars": 26874,
+    "size_kb": 17637,
+    "c_ratio": 0.9699,
+    "collected_at": "2026-06-01T08:55:08Z",
+    "domain": "library"
+  },
+  {
+    "repo": "pjreddie/darknet",
+    "stars": 26459,
+    "size_kb": 6526,
+    "c_ratio": 0.9042,
+    "collected_at": "2026-06-01T08:55:10Z",
+    "domain": "library"
+  },
+  {
+    "repo": "hashcat/hashcat",
+    "stars": 26060,
+    "size_kb": 145991,
+    "c_ratio": 0.9683,
+    "collected_at": "2026-06-01T08:55:11Z",
+    "domain": "security"
+  },
+  {
+    "repo": "valkey-io/valkey",
+    "stars": 25976,
+    "size_kb": 177396,
+    "c_ratio": 0.6795,
+    "collected_at": "2026-06-01T08:55:12Z",
+    "domain": "database"
+  },
+  {
+    "repo": "robertdavidgraham/masscan",
+    "stars": 25754,
+    "size_kb": 3696,
+    "c_ratio": 0.9984,
+    "collected_at": "2026-06-01T08:55:13Z",
+    "domain": "network-tool"
+  },
+  {
+    "repo": "arendst/Tasmota",
+    "stars": 24446,
+    "size_kb": 276716,
+    "c_ratio": 0.5997,
+    "collected_at": "2026-06-01T08:55:14Z",
+    "domain": "embedded-firmware"
+  },
+  {
+    "repo": "xiaojieonly/Ehviewer_CN_SXJ",
+    "stars": 24288,
+    "size_kb": 15359,
+    "c_ratio": 0.4882,
+    "collected_at": "2026-06-01T08:55:15Z",
+    "domain": "multimedia"
+  },
+  {
+    "repo": "radareorg/radare2",
+    "stars": 23991,
+    "size_kb": 198988,
+    "c_ratio": 0.9672,
+    "collected_at": "2026-06-01T08:55:16Z",
+    "domain": "security"
+  },
+  {
+    "repo": "HandBrake/HandBrake",
+    "stars": 23286,
+    "size_kb": 123499,
+    "c_ratio": 0.5728,
+    "collected_at": "2026-06-01T08:55:18Z",
+    "domain": "multimedia"
+  },
+  {
+    "repo": "fastfetch-cli/fastfetch",
+    "stars": 23003,
+    "size_kb": 16500,
+    "c_ratio": 0.882,
+    "collected_at": "2026-06-01T08:55:19Z",
+    "domain": "system-tool"
+  },
+  {
+    "repo": "timescale/timescaledb",
+    "stars": 22770,
+    "size_kb": 59668,
+    "c_ratio": 0.6528,
+    "collected_at": "2026-06-01T08:55:20Z",
+    "domain": "database"
+  },
+  {
+    "repo": "iovisor/bcc",
+    "stars": 22439,
+    "size_kb": 23863,
+    "c_ratio": 0.8807,
+    "collected_at": "2026-06-01T08:55:21Z",
+    "domain": "system-tool"
+  },
+  {
+    "repo": "SamyPesse/How-to-Make-a-Computer-Operating-System",
+    "stars": 22420,
+    "size_kb": 5986,
+    "c_ratio": 0.745,
+    "collected_at": "2026-06-01T08:55:22Z",
+    "domain": "educational"
+  },
+  {
+    "repo": "TheAlgorithms/C",
+    "stars": 22105,
+    "size_kb": 20365,
+    "c_ratio": 0.9674,
+    "collected_at": "2026-06-01T08:55:23Z",
+    "domain": "educational"
+  },
+  {
+    "repo": "micropython/micropython",
+    "stars": 21765,
+    "size_kb": 74545,
+    "c_ratio": 0.8471,
+    "collected_at": "2026-06-01T08:55:25Z",
+    "domain": "embedded-firmware"
+  },
+  {
+    "repo": "DarkFlippers/unleashed-firmware",
+    "stars": 21664,
+    "size_kb": 102689,
+    "c_ratio": 0.986,
+    "collected_at": "2026-06-01T08:55:26Z",
+    "domain": "embedded-firmware"
+  },
+  {
+    "repo": "jarun/nnn",
+    "stars": 21604,
+    "size_kb": 7392,
+    "c_ratio": 0.6087,
+    "collected_at": "2026-06-01T08:55:27Z",
+    "domain": "system-tool"
+  },
+  {
+    "repo": "gentilkiwi/mimikatz",
+    "stars": 21596,
+    "size_kb": 5326,
+    "c_ratio": 0.9997,
+    "collected_at": "2026-06-01T08:55:28Z",
+    "domain": "security"
+  },
+  {
+    "repo": "pgvector/pgvector",
+    "stars": 21548,
+    "size_kb": 1839,
+    "c_ratio": 0.7722,
+    "collected_at": "2026-06-01T08:55:29Z",
+    "domain": "database"
+  },
+  {
+    "repo": "julycoding/The-Art-Of-Programming-By-July-2nd",
+    "stars": 21511,
+    "size_kb": 27547,
+    "c_ratio": 0.4918,
+    "collected_at": "2026-06-01T08:55:30Z",
+    "domain": "educational"
+  },
+  {
+    "repo": "jart/cosmopolitan",
+    "stars": 20866,
+    "size_kb": 337955,
+    "c_ratio": 0.6325,
+    "collected_at": "2026-06-01T08:55:31Z",
+    "domain": "library"
+  },
+  {
+    "repo": "allinurl/goaccess",
+    "stars": 20601,
+    "size_kb": 9138,
+    "c_ratio": 0.841,
+    "collected_at": "2026-06-01T08:55:32Z",
+    "domain": "network-tool"
+  }
+]

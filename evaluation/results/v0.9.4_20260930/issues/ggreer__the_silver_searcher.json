@@ -1,0 +1,191 @@
+{
+  "repo": "ggreer/the_silver_searcher",
+  "stars": 27069,
+  "y2038detect_version": "0.9.4",
+  "scanned_at": "2026-09-30T14:38:43Z",
+  "scan_sec": 2.19,
+  "c_files": 12,
+  "c_lines": 4634,
+  "parse_errors": 589,
+  "scan_errors": 0,
+  "issues": [
+    {
+      "file": "evaluation\\repos\\ggreer__the_silver_searcher\\src\\main.c",
+      "line": 214,
+      "col": 29,
+      "message": "explicit conversion of time_t to 'long' may truncate after 2038",
+      "context": [
+        {
+          "line": 208,
+          "text": "        }"
+        },
+        {
+          "line": 209,
+          "text": "    }"
+        },
+        {
+          "line": 210,
+          "text": ""
+        },
+        {
+          "line": 211,
+          "text": "    if (opts.stats) {"
+        },
+        {
+          "line": 212,
+          "text": "        gettimeofday(&(stats.time_end), NULL);"
+        },
+        {
+          "line": 213,
+          "text": "        double time_diff = ((long)stats.time_end.tv_sec * 1000000 + stats.time_end.tv_usec) -"
+        },
+        {
+          "line": 214,
+          "text": "                           ((long)stats.time_start.tv_sec * 1000000 + stats.time_start.tv_usec);"
+        },
+        {
+          "line": 215,
+          "text": "        time_diff /= 1000000;"
+        },
+        {
+          "line": 216,
+          "text": "        printf(\"%zu matches\\n%zu files contained matches\\n%zu files searched\\n%zu bytes searched\\n%f seconds\\n\","
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\ggreer__the_silver_searcher\\src\\main.c",
+      "line": 213,
+      "col": 29,
+      "message": "explicit conversion of time_t to 'long' may truncate after 2038",
+      "context": [
+        {
+          "line": 207,
+          "text": "            }"
+        },
+        {
+          "line": 208,
+          "text": "        }"
+        },
+        {
+          "line": 209,
+          "text": "    }"
+        },
+        {
+          "line": 210,
+          "text": ""
+        },
+        {
+          "line": 211,
+          "text": "    if (opts.stats) {"
+        },
+        {
+          "line": 212,
+          "text": "        gettimeofday(&(stats.time_end), NULL);"
+        },
+        {
+          "line": 213,
+          "text": "        double time_diff = ((long)stats.time_end.tv_sec * 1000000 + stats.time_end.tv_usec) -"
+        },
+        {
+          "line": 214,
+          "text": "                           ((long)stats.time_start.tv_sec * 1000000 + stats.time_start.tv_usec);"
+        },
+        {
+          "line": 215,
+          "text": "        time_diff /= 1000000;"
+        }
+      ]
+    }
+  ],
+  "issues_strict": [
+    {
+      "file": "evaluation\\repos\\ggreer__the_silver_searcher\\src\\main.c",
+      "line": 214,
+      "col": 29,
+      "message": "explicit conversion of time_t to 'long' may truncate after 2038",
+      "context": [
+        {
+          "line": 208,
+          "text": "        }"
+        },
+        {
+          "line": 209,
+          "text": "    }"
+        },
+        {
+          "line": 210,
+          "text": ""
+        },
+        {
+          "line": 211,
+          "text": "    if (opts.stats) {"
+        },
+        {
+          "line": 212,
+          "text": "        gettimeofday(&(stats.time_end), NULL);"
+        },
+        {
+          "line": 213,
+          "text": "        double time_diff = ((long)stats.time_end.tv_sec * 1000000 + stats.time_end.tv_usec) -"
+        },
+        {
+          "line": 214,
+          "text": "                           ((long)stats.time_start.tv_sec * 1000000 + stats.time_start.tv_usec);"
+        },
+        {
+          "line": 215,
+          "text": "        time_diff /= 1000000;"
+        },
+        {
+          "line": 216,
+          "text": "        printf(\"%zu matches\\n%zu files contained matches\\n%zu files searched\\n%zu bytes searched\\n%f seconds\\n\","
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\ggreer__the_silver_searcher\\src\\main.c",
+      "line": 213,
+      "col": 29,
+      "message": "explicit conversion of time_t to 'long' may truncate after 2038",
+      "context": [
+        {
+          "line": 207,
+          "text": "            }"
+        },
+        {
+          "line": 208,
+          "text": "        }"
+        },
+        {
+          "line": 209,
+          "text": "    }"
+        },
+        {
+          "line": 210,
+          "text": ""
+        },
+        {
+          "line": 211,
+          "text": "    if (opts.stats) {"
+        },
+        {
+          "line": 212,
+          "text": "        gettimeofday(&(stats.time_end), NULL);"
+        },
+        {
+          "line": 213,
+          "text": "        double time_diff = ((long)stats.time_end.tv_sec * 1000000 + stats.time_end.tv_usec) -"
+        },
+        {
+          "line": 214,
+          "text": "                           ((long)stats.time_start.tv_sec * 1000000 + stats.time_start.tv_usec);"
+        },
+        {
+          "line": 215,
+          "text": "        time_diff /= 1000000;"
+        }
+      ]
+    }
+  ]
+}

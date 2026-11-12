@@ -1,0 +1,13 @@
+{
+  "repo": "fastfetch-cli/fastfetch",
+  "stars": 23003,
+  "y2038detect_version": "0.9.4",
+  "scanned_at": "2026-09-30T14:57:13Z",
+  "scan_sec": 25.67,
+  "c_files": 480,
+  "c_lines": 83140,
+  "parse_errors": 39263,
+  "scan_errors": 0,
+  "issues": [],
+  "issues_strict": []
+}

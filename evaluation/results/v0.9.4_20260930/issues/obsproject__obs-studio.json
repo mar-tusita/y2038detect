@@ -1,0 +1,278 @@
+{
+  "repo": "obsproject/obs-studio",
+  "stars": 72869,
+  "y2038detect_version": "0.9.4",
+  "scanned_at": "2026-09-30T14:04:21Z",
+  "scan_sec": 140.94,
+  "c_files": 644,
+  "c_lines": 229354,
+  "parse_errors": 92484,
+  "scan_errors": 0,
+  "issues": [],
+  "issues_strict": [
+    {
+      "file": "evaluation\\repos\\obsproject__obs-studio\\deps\\w32-pthreads\\tests\\condvar1_1.c",
+      "line": 99,
+      "col": 16,
+      "message": "explicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 93,
+          "text": "      /* Traverse the list before every init of a CV. */"
+        },
+        {
+          "line": 94,
+          "text": "      assert(pthread_timechange_handler_np(NULL) == (void *) 0);"
+        },
+        {
+          "line": 95,
+          "text": "      assert(pthread_cond_init(&cv[i], NULL) == 0);"
+        },
+        {
+          "line": 96,
+          "text": "    }"
+        },
+        {
+          "line": 97,
+          "text": ""
+        },
+        {
+          "line": 98,
+          "text": "  j = NUM_CV;"
+        },
+        {
+          "line": 99,
+          "text": "  (void) srand((unsigned)time(NULL));"
+        },
+        {
+          "line": 100,
+          "text": ""
+        },
+        {
+          "line": 101,
+          "text": "  do"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\obsproject__obs-studio\\deps\\w32-pthreads\\tests\\condvar1_2.c",
+      "line": 103,
+      "col": 20,
+      "message": "explicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 97,
+          "text": "      for (i = 0; i < NUM_CV; i++)"
+        },
+        {
+          "line": 98,
+          "text": "        {"
+        },
+        {
+          "line": 99,
+          "text": "          assert(pthread_cond_init(&cv[i], NULL) == 0);"
+        },
+        {
+          "line": 100,
+          "text": "        }"
+        },
+        {
+          "line": 101,
+          "text": ""
+        },
+        {
+          "line": 102,
+          "text": "      j = NUM_CV;"
+        },
+        {
+          "line": 103,
+          "text": "      (void) srand((unsigned)time(NULL));"
+        },
+        {
+          "line": 104,
+          "text": ""
+        },
+        {
+          "line": 105,
+          "text": "      /* Traverse the list asynchronously. */"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\obsproject__obs-studio\\libobs\\obs-video.c",
+      "line": 1180,
+      "col": 8,
+      "message": "explicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 1174,
+          "text": "\tos_set_thread_name(\"libobs: graphics thread\");"
+        },
+        {
+          "line": 1175,
+          "text": ""
+        },
+        {
+          "line": 1176,
+          "text": "\tconst char *video_thread_name = profile_store_name(obs_get_profiler_name_store(),"
+        },
+        {
+          "line": 1177,
+          "text": "\t\t\t\t\t\t\t   \"obs_graphics_thread(%g\" NBSP \"ms)\", interval / 1000000.);"
+        },
+        {
+          "line": 1178,
+          "text": "\tprofile_register_root(video_thread_name, interval);"
+        },
+        {
+          "line": 1179,
+          "text": ""
+        },
+        {
+          "line": 1180,
+          "text": "\tsrand((unsigned int)time(NULL));"
+        },
+        {
+          "line": 1181,
+          "text": ""
+        },
+        {
+          "line": 1182,
+          "text": "\tstruct obs_graphics_context context;"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\obsproject__obs-studio\\plugins\\image-source\\image-source.c",
+      "line": 38,
+      "col": 15,
+      "message": "access to struct stat timestamp field 'st_mtime': filesystem may not preserve timestamps beyond 2038",
+      "context": [
+        {
+          "line": 32,
+          "text": ""
+        },
+        {
+          "line": 33,
+          "text": "static time_t get_modified_timestamp(const char *filename)"
+        },
+        {
+          "line": 34,
+          "text": "{"
+        },
+        {
+          "line": 35,
+          "text": "\tstruct stat stats;"
+        },
+        {
+          "line": 36,
+          "text": "\tif (os_stat(filename, &stats) != 0)"
+        },
+        {
+          "line": 37,
+          "text": "\t\treturn -1;"
+        },
+        {
+          "line": 38,
+          "text": "\treturn stats.st_mtime;"
+        },
+        {
+          "line": 39,
+          "text": "}"
+        },
+        {
+          "line": 40,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\obsproject__obs-studio\\plugins\\obs-filters\\mask-filter.c",
+      "line": 50,
+      "col": 15,
+      "message": "access to struct stat timestamp field 'st_mtime': filesystem may not preserve timestamps beyond 2038",
+      "context": [
+        {
+          "line": 44,
+          "text": ""
+        },
+        {
+          "line": 45,
+          "text": "static time_t get_modified_timestamp(const char *filename)"
+        },
+        {
+          "line": 46,
+          "text": "{"
+        },
+        {
+          "line": 47,
+          "text": "\tstruct stat stats;"
+        },
+        {
+          "line": 48,
+          "text": "\tif (os_stat(filename, &stats) != 0)"
+        },
+        {
+          "line": 49,
+          "text": "\t\treturn -1;"
+        },
+        {
+          "line": 50,
+          "text": "\treturn stats.st_mtime;"
+        },
+        {
+          "line": 51,
+          "text": "}"
+        },
+        {
+          "line": 52,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\obsproject__obs-studio\\plugins\\text-freetype2\\text-functionality.c",
+      "line": 356,
+      "col": 15,
+      "message": "access to struct stat timestamp field 'st_mtime': filesystem may not preserve timestamps beyond 2038",
+      "context": [
+        {
+          "line": 350,
+          "text": ""
+        },
+        {
+          "line": 351,
+          "text": "\t// stat is apparently terrifying and horrible, but we only call it once"
+        },
+        {
+          "line": 352,
+          "text": "\t// every second at most."
+        },
+        {
+          "line": 353,
+          "text": "\tif (os_stat(filename, &stats) != 0)"
+        },
+        {
+          "line": 354,
+          "text": "\t\treturn -1;"
+        },
+        {
+          "line": 355,
+          "text": ""
+        },
+        {
+          "line": 356,
+          "text": "\treturn stats.st_mtime;"
+        },
+        {
+          "line": 357,
+          "text": "}"
+        },
+        {
+          "line": 358,
+          "text": ""
+        }
+      ]
+    }
+  ]
+}

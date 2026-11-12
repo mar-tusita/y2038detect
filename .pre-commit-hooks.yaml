@@ -1,0 +1,6 @@
+- id: y2038detect
+  name: y2038 problem detector
+  description: Detect Year 2038 (time_t narrowing) problems in C source files
+  entry: y2038detect
+  language: python
+  types: [c]

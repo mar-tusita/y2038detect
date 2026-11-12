@@ -1,0 +1,58 @@
+{
+  "repo": "kingToolbox/WindTerm",
+  "stars": 31165,
+  "y2038detect_version": "0.9.4",
+  "scanned_at": "2026-09-30T14:34:50Z",
+  "scan_sec": 24.94,
+  "c_files": 240,
+  "c_lines": 132235,
+  "parse_errors": 33738,
+  "scan_errors": 0,
+  "issues": [],
+  "issues_strict": [
+    {
+      "file": "evaluation\\repos\\kingToolbox__WindTerm\\src\\libssh\\tests\\sftp_stress\\main.c",
+      "line": 58,
+      "col": 9,
+      "message": "implicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 52,
+          "text": "}"
+        },
+        {
+          "line": 53,
+          "text": ""
+        },
+        {
+          "line": 54,
+          "text": "int main(int argc, char **argv){"
+        },
+        {
+          "line": 55,
+          "text": "  int i;"
+        },
+        {
+          "line": 56,
+          "text": "  pthread_t threads[NTHREADS];"
+        },
+        {
+          "line": 57,
+          "text": "  ssh_init();"
+        },
+        {
+          "line": 58,
+          "text": "  srand(time(NULL));"
+        },
+        {
+          "line": 59,
+          "text": "  for(i=0;i<FILESIZE;++i)"
+        },
+        {
+          "line": 60,
+          "text": "    samplefile[i]=rand() & 0xff;"
+        }
+      ]
+    }
+  ]
+}

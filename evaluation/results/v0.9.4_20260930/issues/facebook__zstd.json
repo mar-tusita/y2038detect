@@ -1,0 +1,103 @@
+{
+  "repo": "facebook/zstd",
+  "stars": 27179,
+  "y2038detect_version": "0.9.4",
+  "scanned_at": "2026-09-30T14:38:41Z",
+  "scan_sec": 49.75,
+  "c_files": 146,
+  "c_lines": 108194,
+  "parse_errors": 18170,
+  "scan_errors": 0,
+  "issues": [
+    {
+      "file": "evaluation\\repos\\facebook__zstd\\programs\\util.c",
+      "line": 296,
+      "col": 15,
+      "message": "call to utime() uses time_t timestamps; limited to 32-bit range — use utimensat() instead",
+      "context": [
+        {
+          "line": 290,
+          "text": "    }"
+        },
+        {
+          "line": 291,
+          "text": "#else"
+        },
+        {
+          "line": 292,
+          "text": "    {"
+        },
+        {
+          "line": 293,
+          "text": "        struct utimbuf timebuf;"
+        },
+        {
+          "line": 294,
+          "text": "        timebuf.actime = time(NULL);"
+        },
+        {
+          "line": 295,
+          "text": "        timebuf.modtime = statbuf->st_mtime;"
+        },
+        {
+          "line": 296,
+          "text": "        ret = utime(filename, &timebuf);"
+        },
+        {
+          "line": 297,
+          "text": "    }"
+        },
+        {
+          "line": 298,
+          "text": "#endif"
+        }
+      ]
+    }
+  ],
+  "issues_strict": [
+    {
+      "file": "evaluation\\repos\\facebook__zstd\\programs\\util.c",
+      "line": 296,
+      "col": 15,
+      "message": "call to utime() uses time_t timestamps; limited to 32-bit range — use utimensat() instead",
+      "context": [
+        {
+          "line": 290,
+          "text": "    }"
+        },
+        {
+          "line": 291,
+          "text": "#else"
+        },
+        {
+          "line": 292,
+          "text": "    {"
+        },
+        {
+          "line": 293,
+          "text": "        struct utimbuf timebuf;"
+        },
+        {
+          "line": 294,
+          "text": "        timebuf.actime = time(NULL);"
+        },
+        {
+          "line": 295,
+          "text": "        timebuf.modtime = statbuf->st_mtime;"
+        },
+        {
+          "line": 296,
+          "text": "        ret = utime(filename, &timebuf);"
+        },
+        {
+          "line": 297,
+          "text": "    }"
+        },
+        {
+          "line": 298,
+          "text": "#endif"
+        }
+      ]
+    }
+  ]
+}

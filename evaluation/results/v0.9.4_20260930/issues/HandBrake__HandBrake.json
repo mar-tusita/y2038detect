@@ -1,0 +1,13 @@
+{
+  "repo": "HandBrake/HandBrake",
+  "stars": 23286,
+  "y2038detect_version": "0.9.4",
+  "scanned_at": "2026-09-30T14:56:47Z",
+  "scan_sec": 32.12,
+  "c_files": 125,
+  "c_lines": 127268,
+  "parse_errors": 48384,
+  "scan_errors": 0,
+  "issues": [],
+  "issues_strict": []
+}

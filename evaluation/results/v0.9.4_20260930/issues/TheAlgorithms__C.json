@@ -1,0 +1,982 @@
+{
+  "repo": "TheAlgorithms/C",
+  "stars": 22105,
+  "y2038detect_version": "0.9.4",
+  "scanned_at": "2026-09-30T14:58:15Z",
+  "scan_sec": 16.38,
+  "c_files": 407,
+  "c_lines": 37332,
+  "parse_errors": 1327,
+  "scan_errors": 0,
+  "issues": [],
+  "issues_strict": [
+    {
+      "file": "evaluation\\repos\\TheAlgorithms__C\\conversions\\int_to_string.c",
+      "line": 80,
+      "col": 11,
+      "message": "implicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 74,
+          "text": "}"
+        },
+        {
+          "line": 75,
+          "text": ""
+        },
+        {
+          "line": 76,
+          "text": "/** Driver Code */"
+        },
+        {
+          "line": 77,
+          "text": "int main()"
+        },
+        {
+          "line": 78,
+          "text": "{"
+        },
+        {
+          "line": 79,
+          "text": "    /* Intializes random number generator */"
+        },
+        {
+          "line": 80,
+          "text": "    srand(time(NULL));"
+        },
+        {
+          "line": 81,
+          "text": "    test();"
+        },
+        {
+          "line": 82,
+          "text": "    return 0;"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\TheAlgorithms__C\\data_structures\\array\\carray.c",
+      "line": 160,
+      "col": 11,
+      "message": "implicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 154,
+          "text": "    printf(\"\\n\");"
+        },
+        {
+          "line": 155,
+          "text": "    return 0;"
+        },
+        {
+          "line": 156,
+          "text": "}"
+        },
+        {
+          "line": 157,
+          "text": ""
+        },
+        {
+          "line": 158,
+          "text": "int blenderCArray(CArray *array)"
+        },
+        {
+          "line": 159,
+          "text": "{"
+        },
+        {
+          "line": 160,
+          "text": "    srand(time(NULL) * array->size);"
+        },
+        {
+          "line": 161,
+          "text": "    int i;"
+        },
+        {
+          "line": 162,
+          "text": "    int total = array->size * 100;"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\TheAlgorithms__C\\data_structures\\array\\carray_tests.c",
+      "line": 80,
+      "col": 11,
+      "message": "implicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 74,
+          "text": "    // Or simply..."
+        },
+        {
+          "line": 75,
+          "text": "    reverseCArray(arr);"
+        },
+        {
+          "line": 76,
+          "text": ""
+        },
+        {
+          "line": 77,
+          "text": "    displayCArray(arr);"
+        },
+        {
+          "line": 78,
+          "text": ""
+        },
+        {
+          "line": 79,
+          "text": "    // Sorting"
+        },
+        {
+          "line": 80,
+          "text": "    srand(time(NULL));"
+        },
+        {
+          "line": 81,
+          "text": "    CArray *barray = getCArray(20);"
+        },
+        {
+          "line": 82,
+          "text": "    for (i = 0; i < barray->size; i++)"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\TheAlgorithms__C\\games\\hangman.c",
+      "line": 156,
+      "col": 11,
+      "message": "implicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 150,
+          "text": "    }"
+        },
+        {
+          "line": 151,
+          "text": ""
+        },
+        {
+          "line": 152,
+          "text": "    rewind(fptr);"
+        },
+        {
+          "line": 153,
+          "text": ""
+        },
+        {
+          "line": 154,
+          "text": "    // generates random number"
+        },
+        {
+          "line": 155,
+          "text": "    int random_num;"
+        },
+        {
+          "line": 156,
+          "text": "    srand(time(NULL));"
+        },
+        {
+          "line": 157,
+          "text": "    random_num = rand() % line_number;"
+        },
+        {
+          "line": 158,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\TheAlgorithms__C\\games\\tic_tac_toe.c",
+      "line": 39,
+      "col": 12,
+      "message": "explicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 33,
+          "text": " * Main program function."
+        },
+        {
+          "line": 34,
+          "text": " * @returns 0 on clean exit. "
+        },
+        {
+          "line": 35,
+          "text": " * @note No checks are included for program execution failures!"
+        },
+        {
+          "line": 36,
+          "text": " */"
+        },
+        {
+          "line": 37,
+          "text": "int main()"
+        },
+        {
+          "line": 38,
+          "text": "{   "
+        },
+        {
+          "line": 39,
+          "text": "    srand( (unsigned int)time(NULL));"
+        },
+        {
+          "line": 40,
+          "text": "    int l = 0;"
+        },
+        {
+          "line": 41,
+          "text": "    do"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\TheAlgorithms__C\\machine_learning\\adaline_learning.c",
+      "line": 400,
+      "col": 11,
+      "message": "implicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 394,
+          "text": "    delete_adaline(&ada);"
+        },
+        {
+          "line": 395,
+          "text": "}"
+        },
+        {
+          "line": 396,
+          "text": ""
+        },
+        {
+          "line": 397,
+          "text": "/** Main function */"
+        },
+        {
+          "line": 398,
+          "text": "int main(int argc, char **argv)"
+        },
+        {
+          "line": 399,
+          "text": "{"
+        },
+        {
+          "line": 400,
+          "text": "    srand(time(NULL));  // initialize random number generator"
+        },
+        {
+          "line": 401,
+          "text": ""
+        },
+        {
+          "line": 402,
+          "text": "    double eta = 0.1;  // default value of eta"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\TheAlgorithms__C\\machine_learning\\k_means_clustering.c",
+      "line": 386,
+      "col": 11,
+      "message": "implicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 380,
+          "text": "/*!"
+        },
+        {
+          "line": 381,
+          "text": " * This function calls the test"
+        },
+        {
+          "line": 382,
+          "text": " * function"
+        },
+        {
+          "line": 383,
+          "text": " */"
+        },
+        {
+          "line": 384,
+          "text": "int main()"
+        },
+        {
+          "line": 385,
+          "text": "{"
+        },
+        {
+          "line": 386,
+          "text": "    srand(time(NULL));"
+        },
+        {
+          "line": 387,
+          "text": "    test();"
+        },
+        {
+          "line": 388,
+          "text": "    /* test2(); */"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\TheAlgorithms__C\\misc\\rselect.c",
+      "line": 67,
+      "col": 11,
+      "message": "implicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 61,
+          "text": "        return a[l];"
+        },
+        {
+          "line": 62,
+          "text": "    }"
+        },
+        {
+          "line": 63,
+          "text": "    return -1;"
+        },
+        {
+          "line": 64,
+          "text": "}"
+        },
+        {
+          "line": 65,
+          "text": "int main()"
+        },
+        {
+          "line": 66,
+          "text": "{"
+        },
+        {
+          "line": 67,
+          "text": "    srand(time(NULL));"
+        },
+        {
+          "line": 68,
+          "text": "    int n, o, i, *a;"
+        },
+        {
+          "line": 69,
+          "text": "    scanf(\"%d %d\", &n, &o);"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\TheAlgorithms__C\\numerical_methods\\durand_kerner_roots.c",
+      "line": 118,
+      "col": 11,
+      "message": "implicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 112,
+          "text": "        degree * sizeof(long double)); /* store all input coefficients */"
+        },
+        {
+          "line": 113,
+          "text": "    s0 = (long double complex *)malloc("
+        },
+        {
+          "line": 114,
+          "text": "        (degree - 1) *"
+        },
+        {
+          "line": 115,
+          "text": "        sizeof(long double complex)); /* number of roots = degree-1 */"
+        },
+        {
+          "line": 116,
+          "text": ""
+        },
+        {
+          "line": 117,
+          "text": "    /* initialize random seed: */"
+        },
+        {
+          "line": 118,
+          "text": "    srand(time(NULL));"
+        },
+        {
+          "line": 119,
+          "text": ""
+        },
+        {
+          "line": 120,
+          "text": "    if (!coeffs || !s0)"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\TheAlgorithms__C\\numerical_methods\\lu_decompose.c",
+      "line": 88,
+      "col": 11,
+      "message": "implicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 82,
+          "text": "    const int range = 10;"
+        },
+        {
+          "line": 83,
+          "text": "    const int range2 = range >> 1;"
+        },
+        {
+          "line": 84,
+          "text": ""
+        },
+        {
+          "line": 85,
+          "text": "    if (argc == 2)"
+        },
+        {
+          "line": 86,
+          "text": "        mat_size = atoi(argv[1]);"
+        },
+        {
+          "line": 87,
+          "text": ""
+        },
+        {
+          "line": 88,
+          "text": "    srand(time(NULL));  // random number initializer"
+        },
+        {
+          "line": 89,
+          "text": ""
+        },
+        {
+          "line": 90,
+          "text": "    /* Create a square matrix with random values */"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\TheAlgorithms__C\\numerical_methods\\newton_raphson_root.c",
+      "line": 43,
+      "col": 11,
+      "message": "implicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 37,
+          "text": "int main(int argc, char **argv)"
+        },
+        {
+          "line": 38,
+          "text": "{"
+        },
+        {
+          "line": 39,
+          "text": "    double delta = 1;"
+        },
+        {
+          "line": 40,
+          "text": "    double complex cdelta = 1;"
+        },
+        {
+          "line": 41,
+          "text": ""
+        },
+        {
+          "line": 42,
+          "text": "    /* initialize random seed: */"
+        },
+        {
+          "line": 43,
+          "text": "    srand(time(NULL));"
+        },
+        {
+          "line": 44,
+          "text": ""
+        },
+        {
+          "line": 45,
+          "text": "    /* random initial approximation */"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\TheAlgorithms__C\\numerical_methods\\qr_eigen_values.c",
+      "line": 317,
+      "col": 11,
+      "message": "implicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 311,
+          "text": ""
+        },
+        {
+          "line": 312,
+          "text": "/**"
+        },
+        {
+          "line": 313,
+          "text": " * main function"
+        },
+        {
+          "line": 314,
+          "text": " */"
+        },
+        {
+          "line": 315,
+          "text": "int main(int argc, char **argv)"
+        },
+        {
+          "line": 316,
+          "text": "{"
+        },
+        {
+          "line": 317,
+          "text": "    srand(time(NULL));"
+        },
+        {
+          "line": 318,
+          "text": ""
+        },
+        {
+          "line": 319,
+          "text": "    int mat_size = 5;"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\TheAlgorithms__C\\sorting\\bubble_sort.c",
+      "line": 92,
+      "col": 11,
+      "message": "implicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 86,
+          "text": "}"
+        },
+        {
+          "line": 87,
+          "text": ""
+        },
+        {
+          "line": 88,
+          "text": "/** Driver Code */"
+        },
+        {
+          "line": 89,
+          "text": "int main(int argc, const char *argv[])"
+        },
+        {
+          "line": 90,
+          "text": "{"
+        },
+        {
+          "line": 91,
+          "text": "    /* Intializes random number generator */"
+        },
+        {
+          "line": 92,
+          "text": "    srand(time(NULL));"
+        },
+        {
+          "line": 93,
+          "text": "    test();"
+        },
+        {
+          "line": 94,
+          "text": "    return 0;"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\TheAlgorithms__C\\sorting\\bubble_sort_recursion.c",
+      "line": 75,
+      "col": 11,
+      "message": "implicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 69,
+          "text": "}"
+        },
+        {
+          "line": 70,
+          "text": ""
+        },
+        {
+          "line": 71,
+          "text": "/** Driver Code */"
+        },
+        {
+          "line": 72,
+          "text": "int main()"
+        },
+        {
+          "line": 73,
+          "text": "{"
+        },
+        {
+          "line": 74,
+          "text": "    /* Intializes random number generator */"
+        },
+        {
+          "line": 75,
+          "text": "    srand(time(NULL));"
+        },
+        {
+          "line": 76,
+          "text": "    test();"
+        },
+        {
+          "line": 77,
+          "text": "    return 0;"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\TheAlgorithms__C\\sorting\\heap_sort_2.c",
+      "line": 152,
+      "col": 11,
+      "message": "implicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 146,
+          "text": " * @brief Main function"
+        },
+        {
+          "line": 147,
+          "text": " * @returns 0 on exit"
+        },
+        {
+          "line": 148,
+          "text": " */"
+        },
+        {
+          "line": 149,
+          "text": "int main()"
+        },
+        {
+          "line": 150,
+          "text": "{"
+        },
+        {
+          "line": 151,
+          "text": "    // Intializes random number generator"
+        },
+        {
+          "line": 152,
+          "text": "    srand(time(NULL));"
+        },
+        {
+          "line": 153,
+          "text": ""
+        },
+        {
+          "line": 154,
+          "text": "    test(); // run self-test implementations"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\TheAlgorithms__C\\sorting\\insertion_sort.c",
+      "line": 56,
+      "col": 11,
+      "message": "implicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 50,
+          "text": "    }"
+        },
+        {
+          "line": 51,
+          "text": "    free(arr);"
+        },
+        {
+          "line": 52,
+          "text": "}"
+        },
+        {
+          "line": 53,
+          "text": "int main(int argc, const char *argv[])"
+        },
+        {
+          "line": 54,
+          "text": "{"
+        },
+        {
+          "line": 55,
+          "text": "    /* Intializes random number generator */"
+        },
+        {
+          "line": 56,
+          "text": "    srand(time(NULL));"
+        },
+        {
+          "line": 57,
+          "text": "    test();"
+        },
+        {
+          "line": 58,
+          "text": "    return 0;"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\TheAlgorithms__C\\sorting\\insertion_sort_recursive.c",
+      "line": 68,
+      "col": 11,
+      "message": "implicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 62,
+          "text": "/** Main function"
+        },
+        {
+          "line": 63,
+          "text": " *  @returns integer 0"
+        },
+        {
+          "line": 64,
+          "text": " */"
+        },
+        {
+          "line": 65,
+          "text": "int main(int argc, const char *argv[])"
+        },
+        {
+          "line": 66,
+          "text": "{"
+        },
+        {
+          "line": 67,
+          "text": "    /* Intializes random number generator */"
+        },
+        {
+          "line": 68,
+          "text": "    srand(time(NULL));"
+        },
+        {
+          "line": 69,
+          "text": "    test();"
+        },
+        {
+          "line": 70,
+          "text": "    return 0;"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\TheAlgorithms__C\\sorting\\random_quick_sort.c",
+      "line": 83,
+      "col": 11,
+      "message": "implicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 77,
+          "text": "        random_quick(a, pivot_index + 1, right);"
+        },
+        {
+          "line": 78,
+          "text": "    }"
+        },
+        {
+          "line": 79,
+          "text": "}"
+        },
+        {
+          "line": 80,
+          "text": ""
+        },
+        {
+          "line": 81,
+          "text": "int main()"
+        },
+        {
+          "line": 82,
+          "text": "{"
+        },
+        {
+          "line": 83,
+          "text": "    srand(time(0));"
+        },
+        {
+          "line": 84,
+          "text": "    int num;"
+        },
+        {
+          "line": 85,
+          "text": "    scanf(\"%d\", &num);"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\TheAlgorithms__C\\sorting\\selection_sort.c",
+      "line": 72,
+      "col": 11,
+      "message": "implicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 66,
+          "text": "}"
+        },
+        {
+          "line": 67,
+          "text": ""
+        },
+        {
+          "line": 68,
+          "text": "/** Driver Code */"
+        },
+        {
+          "line": 69,
+          "text": "int main(int argc, const char *argv[])"
+        },
+        {
+          "line": 70,
+          "text": "{"
+        },
+        {
+          "line": 71,
+          "text": "    /* Intializes random number generator */"
+        },
+        {
+          "line": 72,
+          "text": "    srand(time(NULL));"
+        },
+        {
+          "line": 73,
+          "text": "    test();"
+        },
+        {
+          "line": 74,
+          "text": "    return 0;"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\TheAlgorithms__C\\sorting\\selection_sort_recursive.c",
+      "line": 105,
+      "col": 11,
+      "message": "implicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 99,
+          "text": " * @brief Main function"
+        },
+        {
+          "line": 100,
+          "text": " * @returns 0 on exit"
+        },
+        {
+          "line": 101,
+          "text": " */"
+        },
+        {
+          "line": 102,
+          "text": "int main()"
+        },
+        {
+          "line": 103,
+          "text": "{"
+        },
+        {
+          "line": 104,
+          "text": "    /* Intializes random number generator */"
+        },
+        {
+          "line": 105,
+          "text": "    srand(time(NULL));"
+        },
+        {
+          "line": 106,
+          "text": ""
+        },
+        {
+          "line": 107,
+          "text": "    test();  // run self-test implementations"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\TheAlgorithms__C\\sorting\\shell_sort.c",
+      "line": 49,
+      "col": 11,
+      "message": "implicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 43,
+          "text": "    int array[ELEMENT_NR];"
+        },
+        {
+          "line": 44,
+          "text": "    int range = 500;"
+        },
+        {
+          "line": 45,
+          "text": "    int size;"
+        },
+        {
+          "line": 46,
+          "text": "    clock_t start, end;"
+        },
+        {
+          "line": 47,
+          "text": "    double time_spent;"
+        },
+        {
+          "line": 48,
+          "text": ""
+        },
+        {
+          "line": 49,
+          "text": "    srand(time(NULL));"
+        },
+        {
+          "line": 50,
+          "text": "    for (i = 0; i < ELEMENT_NR; i++) array[i] = rand() % range + 1;"
+        },
+        {
+          "line": 51,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\TheAlgorithms__C\\sorting\\shell_sort2.c",
+      "line": 79,
+      "col": 11,
+      "message": "implicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 73,
+          "text": "        fprintf(stderr, \"Usage: ./shell_sort [number of values]\\n\");"
+        },
+        {
+          "line": 74,
+          "text": ""
+        },
+        {
+          "line": 75,
+          "text": "    int *array = (int *)malloc(size * sizeof(int));"
+        },
+        {
+          "line": 76,
+          "text": "    int range = 500;  // range of array values"
+        },
+        {
+          "line": 77,
+          "text": "    double time_spent;"
+        },
+        {
+          "line": 78,
+          "text": ""
+        },
+        {
+          "line": 79,
+          "text": "    srand(time(NULL));  // initialize random number generator"
+        },
+        {
+          "line": 80,
+          "text": "    for (i = 0; i < size; i++)"
+        },
+        {
+          "line": 81,
+          "text": "        // fill array with random integers"
+        }
+      ]
+    }
+  ]
+}

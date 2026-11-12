@@ -1,0 +1,455 @@
+{
+  "repo": "hashcat/hashcat",
+  "stars": 26060,
+  "y2038detect_version": "0.9.4",
+  "scanned_at": "2026-09-30T14:41:18Z",
+  "scan_sec": 64.78,
+  "c_files": 847,
+  "c_lines": 341811,
+  "parse_errors": 214667,
+  "scan_errors": 0,
+  "issues": [
+    {
+      "file": "evaluation\\repos\\hashcat__hashcat\\deps\\zlib\\examples\\gun.c",
+      "line": 535,
+      "col": 11,
+      "message": "call to utime() uses time_t timestamps; limited to 32-bit range — use utimensat() instead",
+      "context": [
+        {
+          "line": 529,
+          "text": "    /* copy owner's user and group, ignore errors */"
+        },
+        {
+          "line": 530,
+          "text": "    (void)chown(to, was.st_uid, was.st_gid);"
+        },
+        {
+          "line": 531,
+          "text": ""
+        },
+        {
+          "line": 532,
+          "text": "    /* copy access and modify times, ignore errors */"
+        },
+        {
+          "line": 533,
+          "text": "    when.actime = was.st_atime;"
+        },
+        {
+          "line": 534,
+          "text": "    when.modtime = was.st_mtime;"
+        },
+        {
+          "line": 535,
+          "text": "    (void)utime(to, &when);"
+        },
+        {
+          "line": 536,
+          "text": "}"
+        },
+        {
+          "line": 537,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\hashcat__hashcat\\deps\\zlib\\examples\\gzlog.c",
+      "line": 377,
+      "col": 5,
+      "message": "call to utimes() uses struct timeval with long tv_sec; limited to 32-bit range — use utimensat() instead",
+      "context": [
+        {
+          "line": 371,
+          "text": "   for verification of ownership. */"
+        },
+        {
+          "line": 372,
+          "text": "local void log_touch(struct log *log)"
+        },
+        {
+          "line": 373,
+          "text": "{"
+        },
+        {
+          "line": 374,
+          "text": "    struct stat st;"
+        },
+        {
+          "line": 375,
+          "text": ""
+        },
+        {
+          "line": 376,
+          "text": "    strcpy(log->end, \".lock\");"
+        },
+        {
+          "line": 377,
+          "text": "    utimes(log->path, NULL);"
+        },
+        {
+          "line": 378,
+          "text": "    if (stat(log->path, &st) == 0)"
+        },
+        {
+          "line": 379,
+          "text": "        log->lock = st.st_mtime;"
+        }
+      ]
+    }
+  ],
+  "issues_strict": [
+    {
+      "file": "evaluation\\repos\\hashcat__hashcat\\deps\\zlib\\examples\\gun.c",
+      "line": 534,
+      "col": 24,
+      "message": "access to struct stat timestamp field 'st_mtime': filesystem may not preserve timestamps beyond 2038",
+      "context": [
+        {
+          "line": 528,
+          "text": ""
+        },
+        {
+          "line": 529,
+          "text": "    /* copy owner's user and group, ignore errors */"
+        },
+        {
+          "line": 530,
+          "text": "    (void)chown(to, was.st_uid, was.st_gid);"
+        },
+        {
+          "line": 531,
+          "text": ""
+        },
+        {
+          "line": 532,
+          "text": "    /* copy access and modify times, ignore errors */"
+        },
+        {
+          "line": 533,
+          "text": "    when.actime = was.st_atime;"
+        },
+        {
+          "line": 534,
+          "text": "    when.modtime = was.st_mtime;"
+        },
+        {
+          "line": 535,
+          "text": "    (void)utime(to, &when);"
+        },
+        {
+          "line": 536,
+          "text": "}"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\hashcat__hashcat\\deps\\zlib\\examples\\gun.c",
+      "line": 533,
+      "col": 23,
+      "message": "access to struct stat timestamp field 'st_atime': filesystem may not preserve timestamps beyond 2038",
+      "context": [
+        {
+          "line": 527,
+          "text": "    (void)chmod(to, was.st_mode & 07777);"
+        },
+        {
+          "line": 528,
+          "text": ""
+        },
+        {
+          "line": 529,
+          "text": "    /* copy owner's user and group, ignore errors */"
+        },
+        {
+          "line": 530,
+          "text": "    (void)chown(to, was.st_uid, was.st_gid);"
+        },
+        {
+          "line": 531,
+          "text": ""
+        },
+        {
+          "line": 532,
+          "text": "    /* copy access and modify times, ignore errors */"
+        },
+        {
+          "line": 533,
+          "text": "    when.actime = was.st_atime;"
+        },
+        {
+          "line": 534,
+          "text": "    when.modtime = was.st_mtime;"
+        },
+        {
+          "line": 535,
+          "text": "    (void)utime(to, &when);"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\hashcat__hashcat\\deps\\zlib\\examples\\gun.c",
+      "line": 535,
+      "col": 11,
+      "message": "call to utime() uses time_t timestamps; limited to 32-bit range — use utimensat() instead",
+      "context": [
+        {
+          "line": 529,
+          "text": "    /* copy owner's user and group, ignore errors */"
+        },
+        {
+          "line": 530,
+          "text": "    (void)chown(to, was.st_uid, was.st_gid);"
+        },
+        {
+          "line": 531,
+          "text": ""
+        },
+        {
+          "line": 532,
+          "text": "    /* copy access and modify times, ignore errors */"
+        },
+        {
+          "line": 533,
+          "text": "    when.actime = was.st_atime;"
+        },
+        {
+          "line": 534,
+          "text": "    when.modtime = was.st_mtime;"
+        },
+        {
+          "line": 535,
+          "text": "    (void)utime(to, &when);"
+        },
+        {
+          "line": 536,
+          "text": "}"
+        },
+        {
+          "line": 537,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\hashcat__hashcat\\deps\\zlib\\examples\\gzlog.c",
+      "line": 389,
+      "col": 36,
+      "message": "access to struct stat timestamp field 'st_mtime': filesystem may not preserve timestamps beyond 2038",
+      "context": [
+        {
+          "line": 383,
+          "text": "   this is not our lock.  If it is our lock, touch it to keep it. */"
+        },
+        {
+          "line": 384,
+          "text": "local int log_check(struct log *log)"
+        },
+        {
+          "line": 385,
+          "text": "{"
+        },
+        {
+          "line": 386,
+          "text": "    struct stat st;"
+        },
+        {
+          "line": 387,
+          "text": ""
+        },
+        {
+          "line": 388,
+          "text": "    strcpy(log->end, \".lock\");"
+        },
+        {
+          "line": 389,
+          "text": "    if (stat(log->path, &st) || st.st_mtime != log->lock)"
+        },
+        {
+          "line": 390,
+          "text": "        return 1;"
+        },
+        {
+          "line": 391,
+          "text": "    log_touch(log);"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\hashcat__hashcat\\deps\\zlib\\examples\\gzlog.c",
+      "line": 379,
+      "col": 24,
+      "message": "access to struct stat timestamp field 'st_mtime': filesystem may not preserve timestamps beyond 2038",
+      "context": [
+        {
+          "line": 373,
+          "text": "{"
+        },
+        {
+          "line": 374,
+          "text": "    struct stat st;"
+        },
+        {
+          "line": 375,
+          "text": ""
+        },
+        {
+          "line": 376,
+          "text": "    strcpy(log->end, \".lock\");"
+        },
+        {
+          "line": 377,
+          "text": "    utimes(log->path, NULL);"
+        },
+        {
+          "line": 378,
+          "text": "    if (stat(log->path, &st) == 0)"
+        },
+        {
+          "line": 379,
+          "text": "        log->lock = st.st_mtime;"
+        },
+        {
+          "line": 380,
+          "text": "}"
+        },
+        {
+          "line": 381,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\hashcat__hashcat\\deps\\zlib\\examples\\gzlog.c",
+      "line": 365,
+      "col": 24,
+      "message": "access to struct stat timestamp field 'st_mtime': filesystem may not preserve timestamps beyond 2038",
+      "context": [
+        {
+          "line": 359,
+          "text": "            continue;"
+        },
+        {
+          "line": 360,
+          "text": "        }"
+        },
+        {
+          "line": 361,
+          "text": "        sleep(2);       /* relinquish the CPU for two seconds while waiting */"
+        },
+        {
+          "line": 362,
+          "text": "    }"
+        },
+        {
+          "line": 363,
+          "text": "    close(fd);"
+        },
+        {
+          "line": 364,
+          "text": "    if (stat(log->path, &st) == 0)"
+        },
+        {
+          "line": 365,
+          "text": "        log->lock = st.st_mtime;"
+        },
+        {
+          "line": 366,
+          "text": "    return 0;"
+        },
+        {
+          "line": 367,
+          "text": "}"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\hashcat__hashcat\\deps\\zlib\\examples\\gzlog.c",
+      "line": 357,
+      "col": 58,
+      "message": "access to struct stat timestamp field 'st_mtime': filesystem may not preserve timestamps beyond 2038",
+      "context": [
+        {
+          "line": 351,
+          "text": "    struct stat st;"
+        },
+        {
+          "line": 352,
+          "text": ""
+        },
+        {
+          "line": 353,
+          "text": "    strcpy(log->end, \".lock\");"
+        },
+        {
+          "line": 354,
+          "text": "    while ((fd = open(log->path, O_CREAT | O_EXCL, 0644)) < 0) {"
+        },
+        {
+          "line": 355,
+          "text": "        if (errno != EEXIST)"
+        },
+        {
+          "line": 356,
+          "text": "            return -1;"
+        },
+        {
+          "line": 357,
+          "text": "        if (stat(log->path, &st) == 0 && time(NULL) - st.st_mtime > PATIENCE) {"
+        },
+        {
+          "line": 358,
+          "text": "            unlink(log->path);"
+        },
+        {
+          "line": 359,
+          "text": "            continue;"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\hashcat__hashcat\\deps\\zlib\\examples\\gzlog.c",
+      "line": 377,
+      "col": 5,
+      "message": "call to utimes() uses struct timeval with long tv_sec; limited to 32-bit range — use utimensat() instead",
+      "context": [
+        {
+          "line": 371,
+          "text": "   for verification of ownership. */"
+        },
+        {
+          "line": 372,
+          "text": "local void log_touch(struct log *log)"
+        },
+        {
+          "line": 373,
+          "text": "{"
+        },
+        {
+          "line": 374,
+          "text": "    struct stat st;"
+        },
+        {
+          "line": 375,
+          "text": ""
+        },
+        {
+          "line": 376,
+          "text": "    strcpy(log->end, \".lock\");"
+        },
+        {
+          "line": 377,
+          "text": "    utimes(log->path, NULL);"
+        },
+        {
+          "line": 378,
+          "text": "    if (stat(log->path, &st) == 0)"
+        },
+        {
+          "line": 379,
+          "text": "        log->lock = st.st_mtime;"
+        }
+      ]
+    }
+  ]
+}

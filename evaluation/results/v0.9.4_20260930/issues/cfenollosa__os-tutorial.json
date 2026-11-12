@@ -1,0 +1,13 @@
+{
+  "repo": "cfenollosa/os-tutorial",
+  "stars": 30466,
+  "y2038detect_version": "0.9.4",
+  "scanned_at": "2026-09-30T14:35:17Z",
+  "scan_sec": 2.24,
+  "c_files": 60,
+  "c_lines": 3136,
+  "parse_errors": 121,
+  "scan_errors": 0,
+  "issues": [],
+  "issues_strict": []
+}

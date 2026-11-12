@@ -1,0 +1,74 @@
+name: Deploy GitHub Pages
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+
+      - name: Install libclang
+        run: pip install libclang
+
+      - name: Build distribution zip
+        run: python make_dist.py
+
+      - name: Install pandoc
+        run: sudo apt-get install -y pandoc
+
+      - name: Prepare site
+        run: |
+          mkdir -p _site/en
+          VERSION=$(python -c "import _version; print(_version.__version__)")
+          pandoc README.md \
+            --from gfm \
+            --to html5 \
+            --template docs/template.html5 \
+            --highlight-style=pygments \
+            -V lang_ja=1 \
+            -o _site/index.html
+          python3 docs/inject_download_box.py "$VERSION" _site/index.html "" ja
+          pandoc README.en.md \
+            --from gfm \
+            --to html5 \
+            --template docs/template.html5 \
+            --highlight-style=pygments \
+            -V lang_en=1 \
+            -o _site/en/index.html
+          python3 docs/inject_download_box.py "$VERSION" _site/en/index.html "../" en
+          cp docs/style.css _site/style.css
+          cp docs/style.css _site/en/style.css
+          cp dist/y2038detect-*.zip "_site/y2038detect-${VERSION}.zip"
+          python3 docs/build_findings_site.py --out _site
+          python3 docs/gen_sitemap.py _site/sitemap.xml
+
+      - uses: actions/configure-pages@v6
+
+      - uses: actions/upload-pages-artifact@v5
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v5

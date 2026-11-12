@@ -1,0 +1,13 @@
+{
+  "repo": "asmvik/yabai",
+  "stars": 28984,
+  "y2038detect_version": "0.9.4",
+  "scanned_at": "2026-09-30T14:37:49Z",
+  "scan_sec": 2.55,
+  "c_files": 17,
+  "c_lines": 13757,
+  "parse_errors": 10174,
+  "scan_errors": 0,
+  "issues": [],
+  "issues_strict": []
+}

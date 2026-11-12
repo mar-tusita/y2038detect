@@ -1,0 +1,2567 @@
+{
+  "repo": "robertdavidgraham/masscan",
+  "stars": 25754,
+  "y2038detect_version": "0.9.4",
+  "scanned_at": "2026-09-30T14:43:38Z",
+  "scan_sec": 21.45,
+  "c_files": 115,
+  "c_lines": 53814,
+  "parse_errors": 223,
+  "scan_errors": 0,
+  "issues": [
+    {
+      "file": "evaluation\\repos\\robertdavidgraham__masscan\\src\\crypto-base64.c",
+      "line": 188,
+      "col": 21,
+      "message": "explicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 182,
+          "text": "    char buf[100];"
+        },
+        {
+          "line": 183,
+          "text": "    char buf2[100];"
+        },
+        {
+          "line": 184,
+          "text": "    char buf3[100];"
+        },
+        {
+          "line": 185,
+          "text": "    size_t buf_len;"
+        },
+        {
+          "line": 186,
+          "text": "    size_t buf2_len;"
+        },
+        {
+          "line": 187,
+          "text": "    unsigned i;"
+        },
+        {
+          "line": 188,
+          "text": "    unsigned seed = (unsigned)time(0);"
+        },
+        {
+          "line": 189,
+          "text": ""
+        },
+        {
+          "line": 190,
+          "text": "    buf_len = base64_encode(buf, sizeof(buf), \"hello\", 5);"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\robertdavidgraham__masscan\\src\\main.c",
+      "line": 1316,
+      "col": 29,
+      "message": "implicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 1310,
+          "text": "                    masscan->templ_opts);"
+        },
+        {
+          "line": 1311,
+          "text": ""
+        },
+        {
+          "line": 1312,
+          "text": "        /*"
+        },
+        {
+          "line": 1313,
+          "text": "         * Set the \"source port\" of everything we transmit."
+        },
+        {
+          "line": 1314,
+          "text": "         */"
+        },
+        {
+          "line": 1315,
+          "text": "        if (masscan->nic[index].src.port.range == 0) {"
+        },
+        {
+          "line": 1316,
+          "text": "            unsigned port = 40000 + now % 20000;"
+        },
+        {
+          "line": 1317,
+          "text": "            masscan->nic[index].src.port.first = port;"
+        },
+        {
+          "line": 1318,
+          "text": "            masscan->nic[index].src.port.last = port + 16;"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\robertdavidgraham__masscan\\src\\main.c",
+      "line": 785,
+      "col": 41,
+      "message": "explicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 779,
+          "text": "                    &length,"
+        },
+        {
+          "line": 780,
+          "text": "                    &secs,"
+        },
+        {
+          "line": 781,
+          "text": "                    &usecs,"
+        },
+        {
+          "line": 782,
+          "text": "                    &px);"
+        },
+        {
+          "line": 783,
+          "text": "        if (err != 0) {"
+        },
+        {
+          "line": 784,
+          "text": "            if (tcpcon)"
+        },
+        {
+          "line": 785,
+          "text": "                tcpcon_timeouts(tcpcon, (unsigned)time(0), 0);"
+        },
+        {
+          "line": 786,
+          "text": "            continue;"
+        },
+        {
+          "line": 787,
+          "text": "        }"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\robertdavidgraham__masscan\\src\\out-binary.c",
+      "line": 328,
+      "col": 16,
+      "message": "explicit conversion of time_t to 'unsigned char' may truncate after 2038",
+      "context": [
+        {
+          "line": 322,
+          "text": "    }"
+        },
+        {
+          "line": 323,
+          "text": ""
+        },
+        {
+          "line": 324,
+          "text": "    /* [TIMESTAMP] field */"
+        },
+        {
+          "line": 325,
+          "text": "    foo[i+0] = (unsigned char)(timestamp>>24);"
+        },
+        {
+          "line": 326,
+          "text": "    foo[i+1] = (unsigned char)(timestamp>>16);"
+        },
+        {
+          "line": 327,
+          "text": "    foo[i+2] = (unsigned char)(timestamp>> 8);"
+        },
+        {
+          "line": 328,
+          "text": "    foo[i+3] = (unsigned char)(timestamp>> 0);"
+        },
+        {
+          "line": 329,
+          "text": ""
+        },
+        {
+          "line": 330,
+          "text": "    foo[i+4] = (unsigned char)(ip.ipv4 >> 24);"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\robertdavidgraham__masscan\\src\\out-binary.c",
+      "line": 327,
+      "col": 16,
+      "message": "explicit conversion of time_t to 'unsigned char' may truncate after 2038",
+      "context": [
+        {
+          "line": 321,
+          "text": "        i = 3;"
+        },
+        {
+          "line": 322,
+          "text": "    }"
+        },
+        {
+          "line": 323,
+          "text": ""
+        },
+        {
+          "line": 324,
+          "text": "    /* [TIMESTAMP] field */"
+        },
+        {
+          "line": 325,
+          "text": "    foo[i+0] = (unsigned char)(timestamp>>24);"
+        },
+        {
+          "line": 326,
+          "text": "    foo[i+1] = (unsigned char)(timestamp>>16);"
+        },
+        {
+          "line": 327,
+          "text": "    foo[i+2] = (unsigned char)(timestamp>> 8);"
+        },
+        {
+          "line": 328,
+          "text": "    foo[i+3] = (unsigned char)(timestamp>> 0);"
+        },
+        {
+          "line": 329,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\robertdavidgraham__masscan\\src\\out-binary.c",
+      "line": 326,
+      "col": 16,
+      "message": "explicit conversion of time_t to 'unsigned char' may truncate after 2038",
+      "context": [
+        {
+          "line": 320,
+          "text": "        foo[2] = (unsigned char)((length + HeaderLength) & 0x7F);"
+        },
+        {
+          "line": 321,
+          "text": "        i = 3;"
+        },
+        {
+          "line": 322,
+          "text": "    }"
+        },
+        {
+          "line": 323,
+          "text": ""
+        },
+        {
+          "line": 324,
+          "text": "    /* [TIMESTAMP] field */"
+        },
+        {
+          "line": 325,
+          "text": "    foo[i+0] = (unsigned char)(timestamp>>24);"
+        },
+        {
+          "line": 326,
+          "text": "    foo[i+1] = (unsigned char)(timestamp>>16);"
+        },
+        {
+          "line": 327,
+          "text": "    foo[i+2] = (unsigned char)(timestamp>> 8);"
+        },
+        {
+          "line": 328,
+          "text": "    foo[i+3] = (unsigned char)(timestamp>> 0);"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\robertdavidgraham__masscan\\src\\out-binary.c",
+      "line": 325,
+      "col": 16,
+      "message": "explicit conversion of time_t to 'unsigned char' may truncate after 2038",
+      "context": [
+        {
+          "line": 319,
+          "text": "        foo[1] = (unsigned char)((length + HeaderLength)>>7) | 0x80;"
+        },
+        {
+          "line": 320,
+          "text": "        foo[2] = (unsigned char)((length + HeaderLength) & 0x7F);"
+        },
+        {
+          "line": 321,
+          "text": "        i = 3;"
+        },
+        {
+          "line": 322,
+          "text": "    }"
+        },
+        {
+          "line": 323,
+          "text": ""
+        },
+        {
+          "line": 324,
+          "text": "    /* [TIMESTAMP] field */"
+        },
+        {
+          "line": 325,
+          "text": "    foo[i+0] = (unsigned char)(timestamp>>24);"
+        },
+        {
+          "line": 326,
+          "text": "    foo[i+1] = (unsigned char)(timestamp>>16);"
+        },
+        {
+          "line": 327,
+          "text": "    foo[i+2] = (unsigned char)(timestamp>> 8);"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\robertdavidgraham__masscan\\src\\out-binary.c",
+      "line": 247,
+      "col": 16,
+      "message": "explicit conversion of time_t to 'unsigned char' may truncate after 2038",
+      "context": [
+        {
+          "line": 241,
+          "text": "    }"
+        },
+        {
+          "line": 242,
+          "text": ""
+        },
+        {
+          "line": 243,
+          "text": "    /* [TIMESTAMP] field */"
+        },
+        {
+          "line": 244,
+          "text": "    foo[i+0] = (unsigned char)(timestamp>>24);"
+        },
+        {
+          "line": 245,
+          "text": "    foo[i+1] = (unsigned char)(timestamp>>16);"
+        },
+        {
+          "line": 246,
+          "text": "    foo[i+2] = (unsigned char)(timestamp>> 8);"
+        },
+        {
+          "line": 247,
+          "text": "    foo[i+3] = (unsigned char)(timestamp>> 0);"
+        },
+        {
+          "line": 248,
+          "text": ""
+        },
+        {
+          "line": 249,
+          "text": "    foo[i+ 4] = (unsigned char)(ip_proto);"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\robertdavidgraham__masscan\\src\\out-binary.c",
+      "line": 246,
+      "col": 16,
+      "message": "explicit conversion of time_t to 'unsigned char' may truncate after 2038",
+      "context": [
+        {
+          "line": 240,
+          "text": "        i = 3;"
+        },
+        {
+          "line": 241,
+          "text": "    }"
+        },
+        {
+          "line": 242,
+          "text": ""
+        },
+        {
+          "line": 243,
+          "text": "    /* [TIMESTAMP] field */"
+        },
+        {
+          "line": 244,
+          "text": "    foo[i+0] = (unsigned char)(timestamp>>24);"
+        },
+        {
+          "line": 245,
+          "text": "    foo[i+1] = (unsigned char)(timestamp>>16);"
+        },
+        {
+          "line": 246,
+          "text": "    foo[i+2] = (unsigned char)(timestamp>> 8);"
+        },
+        {
+          "line": 247,
+          "text": "    foo[i+3] = (unsigned char)(timestamp>> 0);"
+        },
+        {
+          "line": 248,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\robertdavidgraham__masscan\\src\\out-binary.c",
+      "line": 245,
+      "col": 16,
+      "message": "explicit conversion of time_t to 'unsigned char' may truncate after 2038",
+      "context": [
+        {
+          "line": 239,
+          "text": "        foo[2] = (unsigned char)((length + HeaderLength) & 0x7F);"
+        },
+        {
+          "line": 240,
+          "text": "        i = 3;"
+        },
+        {
+          "line": 241,
+          "text": "    }"
+        },
+        {
+          "line": 242,
+          "text": ""
+        },
+        {
+          "line": 243,
+          "text": "    /* [TIMESTAMP] field */"
+        },
+        {
+          "line": 244,
+          "text": "    foo[i+0] = (unsigned char)(timestamp>>24);"
+        },
+        {
+          "line": 245,
+          "text": "    foo[i+1] = (unsigned char)(timestamp>>16);"
+        },
+        {
+          "line": 246,
+          "text": "    foo[i+2] = (unsigned char)(timestamp>> 8);"
+        },
+        {
+          "line": 247,
+          "text": "    foo[i+3] = (unsigned char)(timestamp>> 0);"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\robertdavidgraham__masscan\\src\\out-binary.c",
+      "line": 244,
+      "col": 16,
+      "message": "explicit conversion of time_t to 'unsigned char' may truncate after 2038",
+      "context": [
+        {
+          "line": 238,
+          "text": "        foo[1] = (unsigned char)((length + HeaderLength)>>7) | 0x80;"
+        },
+        {
+          "line": 239,
+          "text": "        foo[2] = (unsigned char)((length + HeaderLength) & 0x7F);"
+        },
+        {
+          "line": 240,
+          "text": "        i = 3;"
+        },
+        {
+          "line": 241,
+          "text": "    }"
+        },
+        {
+          "line": 242,
+          "text": ""
+        },
+        {
+          "line": 243,
+          "text": "    /* [TIMESTAMP] field */"
+        },
+        {
+          "line": 244,
+          "text": "    foo[i+0] = (unsigned char)(timestamp>>24);"
+        },
+        {
+          "line": 245,
+          "text": "    foo[i+1] = (unsigned char)(timestamp>>16);"
+        },
+        {
+          "line": 246,
+          "text": "    foo[i+2] = (unsigned char)(timestamp>> 8);"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\robertdavidgraham__masscan\\src\\out-binary.c",
+      "line": 188,
+      "col": 14,
+      "message": "explicit conversion of time_t to 'unsigned char' may truncate after 2038",
+      "context": [
+        {
+          "line": 182,
+          "text": "    foo[1] = 13;"
+        },
+        {
+          "line": 183,
+          "text": ""
+        },
+        {
+          "line": 184,
+          "text": "    /* [TIMESTAMP] field */"
+        },
+        {
+          "line": 185,
+          "text": "    foo[2] = (unsigned char)(timestamp>>24);"
+        },
+        {
+          "line": 186,
+          "text": "    foo[3] = (unsigned char)(timestamp>>16);"
+        },
+        {
+          "line": 187,
+          "text": "    foo[4] = (unsigned char)(timestamp>> 8);"
+        },
+        {
+          "line": 188,
+          "text": "    foo[5] = (unsigned char)(timestamp>> 0);"
+        },
+        {
+          "line": 189,
+          "text": ""
+        },
+        {
+          "line": 190,
+          "text": "    foo[6] = (unsigned char)(ip.ipv4 >>24);"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\robertdavidgraham__masscan\\src\\out-binary.c",
+      "line": 187,
+      "col": 14,
+      "message": "explicit conversion of time_t to 'unsigned char' may truncate after 2038",
+      "context": [
+        {
+          "line": 181,
+          "text": "    /* [LENGTH] field */"
+        },
+        {
+          "line": 182,
+          "text": "    foo[1] = 13;"
+        },
+        {
+          "line": 183,
+          "text": ""
+        },
+        {
+          "line": 184,
+          "text": "    /* [TIMESTAMP] field */"
+        },
+        {
+          "line": 185,
+          "text": "    foo[2] = (unsigned char)(timestamp>>24);"
+        },
+        {
+          "line": 186,
+          "text": "    foo[3] = (unsigned char)(timestamp>>16);"
+        },
+        {
+          "line": 187,
+          "text": "    foo[4] = (unsigned char)(timestamp>> 8);"
+        },
+        {
+          "line": 188,
+          "text": "    foo[5] = (unsigned char)(timestamp>> 0);"
+        },
+        {
+          "line": 189,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\robertdavidgraham__masscan\\src\\out-binary.c",
+      "line": 186,
+      "col": 14,
+      "message": "explicit conversion of time_t to 'unsigned char' may truncate after 2038",
+      "context": [
+        {
+          "line": 180,
+          "text": ""
+        },
+        {
+          "line": 181,
+          "text": "    /* [LENGTH] field */"
+        },
+        {
+          "line": 182,
+          "text": "    foo[1] = 13;"
+        },
+        {
+          "line": 183,
+          "text": ""
+        },
+        {
+          "line": 184,
+          "text": "    /* [TIMESTAMP] field */"
+        },
+        {
+          "line": 185,
+          "text": "    foo[2] = (unsigned char)(timestamp>>24);"
+        },
+        {
+          "line": 186,
+          "text": "    foo[3] = (unsigned char)(timestamp>>16);"
+        },
+        {
+          "line": 187,
+          "text": "    foo[4] = (unsigned char)(timestamp>> 8);"
+        },
+        {
+          "line": 188,
+          "text": "    foo[5] = (unsigned char)(timestamp>> 0);"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\robertdavidgraham__masscan\\src\\out-binary.c",
+      "line": 185,
+      "col": 14,
+      "message": "explicit conversion of time_t to 'unsigned char' may truncate after 2038",
+      "context": [
+        {
+          "line": 179,
+          "text": "    }"
+        },
+        {
+          "line": 180,
+          "text": ""
+        },
+        {
+          "line": 181,
+          "text": "    /* [LENGTH] field */"
+        },
+        {
+          "line": 182,
+          "text": "    foo[1] = 13;"
+        },
+        {
+          "line": 183,
+          "text": ""
+        },
+        {
+          "line": 184,
+          "text": "    /* [TIMESTAMP] field */"
+        },
+        {
+          "line": 185,
+          "text": "    foo[2] = (unsigned char)(timestamp>>24);"
+        },
+        {
+          "line": 186,
+          "text": "    foo[3] = (unsigned char)(timestamp>>16);"
+        },
+        {
+          "line": 187,
+          "text": "    foo[4] = (unsigned char)(timestamp>> 8);"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\robertdavidgraham__masscan\\src\\out-binary.c",
+      "line": 21,
+      "col": 9,
+      "message": "explicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 15,
+          "text": ""
+        },
+        {
+          "line": 16,
+          "text": "    UNUSEDPARM(out);"
+        },
+        {
+          "line": 17,
+          "text": ""
+        },
+        {
+          "line": 18,
+          "text": ""
+        },
+        {
+          "line": 19,
+          "text": "    memset(firstrecord, 0, 2+'a');"
+        },
+        {
+          "line": 20,
+          "text": "    snprintf(firstrecord, 2+'a', \"masscan/1.1\\ns:%u\\n\", "
+        },
+        {
+          "line": 21,
+          "text": "        (unsigned)out->when_scan_started);"
+        },
+        {
+          "line": 22,
+          "text": "    bytes_written = fwrite(firstrecord, 1, 2+'a', fp);"
+        },
+        {
+          "line": 23,
+          "text": "    if (bytes_written != 2+'a') {"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\robertdavidgraham__masscan\\src\\out-json.c",
+      "line": 125,
+      "col": 13,
+      "message": "explicit conversion of time_t to 'int' may truncate after 2038",
+      "context": [
+        {
+          "line": 119,
+          "text": "        out->is_first_record_seen = 1;"
+        },
+        {
+          "line": 120,
+          "text": "    "
+        },
+        {
+          "line": 121,
+          "text": "    fprintf(fp, \"{ \");"
+        },
+        {
+          "line": 122,
+          "text": "    fmt = ipaddress_fmt(ip);"
+        },
+        {
+          "line": 123,
+          "text": "    fprintf(fp, \"  \\\"ip\\\": \\\"%s\\\", \", fmt.string);"
+        },
+        {
+          "line": 124,
+          "text": "    fprintf(fp, \"  \\\"timestamp\\\": \\\"%d\\\", \\\"ports\\\": [ {\\\"port\\\": %u, \\\"proto\\\": \\\"%s\\\", \\\"service\\\": {\\\"name\\\": \\\"%s\\\", \\\"banner\\\": \\\"%s\\\"} } ] \","
+        },
+        {
+          "line": 125,
+          "text": "            (int) timestamp,"
+        },
+        {
+          "line": 126,
+          "text": "            port,"
+        },
+        {
+          "line": 127,
+          "text": "            name_from_ip_proto(ip_proto),"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\robertdavidgraham__masscan\\src\\out-json.c",
+      "line": 52,
+      "col": 17,
+      "message": "explicit conversion of time_t to 'int' may truncate after 2038",
+      "context": [
+        {
+          "line": 46,
+          "text": "    "
+        },
+        {
+          "line": 47,
+          "text": "    fprintf(fp, \"{ \");"
+        },
+        {
+          "line": 48,
+          "text": "    fmt = ipaddress_fmt(ip);"
+        },
+        {
+          "line": 49,
+          "text": "    fprintf(fp, \"  \\\"ip\\\": \\\"%s\\\", \", fmt.string);"
+        },
+        {
+          "line": 50,
+          "text": "    fprintf(fp, \"  \\\"timestamp\\\": \\\"%d\\\", \\\"ports\\\": [ {\\\"port\\\": %u, \\\"proto\\\": \\\"%s\\\", \\\"status\\\": \\\"%s\\\",\""
+        },
+        {
+          "line": 51,
+          "text": "                \" \\\"reason\\\": \\\"%s\\\", \\\"ttl\\\": %u} ] \","
+        },
+        {
+          "line": 52,
+          "text": "                (int) timestamp,"
+        },
+        {
+          "line": 53,
+          "text": "                port,"
+        },
+        {
+          "line": 54,
+          "text": "                name_from_ip_proto(ip_proto),"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\robertdavidgraham__masscan\\src\\out-ndjson.c",
+      "line": 114,
+      "col": 13,
+      "message": "explicit conversion of time_t to 'int' may truncate after 2038",
+      "context": [
+        {
+          "line": 108,
+          "text": "    //UNUSEDPARM(timestamp);"
+        },
+        {
+          "line": 109,
+          "text": ""
+        },
+        {
+          "line": 110,
+          "text": "    fprintf(fp, \"{\");"
+        },
+        {
+          "line": 111,
+          "text": "    fmt = ipaddress_fmt(ip);"
+        },
+        {
+          "line": 112,
+          "text": "    fprintf(fp, \"\\\"ip\\\":\\\"%s\\\",\", fmt.string);"
+        },
+        {
+          "line": 113,
+          "text": "    fprintf(fp, \"\\\"timestamp\\\":\\\"%d\\\",\\\"port\\\":%u,\\\"proto\\\":\\\"%s\\\",\\\"rec_type\\\":\\\"banner\\\",\\\"data\\\":{\\\"service_name\\\":\\\"%s\\\",\\\"banner\\\":\\\"%s\\\"}\","
+        },
+        {
+          "line": 114,
+          "text": "            (int) timestamp,"
+        },
+        {
+          "line": 115,
+          "text": "            port,"
+        },
+        {
+          "line": 116,
+          "text": "            name_from_ip_proto(ip_proto),"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\robertdavidgraham__masscan\\src\\out-ndjson.c",
+      "line": 43,
+      "col": 17,
+      "message": "explicit conversion of time_t to 'int' may truncate after 2038",
+      "context": [
+        {
+          "line": 37,
+          "text": ""
+        },
+        {
+          "line": 38,
+          "text": "    fprintf(fp, \"{\");"
+        },
+        {
+          "line": 39,
+          "text": "    fmt = ipaddress_fmt(ip);"
+        },
+        {
+          "line": 40,
+          "text": "    fprintf(fp, \"\\\"ip\\\":\\\"%s\\\",\", fmt.string);"
+        },
+        {
+          "line": 41,
+          "text": "    fprintf(fp, \"\\\"timestamp\\\":\\\"%d\\\",\\\"port\\\":%u,\\\"proto\\\":\\\"%s\\\",\\\"rec_type\\\":\\\"status\\\",\\\"data\\\":{\\\"status\\\":\\\"%s\\\",\""
+        },
+        {
+          "line": 42,
+          "text": "                \"\\\"reason\\\":\\\"%s\\\",\\\"ttl\\\":%u}\","
+        },
+        {
+          "line": 43,
+          "text": "                (int) timestamp,"
+        },
+        {
+          "line": 44,
+          "text": "                port,"
+        },
+        {
+          "line": 45,
+          "text": "                name_from_ip_proto(ip_proto),"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\robertdavidgraham__masscan\\src\\out-redis.c",
+      "line": 295,
+      "col": 9,
+      "message": "explicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 289,
+          "text": ""
+        },
+        {
+          "line": 290,
+          "text": "    /*"
+        },
+        {
+          "line": 291,
+          "text": "     * KEY: ip:port"
+        },
+        {
+          "line": 292,
+          "text": "     * VALUE: timestamp:status:reason:ttl"
+        },
+        {
+          "line": 293,
+          "text": "     */"
+        },
+        {
+          "line": 294,
+          "text": "    values_length = snprintf(values, sizeof(values), \"%u:%u:%u:%u\","
+        },
+        {
+          "line": 295,
+          "text": "        (unsigned)timestamp, status, reason, ttl);"
+        },
+        {
+          "line": 296,
+          "text": "    line_length = snprintf(line, sizeof(line),"
+        },
+        {
+          "line": 297,
+          "text": "            \"*3\\r\\n\""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\robertdavidgraham__masscan\\src\\out-text.c",
+      "line": 69,
+      "col": 9,
+      "message": "explicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 63,
+          "text": ""
+        },
+        {
+          "line": 64,
+          "text": "    fprintf(fp, \"%s %s %u %s %u %s %s\\n\","
+        },
+        {
+          "line": 65,
+          "text": "        \"banner\","
+        },
+        {
+          "line": 66,
+          "text": "        name_from_ip_proto(ip_proto),"
+        },
+        {
+          "line": 67,
+          "text": "        port,"
+        },
+        {
+          "line": 68,
+          "text": "        fmt.string,"
+        },
+        {
+          "line": 69,
+          "text": "        (unsigned)timestamp,"
+        },
+        {
+          "line": 70,
+          "text": "        masscan_app_to_string(proto),"
+        },
+        {
+          "line": 71,
+          "text": "        normalize_string(px, length, banner_buffer, sizeof(banner_buffer))"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\robertdavidgraham__masscan\\src\\out-text.c",
+      "line": 44,
+      "col": 9,
+      "message": "explicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 38,
+          "text": ""
+        },
+        {
+          "line": 39,
+          "text": "    fprintf(fp, \"%s %s %u %s %u\\n\","
+        },
+        {
+          "line": 40,
+          "text": "        status_string(status),"
+        },
+        {
+          "line": 41,
+          "text": "        name_from_ip_proto(ip_proto),"
+        },
+        {
+          "line": 42,
+          "text": "        port,"
+        },
+        {
+          "line": 43,
+          "text": "        fmt.string,"
+        },
+        {
+          "line": 44,
+          "text": "        (unsigned)timestamp"
+        },
+        {
+          "line": 45,
+          "text": "        );"
+        },
+        {
+          "line": 46,
+          "text": "}"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\robertdavidgraham__masscan\\src\\out-xml.c",
+      "line": 123,
+      "col": 9,
+      "message": "explicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 117,
+          "text": "                      \"<state state=\\\"open\\\" reason=\\\"%s\\\" reason_ttl=\\\"%u\\\" />\""
+        },
+        {
+          "line": 118,
+          "text": "                      \"<service name=\\\"%s\\\" banner=\\\"%s\\\"></service>\""
+        },
+        {
+          "line": 119,
+          "text": "                    \"</port>\""
+        },
+        {
+          "line": 120,
+          "text": "                    \"</ports>\""
+        },
+        {
+          "line": 121,
+          "text": "                \"</host>\""
+        },
+        {
+          "line": 122,
+          "text": "                \"\\r\\n\","
+        },
+        {
+          "line": 123,
+          "text": "        (unsigned)timestamp,"
+        },
+        {
+          "line": 124,
+          "text": "        fmt.string,"
+        },
+        {
+          "line": 125,
+          "text": "        name_from_ip_version(ip.version),"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\robertdavidgraham__masscan\\src\\out-xml.c",
+      "line": 82,
+      "col": 9,
+      "message": "explicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 76,
+          "text": "                    \"<port protocol=\\\"%s\\\" portid=\\\"%u\\\">\""
+        },
+        {
+          "line": 77,
+          "text": "                    \"<state state=\\\"%s\\\" reason=\\\"%s\\\" reason_ttl=\\\"%u\\\"/>\""
+        },
+        {
+          "line": 78,
+          "text": "                    \"</port>\""
+        },
+        {
+          "line": 79,
+          "text": "                    \"</ports>\""
+        },
+        {
+          "line": 80,
+          "text": "                \"</host>\""
+        },
+        {
+          "line": 81,
+          "text": "                \"\\r\\n\","
+        },
+        {
+          "line": 82,
+          "text": "        (unsigned)timestamp,"
+        },
+        {
+          "line": 83,
+          "text": "        fmt.string,"
+        },
+        {
+          "line": 84,
+          "text": "        name_from_ip_version(ip.version),"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\robertdavidgraham__masscan\\src\\out-xml.c",
+      "line": 55,
+      "col": 13,
+      "message": "explicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 49,
+          "text": "              \"<finished time=\\\"%u\\\" timestr=\\\"%s\\\" elapsed=\\\"%u\\\" />\\r\\n\""
+        },
+        {
+          "line": 50,
+          "text": "              \"<hosts up=\\\"%\" PRIu64 \"\\\" down=\\\"%\" PRIu64 \"\\\" total=\\\"%\" PRIu64 \"\\\" />\\r\\n\""
+        },
+        {
+          "line": 51,
+          "text": "             \"</runstats>\\r\\n\""
+        },
+        {
+          "line": 52,
+          "text": "            \"</nmaprun>\\r\\n\","
+        },
+        {
+          "line": 53,
+          "text": "            (unsigned)now,                    /* time */"
+        },
+        {
+          "line": 54,
+          "text": "            buffer,                 /* timestr */"
+        },
+        {
+          "line": 55,
+          "text": "            (unsigned)(now - out->rotate.last), /* elapsed */"
+        },
+        {
+          "line": 56,
+          "text": "            out->counts.tcp.open,"
+        },
+        {
+          "line": 57,
+          "text": "            out->counts.tcp.closed,"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\robertdavidgraham__masscan\\src\\out-xml.c",
+      "line": 53,
+      "col": 13,
+      "message": "explicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 47,
+          "text": "    fprintf(fp,"
+        },
+        {
+          "line": 48,
+          "text": "             \"<runstats>\\r\\n\""
+        },
+        {
+          "line": 49,
+          "text": "              \"<finished time=\\\"%u\\\" timestr=\\\"%s\\\" elapsed=\\\"%u\\\" />\\r\\n\""
+        },
+        {
+          "line": 50,
+          "text": "              \"<hosts up=\\\"%\" PRIu64 \"\\\" down=\\\"%\" PRIu64 \"\\\" total=\\\"%\" PRIu64 \"\\\" />\\r\\n\""
+        },
+        {
+          "line": 51,
+          "text": "             \"</runstats>\\r\\n\""
+        },
+        {
+          "line": 52,
+          "text": "            \"</nmaprun>\\r\\n\","
+        },
+        {
+          "line": 53,
+          "text": "            (unsigned)now,                    /* time */"
+        },
+        {
+          "line": 54,
+          "text": "            buffer,                 /* timestr */"
+        },
+        {
+          "line": 55,
+          "text": "            (unsigned)(now - out->rotate.last), /* elapsed */"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\robertdavidgraham__masscan\\src\\out-xml.c",
+      "line": 23,
+      "col": 9,
+      "message": "explicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 17,
+          "text": "    if (out->xml.stylesheet && out->xml.stylesheet[0]) {"
+        },
+        {
+          "line": 18,
+          "text": "        fprintf(fp, \"<?xml-stylesheet href=\\\"%s\\\" type=\\\"text/xsl\\\"?>\\r\\n\","
+        },
+        {
+          "line": 19,
+          "text": "            out->xml.stylesheet);"
+        },
+        {
+          "line": 20,
+          "text": "    }"
+        },
+        {
+          "line": 21,
+          "text": "    fprintf(fp, \"<nmaprun scanner=\\\"%s\\\" start=\\\"%u\\\" version=\\\"%s\\\"  xmloutputversion=\\\"%s\\\">\\r\\n\","
+        },
+        {
+          "line": 22,
+          "text": "        \"masscan\","
+        },
+        {
+          "line": 23,
+          "text": "        (unsigned)time(0),"
+        },
+        {
+          "line": 24,
+          "text": "        \"1.0-BETA\","
+        },
+        {
+          "line": 25,
+          "text": "        \"1.03\" /* xml output version I copied from their site */"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\robertdavidgraham__masscan\\src\\proto-ssl.c",
+      "line": 1228,
+      "col": 20,
+      "message": "explicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 1222,
+          "text": "/*****************************************************************************"
+        },
+        {
+          "line": 1223,
+          "text": " *****************************************************************************/"
+        },
+        {
+          "line": 1224,
+          "text": "char *"
+        },
+        {
+          "line": 1225,
+          "text": "ssl_hello(const void *templ)"
+        },
+        {
+          "line": 1226,
+          "text": "{"
+        },
+        {
+          "line": 1227,
+          "text": "    unsigned char *px = (unsigned char *)templ;"
+        },
+        {
+          "line": 1228,
+          "text": "    unsigned now = (unsigned)time(0);"
+        },
+        {
+          "line": 1229,
+          "text": "    unsigned i;"
+        },
+        {
+          "line": 1230,
+          "text": "    "
+        }
+      ]
+    }
+  ],
+  "issues_strict": [
+    {
+      "file": "evaluation\\repos\\robertdavidgraham__masscan\\src\\crypto-base64.c",
+      "line": 188,
+      "col": 21,
+      "message": "explicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 182,
+          "text": "    char buf[100];"
+        },
+        {
+          "line": 183,
+          "text": "    char buf2[100];"
+        },
+        {
+          "line": 184,
+          "text": "    char buf3[100];"
+        },
+        {
+          "line": 185,
+          "text": "    size_t buf_len;"
+        },
+        {
+          "line": 186,
+          "text": "    size_t buf2_len;"
+        },
+        {
+          "line": 187,
+          "text": "    unsigned i;"
+        },
+        {
+          "line": 188,
+          "text": "    unsigned seed = (unsigned)time(0);"
+        },
+        {
+          "line": 189,
+          "text": ""
+        },
+        {
+          "line": 190,
+          "text": "    buf_len = base64_encode(buf, sizeof(buf), \"hello\", 5);"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\robertdavidgraham__masscan\\src\\main.c",
+      "line": 1316,
+      "col": 29,
+      "message": "implicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 1310,
+          "text": "                    masscan->templ_opts);"
+        },
+        {
+          "line": 1311,
+          "text": ""
+        },
+        {
+          "line": 1312,
+          "text": "        /*"
+        },
+        {
+          "line": 1313,
+          "text": "         * Set the \"source port\" of everything we transmit."
+        },
+        {
+          "line": 1314,
+          "text": "         */"
+        },
+        {
+          "line": 1315,
+          "text": "        if (masscan->nic[index].src.port.range == 0) {"
+        },
+        {
+          "line": 1316,
+          "text": "            unsigned port = 40000 + now % 20000;"
+        },
+        {
+          "line": 1317,
+          "text": "            masscan->nic[index].src.port.first = port;"
+        },
+        {
+          "line": 1318,
+          "text": "            masscan->nic[index].src.port.last = port + 16;"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\robertdavidgraham__masscan\\src\\main.c",
+      "line": 785,
+      "col": 41,
+      "message": "explicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 779,
+          "text": "                    &length,"
+        },
+        {
+          "line": 780,
+          "text": "                    &secs,"
+        },
+        {
+          "line": 781,
+          "text": "                    &usecs,"
+        },
+        {
+          "line": 782,
+          "text": "                    &px);"
+        },
+        {
+          "line": 783,
+          "text": "        if (err != 0) {"
+        },
+        {
+          "line": 784,
+          "text": "            if (tcpcon)"
+        },
+        {
+          "line": 785,
+          "text": "                tcpcon_timeouts(tcpcon, (unsigned)time(0), 0);"
+        },
+        {
+          "line": 786,
+          "text": "            continue;"
+        },
+        {
+          "line": 787,
+          "text": "        }"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\robertdavidgraham__masscan\\src\\out-binary.c",
+      "line": 328,
+      "col": 16,
+      "message": "explicit conversion of time_t to 'unsigned char' may truncate after 2038",
+      "context": [
+        {
+          "line": 322,
+          "text": "    }"
+        },
+        {
+          "line": 323,
+          "text": ""
+        },
+        {
+          "line": 324,
+          "text": "    /* [TIMESTAMP] field */"
+        },
+        {
+          "line": 325,
+          "text": "    foo[i+0] = (unsigned char)(timestamp>>24);"
+        },
+        {
+          "line": 326,
+          "text": "    foo[i+1] = (unsigned char)(timestamp>>16);"
+        },
+        {
+          "line": 327,
+          "text": "    foo[i+2] = (unsigned char)(timestamp>> 8);"
+        },
+        {
+          "line": 328,
+          "text": "    foo[i+3] = (unsigned char)(timestamp>> 0);"
+        },
+        {
+          "line": 329,
+          "text": ""
+        },
+        {
+          "line": 330,
+          "text": "    foo[i+4] = (unsigned char)(ip.ipv4 >> 24);"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\robertdavidgraham__masscan\\src\\out-binary.c",
+      "line": 327,
+      "col": 16,
+      "message": "explicit conversion of time_t to 'unsigned char' may truncate after 2038",
+      "context": [
+        {
+          "line": 321,
+          "text": "        i = 3;"
+        },
+        {
+          "line": 322,
+          "text": "    }"
+        },
+        {
+          "line": 323,
+          "text": ""
+        },
+        {
+          "line": 324,
+          "text": "    /* [TIMESTAMP] field */"
+        },
+        {
+          "line": 325,
+          "text": "    foo[i+0] = (unsigned char)(timestamp>>24);"
+        },
+        {
+          "line": 326,
+          "text": "    foo[i+1] = (unsigned char)(timestamp>>16);"
+        },
+        {
+          "line": 327,
+          "text": "    foo[i+2] = (unsigned char)(timestamp>> 8);"
+        },
+        {
+          "line": 328,
+          "text": "    foo[i+3] = (unsigned char)(timestamp>> 0);"
+        },
+        {
+          "line": 329,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\robertdavidgraham__masscan\\src\\out-binary.c",
+      "line": 326,
+      "col": 16,
+      "message": "explicit conversion of time_t to 'unsigned char' may truncate after 2038",
+      "context": [
+        {
+          "line": 320,
+          "text": "        foo[2] = (unsigned char)((length + HeaderLength) & 0x7F);"
+        },
+        {
+          "line": 321,
+          "text": "        i = 3;"
+        },
+        {
+          "line": 322,
+          "text": "    }"
+        },
+        {
+          "line": 323,
+          "text": ""
+        },
+        {
+          "line": 324,
+          "text": "    /* [TIMESTAMP] field */"
+        },
+        {
+          "line": 325,
+          "text": "    foo[i+0] = (unsigned char)(timestamp>>24);"
+        },
+        {
+          "line": 326,
+          "text": "    foo[i+1] = (unsigned char)(timestamp>>16);"
+        },
+        {
+          "line": 327,
+          "text": "    foo[i+2] = (unsigned char)(timestamp>> 8);"
+        },
+        {
+          "line": 328,
+          "text": "    foo[i+3] = (unsigned char)(timestamp>> 0);"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\robertdavidgraham__masscan\\src\\out-binary.c",
+      "line": 325,
+      "col": 16,
+      "message": "explicit conversion of time_t to 'unsigned char' may truncate after 2038",
+      "context": [
+        {
+          "line": 319,
+          "text": "        foo[1] = (unsigned char)((length + HeaderLength)>>7) | 0x80;"
+        },
+        {
+          "line": 320,
+          "text": "        foo[2] = (unsigned char)((length + HeaderLength) & 0x7F);"
+        },
+        {
+          "line": 321,
+          "text": "        i = 3;"
+        },
+        {
+          "line": 322,
+          "text": "    }"
+        },
+        {
+          "line": 323,
+          "text": ""
+        },
+        {
+          "line": 324,
+          "text": "    /* [TIMESTAMP] field */"
+        },
+        {
+          "line": 325,
+          "text": "    foo[i+0] = (unsigned char)(timestamp>>24);"
+        },
+        {
+          "line": 326,
+          "text": "    foo[i+1] = (unsigned char)(timestamp>>16);"
+        },
+        {
+          "line": 327,
+          "text": "    foo[i+2] = (unsigned char)(timestamp>> 8);"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\robertdavidgraham__masscan\\src\\out-binary.c",
+      "line": 247,
+      "col": 16,
+      "message": "explicit conversion of time_t to 'unsigned char' may truncate after 2038",
+      "context": [
+        {
+          "line": 241,
+          "text": "    }"
+        },
+        {
+          "line": 242,
+          "text": ""
+        },
+        {
+          "line": 243,
+          "text": "    /* [TIMESTAMP] field */"
+        },
+        {
+          "line": 244,
+          "text": "    foo[i+0] = (unsigned char)(timestamp>>24);"
+        },
+        {
+          "line": 245,
+          "text": "    foo[i+1] = (unsigned char)(timestamp>>16);"
+        },
+        {
+          "line": 246,
+          "text": "    foo[i+2] = (unsigned char)(timestamp>> 8);"
+        },
+        {
+          "line": 247,
+          "text": "    foo[i+3] = (unsigned char)(timestamp>> 0);"
+        },
+        {
+          "line": 248,
+          "text": ""
+        },
+        {
+          "line": 249,
+          "text": "    foo[i+ 4] = (unsigned char)(ip_proto);"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\robertdavidgraham__masscan\\src\\out-binary.c",
+      "line": 246,
+      "col": 16,
+      "message": "explicit conversion of time_t to 'unsigned char' may truncate after 2038",
+      "context": [
+        {
+          "line": 240,
+          "text": "        i = 3;"
+        },
+        {
+          "line": 241,
+          "text": "    }"
+        },
+        {
+          "line": 242,
+          "text": ""
+        },
+        {
+          "line": 243,
+          "text": "    /* [TIMESTAMP] field */"
+        },
+        {
+          "line": 244,
+          "text": "    foo[i+0] = (unsigned char)(timestamp>>24);"
+        },
+        {
+          "line": 245,
+          "text": "    foo[i+1] = (unsigned char)(timestamp>>16);"
+        },
+        {
+          "line": 246,
+          "text": "    foo[i+2] = (unsigned char)(timestamp>> 8);"
+        },
+        {
+          "line": 247,
+          "text": "    foo[i+3] = (unsigned char)(timestamp>> 0);"
+        },
+        {
+          "line": 248,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\robertdavidgraham__masscan\\src\\out-binary.c",
+      "line": 245,
+      "col": 16,
+      "message": "explicit conversion of time_t to 'unsigned char' may truncate after 2038",
+      "context": [
+        {
+          "line": 239,
+          "text": "        foo[2] = (unsigned char)((length + HeaderLength) & 0x7F);"
+        },
+        {
+          "line": 240,
+          "text": "        i = 3;"
+        },
+        {
+          "line": 241,
+          "text": "    }"
+        },
+        {
+          "line": 242,
+          "text": ""
+        },
+        {
+          "line": 243,
+          "text": "    /* [TIMESTAMP] field */"
+        },
+        {
+          "line": 244,
+          "text": "    foo[i+0] = (unsigned char)(timestamp>>24);"
+        },
+        {
+          "line": 245,
+          "text": "    foo[i+1] = (unsigned char)(timestamp>>16);"
+        },
+        {
+          "line": 246,
+          "text": "    foo[i+2] = (unsigned char)(timestamp>> 8);"
+        },
+        {
+          "line": 247,
+          "text": "    foo[i+3] = (unsigned char)(timestamp>> 0);"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\robertdavidgraham__masscan\\src\\out-binary.c",
+      "line": 244,
+      "col": 16,
+      "message": "explicit conversion of time_t to 'unsigned char' may truncate after 2038",
+      "context": [
+        {
+          "line": 238,
+          "text": "        foo[1] = (unsigned char)((length + HeaderLength)>>7) | 0x80;"
+        },
+        {
+          "line": 239,
+          "text": "        foo[2] = (unsigned char)((length + HeaderLength) & 0x7F);"
+        },
+        {
+          "line": 240,
+          "text": "        i = 3;"
+        },
+        {
+          "line": 241,
+          "text": "    }"
+        },
+        {
+          "line": 242,
+          "text": ""
+        },
+        {
+          "line": 243,
+          "text": "    /* [TIMESTAMP] field */"
+        },
+        {
+          "line": 244,
+          "text": "    foo[i+0] = (unsigned char)(timestamp>>24);"
+        },
+        {
+          "line": 245,
+          "text": "    foo[i+1] = (unsigned char)(timestamp>>16);"
+        },
+        {
+          "line": 246,
+          "text": "    foo[i+2] = (unsigned char)(timestamp>> 8);"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\robertdavidgraham__masscan\\src\\out-binary.c",
+      "line": 188,
+      "col": 14,
+      "message": "explicit conversion of time_t to 'unsigned char' may truncate after 2038",
+      "context": [
+        {
+          "line": 182,
+          "text": "    foo[1] = 13;"
+        },
+        {
+          "line": 183,
+          "text": ""
+        },
+        {
+          "line": 184,
+          "text": "    /* [TIMESTAMP] field */"
+        },
+        {
+          "line": 185,
+          "text": "    foo[2] = (unsigned char)(timestamp>>24);"
+        },
+        {
+          "line": 186,
+          "text": "    foo[3] = (unsigned char)(timestamp>>16);"
+        },
+        {
+          "line": 187,
+          "text": "    foo[4] = (unsigned char)(timestamp>> 8);"
+        },
+        {
+          "line": 188,
+          "text": "    foo[5] = (unsigned char)(timestamp>> 0);"
+        },
+        {
+          "line": 189,
+          "text": ""
+        },
+        {
+          "line": 190,
+          "text": "    foo[6] = (unsigned char)(ip.ipv4 >>24);"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\robertdavidgraham__masscan\\src\\out-binary.c",
+      "line": 187,
+      "col": 14,
+      "message": "explicit conversion of time_t to 'unsigned char' may truncate after 2038",
+      "context": [
+        {
+          "line": 181,
+          "text": "    /* [LENGTH] field */"
+        },
+        {
+          "line": 182,
+          "text": "    foo[1] = 13;"
+        },
+        {
+          "line": 183,
+          "text": ""
+        },
+        {
+          "line": 184,
+          "text": "    /* [TIMESTAMP] field */"
+        },
+        {
+          "line": 185,
+          "text": "    foo[2] = (unsigned char)(timestamp>>24);"
+        },
+        {
+          "line": 186,
+          "text": "    foo[3] = (unsigned char)(timestamp>>16);"
+        },
+        {
+          "line": 187,
+          "text": "    foo[4] = (unsigned char)(timestamp>> 8);"
+        },
+        {
+          "line": 188,
+          "text": "    foo[5] = (unsigned char)(timestamp>> 0);"
+        },
+        {
+          "line": 189,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\robertdavidgraham__masscan\\src\\out-binary.c",
+      "line": 186,
+      "col": 14,
+      "message": "explicit conversion of time_t to 'unsigned char' may truncate after 2038",
+      "context": [
+        {
+          "line": 180,
+          "text": ""
+        },
+        {
+          "line": 181,
+          "text": "    /* [LENGTH] field */"
+        },
+        {
+          "line": 182,
+          "text": "    foo[1] = 13;"
+        },
+        {
+          "line": 183,
+          "text": ""
+        },
+        {
+          "line": 184,
+          "text": "    /* [TIMESTAMP] field */"
+        },
+        {
+          "line": 185,
+          "text": "    foo[2] = (unsigned char)(timestamp>>24);"
+        },
+        {
+          "line": 186,
+          "text": "    foo[3] = (unsigned char)(timestamp>>16);"
+        },
+        {
+          "line": 187,
+          "text": "    foo[4] = (unsigned char)(timestamp>> 8);"
+        },
+        {
+          "line": 188,
+          "text": "    foo[5] = (unsigned char)(timestamp>> 0);"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\robertdavidgraham__masscan\\src\\out-binary.c",
+      "line": 185,
+      "col": 14,
+      "message": "explicit conversion of time_t to 'unsigned char' may truncate after 2038",
+      "context": [
+        {
+          "line": 179,
+          "text": "    }"
+        },
+        {
+          "line": 180,
+          "text": ""
+        },
+        {
+          "line": 181,
+          "text": "    /* [LENGTH] field */"
+        },
+        {
+          "line": 182,
+          "text": "    foo[1] = 13;"
+        },
+        {
+          "line": 183,
+          "text": ""
+        },
+        {
+          "line": 184,
+          "text": "    /* [TIMESTAMP] field */"
+        },
+        {
+          "line": 185,
+          "text": "    foo[2] = (unsigned char)(timestamp>>24);"
+        },
+        {
+          "line": 186,
+          "text": "    foo[3] = (unsigned char)(timestamp>>16);"
+        },
+        {
+          "line": 187,
+          "text": "    foo[4] = (unsigned char)(timestamp>> 8);"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\robertdavidgraham__masscan\\src\\out-binary.c",
+      "line": 21,
+      "col": 9,
+      "message": "explicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 15,
+          "text": ""
+        },
+        {
+          "line": 16,
+          "text": "    UNUSEDPARM(out);"
+        },
+        {
+          "line": 17,
+          "text": ""
+        },
+        {
+          "line": 18,
+          "text": ""
+        },
+        {
+          "line": 19,
+          "text": "    memset(firstrecord, 0, 2+'a');"
+        },
+        {
+          "line": 20,
+          "text": "    snprintf(firstrecord, 2+'a', \"masscan/1.1\\ns:%u\\n\", "
+        },
+        {
+          "line": 21,
+          "text": "        (unsigned)out->when_scan_started);"
+        },
+        {
+          "line": 22,
+          "text": "    bytes_written = fwrite(firstrecord, 1, 2+'a', fp);"
+        },
+        {
+          "line": 23,
+          "text": "    if (bytes_written != 2+'a') {"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\robertdavidgraham__masscan\\src\\out-json.c",
+      "line": 125,
+      "col": 13,
+      "message": "explicit conversion of time_t to 'int' may truncate after 2038",
+      "context": [
+        {
+          "line": 119,
+          "text": "        out->is_first_record_seen = 1;"
+        },
+        {
+          "line": 120,
+          "text": "    "
+        },
+        {
+          "line": 121,
+          "text": "    fprintf(fp, \"{ \");"
+        },
+        {
+          "line": 122,
+          "text": "    fmt = ipaddress_fmt(ip);"
+        },
+        {
+          "line": 123,
+          "text": "    fprintf(fp, \"  \\\"ip\\\": \\\"%s\\\", \", fmt.string);"
+        },
+        {
+          "line": 124,
+          "text": "    fprintf(fp, \"  \\\"timestamp\\\": \\\"%d\\\", \\\"ports\\\": [ {\\\"port\\\": %u, \\\"proto\\\": \\\"%s\\\", \\\"service\\\": {\\\"name\\\": \\\"%s\\\", \\\"banner\\\": \\\"%s\\\"} } ] \","
+        },
+        {
+          "line": 125,
+          "text": "            (int) timestamp,"
+        },
+        {
+          "line": 126,
+          "text": "            port,"
+        },
+        {
+          "line": 127,
+          "text": "            name_from_ip_proto(ip_proto),"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\robertdavidgraham__masscan\\src\\out-json.c",
+      "line": 52,
+      "col": 17,
+      "message": "explicit conversion of time_t to 'int' may truncate after 2038",
+      "context": [
+        {
+          "line": 46,
+          "text": "    "
+        },
+        {
+          "line": 47,
+          "text": "    fprintf(fp, \"{ \");"
+        },
+        {
+          "line": 48,
+          "text": "    fmt = ipaddress_fmt(ip);"
+        },
+        {
+          "line": 49,
+          "text": "    fprintf(fp, \"  \\\"ip\\\": \\\"%s\\\", \", fmt.string);"
+        },
+        {
+          "line": 50,
+          "text": "    fprintf(fp, \"  \\\"timestamp\\\": \\\"%d\\\", \\\"ports\\\": [ {\\\"port\\\": %u, \\\"proto\\\": \\\"%s\\\", \\\"status\\\": \\\"%s\\\",\""
+        },
+        {
+          "line": 51,
+          "text": "                \" \\\"reason\\\": \\\"%s\\\", \\\"ttl\\\": %u} ] \","
+        },
+        {
+          "line": 52,
+          "text": "                (int) timestamp,"
+        },
+        {
+          "line": 53,
+          "text": "                port,"
+        },
+        {
+          "line": 54,
+          "text": "                name_from_ip_proto(ip_proto),"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\robertdavidgraham__masscan\\src\\out-ndjson.c",
+      "line": 114,
+      "col": 13,
+      "message": "explicit conversion of time_t to 'int' may truncate after 2038",
+      "context": [
+        {
+          "line": 108,
+          "text": "    //UNUSEDPARM(timestamp);"
+        },
+        {
+          "line": 109,
+          "text": ""
+        },
+        {
+          "line": 110,
+          "text": "    fprintf(fp, \"{\");"
+        },
+        {
+          "line": 111,
+          "text": "    fmt = ipaddress_fmt(ip);"
+        },
+        {
+          "line": 112,
+          "text": "    fprintf(fp, \"\\\"ip\\\":\\\"%s\\\",\", fmt.string);"
+        },
+        {
+          "line": 113,
+          "text": "    fprintf(fp, \"\\\"timestamp\\\":\\\"%d\\\",\\\"port\\\":%u,\\\"proto\\\":\\\"%s\\\",\\\"rec_type\\\":\\\"banner\\\",\\\"data\\\":{\\\"service_name\\\":\\\"%s\\\",\\\"banner\\\":\\\"%s\\\"}\","
+        },
+        {
+          "line": 114,
+          "text": "            (int) timestamp,"
+        },
+        {
+          "line": 115,
+          "text": "            port,"
+        },
+        {
+          "line": 116,
+          "text": "            name_from_ip_proto(ip_proto),"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\robertdavidgraham__masscan\\src\\out-ndjson.c",
+      "line": 43,
+      "col": 17,
+      "message": "explicit conversion of time_t to 'int' may truncate after 2038",
+      "context": [
+        {
+          "line": 37,
+          "text": ""
+        },
+        {
+          "line": 38,
+          "text": "    fprintf(fp, \"{\");"
+        },
+        {
+          "line": 39,
+          "text": "    fmt = ipaddress_fmt(ip);"
+        },
+        {
+          "line": 40,
+          "text": "    fprintf(fp, \"\\\"ip\\\":\\\"%s\\\",\", fmt.string);"
+        },
+        {
+          "line": 41,
+          "text": "    fprintf(fp, \"\\\"timestamp\\\":\\\"%d\\\",\\\"port\\\":%u,\\\"proto\\\":\\\"%s\\\",\\\"rec_type\\\":\\\"status\\\",\\\"data\\\":{\\\"status\\\":\\\"%s\\\",\""
+        },
+        {
+          "line": 42,
+          "text": "                \"\\\"reason\\\":\\\"%s\\\",\\\"ttl\\\":%u}\","
+        },
+        {
+          "line": 43,
+          "text": "                (int) timestamp,"
+        },
+        {
+          "line": 44,
+          "text": "                port,"
+        },
+        {
+          "line": 45,
+          "text": "                name_from_ip_proto(ip_proto),"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\robertdavidgraham__masscan\\src\\out-redis.c",
+      "line": 295,
+      "col": 9,
+      "message": "explicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 289,
+          "text": ""
+        },
+        {
+          "line": 290,
+          "text": "    /*"
+        },
+        {
+          "line": 291,
+          "text": "     * KEY: ip:port"
+        },
+        {
+          "line": 292,
+          "text": "     * VALUE: timestamp:status:reason:ttl"
+        },
+        {
+          "line": 293,
+          "text": "     */"
+        },
+        {
+          "line": 294,
+          "text": "    values_length = snprintf(values, sizeof(values), \"%u:%u:%u:%u\","
+        },
+        {
+          "line": 295,
+          "text": "        (unsigned)timestamp, status, reason, ttl);"
+        },
+        {
+          "line": 296,
+          "text": "    line_length = snprintf(line, sizeof(line),"
+        },
+        {
+          "line": 297,
+          "text": "            \"*3\\r\\n\""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\robertdavidgraham__masscan\\src\\out-text.c",
+      "line": 69,
+      "col": 9,
+      "message": "explicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 63,
+          "text": ""
+        },
+        {
+          "line": 64,
+          "text": "    fprintf(fp, \"%s %s %u %s %u %s %s\\n\","
+        },
+        {
+          "line": 65,
+          "text": "        \"banner\","
+        },
+        {
+          "line": 66,
+          "text": "        name_from_ip_proto(ip_proto),"
+        },
+        {
+          "line": 67,
+          "text": "        port,"
+        },
+        {
+          "line": 68,
+          "text": "        fmt.string,"
+        },
+        {
+          "line": 69,
+          "text": "        (unsigned)timestamp,"
+        },
+        {
+          "line": 70,
+          "text": "        masscan_app_to_string(proto),"
+        },
+        {
+          "line": 71,
+          "text": "        normalize_string(px, length, banner_buffer, sizeof(banner_buffer))"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\robertdavidgraham__masscan\\src\\out-text.c",
+      "line": 44,
+      "col": 9,
+      "message": "explicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 38,
+          "text": ""
+        },
+        {
+          "line": 39,
+          "text": "    fprintf(fp, \"%s %s %u %s %u\\n\","
+        },
+        {
+          "line": 40,
+          "text": "        status_string(status),"
+        },
+        {
+          "line": 41,
+          "text": "        name_from_ip_proto(ip_proto),"
+        },
+        {
+          "line": 42,
+          "text": "        port,"
+        },
+        {
+          "line": 43,
+          "text": "        fmt.string,"
+        },
+        {
+          "line": 44,
+          "text": "        (unsigned)timestamp"
+        },
+        {
+          "line": 45,
+          "text": "        );"
+        },
+        {
+          "line": 46,
+          "text": "}"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\robertdavidgraham__masscan\\src\\out-xml.c",
+      "line": 123,
+      "col": 9,
+      "message": "explicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 117,
+          "text": "                      \"<state state=\\\"open\\\" reason=\\\"%s\\\" reason_ttl=\\\"%u\\\" />\""
+        },
+        {
+          "line": 118,
+          "text": "                      \"<service name=\\\"%s\\\" banner=\\\"%s\\\"></service>\""
+        },
+        {
+          "line": 119,
+          "text": "                    \"</port>\""
+        },
+        {
+          "line": 120,
+          "text": "                    \"</ports>\""
+        },
+        {
+          "line": 121,
+          "text": "                \"</host>\""
+        },
+        {
+          "line": 122,
+          "text": "                \"\\r\\n\","
+        },
+        {
+          "line": 123,
+          "text": "        (unsigned)timestamp,"
+        },
+        {
+          "line": 124,
+          "text": "        fmt.string,"
+        },
+        {
+          "line": 125,
+          "text": "        name_from_ip_version(ip.version),"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\robertdavidgraham__masscan\\src\\out-xml.c",
+      "line": 82,
+      "col": 9,
+      "message": "explicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 76,
+          "text": "                    \"<port protocol=\\\"%s\\\" portid=\\\"%u\\\">\""
+        },
+        {
+          "line": 77,
+          "text": "                    \"<state state=\\\"%s\\\" reason=\\\"%s\\\" reason_ttl=\\\"%u\\\"/>\""
+        },
+        {
+          "line": 78,
+          "text": "                    \"</port>\""
+        },
+        {
+          "line": 79,
+          "text": "                    \"</ports>\""
+        },
+        {
+          "line": 80,
+          "text": "                \"</host>\""
+        },
+        {
+          "line": 81,
+          "text": "                \"\\r\\n\","
+        },
+        {
+          "line": 82,
+          "text": "        (unsigned)timestamp,"
+        },
+        {
+          "line": 83,
+          "text": "        fmt.string,"
+        },
+        {
+          "line": 84,
+          "text": "        name_from_ip_version(ip.version),"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\robertdavidgraham__masscan\\src\\out-xml.c",
+      "line": 55,
+      "col": 13,
+      "message": "explicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 49,
+          "text": "              \"<finished time=\\\"%u\\\" timestr=\\\"%s\\\" elapsed=\\\"%u\\\" />\\r\\n\""
+        },
+        {
+          "line": 50,
+          "text": "              \"<hosts up=\\\"%\" PRIu64 \"\\\" down=\\\"%\" PRIu64 \"\\\" total=\\\"%\" PRIu64 \"\\\" />\\r\\n\""
+        },
+        {
+          "line": 51,
+          "text": "             \"</runstats>\\r\\n\""
+        },
+        {
+          "line": 52,
+          "text": "            \"</nmaprun>\\r\\n\","
+        },
+        {
+          "line": 53,
+          "text": "            (unsigned)now,                    /* time */"
+        },
+        {
+          "line": 54,
+          "text": "            buffer,                 /* timestr */"
+        },
+        {
+          "line": 55,
+          "text": "            (unsigned)(now - out->rotate.last), /* elapsed */"
+        },
+        {
+          "line": 56,
+          "text": "            out->counts.tcp.open,"
+        },
+        {
+          "line": 57,
+          "text": "            out->counts.tcp.closed,"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\robertdavidgraham__masscan\\src\\out-xml.c",
+      "line": 53,
+      "col": 13,
+      "message": "explicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 47,
+          "text": "    fprintf(fp,"
+        },
+        {
+          "line": 48,
+          "text": "             \"<runstats>\\r\\n\""
+        },
+        {
+          "line": 49,
+          "text": "              \"<finished time=\\\"%u\\\" timestr=\\\"%s\\\" elapsed=\\\"%u\\\" />\\r\\n\""
+        },
+        {
+          "line": 50,
+          "text": "              \"<hosts up=\\\"%\" PRIu64 \"\\\" down=\\\"%\" PRIu64 \"\\\" total=\\\"%\" PRIu64 \"\\\" />\\r\\n\""
+        },
+        {
+          "line": 51,
+          "text": "             \"</runstats>\\r\\n\""
+        },
+        {
+          "line": 52,
+          "text": "            \"</nmaprun>\\r\\n\","
+        },
+        {
+          "line": 53,
+          "text": "            (unsigned)now,                    /* time */"
+        },
+        {
+          "line": 54,
+          "text": "            buffer,                 /* timestr */"
+        },
+        {
+          "line": 55,
+          "text": "            (unsigned)(now - out->rotate.last), /* elapsed */"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\robertdavidgraham__masscan\\src\\out-xml.c",
+      "line": 23,
+      "col": 9,
+      "message": "explicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 17,
+          "text": "    if (out->xml.stylesheet && out->xml.stylesheet[0]) {"
+        },
+        {
+          "line": 18,
+          "text": "        fprintf(fp, \"<?xml-stylesheet href=\\\"%s\\\" type=\\\"text/xsl\\\"?>\\r\\n\","
+        },
+        {
+          "line": 19,
+          "text": "            out->xml.stylesheet);"
+        },
+        {
+          "line": 20,
+          "text": "    }"
+        },
+        {
+          "line": 21,
+          "text": "    fprintf(fp, \"<nmaprun scanner=\\\"%s\\\" start=\\\"%u\\\" version=\\\"%s\\\"  xmloutputversion=\\\"%s\\\">\\r\\n\","
+        },
+        {
+          "line": 22,
+          "text": "        \"masscan\","
+        },
+        {
+          "line": 23,
+          "text": "        (unsigned)time(0),"
+        },
+        {
+          "line": 24,
+          "text": "        \"1.0-BETA\","
+        },
+        {
+          "line": 25,
+          "text": "        \"1.03\" /* xml output version I copied from their site */"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\robertdavidgraham__masscan\\src\\proto-ssl.c",
+      "line": 1228,
+      "col": 20,
+      "message": "explicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 1222,
+          "text": "/*****************************************************************************"
+        },
+        {
+          "line": 1223,
+          "text": " *****************************************************************************/"
+        },
+        {
+          "line": 1224,
+          "text": "char *"
+        },
+        {
+          "line": 1225,
+          "text": "ssl_hello(const void *templ)"
+        },
+        {
+          "line": 1226,
+          "text": "{"
+        },
+        {
+          "line": 1227,
+          "text": "    unsigned char *px = (unsigned char *)templ;"
+        },
+        {
+          "line": 1228,
+          "text": "    unsigned now = (unsigned)time(0);"
+        },
+        {
+          "line": 1229,
+          "text": "    unsigned i;"
+        },
+        {
+          "line": 1230,
+          "text": "    "
+        }
+      ]
+    }
+  ]
+}

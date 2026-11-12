@@ -1,0 +1,3359 @@
+{
+  "repo": "redis/redis",
+  "stars": 74645,
+  "y2038detect_version": "0.9.4",
+  "scanned_at": "2026-09-30T14:02:00Z",
+  "scan_sec": 127.84,
+  "c_files": 471,
+  "c_lines": 307873,
+  "parse_errors": 56923,
+  "scan_errors": 0,
+  "issues": [
+    {
+      "file": "evaluation\\repos\\redis__redis\\src\\config.c",
+      "line": 2898,
+      "col": 28,
+      "message": "explicit conversion of time_t to 'long' may truncate after 2038",
+      "context": [
+        {
+          "line": 2892,
+          "text": "    int j;"
+        },
+        {
+          "line": 2893,
+          "text": "    for (j = 0; j < CLIENT_TYPE_OBUF_COUNT; j++) {"
+        },
+        {
+          "line": 2894,
+          "text": "        buf = sdscatprintf(buf,\"%s %llu %llu %ld\","
+        },
+        {
+          "line": 2895,
+          "text": "                           getClientTypeName(j),"
+        },
+        {
+          "line": 2896,
+          "text": "                           server.client_obuf_limits[j].hard_limit_bytes,"
+        },
+        {
+          "line": 2897,
+          "text": "                           server.client_obuf_limits[j].soft_limit_bytes,"
+        },
+        {
+          "line": 2898,
+          "text": "                           (long) server.client_obuf_limits[j].soft_limit_seconds);"
+        },
+        {
+          "line": 2899,
+          "text": "        if (j != CLIENT_TYPE_OBUF_COUNT-1)"
+        },
+        {
+          "line": 2900,
+          "text": "            buf = sdscatlen(buf,\" \",1);"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\redis__redis\\src\\config.c",
+      "line": 1520,
+      "col": 17,
+      "message": "explicit conversion of time_t to 'long' may truncate after 2038",
+      "context": [
+        {
+          "line": 1514,
+          "text": "                server.client_obuf_limits[j].soft_limit_bytes);"
+        },
+        {
+          "line": 1515,
+          "text": ""
+        },
+        {
+          "line": 1516,
+          "text": "        char *typename = getClientTypeName(j);"
+        },
+        {
+          "line": 1517,
+          "text": "        if (!strcmp(typename,\"slave\")) typename = \"replica\";"
+        },
+        {
+          "line": 1518,
+          "text": "        line = sdscatprintf(sdsempty(),\"%s %s %s %s %ld\","
+        },
+        {
+          "line": 1519,
+          "text": "                name, typename, hard, soft,"
+        },
+        {
+          "line": 1520,
+          "text": "                (long) server.client_obuf_limits[j].soft_limit_seconds);"
+        },
+        {
+          "line": 1521,
+          "text": "        rewriteConfigRewriteLine(state,name,line,force);"
+        },
+        {
+          "line": 1522,
+          "text": "    }"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\redis__redis\\src\\config.c",
+      "line": 1413,
+      "col": 17,
+      "message": "explicit conversion of time_t to 'long' may truncate after 2038",
+      "context": [
+        {
+          "line": 1407,
+          "text": "     */"
+        },
+        {
+          "line": 1408,
+          "text": "    if (!server.saveparamslen) {"
+        },
+        {
+          "line": 1409,
+          "text": "        rewriteConfigRewriteLine(state,name,sdsnew(\"save \\\"\\\"\"),1);"
+        },
+        {
+          "line": 1410,
+          "text": "    } else {"
+        },
+        {
+          "line": 1411,
+          "text": "        for (j = 0; j < server.saveparamslen; j++) {"
+        },
+        {
+          "line": 1412,
+          "text": "            line = sdscatprintf(sdsempty(),\"save %ld %d\","
+        },
+        {
+          "line": 1413,
+          "text": "                (long) server.saveparams[j].seconds, server.saveparams[j].changes);"
+        },
+        {
+          "line": 1414,
+          "text": "            rewriteConfigRewriteLine(state,name,line,1);"
+        },
+        {
+          "line": 1415,
+          "text": "        }"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\redis__redis\\src\\evict.c",
+      "line": 266,
+      "col": 12,
+      "message": "implicit conversion of time_t to 'unsigned long' may truncate after 2106",
+      "context": [
+        {
+          "line": 260,
+          "text": " * --------------------------------------------------------------------------*/"
+        },
+        {
+          "line": 261,
+          "text": ""
+        },
+        {
+          "line": 262,
+          "text": "/* Return the current time in minutes, just taking the least significant"
+        },
+        {
+          "line": 263,
+          "text": " * 16 bits. The returned time is suitable to be stored as LDT (last access"
+        },
+        {
+          "line": 264,
+          "text": " * time) for the LFU implementation. */"
+        },
+        {
+          "line": 265,
+          "text": "unsigned long LFUGetTimeInMinutes(void) {"
+        },
+        {
+          "line": 266,
+          "text": "    return (server.unixtime/60) & 65535;"
+        },
+        {
+          "line": 267,
+          "text": "}"
+        },
+        {
+          "line": 268,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\redis__redis\\src\\latency.c",
+      "line": 593,
+      "col": 19,
+      "message": "implicit conversion of time_t to 'int' may truncate after 2038",
+      "context": [
+        {
+          "line": 587,
+          "text": "        } else {"
+        },
+        {
+          "line": 588,
+          "text": "            if (ts->samples[i].latency > max) max = ts->samples[i].latency;"
+        },
+        {
+          "line": 589,
+          "text": "            if (ts->samples[i].latency < min) min = ts->samples[i].latency;"
+        },
+        {
+          "line": 590,
+          "text": "        }"
+        },
+        {
+          "line": 591,
+          "text": "        /* Use as label the number of seconds / minutes / hours / days"
+        },
+        {
+          "line": 592,
+          "text": "         * ago the event happened. */"
+        },
+        {
+          "line": 593,
+          "text": "        elapsed = time(NULL) - ts->samples[i].time;"
+        },
+        {
+          "line": 594,
+          "text": "        if (elapsed < 60)"
+        },
+        {
+          "line": 595,
+          "text": "            snprintf(buf,sizeof(buf),\"%ds\",elapsed);"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\redis__redis\\src\\latency.c",
+      "line": 88,
+      "col": 33,
+      "message": "implicit conversion of time_t to 'int32_t' may truncate after 2038",
+      "context": [
+        {
+          "line": 82,
+          "text": "    if (ts->samples[prev].time == now) {"
+        },
+        {
+          "line": 83,
+          "text": "        if (latency > ts->samples[prev].latency)"
+        },
+        {
+          "line": 84,
+          "text": "            ts->samples[prev].latency = latency;"
+        },
+        {
+          "line": 85,
+          "text": "        return;"
+        },
+        {
+          "line": 86,
+          "text": "    }"
+        },
+        {
+          "line": 87,
+          "text": ""
+        },
+        {
+          "line": 88,
+          "text": "    ts->samples[ts->idx].time = now;"
+        },
+        {
+          "line": 89,
+          "text": "    ts->samples[ts->idx].latency = latency;"
+        },
+        {
+          "line": 90,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\redis__redis\\src\\localtime.c",
+      "line": 82,
+      "col": 20,
+      "message": "implicit conversion of time_t to 'int' may truncate after 2038",
+      "context": [
+        {
+          "line": 76,
+          "text": "    tmp->tm_mon = 0;"
+        },
+        {
+          "line": 77,
+          "text": "    while(days >= mdays[tmp->tm_mon]) {"
+        },
+        {
+          "line": 78,
+          "text": "        days -= mdays[tmp->tm_mon];"
+        },
+        {
+          "line": 79,
+          "text": "        tmp->tm_mon++;"
+        },
+        {
+          "line": 80,
+          "text": "    }"
+        },
+        {
+          "line": 81,
+          "text": ""
+        },
+        {
+          "line": 82,
+          "text": "    tmp->tm_mday = days+1;  /* Add 1 since our 'days' is zero-based. */"
+        },
+        {
+          "line": 83,
+          "text": "    tmp->tm_year -= 1900;   /* Surprisingly tm_year is year-1900. */"
+        },
+        {
+          "line": 84,
+          "text": "}"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\redis__redis\\src\\localtime.c",
+      "line": 68,
+      "col": 20,
+      "message": "implicit conversion of time_t to 'int' may truncate after 2038",
+      "context": [
+        {
+          "line": 62,
+          "text": "        /* Leap years have one day more. */"
+        },
+        {
+          "line": 63,
+          "text": "        time_t days_this_year = 365 + is_leap_year(tmp->tm_year);"
+        },
+        {
+          "line": 64,
+          "text": "        if (days_this_year > days) break;"
+        },
+        {
+          "line": 65,
+          "text": "        days -= days_this_year;"
+        },
+        {
+          "line": 66,
+          "text": "        tmp->tm_year++;"
+        },
+        {
+          "line": 67,
+          "text": "    }"
+        },
+        {
+          "line": 68,
+          "text": "    tmp->tm_yday = days;  /* Number of day of the current year. */"
+        },
+        {
+          "line": 69,
+          "text": ""
+        },
+        {
+          "line": 70,
+          "text": "    /* We need to calculate in which month and day of the month we are. To do"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\redis__redis\\src\\rdb.c",
+      "line": 4212,
+      "col": 17,
+      "message": "explicit conversion of time_t to 'unsigned long' may truncate after 2106",
+      "context": [
+        {
+          "line": 4206,
+          "text": "            } else if (!strcasecmp(auxkey->ptr,\"redis-ver\")) {"
+        },
+        {
+          "line": 4207,
+          "text": "                serverLog(LL_NOTICE,\"Loading RDB produced by version %s\","
+        },
+        {
+          "line": 4208,
+          "text": "                    (char*)auxval->ptr);"
+        },
+        {
+          "line": 4209,
+          "text": "            } else if (!strcasecmp(auxkey->ptr,\"ctime\")) {"
+        },
+        {
+          "line": 4210,
+          "text": "                time_t age = time(NULL)-strtol(auxval->ptr,NULL,10);"
+        },
+        {
+          "line": 4211,
+          "text": "                if (age < 0) age = 0;"
+        },
+        {
+          "line": 4212,
+          "text": "                serverLog(LL_NOTICE,\"RDB age %ld seconds\","
+        },
+        {
+          "line": 4213,
+          "text": "                    (unsigned long) age);"
+        },
+        {
+          "line": 4214,
+          "text": "            } else if (!strcasecmp(auxkey->ptr,\"used-mem\")) {"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\redis__redis\\src\\redis-check-aof.c",
+      "line": 196,
+      "col": 48,
+      "message": "time_t passed to printf-family function with incompatible format specifier: may truncate after 2038",
+      "context": [
+        {
+          "line": 190,
+          "text": "            printf(\"Invalid timestamp annotation\\n\");"
+        },
+        {
+          "line": 191,
+          "text": "            exit(1);"
+        },
+        {
+          "line": 192,
+          "text": "        }"
+        },
+        {
+          "line": 193,
+          "text": "        if (ts <= to_timestamp) return 1;"
+        },
+        {
+          "line": 194,
+          "text": "        if (epos == 0) {"
+        },
+        {
+          "line": 195,
+          "text": "            printf(\"AOF %s has nothing before timestamp %ld, \""
+        },
+        {
+          "line": 196,
+          "text": "                    \"aborting...\\n\", filename, to_timestamp);"
+        },
+        {
+          "line": 197,
+          "text": "            exit(1);"
+        },
+        {
+          "line": 198,
+          "text": "        }"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\redis__redis\\src\\redis-check-aof.c",
+      "line": 201,
+      "col": 27,
+      "message": "time_t passed to printf-family function with incompatible format specifier: may truncate after 2038",
+      "context": [
+        {
+          "line": 195,
+          "text": "            printf(\"AOF %s has nothing before timestamp %ld, \""
+        },
+        {
+          "line": 196,
+          "text": "                    \"aborting...\\n\", filename, to_timestamp);"
+        },
+        {
+          "line": 197,
+          "text": "            exit(1);"
+        },
+        {
+          "line": 198,
+          "text": "        }"
+        },
+        {
+          "line": 199,
+          "text": "        if (!last_file) {"
+        },
+        {
+          "line": 200,
+          "text": "            printf(\"Failed to truncate AOF %s to timestamp %ld to offset %ld because it is not the last file.\\n\","
+        },
+        {
+          "line": 201,
+          "text": "                filename, to_timestamp, (long int)epos);"
+        },
+        {
+          "line": 202,
+          "text": "            printf(\"If you insist, please delete all files after this file according to the manifest \""
+        },
+        {
+          "line": 203,
+          "text": "                \"file and delete the corresponding records in manifest file manually. Then re-run redis-check-aof.\\n\");"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\redis__redis\\src\\redis-check-aof.c",
+      "line": 209,
+      "col": 31,
+      "message": "time_t passed to printf-family function with incompatible format specifier: may truncate after 2038",
+      "context": [
+        {
+          "line": 203,
+          "text": "                \"file and delete the corresponding records in manifest file manually. Then re-run redis-check-aof.\\n\");"
+        },
+        {
+          "line": 204,
+          "text": "            exit(1);"
+        },
+        {
+          "line": 205,
+          "text": "        }"
+        },
+        {
+          "line": 206,
+          "text": "        /* Truncate remaining AOF if exceeding 'to_timestamp' */"
+        },
+        {
+          "line": 207,
+          "text": "        if (ftruncate(fileno(fp), epos) == -1) {"
+        },
+        {
+          "line": 208,
+          "text": "            printf(\"Failed to truncate AOF %s to timestamp %ld\\n\","
+        },
+        {
+          "line": 209,
+          "text": "                    filename, to_timestamp);"
+        },
+        {
+          "line": 210,
+          "text": "            exit(1);"
+        },
+        {
+          "line": 211,
+          "text": "        } else {"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\redis__redis\\src\\redis-check-aof.c",
+      "line": 297,
+      "col": 79,
+      "message": "time_t passed to printf-family function with incompatible format specifier: may truncate after 2038",
+      "context": [
+        {
+          "line": 291,
+          "text": "    }"
+        },
+        {
+          "line": 292,
+          "text": ""
+        },
+        {
+          "line": 293,
+          "text": "    diff = size-pos;"
+        },
+        {
+          "line": 294,
+          "text": ""
+        },
+        {
+          "line": 295,
+          "text": "    /* In truncate-to-timestamp mode, just exit if there is nothing to truncate. */"
+        },
+        {
+          "line": 296,
+          "text": "    if (diff == 0 && to_timestamp) {"
+        },
+        {
+          "line": 297,
+          "text": "        printf(\"Truncate nothing in AOF %s to timestamp %ld\\n\", aof_filename, to_timestamp);"
+        },
+        {
+          "line": 298,
+          "text": "        fclose(fp);"
+        },
+        {
+          "line": 299,
+          "text": "        return AOF_CHECK_OK;"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\redis__redis\\src\\redis-check-aof.c",
+      "line": 449,
+      "col": 26,
+      "message": "time_t passed to printf-family function with incompatible format specifier: may truncate after 2038",
+      "context": [
+        {
+          "line": 443,
+          "text": "    if (ret == AOF_CHECK_OK) {"
+        },
+        {
+          "line": 444,
+          "text": "        printf(\"%s %s is valid\\n\", aofType, aofFileName);"
+        },
+        {
+          "line": 445,
+          "text": "    } else if (ret == AOF_CHECK_EMPTY) {"
+        },
+        {
+          "line": 446,
+          "text": "        printf(\"%s %s is empty\\n\", aofType, aofFileName);"
+        },
+        {
+          "line": 447,
+          "text": "    } else if (ret == AOF_CHECK_TIMESTAMP_TRUNCATED) {"
+        },
+        {
+          "line": 448,
+          "text": "        printf(\"Successfully truncated AOF %s to timestamp %ld\\n\","
+        },
+        {
+          "line": 449,
+          "text": "            aofFileName, to_timestamp);"
+        },
+        {
+          "line": 450,
+          "text": "    } else if (ret == AOF_CHECK_TRUNCATED) {"
+        },
+        {
+          "line": 451,
+          "text": "        printf(\"Successfully truncated AOF %s\\n\", aofFileName);"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\redis__redis\\src\\replication.c",
+      "line": 5094,
+      "col": 13,
+      "message": "explicit conversion of time_t to 'int' may truncate after 2038",
+      "context": [
+        {
+          "line": 5088,
+          "text": "             *    master that will accept our PSYNC request by second"
+        },
+        {
+          "line": 5089,
+          "text": "             *    replication ID, but there will be data inconsistency"
+        },
+        {
+          "line": 5090,
+          "text": "             *    because we received writes. */"
+        },
+        {
+          "line": 5091,
+          "text": "            changeReplicationId();"
+        },
+        {
+          "line": 5092,
+          "text": "            clearReplicationId2();"
+        },
+        {
+          "line": 5093,
+          "text": "            freeReplicationBacklog();"
+        },
+        {
+          "line": 5094,
+          "text": "            serverLog(LL_NOTICE,"
+        },
+        {
+          "line": 5095,
+          "text": "                \"Replication backlog freed after %d seconds \""
+        },
+        {
+          "line": 5096,
+          "text": "                \"without connected replicas.\","
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\redis__redis\\src\\replication.c",
+      "line": 3359,
+      "col": 35,
+      "message": "explicit conversion of time_t to 'int' may truncate after 2038",
+      "context": [
+        {
+          "line": 3353,
+          "text": "    }"
+        },
+        {
+          "line": 3354,
+          "text": ""
+        },
+        {
+          "line": 3355,
+          "text": "    /* Prepare a suitable temp file for bulk transfer */"
+        },
+        {
+          "line": 3356,
+          "text": "    if (!useDisklessLoad()) {"
+        },
+        {
+          "line": 3357,
+          "text": "        while(maxtries--) {"
+        },
+        {
+          "line": 3358,
+          "text": "            snprintf(tmpfile,256,"
+        },
+        {
+          "line": 3359,
+          "text": "                \"temp-%d.%ld.rdb\",(int)server.unixtime,(long int)getpid());"
+        },
+        {
+          "line": 3360,
+          "text": "            dfd = open(tmpfile,O_CREAT|O_WRONLY|O_EXCL,0644);"
+        },
+        {
+          "line": 3361,
+          "text": "            if (dfd != -1) break;"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\redis__redis\\src\\replication.c",
+      "line": 796,
+      "col": 49,
+      "message": "explicit conversion of time_t to 'long' may truncate after 2038",
+      "context": [
+        {
+          "line": 790,
+          "text": "    int j;"
+        },
+        {
+          "line": 791,
+          "text": "    sds cmdrepr = sdsnew(\"+\");"
+        },
+        {
+          "line": 792,
+          "text": "    robj *cmdobj;"
+        },
+        {
+          "line": 793,
+          "text": "    struct timeval tv;"
+        },
+        {
+          "line": 794,
+          "text": ""
+        },
+        {
+          "line": 795,
+          "text": "    gettimeofday(&tv,NULL);"
+        },
+        {
+          "line": 796,
+          "text": "    cmdrepr = sdscatprintf(cmdrepr,\"%ld.%06ld \",(long)tv.tv_sec,(long)tv.tv_usec);"
+        },
+        {
+          "line": 797,
+          "text": "    if (c->flags & CLIENT_SCRIPT) {"
+        },
+        {
+          "line": 798,
+          "text": "        cmdrepr = sdscatprintf(cmdrepr,\"[%d lua] \",dictid);"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\redis__redis\\src\\server.c",
+      "line": 6901,
+      "col": 9,
+      "message": "explicit conversion of time_t to 'long' may truncate after 2038",
+      "context": [
+        {
+          "line": 6895,
+          "text": "        \"used_cpu_user:%ld.%06ld\\r\\n\""
+        },
+        {
+          "line": 6896,
+          "text": "        \"used_cpu_sys_children:%ld.%06ld\\r\\n\""
+        },
+        {
+          "line": 6897,
+          "text": "        \"used_cpu_user_children:%ld.%06ld\\r\\n\","
+        },
+        {
+          "line": 6898,
+          "text": "        (long)self_ru.ru_stime.tv_sec, (long)self_ru.ru_stime.tv_usec,"
+        },
+        {
+          "line": 6899,
+          "text": "        (long)self_ru.ru_utime.tv_sec, (long)self_ru.ru_utime.tv_usec,"
+        },
+        {
+          "line": 6900,
+          "text": "        (long)c_ru.ru_stime.tv_sec, (long)c_ru.ru_stime.tv_usec,"
+        },
+        {
+          "line": 6901,
+          "text": "        (long)c_ru.ru_utime.tv_sec, (long)c_ru.ru_utime.tv_usec);"
+        },
+        {
+          "line": 6902,
+          "text": "#ifdef RUSAGE_THREAD"
+        },
+        {
+          "line": 6903,
+          "text": "        struct rusage m_ru;"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\redis__redis\\src\\server.c",
+      "line": 6900,
+      "col": 9,
+      "message": "explicit conversion of time_t to 'long' may truncate after 2038",
+      "context": [
+        {
+          "line": 6894,
+          "text": "        \"used_cpu_sys:%ld.%06ld\\r\\n\""
+        },
+        {
+          "line": 6895,
+          "text": "        \"used_cpu_user:%ld.%06ld\\r\\n\""
+        },
+        {
+          "line": 6896,
+          "text": "        \"used_cpu_sys_children:%ld.%06ld\\r\\n\""
+        },
+        {
+          "line": 6897,
+          "text": "        \"used_cpu_user_children:%ld.%06ld\\r\\n\","
+        },
+        {
+          "line": 6898,
+          "text": "        (long)self_ru.ru_stime.tv_sec, (long)self_ru.ru_stime.tv_usec,"
+        },
+        {
+          "line": 6899,
+          "text": "        (long)self_ru.ru_utime.tv_sec, (long)self_ru.ru_utime.tv_usec,"
+        },
+        {
+          "line": 6900,
+          "text": "        (long)c_ru.ru_stime.tv_sec, (long)c_ru.ru_stime.tv_usec,"
+        },
+        {
+          "line": 6901,
+          "text": "        (long)c_ru.ru_utime.tv_sec, (long)c_ru.ru_utime.tv_usec);"
+        },
+        {
+          "line": 6902,
+          "text": "#ifdef RUSAGE_THREAD"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\redis__redis\\src\\server.c",
+      "line": 6899,
+      "col": 9,
+      "message": "explicit conversion of time_t to 'long' may truncate after 2038",
+      "context": [
+        {
+          "line": 6893,
+          "text": "        \"# CPU\\r\\n\""
+        },
+        {
+          "line": 6894,
+          "text": "        \"used_cpu_sys:%ld.%06ld\\r\\n\""
+        },
+        {
+          "line": 6895,
+          "text": "        \"used_cpu_user:%ld.%06ld\\r\\n\""
+        },
+        {
+          "line": 6896,
+          "text": "        \"used_cpu_sys_children:%ld.%06ld\\r\\n\""
+        },
+        {
+          "line": 6897,
+          "text": "        \"used_cpu_user_children:%ld.%06ld\\r\\n\","
+        },
+        {
+          "line": 6898,
+          "text": "        (long)self_ru.ru_stime.tv_sec, (long)self_ru.ru_stime.tv_usec,"
+        },
+        {
+          "line": 6899,
+          "text": "        (long)self_ru.ru_utime.tv_sec, (long)self_ru.ru_utime.tv_usec,"
+        },
+        {
+          "line": 6900,
+          "text": "        (long)c_ru.ru_stime.tv_sec, (long)c_ru.ru_stime.tv_usec,"
+        },
+        {
+          "line": 6901,
+          "text": "        (long)c_ru.ru_utime.tv_sec, (long)c_ru.ru_utime.tv_usec);"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\redis__redis\\src\\server.c",
+      "line": 6898,
+      "col": 9,
+      "message": "explicit conversion of time_t to 'long' may truncate after 2038",
+      "context": [
+        {
+          "line": 6892,
+          "text": "        info = sdscatprintf(info,"
+        },
+        {
+          "line": 6893,
+          "text": "        \"# CPU\\r\\n\""
+        },
+        {
+          "line": 6894,
+          "text": "        \"used_cpu_sys:%ld.%06ld\\r\\n\""
+        },
+        {
+          "line": 6895,
+          "text": "        \"used_cpu_user:%ld.%06ld\\r\\n\""
+        },
+        {
+          "line": 6896,
+          "text": "        \"used_cpu_sys_children:%ld.%06ld\\r\\n\""
+        },
+        {
+          "line": 6897,
+          "text": "        \"used_cpu_user_children:%ld.%06ld\\r\\n\","
+        },
+        {
+          "line": 6898,
+          "text": "        (long)self_ru.ru_stime.tv_sec, (long)self_ru.ru_stime.tv_usec,"
+        },
+        {
+          "line": 6899,
+          "text": "        (long)self_ru.ru_utime.tv_sec, (long)self_ru.ru_utime.tv_usec,"
+        },
+        {
+          "line": 6900,
+          "text": "        (long)c_ru.ru_stime.tv_sec, (long)c_ru.ru_stime.tv_usec,"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\redis__redis\\src\\server.c",
+      "line": 6790,
+      "col": 43,
+      "message": "explicit conversion of time_t to 'int' may truncate after 2038",
+      "context": [
+        {
+          "line": 6784,
+          "text": "                \"master_total_sync_attempts:%lld\\r\\n\", server.repl_total_sync_attempts));"
+        },
+        {
+          "line": 6785,
+          "text": "            if (server.repl_state == REPL_STATE_TRANSFER) {"
+        },
+        {
+          "line": 6786,
+          "text": "                double perc = 0;"
+        },
+        {
+          "line": 6787,
+          "text": "                if (server.repl_transfer_size) {"
+        },
+        {
+          "line": 6788,
+          "text": "                    perc = ((double)server.repl_transfer_read / server.repl_transfer_size) * 100;"
+        },
+        {
+          "line": 6789,
+          "text": "                }"
+        },
+        {
+          "line": 6790,
+          "text": "                info = sdscatprintf(info, FMTARGS("
+        },
+        {
+          "line": 6791,
+          "text": "                    \"master_sync_total_bytes:%lld\\r\\n\", (long long) server.repl_transfer_size,"
+        },
+        {
+          "line": 6792,
+          "text": "                    \"master_sync_read_bytes:%lld\\r\\n\", (long long) server.repl_transfer_read,"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\redis__redis\\src\\server.c",
+      "line": 6773,
+      "col": 39,
+      "message": "explicit conversion of time_t to 'int' may truncate after 2038",
+      "context": [
+        {
+          "line": 6767,
+          "text": "                slave_read_repl_offset = server.master->read_reploff;"
+        },
+        {
+          "line": 6768,
+          "text": "            } else if (server.cached_master) {"
+        },
+        {
+          "line": 6769,
+          "text": "                slave_repl_offset = server.cached_master->reploff;"
+        },
+        {
+          "line": 6770,
+          "text": "                slave_read_repl_offset = server.cached_master->read_reploff;"
+        },
+        {
+          "line": 6771,
+          "text": "            }"
+        },
+        {
+          "line": 6772,
+          "text": ""
+        },
+        {
+          "line": 6773,
+          "text": "            info = sdscatprintf(info, FMTARGS("
+        },
+        {
+          "line": 6774,
+          "text": "                \"master_host:%s\\r\\n\", server.masterhost,"
+        },
+        {
+          "line": 6775,
+          "text": "                \"master_port:%d\\r\\n\", server.masterport,"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\redis__redis\\src\\server.c",
+      "line": 1696,
+      "col": 17,
+      "message": "explicit conversion of time_t to 'int' may truncate after 2038",
+      "context": [
+        {
+          "line": 1690,
+          "text": "            if (server.dirty >= sp->changes &&"
+        },
+        {
+          "line": 1691,
+          "text": "                server.unixtime-server.lastsave > sp->seconds &&"
+        },
+        {
+          "line": 1692,
+          "text": "                (server.unixtime-server.lastbgsave_try >"
+        },
+        {
+          "line": 1693,
+          "text": "                 CONFIG_BGSAVE_RETRY_DELAY ||"
+        },
+        {
+          "line": 1694,
+          "text": "                 server.lastbgsave_status == C_OK))"
+        },
+        {
+          "line": 1695,
+          "text": "            {"
+        },
+        {
+          "line": 1696,
+          "text": "                serverLog(LL_NOTICE,\"%d changes in %d seconds. Saving...\","
+        },
+        {
+          "line": 1697,
+          "text": "                    sp->changes, (int)sp->seconds);"
+        },
+        {
+          "line": 1698,
+          "text": "                rdbSaveInfo rsi, *rsiptr;"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\redis__redis\\src\\server.c",
+      "line": 1269,
+      "col": 31,
+      "message": "implicit conversion of time_t to 'int' may truncate after 2038",
+      "context": [
+        {
+          "line": 1263,
+          "text": "     * of processing each client once per second. */"
+        },
+        {
+          "line": 1264,
+          "text": "    if (iterations < CLIENTS_CRON_MIN_ITERATIONS)"
+        },
+        {
+          "line": 1265,
+          "text": "        iterations = (numclients < CLIENTS_CRON_MIN_ITERATIONS) ?"
+        },
+        {
+          "line": 1266,
+          "text": "                     numclients : CLIENTS_CRON_MIN_ITERATIONS;"
+        },
+        {
+          "line": 1267,
+          "text": ""
+        },
+        {
+          "line": 1268,
+          "text": ""
+        },
+        {
+          "line": 1269,
+          "text": "    CurrentPeakMemUsageSlot = server.unixtime % CLIENTS_PEAK_MEM_USAGE_SLOTS;"
+        },
+        {
+          "line": 1270,
+          "text": "    /* Always zero the next sample, so that when we switch to that second, we'll"
+        },
+        {
+          "line": 1271,
+          "text": "     * only register samples that are greater in that second without considering"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\redis__redis\\src\\util.c",
+      "line": 971,
+      "col": 27,
+      "message": "implicit conversion of time_t to 'unsigned char' may truncate after 2038",
+      "context": [
+        {
+          "line": 965,
+          "text": "            /* Revert to a weaker seed, and in this case reseed again"
+        },
+        {
+          "line": 966,
+          "text": "             * at every call.*/"
+        },
+        {
+          "line": 967,
+          "text": "            for (unsigned int j = 0; j < sizeof(seed); j++) {"
+        },
+        {
+          "line": 968,
+          "text": "                struct timeval tv;"
+        },
+        {
+          "line": 969,
+          "text": "                gettimeofday(&tv,NULL);"
+        },
+        {
+          "line": 970,
+          "text": "                pid_t pid = getpid();"
+        },
+        {
+          "line": 971,
+          "text": "                seed[j] = tv.tv_sec ^ tv.tv_usec ^ pid ^ (long)fp;"
+        },
+        {
+          "line": 972,
+          "text": "            }"
+        },
+        {
+          "line": 973,
+          "text": "        } else {"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\redis__redis\\utils\\lru\\lfu-simulation.c",
+      "line": 144,
+      "col": 50,
+      "message": "explicit conversion of time_t to 'int' may truncate after 2038",
+      "context": [
+        {
+          "line": 138,
+          "text": "            new_entry_time = now+10;"
+        },
+        {
+          "line": 139,
+          "text": "        }"
+        },
+        {
+          "line": 140,
+          "text": ""
+        },
+        {
+          "line": 141,
+          "text": "        /* Show the first 20 entries and the last 20 entries. */"
+        },
+        {
+          "line": 142,
+          "text": "        if (display_time != now) {"
+        },
+        {
+          "line": 143,
+          "text": "            printf(\"=============================\\n\");"
+        },
+        {
+          "line": 144,
+          "text": "            printf(\"Current minutes time: %d\\n\", (int)to_16bit_minutes(now));"
+        },
+        {
+          "line": 145,
+          "text": "            printf(\"Access method: %s\\n\","
+        },
+        {
+          "line": 146,
+          "text": "                (now-start < switch_after) ? \"power-law\" : \"flat\");"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\redis__redis\\utils\\lru\\lfu-simulation.c",
+      "line": 135,
+      "col": 37,
+      "message": "implicit conversion of time_t to 'uint16_t' may truncate after 2038",
+      "context": [
+        {
+          "line": 129,
+          "text": ""
+        },
+        {
+          "line": 130,
+          "text": "        /* Simulate the addition of new entries at positions between"
+        },
+        {
+          "line": 131,
+          "text": "         * 10 and 19, a random one every 10 seconds. */"
+        },
+        {
+          "line": 132,
+          "text": "        if (new_entry_time <= now) {"
+        },
+        {
+          "line": 133,
+          "text": "            idx = 10+(rand()%10);"
+        },
+        {
+          "line": 134,
+          "text": "            entries[idx].counter = LFU_INIT_VAL;"
+        },
+        {
+          "line": 135,
+          "text": "            entries[idx].decrtime = to_16bit_minutes(time(NULL));"
+        },
+        {
+          "line": 136,
+          "text": "            entries[idx].hits = 0;"
+        },
+        {
+          "line": 137,
+          "text": "            entries[idx].ctime = time(NULL);"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\redis__redis\\utils\\lru\\lfu-simulation.c",
+      "line": 93,
+      "col": 31,
+      "message": "implicit conversion of time_t to 'uint16_t' may truncate after 2038",
+      "context": [
+        {
+          "line": 87,
+          "text": "    struct entry *entries = malloc(sizeof(*entries)*keyspace_size);"
+        },
+        {
+          "line": 88,
+          "text": "    long j;"
+        },
+        {
+          "line": 89,
+          "text": ""
+        },
+        {
+          "line": 90,
+          "text": "    /* Initialize. */"
+        },
+        {
+          "line": 91,
+          "text": "    for (j = 0; j < keyspace_size; j++) {"
+        },
+        {
+          "line": 92,
+          "text": "        entries[j].counter = LFU_INIT_VAL;"
+        },
+        {
+          "line": 93,
+          "text": "        entries[j].decrtime = to_16bit_minutes(start);"
+        },
+        {
+          "line": 94,
+          "text": "        entries[j].hits = 0;"
+        },
+        {
+          "line": 95,
+          "text": "        entries[j].ctime = time(NULL);"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\redis__redis\\utils\\lru\\lfu-simulation.c",
+      "line": 65,
+      "col": 23,
+      "message": "implicit conversion of time_t to 'uint16_t' may truncate after 2038",
+      "context": [
+        {
+          "line": 59,
+          "text": "            if (e->counter > LFU_INIT_VAL*2) {"
+        },
+        {
+          "line": 60,
+          "text": "                e->counter /= 2;"
+        },
+        {
+          "line": 61,
+          "text": "            } else {"
+        },
+        {
+          "line": 62,
+          "text": "                e->counter--;"
+        },
+        {
+          "line": 63,
+          "text": "            }"
+        },
+        {
+          "line": 64,
+          "text": "        }"
+        },
+        {
+          "line": 65,
+          "text": "        e->decrtime = to_16bit_minutes(time(NULL));"
+        },
+        {
+          "line": 66,
+          "text": "    }"
+        },
+        {
+          "line": 67,
+          "text": "    return e->counter;"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\redis__redis\\utils\\lru\\lfu-simulation.c",
+      "line": 55,
+      "col": 22,
+      "message": "implicit conversion of time_t to 'uint16_t' may truncate after 2038",
+      "context": [
+        {
+          "line": 49,
+          "text": "    e->hits++;"
+        },
+        {
+          "line": 50,
+          "text": "}"
+        },
+        {
+          "line": 51,
+          "text": ""
+        },
+        {
+          "line": 52,
+          "text": "/* Return the entry LFU value and as a side effect decrement the"
+        },
+        {
+          "line": 53,
+          "text": " * entry value if the decrement time was reached. */"
+        },
+        {
+          "line": 54,
+          "text": "uint8_t scan_entry(struct entry *e) {"
+        },
+        {
+          "line": 55,
+          "text": "    if (minutes_diff(to_16bit_minutes(time(NULL)),e->decrtime)"
+        },
+        {
+          "line": 56,
+          "text": "        >= decr_every)"
+        },
+        {
+          "line": 57,
+          "text": "    {"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\redis__redis\\utils\\lru\\lfu-simulation.c",
+      "line": 80,
+      "col": 13,
+      "message": "time_t passed to printf-family function with incompatible format specifier: may truncate after 2038",
+      "context": [
+        {
+          "line": 74,
+          "text": "    if (pos >= 10 && pos <= 14) tag = \"new no access\";"
+        },
+        {
+          "line": 75,
+          "text": "    if (pos >= 15 && pos <= 19) tag = \"new accessed \";"
+        },
+        {
+          "line": 76,
+          "text": "    if (pos >= keyspace_size -5) tag= \"old no access\";"
+        },
+        {
+          "line": 77,
+          "text": ""
+        },
+        {
+          "line": 78,
+          "text": "    printf(\"%ld] <%s> frequency:%d decrtime:%d [%lu hits | age:%ld sec]\\n\","
+        },
+        {
+          "line": 79,
+          "text": "        pos, tag, e->counter, e->decrtime, (unsigned long)e->hits,"
+        },
+        {
+          "line": 80,
+          "text": "            time(NULL) - e->ctime);"
+        },
+        {
+          "line": 81,
+          "text": "}"
+        },
+        {
+          "line": 82,
+          "text": ""
+        }
+      ]
+    }
+  ],
+  "issues_strict": [
+    {
+      "file": "evaluation\\repos\\redis__redis\\modules\\vector-sets\\fastjson_test.c",
+      "line": 391,
+      "col": 11,
+      "message": "implicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 385,
+          "text": ""
+        },
+        {
+          "line": 386,
+          "text": "/* Entry point for fastjson parser test */"
+        },
+        {
+          "line": 387,
+          "text": "void run_fastjson_test(void) {"
+        },
+        {
+          "line": 388,
+          "text": "    printf(\"Starting fastjson parser stress test...\\n\");"
+        },
+        {
+          "line": 389,
+          "text": ""
+        },
+        {
+          "line": 390,
+          "text": "    /* Seed the random number generator */"
+        },
+        {
+          "line": 391,
+          "text": "    srand(time(NULL));"
+        },
+        {
+          "line": 392,
+          "text": ""
+        },
+        {
+          "line": 393,
+          "text": "    /* Setup test memory environment */"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\redis__redis\\modules\\vector-sets\\w2v.c",
+      "line": 113,
+      "col": 11,
+      "message": "implicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 107,
+          "text": "        free(source_vectors);"
+        },
+        {
+          "line": 108,
+          "text": "        free(test_vector);"
+        },
+        {
+          "line": 109,
+          "text": "        return;"
+        },
+        {
+          "line": 110,
+          "text": "    }"
+        },
+        {
+          "line": 111,
+          "text": ""
+        },
+        {
+          "line": 112,
+          "text": "    // Initialize random seed."
+        },
+        {
+          "line": 113,
+          "text": "    srand(time(NULL));"
+        },
+        {
+          "line": 114,
+          "text": ""
+        },
+        {
+          "line": 115,
+          "text": "    // Perform recall test."
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\redis__redis\\src\\config.c",
+      "line": 2898,
+      "col": 28,
+      "message": "explicit conversion of time_t to 'long' may truncate after 2038",
+      "context": [
+        {
+          "line": 2892,
+          "text": "    int j;"
+        },
+        {
+          "line": 2893,
+          "text": "    for (j = 0; j < CLIENT_TYPE_OBUF_COUNT; j++) {"
+        },
+        {
+          "line": 2894,
+          "text": "        buf = sdscatprintf(buf,\"%s %llu %llu %ld\","
+        },
+        {
+          "line": 2895,
+          "text": "                           getClientTypeName(j),"
+        },
+        {
+          "line": 2896,
+          "text": "                           server.client_obuf_limits[j].hard_limit_bytes,"
+        },
+        {
+          "line": 2897,
+          "text": "                           server.client_obuf_limits[j].soft_limit_bytes,"
+        },
+        {
+          "line": 2898,
+          "text": "                           (long) server.client_obuf_limits[j].soft_limit_seconds);"
+        },
+        {
+          "line": 2899,
+          "text": "        if (j != CLIENT_TYPE_OBUF_COUNT-1)"
+        },
+        {
+          "line": 2900,
+          "text": "            buf = sdscatlen(buf,\" \",1);"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\redis__redis\\src\\config.c",
+      "line": 1520,
+      "col": 17,
+      "message": "explicit conversion of time_t to 'long' may truncate after 2038",
+      "context": [
+        {
+          "line": 1514,
+          "text": "                server.client_obuf_limits[j].soft_limit_bytes);"
+        },
+        {
+          "line": 1515,
+          "text": ""
+        },
+        {
+          "line": 1516,
+          "text": "        char *typename = getClientTypeName(j);"
+        },
+        {
+          "line": 1517,
+          "text": "        if (!strcmp(typename,\"slave\")) typename = \"replica\";"
+        },
+        {
+          "line": 1518,
+          "text": "        line = sdscatprintf(sdsempty(),\"%s %s %s %s %ld\","
+        },
+        {
+          "line": 1519,
+          "text": "                name, typename, hard, soft,"
+        },
+        {
+          "line": 1520,
+          "text": "                (long) server.client_obuf_limits[j].soft_limit_seconds);"
+        },
+        {
+          "line": 1521,
+          "text": "        rewriteConfigRewriteLine(state,name,line,force);"
+        },
+        {
+          "line": 1522,
+          "text": "    }"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\redis__redis\\src\\config.c",
+      "line": 1413,
+      "col": 17,
+      "message": "explicit conversion of time_t to 'long' may truncate after 2038",
+      "context": [
+        {
+          "line": 1407,
+          "text": "     */"
+        },
+        {
+          "line": 1408,
+          "text": "    if (!server.saveparamslen) {"
+        },
+        {
+          "line": 1409,
+          "text": "        rewriteConfigRewriteLine(state,name,sdsnew(\"save \\\"\\\"\"),1);"
+        },
+        {
+          "line": 1410,
+          "text": "    } else {"
+        },
+        {
+          "line": 1411,
+          "text": "        for (j = 0; j < server.saveparamslen; j++) {"
+        },
+        {
+          "line": 1412,
+          "text": "            line = sdscatprintf(sdsempty(),\"save %ld %d\","
+        },
+        {
+          "line": 1413,
+          "text": "                (long) server.saveparams[j].seconds, server.saveparams[j].changes);"
+        },
+        {
+          "line": 1414,
+          "text": "            rewriteConfigRewriteLine(state,name,line,1);"
+        },
+        {
+          "line": 1415,
+          "text": "        }"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\redis__redis\\src\\evict.c",
+      "line": 266,
+      "col": 12,
+      "message": "implicit conversion of time_t to 'unsigned long' may truncate after 2106",
+      "context": [
+        {
+          "line": 260,
+          "text": " * --------------------------------------------------------------------------*/"
+        },
+        {
+          "line": 261,
+          "text": ""
+        },
+        {
+          "line": 262,
+          "text": "/* Return the current time in minutes, just taking the least significant"
+        },
+        {
+          "line": 263,
+          "text": " * 16 bits. The returned time is suitable to be stored as LDT (last access"
+        },
+        {
+          "line": 264,
+          "text": " * time) for the LFU implementation. */"
+        },
+        {
+          "line": 265,
+          "text": "unsigned long LFUGetTimeInMinutes(void) {"
+        },
+        {
+          "line": 266,
+          "text": "    return (server.unixtime/60) & 65535;"
+        },
+        {
+          "line": 267,
+          "text": "}"
+        },
+        {
+          "line": 268,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\redis__redis\\src\\latency.c",
+      "line": 593,
+      "col": 19,
+      "message": "implicit conversion of time_t to 'int' may truncate after 2038",
+      "context": [
+        {
+          "line": 587,
+          "text": "        } else {"
+        },
+        {
+          "line": 588,
+          "text": "            if (ts->samples[i].latency > max) max = ts->samples[i].latency;"
+        },
+        {
+          "line": 589,
+          "text": "            if (ts->samples[i].latency < min) min = ts->samples[i].latency;"
+        },
+        {
+          "line": 590,
+          "text": "        }"
+        },
+        {
+          "line": 591,
+          "text": "        /* Use as label the number of seconds / minutes / hours / days"
+        },
+        {
+          "line": 592,
+          "text": "         * ago the event happened. */"
+        },
+        {
+          "line": 593,
+          "text": "        elapsed = time(NULL) - ts->samples[i].time;"
+        },
+        {
+          "line": 594,
+          "text": "        if (elapsed < 60)"
+        },
+        {
+          "line": 595,
+          "text": "            snprintf(buf,sizeof(buf),\"%ds\",elapsed);"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\redis__redis\\src\\latency.c",
+      "line": 88,
+      "col": 33,
+      "message": "implicit conversion of time_t to 'int32_t' may truncate after 2038",
+      "context": [
+        {
+          "line": 82,
+          "text": "    if (ts->samples[prev].time == now) {"
+        },
+        {
+          "line": 83,
+          "text": "        if (latency > ts->samples[prev].latency)"
+        },
+        {
+          "line": 84,
+          "text": "            ts->samples[prev].latency = latency;"
+        },
+        {
+          "line": 85,
+          "text": "        return;"
+        },
+        {
+          "line": 86,
+          "text": "    }"
+        },
+        {
+          "line": 87,
+          "text": ""
+        },
+        {
+          "line": 88,
+          "text": "    ts->samples[ts->idx].time = now;"
+        },
+        {
+          "line": 89,
+          "text": "    ts->samples[ts->idx].latency = latency;"
+        },
+        {
+          "line": 90,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\redis__redis\\src\\localtime.c",
+      "line": 82,
+      "col": 20,
+      "message": "implicit conversion of time_t to 'int' may truncate after 2038",
+      "context": [
+        {
+          "line": 76,
+          "text": "    tmp->tm_mon = 0;"
+        },
+        {
+          "line": 77,
+          "text": "    while(days >= mdays[tmp->tm_mon]) {"
+        },
+        {
+          "line": 78,
+          "text": "        days -= mdays[tmp->tm_mon];"
+        },
+        {
+          "line": 79,
+          "text": "        tmp->tm_mon++;"
+        },
+        {
+          "line": 80,
+          "text": "    }"
+        },
+        {
+          "line": 81,
+          "text": ""
+        },
+        {
+          "line": 82,
+          "text": "    tmp->tm_mday = days+1;  /* Add 1 since our 'days' is zero-based. */"
+        },
+        {
+          "line": 83,
+          "text": "    tmp->tm_year -= 1900;   /* Surprisingly tm_year is year-1900. */"
+        },
+        {
+          "line": 84,
+          "text": "}"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\redis__redis\\src\\localtime.c",
+      "line": 68,
+      "col": 20,
+      "message": "implicit conversion of time_t to 'int' may truncate after 2038",
+      "context": [
+        {
+          "line": 62,
+          "text": "        /* Leap years have one day more. */"
+        },
+        {
+          "line": 63,
+          "text": "        time_t days_this_year = 365 + is_leap_year(tmp->tm_year);"
+        },
+        {
+          "line": 64,
+          "text": "        if (days_this_year > days) break;"
+        },
+        {
+          "line": 65,
+          "text": "        days -= days_this_year;"
+        },
+        {
+          "line": 66,
+          "text": "        tmp->tm_year++;"
+        },
+        {
+          "line": 67,
+          "text": "    }"
+        },
+        {
+          "line": 68,
+          "text": "    tmp->tm_yday = days;  /* Number of day of the current year. */"
+        },
+        {
+          "line": 69,
+          "text": ""
+        },
+        {
+          "line": 70,
+          "text": "    /* We need to calculate in which month and day of the month we are. To do"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\redis__redis\\src\\localtime.c",
+      "line": 57,
+      "col": 20,
+      "message": "implicit conversion of time_t to 'int' may truncate after 2038",
+      "context": [
+        {
+          "line": 51,
+          "text": "    tmp->tm_min = (seconds % secs_hour) / secs_min;"
+        },
+        {
+          "line": 52,
+          "text": "    tmp->tm_sec = (seconds % secs_hour) % secs_min;"
+        },
+        {
+          "line": 53,
+          "text": ""
+        },
+        {
+          "line": 54,
+          "text": "    /* 1/1/1970 was a Thursday, that is, day 4 from the POV of the tm structure"
+        },
+        {
+          "line": 55,
+          "text": "     * where sunday = 0, so to calculate the day of the week we have to add 4"
+        },
+        {
+          "line": 56,
+          "text": "     * and take the modulo by 7. */"
+        },
+        {
+          "line": 57,
+          "text": "    tmp->tm_wday = (days+4)%7;"
+        },
+        {
+          "line": 58,
+          "text": ""
+        },
+        {
+          "line": 59,
+          "text": "    /* Calculate the current year. */"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\redis__redis\\src\\localtime.c",
+      "line": 52,
+      "col": 19,
+      "message": "implicit conversion of time_t to 'int' may truncate after 2038",
+      "context": [
+        {
+          "line": 46,
+          "text": "    time_t days = t / secs_day;         /* Days passed since epoch. */"
+        },
+        {
+          "line": 47,
+          "text": "    time_t seconds = t % secs_day;      /* Remaining seconds. */"
+        },
+        {
+          "line": 48,
+          "text": ""
+        },
+        {
+          "line": 49,
+          "text": "    tmp->tm_isdst = dst;"
+        },
+        {
+          "line": 50,
+          "text": "    tmp->tm_hour = seconds / secs_hour;"
+        },
+        {
+          "line": 51,
+          "text": "    tmp->tm_min = (seconds % secs_hour) / secs_min;"
+        },
+        {
+          "line": 52,
+          "text": "    tmp->tm_sec = (seconds % secs_hour) % secs_min;"
+        },
+        {
+          "line": 53,
+          "text": ""
+        },
+        {
+          "line": 54,
+          "text": "    /* 1/1/1970 was a Thursday, that is, day 4 from the POV of the tm structure"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\redis__redis\\src\\localtime.c",
+      "line": 51,
+      "col": 19,
+      "message": "implicit conversion of time_t to 'int' may truncate after 2038",
+      "context": [
+        {
+          "line": 45,
+          "text": "    t += 3600*dst;                      /* Adjust for daylight time. */"
+        },
+        {
+          "line": 46,
+          "text": "    time_t days = t / secs_day;         /* Days passed since epoch. */"
+        },
+        {
+          "line": 47,
+          "text": "    time_t seconds = t % secs_day;      /* Remaining seconds. */"
+        },
+        {
+          "line": 48,
+          "text": ""
+        },
+        {
+          "line": 49,
+          "text": "    tmp->tm_isdst = dst;"
+        },
+        {
+          "line": 50,
+          "text": "    tmp->tm_hour = seconds / secs_hour;"
+        },
+        {
+          "line": 51,
+          "text": "    tmp->tm_min = (seconds % secs_hour) / secs_min;"
+        },
+        {
+          "line": 52,
+          "text": "    tmp->tm_sec = (seconds % secs_hour) % secs_min;"
+        },
+        {
+          "line": 53,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\redis__redis\\src\\localtime.c",
+      "line": 50,
+      "col": 20,
+      "message": "implicit conversion of time_t to 'int' may truncate after 2038",
+      "context": [
+        {
+          "line": 44,
+          "text": "    t -= tz;                            /* Adjust for timezone. */"
+        },
+        {
+          "line": 45,
+          "text": "    t += 3600*dst;                      /* Adjust for daylight time. */"
+        },
+        {
+          "line": 46,
+          "text": "    time_t days = t / secs_day;         /* Days passed since epoch. */"
+        },
+        {
+          "line": 47,
+          "text": "    time_t seconds = t % secs_day;      /* Remaining seconds. */"
+        },
+        {
+          "line": 48,
+          "text": ""
+        },
+        {
+          "line": 49,
+          "text": "    tmp->tm_isdst = dst;"
+        },
+        {
+          "line": 50,
+          "text": "    tmp->tm_hour = seconds / secs_hour;"
+        },
+        {
+          "line": 51,
+          "text": "    tmp->tm_min = (seconds % secs_hour) / secs_min;"
+        },
+        {
+          "line": 52,
+          "text": "    tmp->tm_sec = (seconds % secs_hour) % secs_min;"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\redis__redis\\src\\rdb.c",
+      "line": 4212,
+      "col": 17,
+      "message": "explicit conversion of time_t to 'unsigned long' may truncate after 2106",
+      "context": [
+        {
+          "line": 4206,
+          "text": "            } else if (!strcasecmp(auxkey->ptr,\"redis-ver\")) {"
+        },
+        {
+          "line": 4207,
+          "text": "                serverLog(LL_NOTICE,\"Loading RDB produced by version %s\","
+        },
+        {
+          "line": 4208,
+          "text": "                    (char*)auxval->ptr);"
+        },
+        {
+          "line": 4209,
+          "text": "            } else if (!strcasecmp(auxkey->ptr,\"ctime\")) {"
+        },
+        {
+          "line": 4210,
+          "text": "                time_t age = time(NULL)-strtol(auxval->ptr,NULL,10);"
+        },
+        {
+          "line": 4211,
+          "text": "                if (age < 0) age = 0;"
+        },
+        {
+          "line": 4212,
+          "text": "                serverLog(LL_NOTICE,\"RDB age %ld seconds\","
+        },
+        {
+          "line": 4213,
+          "text": "                    (unsigned long) age);"
+        },
+        {
+          "line": 4214,
+          "text": "            } else if (!strcasecmp(auxkey->ptr,\"used-mem\")) {"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\redis__redis\\src\\redis-check-aof.c",
+      "line": 196,
+      "col": 48,
+      "message": "time_t passed to printf-family function with incompatible format specifier: may truncate after 2038",
+      "context": [
+        {
+          "line": 190,
+          "text": "            printf(\"Invalid timestamp annotation\\n\");"
+        },
+        {
+          "line": 191,
+          "text": "            exit(1);"
+        },
+        {
+          "line": 192,
+          "text": "        }"
+        },
+        {
+          "line": 193,
+          "text": "        if (ts <= to_timestamp) return 1;"
+        },
+        {
+          "line": 194,
+          "text": "        if (epos == 0) {"
+        },
+        {
+          "line": 195,
+          "text": "            printf(\"AOF %s has nothing before timestamp %ld, \""
+        },
+        {
+          "line": 196,
+          "text": "                    \"aborting...\\n\", filename, to_timestamp);"
+        },
+        {
+          "line": 197,
+          "text": "            exit(1);"
+        },
+        {
+          "line": 198,
+          "text": "        }"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\redis__redis\\src\\redis-check-aof.c",
+      "line": 201,
+      "col": 27,
+      "message": "time_t passed to printf-family function with incompatible format specifier: may truncate after 2038",
+      "context": [
+        {
+          "line": 195,
+          "text": "            printf(\"AOF %s has nothing before timestamp %ld, \""
+        },
+        {
+          "line": 196,
+          "text": "                    \"aborting...\\n\", filename, to_timestamp);"
+        },
+        {
+          "line": 197,
+          "text": "            exit(1);"
+        },
+        {
+          "line": 198,
+          "text": "        }"
+        },
+        {
+          "line": 199,
+          "text": "        if (!last_file) {"
+        },
+        {
+          "line": 200,
+          "text": "            printf(\"Failed to truncate AOF %s to timestamp %ld to offset %ld because it is not the last file.\\n\","
+        },
+        {
+          "line": 201,
+          "text": "                filename, to_timestamp, (long int)epos);"
+        },
+        {
+          "line": 202,
+          "text": "            printf(\"If you insist, please delete all files after this file according to the manifest \""
+        },
+        {
+          "line": 203,
+          "text": "                \"file and delete the corresponding records in manifest file manually. Then re-run redis-check-aof.\\n\");"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\redis__redis\\src\\redis-check-aof.c",
+      "line": 209,
+      "col": 31,
+      "message": "time_t passed to printf-family function with incompatible format specifier: may truncate after 2038",
+      "context": [
+        {
+          "line": 203,
+          "text": "                \"file and delete the corresponding records in manifest file manually. Then re-run redis-check-aof.\\n\");"
+        },
+        {
+          "line": 204,
+          "text": "            exit(1);"
+        },
+        {
+          "line": 205,
+          "text": "        }"
+        },
+        {
+          "line": 206,
+          "text": "        /* Truncate remaining AOF if exceeding 'to_timestamp' */"
+        },
+        {
+          "line": 207,
+          "text": "        if (ftruncate(fileno(fp), epos) == -1) {"
+        },
+        {
+          "line": 208,
+          "text": "            printf(\"Failed to truncate AOF %s to timestamp %ld\\n\","
+        },
+        {
+          "line": 209,
+          "text": "                    filename, to_timestamp);"
+        },
+        {
+          "line": 210,
+          "text": "            exit(1);"
+        },
+        {
+          "line": 211,
+          "text": "        } else {"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\redis__redis\\src\\redis-check-aof.c",
+      "line": 297,
+      "col": 79,
+      "message": "time_t passed to printf-family function with incompatible format specifier: may truncate after 2038",
+      "context": [
+        {
+          "line": 291,
+          "text": "    }"
+        },
+        {
+          "line": 292,
+          "text": ""
+        },
+        {
+          "line": 293,
+          "text": "    diff = size-pos;"
+        },
+        {
+          "line": 294,
+          "text": ""
+        },
+        {
+          "line": 295,
+          "text": "    /* In truncate-to-timestamp mode, just exit if there is nothing to truncate. */"
+        },
+        {
+          "line": 296,
+          "text": "    if (diff == 0 && to_timestamp) {"
+        },
+        {
+          "line": 297,
+          "text": "        printf(\"Truncate nothing in AOF %s to timestamp %ld\\n\", aof_filename, to_timestamp);"
+        },
+        {
+          "line": 298,
+          "text": "        fclose(fp);"
+        },
+        {
+          "line": 299,
+          "text": "        return AOF_CHECK_OK;"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\redis__redis\\src\\redis-check-aof.c",
+      "line": 449,
+      "col": 26,
+      "message": "time_t passed to printf-family function with incompatible format specifier: may truncate after 2038",
+      "context": [
+        {
+          "line": 443,
+          "text": "    if (ret == AOF_CHECK_OK) {"
+        },
+        {
+          "line": 444,
+          "text": "        printf(\"%s %s is valid\\n\", aofType, aofFileName);"
+        },
+        {
+          "line": 445,
+          "text": "    } else if (ret == AOF_CHECK_EMPTY) {"
+        },
+        {
+          "line": 446,
+          "text": "        printf(\"%s %s is empty\\n\", aofType, aofFileName);"
+        },
+        {
+          "line": 447,
+          "text": "    } else if (ret == AOF_CHECK_TIMESTAMP_TRUNCATED) {"
+        },
+        {
+          "line": 448,
+          "text": "        printf(\"Successfully truncated AOF %s to timestamp %ld\\n\","
+        },
+        {
+          "line": 449,
+          "text": "            aofFileName, to_timestamp);"
+        },
+        {
+          "line": 450,
+          "text": "    } else if (ret == AOF_CHECK_TRUNCATED) {"
+        },
+        {
+          "line": 451,
+          "text": "        printf(\"Successfully truncated AOF %s\\n\", aofFileName);"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\redis__redis\\src\\redis-cli.c",
+      "line": 10108,
+      "col": 11,
+      "message": "implicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 10102,
+          "text": "static void LRUTestMode(void) {"
+        },
+        {
+          "line": 10103,
+          "text": "    redisReply *reply;"
+        },
+        {
+          "line": 10104,
+          "text": "    char key[128];"
+        },
+        {
+          "line": 10105,
+          "text": "    long long start_cycle;"
+        },
+        {
+          "line": 10106,
+          "text": "    int j;"
+        },
+        {
+          "line": 10107,
+          "text": ""
+        },
+        {
+          "line": 10108,
+          "text": "    srand(time(NULL)^getpid());"
+        },
+        {
+          "line": 10109,
+          "text": "    while(1) {"
+        },
+        {
+          "line": 10110,
+          "text": "        /* Perform cycles of 1 second with 50% writes and 50% reads."
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\redis__redis\\src\\redis-cli.c",
+      "line": 9137,
+      "col": 11,
+      "message": "implicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 9131,
+          "text": "    redisReply *reply;"
+        },
+        {
+          "line": 9132,
+          "text": "    int eof = 0; /* True once we consumed all the standard input. */"
+        },
+        {
+          "line": 9133,
+          "text": "    int done = 0;"
+        },
+        {
+          "line": 9134,
+          "text": "    char magic[20]; /* Special reply we recognize. */"
+        },
+        {
+          "line": 9135,
+          "text": "    time_t last_read_time = time(NULL);"
+        },
+        {
+          "line": 9136,
+          "text": ""
+        },
+        {
+          "line": 9137,
+          "text": "    srand(time(NULL));"
+        },
+        {
+          "line": 9138,
+          "text": ""
+        },
+        {
+          "line": 9139,
+          "text": "    /* Use non blocking I/O. */"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\redis__redis\\src\\redis-cli.c",
+      "line": 6109,
+      "col": 11,
+      "message": "implicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 6103,
+          "text": "        clusterManagerNode *n = ln->value;"
+        },
+        {
+          "line": 6104,
+          "text": "        if (n->flags & CLUSTER_MANAGER_FLAG_SLAVE) continue;"
+        },
+        {
+          "line": 6105,
+          "text": "        master_count++;"
+        },
+        {
+          "line": 6106,
+          "text": "    }"
+        },
+        {
+          "line": 6107,
+          "text": ""
+        },
+        {
+          "line": 6108,
+          "text": "    assert(master_count > 0);"
+        },
+        {
+          "line": 6109,
+          "text": "    srand(time(NULL));"
+        },
+        {
+          "line": 6110,
+          "text": "    idx = rand() % master_count;"
+        },
+        {
+          "line": 6111,
+          "text": "    listRewind(cluster_manager.nodes, &li);"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\redis__redis\\src\\redis-cli.c",
+      "line": 4508,
+      "col": 11,
+      "message": "implicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 4502,
+          "text": "                                                   NULL, NULL);"
+        },
+        {
+          "line": 4503,
+          "text": "    if (score == 0) goto cleanup;"
+        },
+        {
+          "line": 4504,
+          "text": "    clusterManagerLogInfo(\">>> Trying to optimize slaves allocation \""
+        },
+        {
+          "line": 4505,
+          "text": "                          \"for anti-affinity\\n\");"
+        },
+        {
+          "line": 4506,
+          "text": "    int node_len = cluster_manager.nodes->len;"
+        },
+        {
+          "line": 4507,
+          "text": "    int maxiter = 500 * node_len; // Effort is proportional to cluster size..."
+        },
+        {
+          "line": 4508,
+          "text": "    srand(time(NULL));"
+        },
+        {
+          "line": 4509,
+          "text": "    while (maxiter > 0) {"
+        },
+        {
+          "line": 4510,
+          "text": "        int offending_len = 0;"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\redis__redis\\src\\replication.c",
+      "line": 5094,
+      "col": 13,
+      "message": "explicit conversion of time_t to 'int' may truncate after 2038",
+      "context": [
+        {
+          "line": 5088,
+          "text": "             *    master that will accept our PSYNC request by second"
+        },
+        {
+          "line": 5089,
+          "text": "             *    replication ID, but there will be data inconsistency"
+        },
+        {
+          "line": 5090,
+          "text": "             *    because we received writes. */"
+        },
+        {
+          "line": 5091,
+          "text": "            changeReplicationId();"
+        },
+        {
+          "line": 5092,
+          "text": "            clearReplicationId2();"
+        },
+        {
+          "line": 5093,
+          "text": "            freeReplicationBacklog();"
+        },
+        {
+          "line": 5094,
+          "text": "            serverLog(LL_NOTICE,"
+        },
+        {
+          "line": 5095,
+          "text": "                \"Replication backlog freed after %d seconds \""
+        },
+        {
+          "line": 5096,
+          "text": "                \"without connected replicas.\","
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\redis__redis\\src\\replication.c",
+      "line": 3359,
+      "col": 35,
+      "message": "explicit conversion of time_t to 'int' may truncate after 2038",
+      "context": [
+        {
+          "line": 3353,
+          "text": "    }"
+        },
+        {
+          "line": 3354,
+          "text": ""
+        },
+        {
+          "line": 3355,
+          "text": "    /* Prepare a suitable temp file for bulk transfer */"
+        },
+        {
+          "line": 3356,
+          "text": "    if (!useDisklessLoad()) {"
+        },
+        {
+          "line": 3357,
+          "text": "        while(maxtries--) {"
+        },
+        {
+          "line": 3358,
+          "text": "            snprintf(tmpfile,256,"
+        },
+        {
+          "line": 3359,
+          "text": "                \"temp-%d.%ld.rdb\",(int)server.unixtime,(long int)getpid());"
+        },
+        {
+          "line": 3360,
+          "text": "            dfd = open(tmpfile,O_CREAT|O_WRONLY|O_EXCL,0644);"
+        },
+        {
+          "line": 3361,
+          "text": "            if (dfd != -1) break;"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\redis__redis\\src\\replication.c",
+      "line": 796,
+      "col": 49,
+      "message": "explicit conversion of time_t to 'long' may truncate after 2038",
+      "context": [
+        {
+          "line": 790,
+          "text": "    int j;"
+        },
+        {
+          "line": 791,
+          "text": "    sds cmdrepr = sdsnew(\"+\");"
+        },
+        {
+          "line": 792,
+          "text": "    robj *cmdobj;"
+        },
+        {
+          "line": 793,
+          "text": "    struct timeval tv;"
+        },
+        {
+          "line": 794,
+          "text": ""
+        },
+        {
+          "line": 795,
+          "text": "    gettimeofday(&tv,NULL);"
+        },
+        {
+          "line": 796,
+          "text": "    cmdrepr = sdscatprintf(cmdrepr,\"%ld.%06ld \",(long)tv.tv_sec,(long)tv.tv_usec);"
+        },
+        {
+          "line": 797,
+          "text": "    if (c->flags & CLIENT_SCRIPT) {"
+        },
+        {
+          "line": 798,
+          "text": "        cmdrepr = sdscatprintf(cmdrepr,\"[%d lua] \",dictid);"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\redis__redis\\src\\server.c",
+      "line": 7967,
+      "col": 11,
+      "message": "implicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 7961,
+          "text": "    tzset(); /* Populates 'timezone' global. */"
+        },
+        {
+          "line": 7962,
+          "text": "    zmalloc_set_oom_handler(redisOutOfMemoryHandler);"
+        },
+        {
+          "line": 7963,
+          "text": ""
+        },
+        {
+          "line": 7964,
+          "text": "    /* To achieve entropy, in case of containers, their time() and getpid() can"
+        },
+        {
+          "line": 7965,
+          "text": "     * be the same. But value of tv_usec is fast enough to make the difference */"
+        },
+        {
+          "line": 7966,
+          "text": "    gettimeofday(&tv,NULL);"
+        },
+        {
+          "line": 7967,
+          "text": "    srand(time(NULL)^getpid()^tv.tv_usec);"
+        },
+        {
+          "line": 7968,
+          "text": "    srandom(time(NULL)^getpid()^tv.tv_usec);"
+        },
+        {
+          "line": 7969,
+          "text": "    init_genrand64(((long long) tv.tv_sec * 1000000 + tv.tv_usec) ^ getpid());"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\redis__redis\\src\\server.c",
+      "line": 6901,
+      "col": 9,
+      "message": "explicit conversion of time_t to 'long' may truncate after 2038",
+      "context": [
+        {
+          "line": 6895,
+          "text": "        \"used_cpu_user:%ld.%06ld\\r\\n\""
+        },
+        {
+          "line": 6896,
+          "text": "        \"used_cpu_sys_children:%ld.%06ld\\r\\n\""
+        },
+        {
+          "line": 6897,
+          "text": "        \"used_cpu_user_children:%ld.%06ld\\r\\n\","
+        },
+        {
+          "line": 6898,
+          "text": "        (long)self_ru.ru_stime.tv_sec, (long)self_ru.ru_stime.tv_usec,"
+        },
+        {
+          "line": 6899,
+          "text": "        (long)self_ru.ru_utime.tv_sec, (long)self_ru.ru_utime.tv_usec,"
+        },
+        {
+          "line": 6900,
+          "text": "        (long)c_ru.ru_stime.tv_sec, (long)c_ru.ru_stime.tv_usec,"
+        },
+        {
+          "line": 6901,
+          "text": "        (long)c_ru.ru_utime.tv_sec, (long)c_ru.ru_utime.tv_usec);"
+        },
+        {
+          "line": 6902,
+          "text": "#ifdef RUSAGE_THREAD"
+        },
+        {
+          "line": 6903,
+          "text": "        struct rusage m_ru;"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\redis__redis\\src\\server.c",
+      "line": 6900,
+      "col": 9,
+      "message": "explicit conversion of time_t to 'long' may truncate after 2038",
+      "context": [
+        {
+          "line": 6894,
+          "text": "        \"used_cpu_sys:%ld.%06ld\\r\\n\""
+        },
+        {
+          "line": 6895,
+          "text": "        \"used_cpu_user:%ld.%06ld\\r\\n\""
+        },
+        {
+          "line": 6896,
+          "text": "        \"used_cpu_sys_children:%ld.%06ld\\r\\n\""
+        },
+        {
+          "line": 6897,
+          "text": "        \"used_cpu_user_children:%ld.%06ld\\r\\n\","
+        },
+        {
+          "line": 6898,
+          "text": "        (long)self_ru.ru_stime.tv_sec, (long)self_ru.ru_stime.tv_usec,"
+        },
+        {
+          "line": 6899,
+          "text": "        (long)self_ru.ru_utime.tv_sec, (long)self_ru.ru_utime.tv_usec,"
+        },
+        {
+          "line": 6900,
+          "text": "        (long)c_ru.ru_stime.tv_sec, (long)c_ru.ru_stime.tv_usec,"
+        },
+        {
+          "line": 6901,
+          "text": "        (long)c_ru.ru_utime.tv_sec, (long)c_ru.ru_utime.tv_usec);"
+        },
+        {
+          "line": 6902,
+          "text": "#ifdef RUSAGE_THREAD"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\redis__redis\\src\\server.c",
+      "line": 6899,
+      "col": 9,
+      "message": "explicit conversion of time_t to 'long' may truncate after 2038",
+      "context": [
+        {
+          "line": 6893,
+          "text": "        \"# CPU\\r\\n\""
+        },
+        {
+          "line": 6894,
+          "text": "        \"used_cpu_sys:%ld.%06ld\\r\\n\""
+        },
+        {
+          "line": 6895,
+          "text": "        \"used_cpu_user:%ld.%06ld\\r\\n\""
+        },
+        {
+          "line": 6896,
+          "text": "        \"used_cpu_sys_children:%ld.%06ld\\r\\n\""
+        },
+        {
+          "line": 6897,
+          "text": "        \"used_cpu_user_children:%ld.%06ld\\r\\n\","
+        },
+        {
+          "line": 6898,
+          "text": "        (long)self_ru.ru_stime.tv_sec, (long)self_ru.ru_stime.tv_usec,"
+        },
+        {
+          "line": 6899,
+          "text": "        (long)self_ru.ru_utime.tv_sec, (long)self_ru.ru_utime.tv_usec,"
+        },
+        {
+          "line": 6900,
+          "text": "        (long)c_ru.ru_stime.tv_sec, (long)c_ru.ru_stime.tv_usec,"
+        },
+        {
+          "line": 6901,
+          "text": "        (long)c_ru.ru_utime.tv_sec, (long)c_ru.ru_utime.tv_usec);"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\redis__redis\\src\\server.c",
+      "line": 6898,
+      "col": 9,
+      "message": "explicit conversion of time_t to 'long' may truncate after 2038",
+      "context": [
+        {
+          "line": 6892,
+          "text": "        info = sdscatprintf(info,"
+        },
+        {
+          "line": 6893,
+          "text": "        \"# CPU\\r\\n\""
+        },
+        {
+          "line": 6894,
+          "text": "        \"used_cpu_sys:%ld.%06ld\\r\\n\""
+        },
+        {
+          "line": 6895,
+          "text": "        \"used_cpu_user:%ld.%06ld\\r\\n\""
+        },
+        {
+          "line": 6896,
+          "text": "        \"used_cpu_sys_children:%ld.%06ld\\r\\n\""
+        },
+        {
+          "line": 6897,
+          "text": "        \"used_cpu_user_children:%ld.%06ld\\r\\n\","
+        },
+        {
+          "line": 6898,
+          "text": "        (long)self_ru.ru_stime.tv_sec, (long)self_ru.ru_stime.tv_usec,"
+        },
+        {
+          "line": 6899,
+          "text": "        (long)self_ru.ru_utime.tv_sec, (long)self_ru.ru_utime.tv_usec,"
+        },
+        {
+          "line": 6900,
+          "text": "        (long)c_ru.ru_stime.tv_sec, (long)c_ru.ru_stime.tv_usec,"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\redis__redis\\src\\server.c",
+      "line": 6790,
+      "col": 43,
+      "message": "explicit conversion of time_t to 'int' may truncate after 2038",
+      "context": [
+        {
+          "line": 6784,
+          "text": "                \"master_total_sync_attempts:%lld\\r\\n\", server.repl_total_sync_attempts));"
+        },
+        {
+          "line": 6785,
+          "text": "            if (server.repl_state == REPL_STATE_TRANSFER) {"
+        },
+        {
+          "line": 6786,
+          "text": "                double perc = 0;"
+        },
+        {
+          "line": 6787,
+          "text": "                if (server.repl_transfer_size) {"
+        },
+        {
+          "line": 6788,
+          "text": "                    perc = ((double)server.repl_transfer_read / server.repl_transfer_size) * 100;"
+        },
+        {
+          "line": 6789,
+          "text": "                }"
+        },
+        {
+          "line": 6790,
+          "text": "                info = sdscatprintf(info, FMTARGS("
+        },
+        {
+          "line": 6791,
+          "text": "                    \"master_sync_total_bytes:%lld\\r\\n\", (long long) server.repl_transfer_size,"
+        },
+        {
+          "line": 6792,
+          "text": "                    \"master_sync_read_bytes:%lld\\r\\n\", (long long) server.repl_transfer_read,"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\redis__redis\\src\\server.c",
+      "line": 6773,
+      "col": 39,
+      "message": "explicit conversion of time_t to 'int' may truncate after 2038",
+      "context": [
+        {
+          "line": 6767,
+          "text": "                slave_read_repl_offset = server.master->read_reploff;"
+        },
+        {
+          "line": 6768,
+          "text": "            } else if (server.cached_master) {"
+        },
+        {
+          "line": 6769,
+          "text": "                slave_repl_offset = server.cached_master->reploff;"
+        },
+        {
+          "line": 6770,
+          "text": "                slave_read_repl_offset = server.cached_master->read_reploff;"
+        },
+        {
+          "line": 6771,
+          "text": "            }"
+        },
+        {
+          "line": 6772,
+          "text": ""
+        },
+        {
+          "line": 6773,
+          "text": "            info = sdscatprintf(info, FMTARGS("
+        },
+        {
+          "line": 6774,
+          "text": "                \"master_host:%s\\r\\n\", server.masterhost,"
+        },
+        {
+          "line": 6775,
+          "text": "                \"master_port:%d\\r\\n\", server.masterport,"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\redis__redis\\src\\server.c",
+      "line": 1696,
+      "col": 17,
+      "message": "explicit conversion of time_t to 'int' may truncate after 2038",
+      "context": [
+        {
+          "line": 1690,
+          "text": "            if (server.dirty >= sp->changes &&"
+        },
+        {
+          "line": 1691,
+          "text": "                server.unixtime-server.lastsave > sp->seconds &&"
+        },
+        {
+          "line": 1692,
+          "text": "                (server.unixtime-server.lastbgsave_try >"
+        },
+        {
+          "line": 1693,
+          "text": "                 CONFIG_BGSAVE_RETRY_DELAY ||"
+        },
+        {
+          "line": 1694,
+          "text": "                 server.lastbgsave_status == C_OK))"
+        },
+        {
+          "line": 1695,
+          "text": "            {"
+        },
+        {
+          "line": 1696,
+          "text": "                serverLog(LL_NOTICE,\"%d changes in %d seconds. Saving...\","
+        },
+        {
+          "line": 1697,
+          "text": "                    sp->changes, (int)sp->seconds);"
+        },
+        {
+          "line": 1698,
+          "text": "                rdbSaveInfo rsi, *rsiptr;"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\redis__redis\\src\\server.c",
+      "line": 1269,
+      "col": 31,
+      "message": "implicit conversion of time_t to 'int' may truncate after 2038",
+      "context": [
+        {
+          "line": 1263,
+          "text": "     * of processing each client once per second. */"
+        },
+        {
+          "line": 1264,
+          "text": "    if (iterations < CLIENTS_CRON_MIN_ITERATIONS)"
+        },
+        {
+          "line": 1265,
+          "text": "        iterations = (numclients < CLIENTS_CRON_MIN_ITERATIONS) ?"
+        },
+        {
+          "line": 1266,
+          "text": "                     numclients : CLIENTS_CRON_MIN_ITERATIONS;"
+        },
+        {
+          "line": 1267,
+          "text": ""
+        },
+        {
+          "line": 1268,
+          "text": ""
+        },
+        {
+          "line": 1269,
+          "text": "    CurrentPeakMemUsageSlot = server.unixtime % CLIENTS_PEAK_MEM_USAGE_SLOTS;"
+        },
+        {
+          "line": 1270,
+          "text": "    /* Always zero the next sample, so that when we switch to that second, we'll"
+        },
+        {
+          "line": 1271,
+          "text": "     * only register samples that are greater in that second without considering"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\redis__redis\\src\\util.c",
+      "line": 971,
+      "col": 27,
+      "message": "implicit conversion of time_t to 'unsigned char' may truncate after 2038",
+      "context": [
+        {
+          "line": 965,
+          "text": "            /* Revert to a weaker seed, and in this case reseed again"
+        },
+        {
+          "line": 966,
+          "text": "             * at every call.*/"
+        },
+        {
+          "line": 967,
+          "text": "            for (unsigned int j = 0; j < sizeof(seed); j++) {"
+        },
+        {
+          "line": 968,
+          "text": "                struct timeval tv;"
+        },
+        {
+          "line": 969,
+          "text": "                gettimeofday(&tv,NULL);"
+        },
+        {
+          "line": 970,
+          "text": "                pid_t pid = getpid();"
+        },
+        {
+          "line": 971,
+          "text": "                seed[j] = tv.tv_sec ^ tv.tv_usec ^ pid ^ (long)fp;"
+        },
+        {
+          "line": 972,
+          "text": "            }"
+        },
+        {
+          "line": 973,
+          "text": "        } else {"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\redis__redis\\utils\\corrupt_rdb.c",
+      "line": 27,
+      "col": 11,
+      "message": "implicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 21,
+          "text": ""
+        },
+        {
+          "line": 22,
+          "text": "    if (argc != 3) {"
+        },
+        {
+          "line": 23,
+          "text": "        fprintf(stderr,\"Usage: <filename> <cycles>\\n\");"
+        },
+        {
+          "line": 24,
+          "text": "        exit(1);"
+        },
+        {
+          "line": 25,
+          "text": "    }"
+        },
+        {
+          "line": 26,
+          "text": ""
+        },
+        {
+          "line": 27,
+          "text": "    srand(time(NULL));"
+        },
+        {
+          "line": 28,
+          "text": "    char *filename = argv[1];"
+        },
+        {
+          "line": 29,
+          "text": "    cycles = atoi(argv[2]);"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\redis__redis\\utils\\lru\\lfu-simulation.c",
+      "line": 144,
+      "col": 50,
+      "message": "explicit conversion of time_t to 'int' may truncate after 2038",
+      "context": [
+        {
+          "line": 138,
+          "text": "            new_entry_time = now+10;"
+        },
+        {
+          "line": 139,
+          "text": "        }"
+        },
+        {
+          "line": 140,
+          "text": ""
+        },
+        {
+          "line": 141,
+          "text": "        /* Show the first 20 entries and the last 20 entries. */"
+        },
+        {
+          "line": 142,
+          "text": "        if (display_time != now) {"
+        },
+        {
+          "line": 143,
+          "text": "            printf(\"=============================\\n\");"
+        },
+        {
+          "line": 144,
+          "text": "            printf(\"Current minutes time: %d\\n\", (int)to_16bit_minutes(now));"
+        },
+        {
+          "line": 145,
+          "text": "            printf(\"Access method: %s\\n\","
+        },
+        {
+          "line": 146,
+          "text": "                (now-start < switch_after) ? \"power-law\" : \"flat\");"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\redis__redis\\utils\\lru\\lfu-simulation.c",
+      "line": 135,
+      "col": 37,
+      "message": "implicit conversion of time_t to 'uint16_t' may truncate after 2038",
+      "context": [
+        {
+          "line": 129,
+          "text": ""
+        },
+        {
+          "line": 130,
+          "text": "        /* Simulate the addition of new entries at positions between"
+        },
+        {
+          "line": 131,
+          "text": "         * 10 and 19, a random one every 10 seconds. */"
+        },
+        {
+          "line": 132,
+          "text": "        if (new_entry_time <= now) {"
+        },
+        {
+          "line": 133,
+          "text": "            idx = 10+(rand()%10);"
+        },
+        {
+          "line": 134,
+          "text": "            entries[idx].counter = LFU_INIT_VAL;"
+        },
+        {
+          "line": 135,
+          "text": "            entries[idx].decrtime = to_16bit_minutes(time(NULL));"
+        },
+        {
+          "line": 136,
+          "text": "            entries[idx].hits = 0;"
+        },
+        {
+          "line": 137,
+          "text": "            entries[idx].ctime = time(NULL);"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\redis__redis\\utils\\lru\\lfu-simulation.c",
+      "line": 93,
+      "col": 31,
+      "message": "implicit conversion of time_t to 'uint16_t' may truncate after 2038",
+      "context": [
+        {
+          "line": 87,
+          "text": "    struct entry *entries = malloc(sizeof(*entries)*keyspace_size);"
+        },
+        {
+          "line": 88,
+          "text": "    long j;"
+        },
+        {
+          "line": 89,
+          "text": ""
+        },
+        {
+          "line": 90,
+          "text": "    /* Initialize. */"
+        },
+        {
+          "line": 91,
+          "text": "    for (j = 0; j < keyspace_size; j++) {"
+        },
+        {
+          "line": 92,
+          "text": "        entries[j].counter = LFU_INIT_VAL;"
+        },
+        {
+          "line": 93,
+          "text": "        entries[j].decrtime = to_16bit_minutes(start);"
+        },
+        {
+          "line": 94,
+          "text": "        entries[j].hits = 0;"
+        },
+        {
+          "line": 95,
+          "text": "        entries[j].ctime = time(NULL);"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\redis__redis\\utils\\lru\\lfu-simulation.c",
+      "line": 65,
+      "col": 23,
+      "message": "implicit conversion of time_t to 'uint16_t' may truncate after 2038",
+      "context": [
+        {
+          "line": 59,
+          "text": "            if (e->counter > LFU_INIT_VAL*2) {"
+        },
+        {
+          "line": 60,
+          "text": "                e->counter /= 2;"
+        },
+        {
+          "line": 61,
+          "text": "            } else {"
+        },
+        {
+          "line": 62,
+          "text": "                e->counter--;"
+        },
+        {
+          "line": 63,
+          "text": "            }"
+        },
+        {
+          "line": 64,
+          "text": "        }"
+        },
+        {
+          "line": 65,
+          "text": "        e->decrtime = to_16bit_minutes(time(NULL));"
+        },
+        {
+          "line": 66,
+          "text": "    }"
+        },
+        {
+          "line": 67,
+          "text": "    return e->counter;"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\redis__redis\\utils\\lru\\lfu-simulation.c",
+      "line": 55,
+      "col": 22,
+      "message": "implicit conversion of time_t to 'uint16_t' may truncate after 2038",
+      "context": [
+        {
+          "line": 49,
+          "text": "    e->hits++;"
+        },
+        {
+          "line": 50,
+          "text": "}"
+        },
+        {
+          "line": 51,
+          "text": ""
+        },
+        {
+          "line": 52,
+          "text": "/* Return the entry LFU value and as a side effect decrement the"
+        },
+        {
+          "line": 53,
+          "text": " * entry value if the decrement time was reached. */"
+        },
+        {
+          "line": 54,
+          "text": "uint8_t scan_entry(struct entry *e) {"
+        },
+        {
+          "line": 55,
+          "text": "    if (minutes_diff(to_16bit_minutes(time(NULL)),e->decrtime)"
+        },
+        {
+          "line": 56,
+          "text": "        >= decr_every)"
+        },
+        {
+          "line": 57,
+          "text": "    {"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\redis__redis\\utils\\lru\\lfu-simulation.c",
+      "line": 80,
+      "col": 13,
+      "message": "time_t passed to printf-family function with incompatible format specifier: may truncate after 2038",
+      "context": [
+        {
+          "line": 74,
+          "text": "    if (pos >= 10 && pos <= 14) tag = \"new no access\";"
+        },
+        {
+          "line": 75,
+          "text": "    if (pos >= 15 && pos <= 19) tag = \"new accessed \";"
+        },
+        {
+          "line": 76,
+          "text": "    if (pos >= keyspace_size -5) tag= \"old no access\";"
+        },
+        {
+          "line": 77,
+          "text": ""
+        },
+        {
+          "line": 78,
+          "text": "    printf(\"%ld] <%s> frequency:%d decrtime:%d [%lu hits | age:%ld sec]\\n\","
+        },
+        {
+          "line": 79,
+          "text": "        pos, tag, e->counter, e->decrtime, (unsigned long)e->hits,"
+        },
+        {
+          "line": 80,
+          "text": "            time(NULL) - e->ctime);"
+        },
+        {
+          "line": 81,
+          "text": "}"
+        },
+        {
+          "line": 82,
+          "text": ""
+        }
+      ]
+    }
+  ]
+}

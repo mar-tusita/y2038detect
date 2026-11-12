@@ -1,0 +1,235 @@
+{
+  "repo": "raysan5/raylib",
+  "stars": 33222,
+  "y2038detect_version": "0.9.4",
+  "scanned_at": "2026-09-30T14:31:51Z",
+  "scan_sec": 95.92,
+  "c_files": 285,
+  "c_lines": 118749,
+  "parse_errors": 68408,
+  "scan_errors": 0,
+  "issues": [
+    {
+      "file": "evaluation\\repos\\raysan5__raylib\\src\\rcore.c",
+      "line": 2452,
+      "col": 19,
+      "message": "explicit conversion of time_t to 'long' may truncate after 2038",
+      "context": [
+        {
+          "line": 2446,
+          "text": "    struct stat result = { 0 };"
+        },
+        {
+          "line": 2447,
+          "text": "    long modTime = 0;"
+        },
+        {
+          "line": 2448,
+          "text": ""
+        },
+        {
+          "line": 2449,
+          "text": "    if (stat(fileName, &result) == 0)"
+        },
+        {
+          "line": 2450,
+          "text": "    {"
+        },
+        {
+          "line": 2451,
+          "text": "        time_t mod = result.st_mtime;"
+        },
+        {
+          "line": 2452,
+          "text": "        modTime = (long)mod;"
+        },
+        {
+          "line": 2453,
+          "text": "    }"
+        },
+        {
+          "line": 2454,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\raysan5__raylib\\src\\rcore.c",
+      "line": 717,
+      "col": 19,
+      "message": "explicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 711,
+          "text": "#endif"
+        },
+        {
+          "line": 712,
+          "text": ""
+        },
+        {
+          "line": 713,
+          "text": "    CORE.Time.frameCounter = 0;"
+        },
+        {
+          "line": 714,
+          "text": "    CORE.Window.shouldClose = false;"
+        },
+        {
+          "line": 715,
+          "text": ""
+        },
+        {
+          "line": 716,
+          "text": "    // Initialize random seed"
+        },
+        {
+          "line": 717,
+          "text": "    SetRandomSeed((unsigned int)time(NULL));"
+        },
+        {
+          "line": 718,
+          "text": ""
+        },
+        {
+          "line": 719,
+          "text": "    TRACELOG(LOG_INFO, \"SYSTEM: Working Directory: %s\", GetWorkingDirectory());"
+        }
+      ]
+    }
+  ],
+  "issues_strict": [
+    {
+      "file": "evaluation\\repos\\raysan5__raylib\\src\\rcore.c",
+      "line": 2452,
+      "col": 19,
+      "message": "explicit conversion of time_t to 'long' may truncate after 2038",
+      "context": [
+        {
+          "line": 2446,
+          "text": "    struct stat result = { 0 };"
+        },
+        {
+          "line": 2447,
+          "text": "    long modTime = 0;"
+        },
+        {
+          "line": 2448,
+          "text": ""
+        },
+        {
+          "line": 2449,
+          "text": "    if (stat(fileName, &result) == 0)"
+        },
+        {
+          "line": 2450,
+          "text": "    {"
+        },
+        {
+          "line": 2451,
+          "text": "        time_t mod = result.st_mtime;"
+        },
+        {
+          "line": 2452,
+          "text": "        modTime = (long)mod;"
+        },
+        {
+          "line": 2453,
+          "text": "    }"
+        },
+        {
+          "line": 2454,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\raysan5__raylib\\src\\rcore.c",
+      "line": 2451,
+      "col": 29,
+      "message": "access to struct stat timestamp field 'st_mtime': filesystem may not preserve timestamps beyond 2038",
+      "context": [
+        {
+          "line": 2445,
+          "text": "{"
+        },
+        {
+          "line": 2446,
+          "text": "    struct stat result = { 0 };"
+        },
+        {
+          "line": 2447,
+          "text": "    long modTime = 0;"
+        },
+        {
+          "line": 2448,
+          "text": ""
+        },
+        {
+          "line": 2449,
+          "text": "    if (stat(fileName, &result) == 0)"
+        },
+        {
+          "line": 2450,
+          "text": "    {"
+        },
+        {
+          "line": 2451,
+          "text": "        time_t mod = result.st_mtime;"
+        },
+        {
+          "line": 2452,
+          "text": "        modTime = (long)mod;"
+        },
+        {
+          "line": 2453,
+          "text": "    }"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\raysan5__raylib\\src\\rcore.c",
+      "line": 717,
+      "col": 19,
+      "message": "explicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 711,
+          "text": "#endif"
+        },
+        {
+          "line": 712,
+          "text": ""
+        },
+        {
+          "line": 713,
+          "text": "    CORE.Time.frameCounter = 0;"
+        },
+        {
+          "line": 714,
+          "text": "    CORE.Window.shouldClose = false;"
+        },
+        {
+          "line": 715,
+          "text": ""
+        },
+        {
+          "line": 716,
+          "text": "    // Initialize random seed"
+        },
+        {
+          "line": 717,
+          "text": "    SetRandomSeed((unsigned int)time(NULL));"
+        },
+        {
+          "line": 718,
+          "text": ""
+        },
+        {
+          "line": 719,
+          "text": "    TRACELOG(LOG_INFO, \"SYSTEM: Working Directory: %s\", GetWorkingDirectory());"
+        }
+      ]
+    }
+  ]
+}

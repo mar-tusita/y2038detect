@@ -1,0 +1,13 @@
+{
+  "repo": "DarkFlippers/unleashed-firmware",
+  "stars": 21664,
+  "y2038detect_version": "0.9.4",
+  "scanned_at": "2026-09-30T15:00:38Z",
+  "scan_sec": 101.88,
+  "c_files": 1303,
+  "c_lines": 680949,
+  "parse_errors": 173952,
+  "scan_errors": 0,
+  "issues": [],
+  "issues_strict": []
+}

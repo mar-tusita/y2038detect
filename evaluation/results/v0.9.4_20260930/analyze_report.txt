@@ -1,0 +1,105 @@
+Results: evaluation/results/v0.9.4_20260930
+Repos: 50  with issues: 27
+C files: 26,980  C lines: 13,880,325
+
+============================================================
+  1. Issues by Domain
+============================================================
+domain               repos detected  issues density/10k  pe_rate
+----------------------------------------------------------------
+system-tool             14        8      66       0.344    136.4
+network-tool             6        5      38       0.649    104.5
+embedded-firmware        5        4      30       0.081    133.5
+library                  6        4      47       0.220    189.2
+security                 4        2      19       0.081    333.3
+database                 4        2      61       0.801    319.4
+multimedia               7        1       2       0.008    143.6
+educational              4        1       3       0.464      3.0
+
+============================================================
+  2. Detected vs Clean Comparison (median)
+============================================================
+  (detected N=27, clean N=23)
+  stars (median)                     detected=     30246   clean=     26459
+  c_lines (median)                   detected=    232222   clean=     32312
+  c_files (median)                   detected=       373   clean=        94
+  c_ratio (median)                   detected=     0.841   clean=     0.801
+  parse_errors (median, raw count)   detected=     68408   clean=     15443
+  parse_errors per file (median)     detected=     141.4   clean=     143.6
+  unresolved_include share (median)  detected=     92.2%   clean=     91.9%
+  clean share (median)               detected=      4.8%   clean=      4.3%
+  parse_error share (median)         detected=      3.1%   clean=      1.4%
+  file status, all repos in scope: unresolved_include=24,191 (89.7%)  clean=1,563 (5.8%)  parse_error=1,226 (4.5%)  total=26,980
+
+============================================================
+  3. Parse Reliability (parse_errors / c_files, descending)
+============================================================
+  repo                                               pe/file  issues domain
+  --------------------------------------------------------------------------------
+  gentilkiwi/mimikatz                                 1748.4       0  security
+  valinet/ExplorerPatcher                              836.0       0  system-tool
+  pbatard/rufus                                        675.0       3  system-tool
+  nginx/nginx                                          613.7       1  network-tool
+  timescale/timescaledb                                611.8       0  database
+  asmvik/yabai                                         598.5       0  system-tool
+  jarun/nnn                                            536.0       0  system-tool
+  pgvector/pgvector                                    506.9       0  database
+  HandBrake/HandBrake                                  387.1       0  multimedia
+  coolsnowwolf/lede                                    361.4      14  embedded-firmware
+  openssl/openssl                                      344.4      17  security
+  netdata/netdata                                      326.5       5  system-tool
+  radareorg/radare2                                    322.2       0  security
+  FFmpeg/FFmpeg                                        316.4       0  multimedia
+  hashcat/hashcat                                      253.4       2  security
+
+============================================================
+  4. Top Repos by Issue Count
+============================================================
+  repo                                                issues density/10k domain
+  --------------------------------------------------------------------------------
+  jart/cosmopolitan                                       43       0.244  library
+  redis/redis                                             32       1.039  database
+  robertdavidgraham/masscan                               29       5.389  network-tool
+  valkey-io/valkey                                        29       1.006  database
+  iovisor/bcc                                             18       4.433  system-tool
+  openssl/openssl                                         17       0.210  security
+  ventoy/Ventoy                                           17       0.612  system-tool
+  git/git                                                 15       0.386  system-tool
+  coolsnowwolf/lede                                       14       0.090  embedded-firmware
+  openwrt/openwrt                                          7       0.276  embedded-firmware
+  arendst/Tasmota                                          5       0.058  embedded-firmware
+  netdata/netdata                                          5       0.078  system-tool
+  curl/curl                                                4       0.157  network-tool
+  micropython/micropython                                  4       0.113  embedded-firmware
+  tmux/tmux                                                4       0.441  system-tool
+  SamyPesse/How-to-Make-a-Computer-Operating-System        3       1.583  educational
+  allinurl/goaccess                                        3       0.825  network-tool
+  pbatard/rufus                                            3       0.217  system-tool
+  ggreer/the_silver_searcher                               2       4.316  system-tool
+  hashcat/hashcat                                          2       0.059  security
+  jqlang/jq                                                2       0.479  system-tool
+  mpv-player/mpv                                           2       0.104  multimedia
+  raysan5/raylib                                           2       0.168  library
+  facebook/zstd                                            1       0.092  library
+  libuv/libuv                                              1       0.103  library
+  nginx/nginx                                              1       0.043  network-tool
+  wg/wrk                                                   1       1.819  network-tool
+
+============================================================
+  5. Issue Type Breakdown (all repos combined)
+============================================================
+  Total issues: 266
+  narrowing               240  (90.2%)
+  tm_year                   0  (0.0%)
+  printf                   11  (4.1%)
+  fs_api                   15  (5.6%)
+  stat (strict)            62  (23.3%)
+
+============================================================
+  6. Strict vs Default Breakdown
+============================================================
+  Repos with strict data: 50 / 50
+  both (default and strict)    266  (66.5% of strict total)
+  strict_only                 134  (33.5% of strict total)
+  default_only (expect 0)       0
+  strict total                400

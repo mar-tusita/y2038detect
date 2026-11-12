@@ -1,0 +1,146 @@
+{
+  "repo": "timescale/timescaledb",
+  "stars": 22770,
+  "y2038detect_version": "0.9.4",
+  "scanned_at": "2026-09-30T14:57:38Z",
+  "scan_sec": 24.5,
+  "c_files": 260,
+  "c_lines": 153144,
+  "parse_errors": 159072,
+  "scan_errors": 0,
+  "issues": [],
+  "issues_strict": [
+    {
+      "file": "evaluation\\repos\\timescale__timescaledb\\test\\src\\net\\conn_mock.c",
+      "line": 75,
+      "col": 8,
+      "message": "implicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 69,
+          "text": "\treturn bytes_to_read;"
+        },
+        {
+          "line": 70,
+          "text": "}"
+        },
+        {
+          "line": 71,
+          "text": ""
+        },
+        {
+          "line": 72,
+          "text": "static int"
+        },
+        {
+          "line": 73,
+          "text": "mock_init(Connection *conn)"
+        },
+        {
+          "line": 74,
+          "text": "{"
+        },
+        {
+          "line": 75,
+          "text": "\tsrand(time(0));"
+        },
+        {
+          "line": 76,
+          "text": "\treturn 0;"
+        },
+        {
+          "line": 77,
+          "text": "}"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\timescale__timescaledb\\test\\src\\net\\test_http.c",
+      "line": 134,
+      "col": 8,
+      "message": "implicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 128,
+          "text": "Datum"
+        },
+        {
+          "line": 129,
+          "text": "ts_test_http_parsing_full(PG_FUNCTION_ARGS)"
+        },
+        {
+          "line": 130,
+          "text": "{"
+        },
+        {
+          "line": 131,
+          "text": "\tint i;"
+        },
+        {
+          "line": 132,
+          "text": "\tsize_t bytes;"
+        },
+        {
+          "line": 133,
+          "text": ""
+        },
+        {
+          "line": 134,
+          "text": "\tsrand(time(0));"
+        },
+        {
+          "line": 135,
+          "text": ""
+        },
+        {
+          "line": 136,
+          "text": "\tfor (i = 0; i < num_test_strings(); i++)"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\timescale__timescaledb\\test\\src\\net\\test_http.c",
+      "line": 86,
+      "col": 8,
+      "message": "implicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 80,
+          "text": "ts_test_http_parsing(PG_FUNCTION_ARGS)"
+        },
+        {
+          "line": 81,
+          "text": "{"
+        },
+        {
+          "line": 82,
+          "text": "\tint num_iterations = PG_GETARG_INT32(0);"
+        },
+        {
+          "line": 83,
+          "text": "\tint i, j;"
+        },
+        {
+          "line": 84,
+          "text": "\tsize_t bytes;"
+        },
+        {
+          "line": 85,
+          "text": ""
+        },
+        {
+          "line": 86,
+          "text": "\tsrand(time(0));"
+        },
+        {
+          "line": 87,
+          "text": ""
+        },
+        {
+          "line": 88,
+          "text": "\tfor (j = 0; j < num_iterations; j++)"
+        }
+      ]
+    }
+  ]
+}

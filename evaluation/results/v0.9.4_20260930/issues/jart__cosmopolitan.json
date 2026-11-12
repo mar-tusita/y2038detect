@@ -1,0 +1,4723 @@
+{
+  "repo": "jart/cosmopolitan",
+  "stars": 20866,
+  "y2038detect_version": "0.9.4",
+  "scanned_at": "2026-09-30T15:07:31Z",
+  "scan_sec": 340.44,
+  "c_files": 5008,
+  "c_lines": 1765440,
+  "parse_errors": 930992,
+  "scan_errors": 0,
+  "issues": [
+    {
+      "file": "evaluation\\repos\\jart__cosmopolitan\\examples\\asteroids.c",
+      "line": 241,
+      "col": 25,
+      "message": "implicit conversion of time_t to 'int' may truncate after 2038",
+      "context": [
+        {
+          "line": 235,
+          "text": ""
+        },
+        {
+          "line": 236,
+          "text": "    // Move asteroids and check for collisions"
+        },
+        {
+          "line": 237,
+          "text": "    for (int i = 0; i < MAX_ASTEROIDS; i++) {"
+        },
+        {
+          "line": 238,
+          "text": "        updateGameObject(&asteroids[i], 0);"
+        },
+        {
+          "line": 239,
+          "text": "        if (checkCollision(&spaceship, &asteroids[i])) {"
+        },
+        {
+          "line": 240,
+          "text": "            isGameOver = 1;"
+        },
+        {
+          "line": 241,
+          "text": "            finalTime = time(NULL) - startTime;"
+        },
+        {
+          "line": 242,
+          "text": "            return;"
+        },
+        {
+          "line": 243,
+          "text": "        }"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\jart__cosmopolitan\\examples\\asteroids.c",
+      "line": 207,
+      "col": 23,
+      "message": "implicit conversion of time_t to 'int' may truncate after 2038",
+      "context": [
+        {
+          "line": 201,
+          "text": "        }"
+        },
+        {
+          "line": 202,
+          "text": "        putchar('\\n');"
+        },
+        {
+          "line": 203,
+          "text": "    }"
+        },
+        {
+          "line": 204,
+          "text": "    "
+        },
+        {
+          "line": 205,
+          "text": "    // Display score and elapsed time"
+        },
+        {
+          "line": 206,
+          "text": "    time_t currentTime = time(NULL);"
+        },
+        {
+          "line": 207,
+          "text": "    int elapsedTime = isGameOver ? finalTime : (currentTime - startTime);"
+        },
+        {
+          "line": 208,
+          "text": "    printf(\"Score: %d | Time: %02d:%02d | %s\\n\", score, elapsedTime / 60, elapsedTime % 60, isGameOver ? \"Game Over!\" : \"           \");"
+        },
+        {
+          "line": 209,
+          "text": "}"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\jart__cosmopolitan\\examples\\spawn_bench.c",
+      "line": 140,
+      "col": 3,
+      "message": "implicit conversion of time_t to 'unsigned long' may truncate after 2106",
+      "context": [
+        {
+          "line": 134,
+          "text": "  BENCH(\"mmap(128mb, MAP_SHARED) + posix_spawn(tiny)\", PosixSpawnWait(prog));"
+        },
+        {
+          "line": 135,
+          "text": "  munmap(p, n);"
+        },
+        {
+          "line": 136,
+          "text": ""
+        },
+        {
+          "line": 137,
+          "text": "  n = 128L * 1024 * 1024;"
+        },
+        {
+          "line": 138,
+          "text": "  p = pFillMemory(malloc(n), n);"
+        },
+        {
+          "line": 139,
+          "text": "  BENCH(\"malloc(128mb) + fork() + exec(tiny)\", ForkExecWait(prog));"
+        },
+        {
+          "line": 140,
+          "text": "  BENCH(\"malloc(128mb) + posix_spawn(tiny)\", PosixSpawnWait(prog));"
+        },
+        {
+          "line": 141,
+          "text": "  free(p);"
+        },
+        {
+          "line": 142,
+          "text": "}"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\jart__cosmopolitan\\examples\\spawn_bench.c",
+      "line": 139,
+      "col": 3,
+      "message": "implicit conversion of time_t to 'unsigned long' may truncate after 2106",
+      "context": [
+        {
+          "line": 133,
+          "text": "  BENCH(\"mmap(128mb, MAP_SHARED) + fork() + exec(tiny)\", ForkExecWait(prog));"
+        },
+        {
+          "line": 134,
+          "text": "  BENCH(\"mmap(128mb, MAP_SHARED) + posix_spawn(tiny)\", PosixSpawnWait(prog));"
+        },
+        {
+          "line": 135,
+          "text": "  munmap(p, n);"
+        },
+        {
+          "line": 136,
+          "text": ""
+        },
+        {
+          "line": 137,
+          "text": "  n = 128L * 1024 * 1024;"
+        },
+        {
+          "line": 138,
+          "text": "  p = pFillMemory(malloc(n), n);"
+        },
+        {
+          "line": 139,
+          "text": "  BENCH(\"malloc(128mb) + fork() + exec(tiny)\", ForkExecWait(prog));"
+        },
+        {
+          "line": 140,
+          "text": "  BENCH(\"malloc(128mb) + posix_spawn(tiny)\", PosixSpawnWait(prog));"
+        },
+        {
+          "line": 141,
+          "text": "  free(p);"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\jart__cosmopolitan\\examples\\spawn_bench.c",
+      "line": 134,
+      "col": 3,
+      "message": "implicit conversion of time_t to 'unsigned long' may truncate after 2106",
+      "context": [
+        {
+          "line": 128,
+          "text": "  BENCH(\"posix_spawn(tiny)\", PosixSpawnWait(prog));"
+        },
+        {
+          "line": 129,
+          "text": ""
+        },
+        {
+          "line": 130,
+          "text": "  n = 128L * 1024 * 1024;"
+        },
+        {
+          "line": 131,
+          "text": "  p = pFillMemory("
+        },
+        {
+          "line": 132,
+          "text": "      mmap(0, n, PROT_READ | PROT_WRITE, MAP_SHARED | MAP_ANONYMOUS, -1, 0), n);"
+        },
+        {
+          "line": 133,
+          "text": "  BENCH(\"mmap(128mb, MAP_SHARED) + fork() + exec(tiny)\", ForkExecWait(prog));"
+        },
+        {
+          "line": 134,
+          "text": "  BENCH(\"mmap(128mb, MAP_SHARED) + posix_spawn(tiny)\", PosixSpawnWait(prog));"
+        },
+        {
+          "line": 135,
+          "text": "  munmap(p, n);"
+        },
+        {
+          "line": 136,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\jart__cosmopolitan\\examples\\spawn_bench.c",
+      "line": 133,
+      "col": 3,
+      "message": "implicit conversion of time_t to 'unsigned long' may truncate after 2106",
+      "context": [
+        {
+          "line": 127,
+          "text": "  BENCH(\"fork() + exec(tiny)\", ForkExecWait(prog));"
+        },
+        {
+          "line": 128,
+          "text": "  BENCH(\"posix_spawn(tiny)\", PosixSpawnWait(prog));"
+        },
+        {
+          "line": 129,
+          "text": ""
+        },
+        {
+          "line": 130,
+          "text": "  n = 128L * 1024 * 1024;"
+        },
+        {
+          "line": 131,
+          "text": "  p = pFillMemory("
+        },
+        {
+          "line": 132,
+          "text": "      mmap(0, n, PROT_READ | PROT_WRITE, MAP_SHARED | MAP_ANONYMOUS, -1, 0), n);"
+        },
+        {
+          "line": 133,
+          "text": "  BENCH(\"mmap(128mb, MAP_SHARED) + fork() + exec(tiny)\", ForkExecWait(prog));"
+        },
+        {
+          "line": 134,
+          "text": "  BENCH(\"mmap(128mb, MAP_SHARED) + posix_spawn(tiny)\", PosixSpawnWait(prog));"
+        },
+        {
+          "line": 135,
+          "text": "  munmap(p, n);"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\jart__cosmopolitan\\examples\\spawn_bench.c",
+      "line": 128,
+      "col": 3,
+      "message": "implicit conversion of time_t to 'unsigned long' may truncate after 2106",
+      "context": [
+        {
+          "line": 122,
+          "text": "    prog = \"tiny64\";"
+        },
+        {
+          "line": 123,
+          "text": "  } else {"
+        },
+        {
+          "line": 124,
+          "text": "    prog = argv[1];"
+        },
+        {
+          "line": 125,
+          "text": "  }"
+        },
+        {
+          "line": 126,
+          "text": ""
+        },
+        {
+          "line": 127,
+          "text": "  BENCH(\"fork() + exec(tiny)\", ForkExecWait(prog));"
+        },
+        {
+          "line": 128,
+          "text": "  BENCH(\"posix_spawn(tiny)\", PosixSpawnWait(prog));"
+        },
+        {
+          "line": 129,
+          "text": ""
+        },
+        {
+          "line": 130,
+          "text": "  n = 128L * 1024 * 1024;"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\jart__cosmopolitan\\examples\\spawn_bench.c",
+      "line": 127,
+      "col": 3,
+      "message": "implicit conversion of time_t to 'unsigned long' may truncate after 2106",
+      "context": [
+        {
+          "line": 121,
+          "text": "  if (argc <= 1) {"
+        },
+        {
+          "line": 122,
+          "text": "    prog = \"tiny64\";"
+        },
+        {
+          "line": 123,
+          "text": "  } else {"
+        },
+        {
+          "line": 124,
+          "text": "    prog = argv[1];"
+        },
+        {
+          "line": 125,
+          "text": "  }"
+        },
+        {
+          "line": 126,
+          "text": ""
+        },
+        {
+          "line": 127,
+          "text": "  BENCH(\"fork() + exec(tiny)\", ForkExecWait(prog));"
+        },
+        {
+          "line": 128,
+          "text": "  BENCH(\"posix_spawn(tiny)\", PosixSpawnWait(prog));"
+        },
+        {
+          "line": 129,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\jart__cosmopolitan\\libc\\calls\\utime.c",
+      "line": 37,
+      "col": 12,
+      "message": "call to utimes() uses struct timeval with long tv_sec; limited to 32-bit range — use utimensat() instead",
+      "context": [
+        {
+          "line": 31,
+          "text": "  struct timeval tv[2];"
+        },
+        {
+          "line": 32,
+          "text": "  if (times) {"
+        },
+        {
+          "line": 33,
+          "text": "    tv[0].tv_sec = times->actime;"
+        },
+        {
+          "line": 34,
+          "text": "    tv[0].tv_usec = 0;"
+        },
+        {
+          "line": 35,
+          "text": "    tv[1].tv_sec = times->modtime;"
+        },
+        {
+          "line": 36,
+          "text": "    tv[1].tv_usec = 0;"
+        },
+        {
+          "line": 37,
+          "text": "    return utimes(path, tv);"
+        },
+        {
+          "line": 38,
+          "text": "  } else {"
+        },
+        {
+          "line": 39,
+          "text": "    return utimes(path, NULL);"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\jart__cosmopolitan\\test\\c11\\thrd_sleep_test.c",
+      "line": 33,
+      "col": 16,
+      "message": "implicit conversion of time_t to 'long' may truncate after 2038",
+      "context": [
+        {
+          "line": 27,
+          "text": ""
+        },
+        {
+          "line": 28,
+          "text": "  timespec_get(&a, TIME_UTC);"
+        },
+        {
+          "line": 29,
+          "text": "  if (thrd_sleep(&dur, 0) != 0)"
+        },
+        {
+          "line": 30,
+          "text": "    exit(10);"
+        },
+        {
+          "line": 31,
+          "text": "  timespec_get(&b, TIME_UTC);"
+        },
+        {
+          "line": 32,
+          "text": ""
+        },
+        {
+          "line": 33,
+          "text": "  elapsed_ms = (b.tv_sec - a.tv_sec) * 1000 + (b.tv_nsec - a.tv_nsec) / 1000000;"
+        },
+        {
+          "line": 34,
+          "text": "  if (elapsed_ms < 90)  // must not wake appreciably early"
+        },
+        {
+          "line": 35,
+          "text": "    exit(11);"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\jart__cosmopolitan\\test\\libc\\calls\\utimensat_test.c",
+      "line": 66,
+      "col": 20,
+      "message": "call to futimes() uses struct timeval with long tv_sec; limited to 32-bit range — use futimens() instead",
+      "context": [
+        {
+          "line": 60,
+          "text": "TEST(futimes, test) {"
+        },
+        {
+          "line": 61,
+          "text": "  if (IsLinux() && !__is_linux_2_6_23())"
+        },
+        {
+          "line": 62,
+          "text": "    return;"
+        },
+        {
+          "line": 63,
+          "text": "  struct stat st;"
+        },
+        {
+          "line": 64,
+          "text": "  struct timeval tv[2] = {{1655455857, 1}, {827727928, 2}};"
+        },
+        {
+          "line": 65,
+          "text": "  EXPECT_SYS(0, 3, creat(\"boop\", 0644));"
+        },
+        {
+          "line": 66,
+          "text": "  EXPECT_SYS(0, 0, futimes(3, tv));"
+        },
+        {
+          "line": 67,
+          "text": "  EXPECT_SYS(0, 0, fstat(3, &st));"
+        },
+        {
+          "line": 68,
+          "text": "  EXPECT_EQ(1655455857, st.st_atim.tv_sec);"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\jart__cosmopolitan\\test\\libc\\calls\\utimensat_test.c",
+      "line": 46,
+      "col": 20,
+      "message": "call to utimes() uses struct timeval with long tv_sec; limited to 32-bit range — use utimensat() instead",
+      "context": [
+        {
+          "line": 40,
+          "text": "  struct stat st;"
+        },
+        {
+          "line": 41,
+          "text": "  struct timeval tv[2] = {"
+        },
+        {
+          "line": 42,
+          "text": "      {1655455857, 1},  // atim: Fri Jun 17 2022 08:50:57 GMT+0000"
+        },
+        {
+          "line": 43,
+          "text": "      {827727928, 2},   // mtim: Mon Mar 25 1996 04:25:28 GMT+0000"
+        },
+        {
+          "line": 44,
+          "text": "  };"
+        },
+        {
+          "line": 45,
+          "text": "  EXPECT_SYS(0, 0, touch(\"boop\", 0644));"
+        },
+        {
+          "line": 46,
+          "text": "  EXPECT_SYS(0, 0, utimes(\"boop\", tv));"
+        },
+        {
+          "line": 47,
+          "text": "  EXPECT_SYS(0, 0, stat(\"boop\", &st));"
+        },
+        {
+          "line": 48,
+          "text": "  EXPECT_EQ(1655455857, st.st_atim.tv_sec);"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\jart__cosmopolitan\\test\\libc\\intrin\\memchr_test.c",
+      "line": 52,
+      "col": 10,
+      "message": "implicit conversion of time_t to 'long' may truncate after 2038",
+      "context": [
+        {
+          "line": 46,
+          "text": "void *eat(const void *x) {"
+        },
+        {
+          "line": 47,
+          "text": "  return (void *)x;"
+        },
+        {
+          "line": 48,
+          "text": "}"
+        },
+        {
+          "line": 49,
+          "text": "void *(*pEat)(const void *x) = eat;"
+        },
+        {
+          "line": 50,
+          "text": ""
+        },
+        {
+          "line": 51,
+          "text": "long tonanos(struct timespec x) {"
+        },
+        {
+          "line": 52,
+          "text": "  return x.tv_sec * 1000000000ul + x.tv_nsec;"
+        },
+        {
+          "line": 53,
+          "text": "}"
+        },
+        {
+          "line": 54,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\jart__cosmopolitan\\test\\libc\\str\\memchr16_test.c",
+      "line": 54,
+      "col": 10,
+      "message": "implicit conversion of time_t to 'long' may truncate after 2038",
+      "context": [
+        {
+          "line": 48,
+          "text": "void *eat(const void *x) {"
+        },
+        {
+          "line": 49,
+          "text": "  return (void *)x;"
+        },
+        {
+          "line": 50,
+          "text": "}"
+        },
+        {
+          "line": 51,
+          "text": "void *(*pEat)(const void *x) = eat;"
+        },
+        {
+          "line": 52,
+          "text": ""
+        },
+        {
+          "line": 53,
+          "text": "long tonanos(struct timespec x) {"
+        },
+        {
+          "line": 54,
+          "text": "  return x.tv_sec * 1000000000ul + x.tv_nsec;"
+        },
+        {
+          "line": 55,
+          "text": "}"
+        },
+        {
+          "line": 56,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\jart__cosmopolitan\\test\\libc\\str\\rawmemchr16_test.c",
+      "line": 68,
+      "col": 10,
+      "message": "implicit conversion of time_t to 'long' may truncate after 2038",
+      "context": [
+        {
+          "line": 62,
+          "text": "void *eat(const void *x) {"
+        },
+        {
+          "line": 63,
+          "text": "  return (void *)x;"
+        },
+        {
+          "line": 64,
+          "text": "}"
+        },
+        {
+          "line": 65,
+          "text": "void *(*pEat)(const void *x) = eat;"
+        },
+        {
+          "line": 66,
+          "text": ""
+        },
+        {
+          "line": 67,
+          "text": "long tonanos(struct timespec x) {"
+        },
+        {
+          "line": 68,
+          "text": "  return x.tv_sec * 1000000000ul + x.tv_nsec;"
+        },
+        {
+          "line": 69,
+          "text": "}"
+        },
+        {
+          "line": 70,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\jart__cosmopolitan\\test\\libc\\str\\rawmemchr32_test.c",
+      "line": 49,
+      "col": 10,
+      "message": "implicit conversion of time_t to 'long' may truncate after 2038",
+      "context": [
+        {
+          "line": 43,
+          "text": "void *eat(const void *x) {"
+        },
+        {
+          "line": 44,
+          "text": "  return (void *)x;"
+        },
+        {
+          "line": 45,
+          "text": "}"
+        },
+        {
+          "line": 46,
+          "text": "void *(*pEat)(const void *x) = eat;"
+        },
+        {
+          "line": 47,
+          "text": ""
+        },
+        {
+          "line": 48,
+          "text": "long tonanos(struct timespec x) {"
+        },
+        {
+          "line": 49,
+          "text": "  return x.tv_sec * 1000000000ul + x.tv_nsec;"
+        },
+        {
+          "line": 50,
+          "text": "}"
+        },
+        {
+          "line": 51,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\jart__cosmopolitan\\test\\libc\\str\\rawmemchr_test.c",
+      "line": 49,
+      "col": 10,
+      "message": "implicit conversion of time_t to 'long' may truncate after 2038",
+      "context": [
+        {
+          "line": 43,
+          "text": "void *eat(const void *x) {"
+        },
+        {
+          "line": 44,
+          "text": "  return (void *)x;"
+        },
+        {
+          "line": 45,
+          "text": "}"
+        },
+        {
+          "line": 46,
+          "text": "void *(*pEat)(const void *x) = eat;"
+        },
+        {
+          "line": 47,
+          "text": ""
+        },
+        {
+          "line": 48,
+          "text": "long tonanos(struct timespec x) {"
+        },
+        {
+          "line": 49,
+          "text": "  return x.tv_sec * 1000000000ul + x.tv_nsec;"
+        },
+        {
+          "line": 50,
+          "text": "}"
+        },
+        {
+          "line": 51,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\jart__cosmopolitan\\test\\libc\\str\\strcspn16_test.c",
+      "line": 68,
+      "col": 10,
+      "message": "implicit conversion of time_t to 'long' may truncate after 2038",
+      "context": [
+        {
+          "line": 62,
+          "text": "    }"
+        },
+        {
+          "line": 63,
+          "text": "  }"
+        },
+        {
+          "line": 64,
+          "text": "  munmap(map, pagesz * 2);"
+        },
+        {
+          "line": 65,
+          "text": "}"
+        },
+        {
+          "line": 66,
+          "text": ""
+        },
+        {
+          "line": 67,
+          "text": "long tonanos(struct timespec x) {"
+        },
+        {
+          "line": 68,
+          "text": "  return x.tv_sec * 1000000000ul + x.tv_nsec;"
+        },
+        {
+          "line": 69,
+          "text": "}"
+        },
+        {
+          "line": 70,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\jart__cosmopolitan\\test\\libc\\str\\strcspn_test.c",
+      "line": 68,
+      "col": 10,
+      "message": "implicit conversion of time_t to 'long' may truncate after 2038",
+      "context": [
+        {
+          "line": 62,
+          "text": "    }"
+        },
+        {
+          "line": 63,
+          "text": "  }"
+        },
+        {
+          "line": 64,
+          "text": "  munmap(map, pagesz * 2);"
+        },
+        {
+          "line": 65,
+          "text": "}"
+        },
+        {
+          "line": 66,
+          "text": ""
+        },
+        {
+          "line": 67,
+          "text": "long tonanos(struct timespec x) {"
+        },
+        {
+          "line": 68,
+          "text": "  return x.tv_sec * 1000000000ul + x.tv_nsec;"
+        },
+        {
+          "line": 69,
+          "text": "}"
+        },
+        {
+          "line": 70,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\jart__cosmopolitan\\test\\libc\\str\\strspn16_test.c",
+      "line": 68,
+      "col": 10,
+      "message": "implicit conversion of time_t to 'long' may truncate after 2038",
+      "context": [
+        {
+          "line": 62,
+          "text": "    }"
+        },
+        {
+          "line": 63,
+          "text": "  }"
+        },
+        {
+          "line": 64,
+          "text": "  munmap(map, pagesz * 2);"
+        },
+        {
+          "line": 65,
+          "text": "}"
+        },
+        {
+          "line": 66,
+          "text": ""
+        },
+        {
+          "line": 67,
+          "text": "long tonanos(struct timespec x) {"
+        },
+        {
+          "line": 68,
+          "text": "  return x.tv_sec * 1000000000ul + x.tv_nsec;"
+        },
+        {
+          "line": 69,
+          "text": "}"
+        },
+        {
+          "line": 70,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\jart__cosmopolitan\\test\\libc\\str\\strspn_test.c",
+      "line": 56,
+      "col": 10,
+      "message": "implicit conversion of time_t to 'long' may truncate after 2038",
+      "context": [
+        {
+          "line": 50,
+          "text": "    }"
+        },
+        {
+          "line": 51,
+          "text": "  }"
+        },
+        {
+          "line": 52,
+          "text": "  munmap(map, pagesz * 2);"
+        },
+        {
+          "line": 53,
+          "text": "}"
+        },
+        {
+          "line": 54,
+          "text": ""
+        },
+        {
+          "line": 55,
+          "text": "long tonanos(struct timespec x) {"
+        },
+        {
+          "line": 56,
+          "text": "  return x.tv_sec * 1000000000ul + x.tv_nsec;"
+        },
+        {
+          "line": 57,
+          "text": "}"
+        },
+        {
+          "line": 58,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\jart__cosmopolitan\\test\\libc\\str\\wcscspn_test.c",
+      "line": 68,
+      "col": 10,
+      "message": "implicit conversion of time_t to 'long' may truncate after 2038",
+      "context": [
+        {
+          "line": 62,
+          "text": "    }"
+        },
+        {
+          "line": 63,
+          "text": "  }"
+        },
+        {
+          "line": 64,
+          "text": "  munmap(map, pagesz * 2);"
+        },
+        {
+          "line": 65,
+          "text": "}"
+        },
+        {
+          "line": 66,
+          "text": ""
+        },
+        {
+          "line": 67,
+          "text": "long tonanos(struct timespec x) {"
+        },
+        {
+          "line": 68,
+          "text": "  return x.tv_sec * 1000000000ul + x.tv_nsec;"
+        },
+        {
+          "line": 69,
+          "text": "}"
+        },
+        {
+          "line": 70,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\jart__cosmopolitan\\test\\libc\\str\\wcsspn_test.c",
+      "line": 69,
+      "col": 10,
+      "message": "implicit conversion of time_t to 'long' may truncate after 2038",
+      "context": [
+        {
+          "line": 63,
+          "text": "    }"
+        },
+        {
+          "line": 64,
+          "text": "  }"
+        },
+        {
+          "line": 65,
+          "text": "  munmap(map, pagesz * 2);"
+        },
+        {
+          "line": 66,
+          "text": "}"
+        },
+        {
+          "line": 67,
+          "text": ""
+        },
+        {
+          "line": 68,
+          "text": "long tonanos(struct timespec x) {"
+        },
+        {
+          "line": 69,
+          "text": "  return x.tv_sec * 1000000000ul + x.tv_nsec;"
+        },
+        {
+          "line": 70,
+          "text": "}"
+        },
+        {
+          "line": 71,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\jart__cosmopolitan\\test\\libc\\str\\wmemchr_test.c",
+      "line": 51,
+      "col": 10,
+      "message": "implicit conversion of time_t to 'long' may truncate after 2038",
+      "context": [
+        {
+          "line": 45,
+          "text": "void *eat(const void *x) {"
+        },
+        {
+          "line": 46,
+          "text": "  return (void *)x;"
+        },
+        {
+          "line": 47,
+          "text": "}"
+        },
+        {
+          "line": 48,
+          "text": "void *(*pEat)(const void *x) = eat;"
+        },
+        {
+          "line": 49,
+          "text": ""
+        },
+        {
+          "line": 50,
+          "text": "long tonanos(struct timespec x) {"
+        },
+        {
+          "line": 51,
+          "text": "  return x.tv_sec * 1000000000ul + x.tv_nsec;"
+        },
+        {
+          "line": 52,
+          "text": "}"
+        },
+        {
+          "line": 53,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\jart__cosmopolitan\\test\\libc\\thread\\footek_test.c",
+      "line": 356,
+      "col": 10,
+      "message": "implicit conversion of time_t to 'long' may truncate after 2038",
+      "context": [
+        {
+          "line": 350,
+          "text": "  }"
+        },
+        {
+          "line": 351,
+          "text": "  a.tv_usec -= b.tv_usec;"
+        },
+        {
+          "line": 352,
+          "text": "  return a;"
+        },
+        {
+          "line": 353,
+          "text": "}"
+        },
+        {
+          "line": 354,
+          "text": ""
+        },
+        {
+          "line": 355,
+          "text": "long tomicros(struct timeval x) {"
+        },
+        {
+          "line": 356,
+          "text": "  return x.tv_sec * 1000000ul + x.tv_usec;"
+        },
+        {
+          "line": 357,
+          "text": "}"
+        },
+        {
+          "line": 358,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\jart__cosmopolitan\\test\\posix\\pthread_mutex_timedlock_bignum_test.c",
+      "line": 38,
+      "col": 16,
+      "message": "implicit conversion of time_t to 'long' may truncate after 2038",
+      "context": [
+        {
+          "line": 32,
+          "text": "  struct timespec a, b, d;"
+        },
+        {
+          "line": 33,
+          "text": "  clock_gettime(CLOCK_REALTIME, &a);"
+        },
+        {
+          "line": 34,
+          "text": "  d = a;"
+        },
+        {
+          "line": 35,
+          "text": "  d.tv_sec += 1000000000L;  // ~31 years out: huge, but a valid 64-bit time"
+        },
+        {
+          "line": 36,
+          "text": "  result = pthread_mutex_timedlock(&mu, &d);"
+        },
+        {
+          "line": 37,
+          "text": "  clock_gettime(CLOCK_REALTIME, &b);"
+        },
+        {
+          "line": 38,
+          "text": "  elapsed_ms = (b.tv_sec - a.tv_sec) * 1000 + (b.tv_nsec - a.tv_nsec) / 1000000;"
+        },
+        {
+          "line": 39,
+          "text": "  if (result == 0)"
+        },
+        {
+          "line": 40,
+          "text": "    pthread_mutex_unlock(&mu);"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\jart__cosmopolitan\\test\\posix\\pthread_mutex_timedlock_eintr_test.c",
+      "line": 47,
+      "col": 16,
+      "message": "implicit conversion of time_t to 'long' may truncate after 2038",
+      "context": [
+        {
+          "line": 41,
+          "text": "  if (d.tv_nsec >= 1000000000L) {"
+        },
+        {
+          "line": 42,
+          "text": "    d.tv_sec += 1;"
+        },
+        {
+          "line": 43,
+          "text": "    d.tv_nsec -= 1000000000L;"
+        },
+        {
+          "line": 44,
+          "text": "  }"
+        },
+        {
+          "line": 45,
+          "text": "  result = pthread_mutex_timedlock(&mu, &d);"
+        },
+        {
+          "line": 46,
+          "text": "  clock_gettime(CLOCK_REALTIME, &b);"
+        },
+        {
+          "line": 47,
+          "text": "  elapsed_ms = (b.tv_sec - a.tv_sec) * 1000 + (b.tv_nsec - a.tv_nsec) / 1000000;"
+        },
+        {
+          "line": 48,
+          "text": "  return 0;"
+        },
+        {
+          "line": 49,
+          "text": "}"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\jart__cosmopolitan\\test\\posix\\signal_latency_async_test.c",
+      "line": 77,
+      "col": 23,
+      "message": "implicit conversion of time_t to 'long' may truncate after 2038",
+      "context": [
+        {
+          "line": 71,
+          "text": "    // wait for signal handler to be called"
+        },
+        {
+          "line": 72,
+          "text": "    if (atomic_exchange(&receiver_got_signal, 0)) {"
+        },
+        {
+          "line": 73,
+          "text": ""
+        },
+        {
+          "line": 74,
+          "text": "      // record received time"
+        },
+        {
+          "line": 75,
+          "text": "      struct timespec receive_time;"
+        },
+        {
+          "line": 76,
+          "text": "      clock_gettime(CLOCK_MONOTONIC, &receive_time);"
+        },
+        {
+          "line": 77,
+          "text": "      long sec_diff = receive_time.tv_sec - send_time.tv_sec;"
+        },
+        {
+          "line": 78,
+          "text": "      long nsec_diff = receive_time.tv_nsec - send_time.tv_nsec;"
+        },
+        {
+          "line": 79,
+          "text": "      double latency_ns = sec_diff * 1e9 + nsec_diff;"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\jart__cosmopolitan\\test\\posix\\signal_latency_test.c",
+      "line": 45,
+      "col": 19,
+      "message": "implicit conversion of time_t to 'long' may truncate after 2038",
+      "context": [
+        {
+          "line": 39,
+          "text": ""
+        },
+        {
+          "line": 40,
+          "text": "void receiver_signal_handler(int signo) {"
+        },
+        {
+          "line": 41,
+          "text": "  struct timespec receive_time;"
+        },
+        {
+          "line": 42,
+          "text": "  if (clock_gettime(CLOCK_MONOTONIC, &receive_time) == -1)"
+        },
+        {
+          "line": 43,
+          "text": "    exit(1);"
+        },
+        {
+          "line": 44,
+          "text": ""
+        },
+        {
+          "line": 45,
+          "text": "  long sec_diff = receive_time.tv_sec - send_time.tv_sec;"
+        },
+        {
+          "line": 46,
+          "text": "  long nsec_diff = receive_time.tv_nsec - send_time.tv_nsec;"
+        },
+        {
+          "line": 47,
+          "text": "  double latency_ns = sec_diff * 1e9 + nsec_diff;"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\jart__cosmopolitan\\third_party\\bzip2\\bzip2.c",
+      "line": 971,
+      "col": 13,
+      "message": "call to utime() uses time_t timestamps; limited to 32-bit range — use utimensat() instead",
+      "context": [
+        {
+          "line": 965,
+          "text": "   IntNative      retVal;"
+        },
+        {
+          "line": 966,
+          "text": "   struct utimbuf uTimBuf;"
+        },
+        {
+          "line": 967,
+          "text": ""
+        },
+        {
+          "line": 968,
+          "text": "   uTimBuf.actime = fileMetaInfo.st_atime;"
+        },
+        {
+          "line": 969,
+          "text": "   uTimBuf.modtime = fileMetaInfo.st_mtime;"
+        },
+        {
+          "line": 970,
+          "text": ""
+        },
+        {
+          "line": 971,
+          "text": "   retVal = utime ( dstName, &uTimBuf );"
+        },
+        {
+          "line": 972,
+          "text": "   ERROR_IF_NOT_ZERO ( retVal );"
+        },
+        {
+          "line": 973,
+          "text": "#  endif"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\jart__cosmopolitan\\third_party\\make\\misc.c",
+      "line": 97,
+      "col": 16,
+      "message": "explicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 91,
+          "text": ""
+        },
+        {
+          "line": 92,
+          "text": "unsigned int"
+        },
+        {
+          "line": 93,
+          "text": "make_rand ()"
+        },
+        {
+          "line": 94,
+          "text": "{"
+        },
+        {
+          "line": 95,
+          "text": "  /* mk_state must never be 0.  */"
+        },
+        {
+          "line": 96,
+          "text": "  if (mk_state == 0)"
+        },
+        {
+          "line": 97,
+          "text": "    mk_state = (unsigned int)(time (NULL) ^ make_pid ()) + 1;"
+        },
+        {
+          "line": 98,
+          "text": ""
+        },
+        {
+          "line": 99,
+          "text": "  /* A simple xorshift RNG.  */"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\jart__cosmopolitan\\third_party\\ncurses\\lib_twait.c",
+      "line": 98,
+      "col": 8,
+      "message": "implicit conversion of time_t to 'long' may truncate after 2038",
+      "context": [
+        {
+          "line": 92,
+          "text": "    } else {"
+        },
+        {
+          "line": 93,
+          "text": "\t/* .tv_sec and .tv_usec are unsigned, be careful when subtracting */"
+        },
+        {
+          "line": 94,
+          "text": "\tif (t0->tv_usec > t1.tv_usec) {"
+        },
+        {
+          "line": 95,
+          "text": "\t    t1.tv_usec += 1000000;\t/* Convert 1s in 1e6 microsecs */"
+        },
+        {
+          "line": 96,
+          "text": "\t    t1.tv_sec--;"
+        },
+        {
+          "line": 97,
+          "text": "\t}"
+        },
+        {
+          "line": 98,
+          "text": "\tres = (t1.tv_sec - t0->tv_sec) * 1000"
+        },
+        {
+          "line": 99,
+          "text": "\t    + (t1.tv_usec - t0->tv_usec) / 1000;"
+        },
+        {
+          "line": 100,
+          "text": "    }"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\jart__cosmopolitan\\third_party\\readline\\history.c",
+      "line": 268,
+      "col": 24,
+      "message": "explicit conversion of time_t to 'unsigned long' may truncate after 2106",
+      "context": [
+        {
+          "line": 262,
+          "text": "  char ts[64], *ret;"
+        },
+        {
+          "line": 263,
+          "text": ""
+        },
+        {
+          "line": 264,
+          "text": "  t = (time_t) time ((time_t *)0);"
+        },
+        {
+          "line": 265,
+          "text": "#if defined (HAVE_VSNPRINTF)\t\t/* assume snprintf if vsnprintf exists */"
+        },
+        {
+          "line": 266,
+          "text": "  snprintf (ts, sizeof (ts) - 1, \"X%lu\", (unsigned long) t);"
+        },
+        {
+          "line": 267,
+          "text": "#else"
+        },
+        {
+          "line": 268,
+          "text": "  sprintf (ts, \"X%lu\", (unsigned long) t);"
+        },
+        {
+          "line": 269,
+          "text": "#endif"
+        },
+        {
+          "line": 270,
+          "text": "  ret = savestring (ts);"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\jart__cosmopolitan\\third_party\\readline\\input.c",
+      "line": 640,
+      "col": 15,
+      "message": "implicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 634,
+          "text": "\t(current_time.tv_sec == timeout_point.tv_sec &&"
+        },
+        {
+          "line": 635,
+          "text": "\t current_time.tv_usec >= timeout_point.tv_usec))"
+        },
+        {
+          "line": 636,
+          "text": "    return 0;"
+        },
+        {
+          "line": 637,
+          "text": ""
+        },
+        {
+          "line": 638,
+          "text": "  if (secs && usecs)"
+        },
+        {
+          "line": 639,
+          "text": "    {"
+        },
+        {
+          "line": 640,
+          "text": "      *secs = timeout_point.tv_sec - current_time.tv_sec;"
+        },
+        {
+          "line": 641,
+          "text": "      *usecs = timeout_point.tv_usec - current_time.tv_usec;"
+        },
+        {
+          "line": 642,
+          "text": "      if (timeout_point.tv_usec < current_time.tv_usec)"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\jart__cosmopolitan\\third_party\\readline\\input.c",
+      "line": 589,
+      "col": 27,
+      "message": "implicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 583,
+          "text": "  if (gettimeofday(&timeout_point, 0) != 0)"
+        },
+        {
+          "line": 584,
+          "text": "    {"
+        },
+        {
+          "line": 585,
+          "text": "      timerclear (&timeout_point);"
+        },
+        {
+          "line": 586,
+          "text": "      return -1;"
+        },
+        {
+          "line": 587,
+          "text": "    }"
+        },
+        {
+          "line": 588,
+          "text": ""
+        },
+        {
+          "line": 589,
+          "text": "  secs = timeout_duration.tv_sec;"
+        },
+        {
+          "line": 590,
+          "text": "  usecs = timeout_duration.tv_usec;"
+        },
+        {
+          "line": 591,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\jart__cosmopolitan\\third_party\\zip\\crypt.c",
+      "line": 222,
+      "col": 15,
+      "message": "explicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 216,
+          "text": ""
+        },
+        {
+          "line": 217,
+          "text": "    /* First generate RAND_HEAD_LEN-2 random bytes. We encrypt the"
+        },
+        {
+          "line": 218,
+          "text": "     * output of rand() to get less predictability, since rand() is"
+        },
+        {
+          "line": 219,
+          "text": "     * often poorly implemented."
+        },
+        {
+          "line": 220,
+          "text": "     */"
+        },
+        {
+          "line": 221,
+          "text": "    if (++calls == 1) {"
+        },
+        {
+          "line": 222,
+          "text": "        srand((unsigned)time(NULL) ^ ZCR_SEED2);"
+        },
+        {
+          "line": 223,
+          "text": "    }"
+        },
+        {
+          "line": 224,
+          "text": "    init_keys(passwd);"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\jart__cosmopolitan\\third_party\\zip\\fileio.c",
+      "line": 1105,
+      "col": 26,
+      "message": "explicit conversion of time_t to 'unsigned long' may truncate after 2106",
+      "context": [
+        {
+          "line": 1099,
+          "text": "  t_even = (time_t)(((unsigned long)(*t) + 1) & (~1));"
+        },
+        {
+          "line": 1100,
+          "text": "                                /* Round up to even seconds. */"
+        },
+        {
+          "line": 1101,
+          "text": "  s = localtime(&t_even);       /* Use local time since MSDOS does. */"
+        },
+        {
+          "line": 1102,
+          "text": "  if (s == (struct tm *)NULL) {"
+        },
+        {
+          "line": 1103,
+          "text": "      /* time conversion error; use current time as emergency value"
+        },
+        {
+          "line": 1104,
+          "text": "         (assuming that localtime() does at least accept this value!) */"
+        },
+        {
+          "line": 1105,
+          "text": "      t_even = (time_t)(((unsigned long)time(NULL) + 1) & (~1));"
+        },
+        {
+          "line": 1106,
+          "text": "      s = localtime(&t_even);"
+        },
+        {
+          "line": 1107,
+          "text": "  }"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\jart__cosmopolitan\\third_party\\zip\\fileio.c",
+      "line": 1099,
+      "col": 22,
+      "message": "explicit conversion of time_t to 'unsigned long' may truncate after 2106",
+      "context": [
+        {
+          "line": 1093,
+          "text": "/* Return the Unix time t in DOS format, rounded up to the next two"
+        },
+        {
+          "line": 1094,
+          "text": "   second boundary. */"
+        },
+        {
+          "line": 1095,
+          "text": "{"
+        },
+        {
+          "line": 1096,
+          "text": "  time_t t_even;"
+        },
+        {
+          "line": 1097,
+          "text": "  struct tm *s;         /* result of localtime() */"
+        },
+        {
+          "line": 1098,
+          "text": ""
+        },
+        {
+          "line": 1099,
+          "text": "  t_even = (time_t)(((unsigned long)(*t) + 1) & (~1));"
+        },
+        {
+          "line": 1100,
+          "text": "                                /* Round up to even seconds. */"
+        },
+        {
+          "line": 1101,
+          "text": "  s = localtime(&t_even);       /* Use local time since MSDOS does. */"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\jart__cosmopolitan\\third_party\\zip\\timezone.c",
+      "line": 663,
+      "col": 25,
+      "message": "implicit conversion of time_t to 'long' may truncate after 2038",
+      "context": [
+        {
+          "line": 657,
+          "text": "     be sure, we allow a third try, but then the loop is stopped. */"
+        },
+        {
+          "line": 658,
+          "text": "  bailout_cnt = 3;"
+        },
+        {
+          "line": 659,
+          "text": "  then = loctime;"
+        },
+        {
+          "line": 660,
+          "text": "  do {"
+        },
+        {
+          "line": 661,
+          "text": "    ltm = localtime(&then);"
+        },
+        {
+          "line": 662,
+          "text": "    if (ltm == (struct tm *)NULL ||"
+        },
+        {
+          "line": 663,
+          "text": "        (tzoffset_adj = loctime - mkgmtime(ltm)) == 0L)"
+        },
+        {
+          "line": 664,
+          "text": "      break;"
+        },
+        {
+          "line": 665,
+          "text": "    then += tzoffset_adj;"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\jart__cosmopolitan\\third_party\\zip\\timezone.c",
+      "line": 534,
+      "col": 17,
+      "message": "implicit conversion of time_t to 'long' may truncate after 2038",
+      "context": [
+        {
+          "line": 528,
+          "text": "static struct tm _tmbuf;"
+        },
+        {
+          "line": 529,
+          "text": ""
+        },
+        {
+          "line": 530,
+          "text": "struct tm *gmtime(when)"
+        },
+        {
+          "line": 531,
+          "text": "     ZCONST time_t *when;"
+        },
+        {
+          "line": 532,
+          "text": "{"
+        },
+        {
+          "line": 533,
+          "text": "    long days = *when / SECSPERDAY;"
+        },
+        {
+          "line": 534,
+          "text": "    long secs = *when % SECSPERDAY;"
+        },
+        {
+          "line": 535,
+          "text": "    int isleap;"
+        },
+        {
+          "line": 536,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\jart__cosmopolitan\\third_party\\zip\\timezone.c",
+      "line": 533,
+      "col": 17,
+      "message": "implicit conversion of time_t to 'long' may truncate after 2038",
+      "context": [
+        {
+          "line": 527,
+          "text": ""
+        },
+        {
+          "line": 528,
+          "text": "static struct tm _tmbuf;"
+        },
+        {
+          "line": 529,
+          "text": ""
+        },
+        {
+          "line": 530,
+          "text": "struct tm *gmtime(when)"
+        },
+        {
+          "line": 531,
+          "text": "     ZCONST time_t *when;"
+        },
+        {
+          "line": 532,
+          "text": "{"
+        },
+        {
+          "line": 533,
+          "text": "    long days = *when / SECSPERDAY;"
+        },
+        {
+          "line": 534,
+          "text": "    long secs = *when % SECSPERDAY;"
+        },
+        {
+          "line": 535,
+          "text": "    int isleap;"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\jart__cosmopolitan\\third_party\\zip\\unix.c",
+      "line": 322,
+      "col": 3,
+      "message": "call to utime() uses time_t timestamps; limited to 32-bit range — use utimensat() instead",
+      "context": [
+        {
+          "line": 316,
+          "text": "  /* Convert DOS time to time_t format in u */"
+        },
+        {
+          "line": 317,
+          "text": "#ifdef _POSIX_VERSION"
+        },
+        {
+          "line": 318,
+          "text": "  u.actime = u.modtime = dos2unixtime(d);"
+        },
+        {
+          "line": 319,
+          "text": "  utime(f, &u);"
+        },
+        {
+          "line": 320,
+          "text": "#else"
+        },
+        {
+          "line": 321,
+          "text": "  u[0] = u[1] = dos2unixtime(d);"
+        },
+        {
+          "line": 322,
+          "text": "  utime(f, u);"
+        },
+        {
+          "line": 323,
+          "text": "#endif"
+        },
+        {
+          "line": 324,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\jart__cosmopolitan\\third_party\\zstd\\programs\\util.c",
+      "line": 333,
+      "col": 15,
+      "message": "call to utime() uses time_t timestamps; limited to 32-bit range — use utimensat() instead",
+      "context": [
+        {
+          "line": 327,
+          "text": "    }"
+        },
+        {
+          "line": 328,
+          "text": "#else"
+        },
+        {
+          "line": 329,
+          "text": "    {"
+        },
+        {
+          "line": 330,
+          "text": "        struct utimbuf timebuf;"
+        },
+        {
+          "line": 331,
+          "text": "        timebuf.actime = time(NULL);"
+        },
+        {
+          "line": 332,
+          "text": "        timebuf.modtime = statbuf->st_mtime;"
+        },
+        {
+          "line": 333,
+          "text": "        ret = utime(filename, &timebuf);"
+        },
+        {
+          "line": 334,
+          "text": "    }"
+        },
+        {
+          "line": 335,
+          "text": "#endif"
+        }
+      ]
+    }
+  ],
+  "issues_strict": [
+    {
+      "file": "evaluation\\repos\\jart__cosmopolitan\\examples\\asteroids.c",
+      "line": 310,
+      "col": 11,
+      "message": "implicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 304,
+          "text": "    shouldExit = 1;"
+        },
+        {
+          "line": 305,
+          "text": "}"
+        },
+        {
+          "line": 306,
+          "text": ""
+        },
+        {
+          "line": 307,
+          "text": "// Main game loop"
+        },
+        {
+          "line": 308,
+          "text": "int main() {"
+        },
+        {
+          "line": 309,
+          "text": "    signal(SIGINT, onSignal); // Capture ^C"
+        },
+        {
+          "line": 310,
+          "text": "    srand(time(NULL)); // Seed the random number generator"
+        },
+        {
+          "line": 311,
+          "text": "    initGame(); // Initialize the game state"
+        },
+        {
+          "line": 312,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\jart__cosmopolitan\\examples\\asteroids.c",
+      "line": 241,
+      "col": 25,
+      "message": "implicit conversion of time_t to 'int' may truncate after 2038",
+      "context": [
+        {
+          "line": 235,
+          "text": ""
+        },
+        {
+          "line": 236,
+          "text": "    // Move asteroids and check for collisions"
+        },
+        {
+          "line": 237,
+          "text": "    for (int i = 0; i < MAX_ASTEROIDS; i++) {"
+        },
+        {
+          "line": 238,
+          "text": "        updateGameObject(&asteroids[i], 0);"
+        },
+        {
+          "line": 239,
+          "text": "        if (checkCollision(&spaceship, &asteroids[i])) {"
+        },
+        {
+          "line": 240,
+          "text": "            isGameOver = 1;"
+        },
+        {
+          "line": 241,
+          "text": "            finalTime = time(NULL) - startTime;"
+        },
+        {
+          "line": 242,
+          "text": "            return;"
+        },
+        {
+          "line": 243,
+          "text": "        }"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\jart__cosmopolitan\\examples\\asteroids.c",
+      "line": 207,
+      "col": 23,
+      "message": "implicit conversion of time_t to 'int' may truncate after 2038",
+      "context": [
+        {
+          "line": 201,
+          "text": "        }"
+        },
+        {
+          "line": 202,
+          "text": "        putchar('\\n');"
+        },
+        {
+          "line": 203,
+          "text": "    }"
+        },
+        {
+          "line": 204,
+          "text": "    "
+        },
+        {
+          "line": 205,
+          "text": "    // Display score and elapsed time"
+        },
+        {
+          "line": 206,
+          "text": "    time_t currentTime = time(NULL);"
+        },
+        {
+          "line": 207,
+          "text": "    int elapsedTime = isGameOver ? finalTime : (currentTime - startTime);"
+        },
+        {
+          "line": 208,
+          "text": "    printf(\"Score: %d | Time: %02d:%02d | %s\\n\", score, elapsedTime / 60, elapsedTime % 60, isGameOver ? \"Game Over!\" : \"           \");"
+        },
+        {
+          "line": 209,
+          "text": "}"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\jart__cosmopolitan\\examples\\rote.c",
+      "line": 237,
+      "col": 9,
+      "message": "implicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 231,
+          "text": "    cards = xrealloc(cards, (count + 1) * sizeof(struct Card));"
+        },
+        {
+          "line": 232,
+          "text": "    cards[count++] = card;"
+        },
+        {
+          "line": 233,
+          "text": "  }"
+        },
+        {
+          "line": 234,
+          "text": "  fclose(f);"
+        },
+        {
+          "line": 235,
+          "text": ""
+        },
+        {
+          "line": 236,
+          "text": "  // randomize"
+        },
+        {
+          "line": 237,
+          "text": "  srand(time(0));"
+        },
+        {
+          "line": 238,
+          "text": "  shuffle(cards, count);"
+        },
+        {
+          "line": 239,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\jart__cosmopolitan\\examples\\spawn_bench.c",
+      "line": 140,
+      "col": 3,
+      "message": "implicit conversion of time_t to 'unsigned long' may truncate after 2106",
+      "context": [
+        {
+          "line": 134,
+          "text": "  BENCH(\"mmap(128mb, MAP_SHARED) + posix_spawn(tiny)\", PosixSpawnWait(prog));"
+        },
+        {
+          "line": 135,
+          "text": "  munmap(p, n);"
+        },
+        {
+          "line": 136,
+          "text": ""
+        },
+        {
+          "line": 137,
+          "text": "  n = 128L * 1024 * 1024;"
+        },
+        {
+          "line": 138,
+          "text": "  p = pFillMemory(malloc(n), n);"
+        },
+        {
+          "line": 139,
+          "text": "  BENCH(\"malloc(128mb) + fork() + exec(tiny)\", ForkExecWait(prog));"
+        },
+        {
+          "line": 140,
+          "text": "  BENCH(\"malloc(128mb) + posix_spawn(tiny)\", PosixSpawnWait(prog));"
+        },
+        {
+          "line": 141,
+          "text": "  free(p);"
+        },
+        {
+          "line": 142,
+          "text": "}"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\jart__cosmopolitan\\examples\\spawn_bench.c",
+      "line": 139,
+      "col": 3,
+      "message": "implicit conversion of time_t to 'unsigned long' may truncate after 2106",
+      "context": [
+        {
+          "line": 133,
+          "text": "  BENCH(\"mmap(128mb, MAP_SHARED) + fork() + exec(tiny)\", ForkExecWait(prog));"
+        },
+        {
+          "line": 134,
+          "text": "  BENCH(\"mmap(128mb, MAP_SHARED) + posix_spawn(tiny)\", PosixSpawnWait(prog));"
+        },
+        {
+          "line": 135,
+          "text": "  munmap(p, n);"
+        },
+        {
+          "line": 136,
+          "text": ""
+        },
+        {
+          "line": 137,
+          "text": "  n = 128L * 1024 * 1024;"
+        },
+        {
+          "line": 138,
+          "text": "  p = pFillMemory(malloc(n), n);"
+        },
+        {
+          "line": 139,
+          "text": "  BENCH(\"malloc(128mb) + fork() + exec(tiny)\", ForkExecWait(prog));"
+        },
+        {
+          "line": 140,
+          "text": "  BENCH(\"malloc(128mb) + posix_spawn(tiny)\", PosixSpawnWait(prog));"
+        },
+        {
+          "line": 141,
+          "text": "  free(p);"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\jart__cosmopolitan\\examples\\spawn_bench.c",
+      "line": 134,
+      "col": 3,
+      "message": "implicit conversion of time_t to 'unsigned long' may truncate after 2106",
+      "context": [
+        {
+          "line": 128,
+          "text": "  BENCH(\"posix_spawn(tiny)\", PosixSpawnWait(prog));"
+        },
+        {
+          "line": 129,
+          "text": ""
+        },
+        {
+          "line": 130,
+          "text": "  n = 128L * 1024 * 1024;"
+        },
+        {
+          "line": 131,
+          "text": "  p = pFillMemory("
+        },
+        {
+          "line": 132,
+          "text": "      mmap(0, n, PROT_READ | PROT_WRITE, MAP_SHARED | MAP_ANONYMOUS, -1, 0), n);"
+        },
+        {
+          "line": 133,
+          "text": "  BENCH(\"mmap(128mb, MAP_SHARED) + fork() + exec(tiny)\", ForkExecWait(prog));"
+        },
+        {
+          "line": 134,
+          "text": "  BENCH(\"mmap(128mb, MAP_SHARED) + posix_spawn(tiny)\", PosixSpawnWait(prog));"
+        },
+        {
+          "line": 135,
+          "text": "  munmap(p, n);"
+        },
+        {
+          "line": 136,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\jart__cosmopolitan\\examples\\spawn_bench.c",
+      "line": 133,
+      "col": 3,
+      "message": "implicit conversion of time_t to 'unsigned long' may truncate after 2106",
+      "context": [
+        {
+          "line": 127,
+          "text": "  BENCH(\"fork() + exec(tiny)\", ForkExecWait(prog));"
+        },
+        {
+          "line": 128,
+          "text": "  BENCH(\"posix_spawn(tiny)\", PosixSpawnWait(prog));"
+        },
+        {
+          "line": 129,
+          "text": ""
+        },
+        {
+          "line": 130,
+          "text": "  n = 128L * 1024 * 1024;"
+        },
+        {
+          "line": 131,
+          "text": "  p = pFillMemory("
+        },
+        {
+          "line": 132,
+          "text": "      mmap(0, n, PROT_READ | PROT_WRITE, MAP_SHARED | MAP_ANONYMOUS, -1, 0), n);"
+        },
+        {
+          "line": 133,
+          "text": "  BENCH(\"mmap(128mb, MAP_SHARED) + fork() + exec(tiny)\", ForkExecWait(prog));"
+        },
+        {
+          "line": 134,
+          "text": "  BENCH(\"mmap(128mb, MAP_SHARED) + posix_spawn(tiny)\", PosixSpawnWait(prog));"
+        },
+        {
+          "line": 135,
+          "text": "  munmap(p, n);"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\jart__cosmopolitan\\examples\\spawn_bench.c",
+      "line": 128,
+      "col": 3,
+      "message": "implicit conversion of time_t to 'unsigned long' may truncate after 2106",
+      "context": [
+        {
+          "line": 122,
+          "text": "    prog = \"tiny64\";"
+        },
+        {
+          "line": 123,
+          "text": "  } else {"
+        },
+        {
+          "line": 124,
+          "text": "    prog = argv[1];"
+        },
+        {
+          "line": 125,
+          "text": "  }"
+        },
+        {
+          "line": 126,
+          "text": ""
+        },
+        {
+          "line": 127,
+          "text": "  BENCH(\"fork() + exec(tiny)\", ForkExecWait(prog));"
+        },
+        {
+          "line": 128,
+          "text": "  BENCH(\"posix_spawn(tiny)\", PosixSpawnWait(prog));"
+        },
+        {
+          "line": 129,
+          "text": ""
+        },
+        {
+          "line": 130,
+          "text": "  n = 128L * 1024 * 1024;"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\jart__cosmopolitan\\examples\\spawn_bench.c",
+      "line": 127,
+      "col": 3,
+      "message": "implicit conversion of time_t to 'unsigned long' may truncate after 2106",
+      "context": [
+        {
+          "line": 121,
+          "text": "  if (argc <= 1) {"
+        },
+        {
+          "line": 122,
+          "text": "    prog = \"tiny64\";"
+        },
+        {
+          "line": 123,
+          "text": "  } else {"
+        },
+        {
+          "line": 124,
+          "text": "    prog = argv[1];"
+        },
+        {
+          "line": 125,
+          "text": "  }"
+        },
+        {
+          "line": 126,
+          "text": ""
+        },
+        {
+          "line": 127,
+          "text": "  BENCH(\"fork() + exec(tiny)\", ForkExecWait(prog));"
+        },
+        {
+          "line": 128,
+          "text": "  BENCH(\"posix_spawn(tiny)\", PosixSpawnWait(prog));"
+        },
+        {
+          "line": 129,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\jart__cosmopolitan\\examples\\stat.c",
+      "line": 106,
+      "col": 48,
+      "message": "access to struct stat timestamp field 'st_ctim': filesystem may not preserve timestamps beyond 2038",
+      "context": [
+        {
+          "line": 100,
+          "text": "         \"mode / permissions:\", st->st_mode, DescribeFileType(st->st_mode),"
+        },
+        {
+          "line": 101,
+          "text": "         \"owner id:\", st->st_uid, \"group id:\", st->st_gid,"
+        },
+        {
+          "line": 102,
+          "text": "         \"flags:\", st->st_flags, \"gen:\", st->st_gen,"
+        },
+        {
+          "line": 103,
+          "text": "         \"device id (if special):\", st->st_rdev, \"block size:\", st->st_blksize,"
+        },
+        {
+          "line": 104,
+          "text": "         \"access time:\", gc(xiso8601(st->st_atim)),"
+        },
+        {
+          "line": 105,
+          "text": "         \"modified time:\", gc(xiso8601(st->st_mtim)),"
+        },
+        {
+          "line": 106,
+          "text": "         \"c[omplicated]time:\", gc(xiso8601(st->st_ctim)),"
+        },
+        {
+          "line": 107,
+          "text": "         \"[birthtime]:\", gc(xiso8601(st->st_birthtim)));"
+        },
+        {
+          "line": 108,
+          "text": "}"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\jart__cosmopolitan\\examples\\stat.c",
+      "line": 105,
+      "col": 44,
+      "message": "access to struct stat timestamp field 'st_mtim': filesystem may not preserve timestamps beyond 2038",
+      "context": [
+        {
+          "line": 99,
+          "text": "         \"inode:\", st->st_ino, \"hard link count:\", st->st_nlink,"
+        },
+        {
+          "line": 100,
+          "text": "         \"mode / permissions:\", st->st_mode, DescribeFileType(st->st_mode),"
+        },
+        {
+          "line": 101,
+          "text": "         \"owner id:\", st->st_uid, \"group id:\", st->st_gid,"
+        },
+        {
+          "line": 102,
+          "text": "         \"flags:\", st->st_flags, \"gen:\", st->st_gen,"
+        },
+        {
+          "line": 103,
+          "text": "         \"device id (if special):\", st->st_rdev, \"block size:\", st->st_blksize,"
+        },
+        {
+          "line": 104,
+          "text": "         \"access time:\", gc(xiso8601(st->st_atim)),"
+        },
+        {
+          "line": 105,
+          "text": "         \"modified time:\", gc(xiso8601(st->st_mtim)),"
+        },
+        {
+          "line": 106,
+          "text": "         \"c[omplicated]time:\", gc(xiso8601(st->st_ctim)),"
+        },
+        {
+          "line": 107,
+          "text": "         \"[birthtime]:\", gc(xiso8601(st->st_birthtim)));"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\jart__cosmopolitan\\examples\\stat.c",
+      "line": 104,
+      "col": 42,
+      "message": "access to struct stat timestamp field 'st_atim': filesystem may not preserve timestamps beyond 2038",
+      "context": [
+        {
+          "line": 98,
+          "text": "         \"device id w/ file:\", major(st->st_dev), minor(st->st_dev),"
+        },
+        {
+          "line": 99,
+          "text": "         \"inode:\", st->st_ino, \"hard link count:\", st->st_nlink,"
+        },
+        {
+          "line": 100,
+          "text": "         \"mode / permissions:\", st->st_mode, DescribeFileType(st->st_mode),"
+        },
+        {
+          "line": 101,
+          "text": "         \"owner id:\", st->st_uid, \"group id:\", st->st_gid,"
+        },
+        {
+          "line": 102,
+          "text": "         \"flags:\", st->st_flags, \"gen:\", st->st_gen,"
+        },
+        {
+          "line": 103,
+          "text": "         \"device id (if special):\", st->st_rdev, \"block size:\", st->st_blksize,"
+        },
+        {
+          "line": 104,
+          "text": "         \"access time:\", gc(xiso8601(st->st_atim)),"
+        },
+        {
+          "line": 105,
+          "text": "         \"modified time:\", gc(xiso8601(st->st_mtim)),"
+        },
+        {
+          "line": 106,
+          "text": "         \"c[omplicated]time:\", gc(xiso8601(st->st_ctim)),"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\jart__cosmopolitan\\libc\\calls\\futimesat.c",
+      "line": 36,
+      "col": 12,
+      "message": "call to utimensat() may set timestamps limited to 32-bit time_t on 32-bit systems",
+      "context": [
+        {
+          "line": 30,
+          "text": "  struct timespec ts[2];"
+        },
+        {
+          "line": 31,
+          "text": "  if (tv) {"
+        },
+        {
+          "line": 32,
+          "text": "    ts[0].tv_sec = tv[0].tv_sec;"
+        },
+        {
+          "line": 33,
+          "text": "    ts[0].tv_nsec = tv[0].tv_usec * 1000;"
+        },
+        {
+          "line": 34,
+          "text": "    ts[1].tv_sec = tv[1].tv_sec;"
+        },
+        {
+          "line": 35,
+          "text": "    ts[1].tv_nsec = tv[1].tv_usec * 1000;"
+        },
+        {
+          "line": 36,
+          "text": "    return utimensat(dirfd, pathname, ts, 0);"
+        },
+        {
+          "line": 37,
+          "text": "  } else {"
+        },
+        {
+          "line": 38,
+          "text": "    return utimensat(dirfd, pathname, NULL, 0);"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\jart__cosmopolitan\\libc\\calls\\utime.c",
+      "line": 37,
+      "col": 12,
+      "message": "call to utimes() uses struct timeval with long tv_sec; limited to 32-bit range — use utimensat() instead",
+      "context": [
+        {
+          "line": 31,
+          "text": "  struct timeval tv[2];"
+        },
+        {
+          "line": 32,
+          "text": "  if (times) {"
+        },
+        {
+          "line": 33,
+          "text": "    tv[0].tv_sec = times->actime;"
+        },
+        {
+          "line": 34,
+          "text": "    tv[0].tv_usec = 0;"
+        },
+        {
+          "line": 35,
+          "text": "    tv[1].tv_sec = times->modtime;"
+        },
+        {
+          "line": 36,
+          "text": "    tv[1].tv_usec = 0;"
+        },
+        {
+          "line": 37,
+          "text": "    return utimes(path, tv);"
+        },
+        {
+          "line": 38,
+          "text": "  } else {"
+        },
+        {
+          "line": 39,
+          "text": "    return utimes(path, NULL);"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\jart__cosmopolitan\\test\\c11\\thrd_sleep_test.c",
+      "line": 33,
+      "col": 16,
+      "message": "implicit conversion of time_t to 'long' may truncate after 2038",
+      "context": [
+        {
+          "line": 27,
+          "text": ""
+        },
+        {
+          "line": 28,
+          "text": "  timespec_get(&a, TIME_UTC);"
+        },
+        {
+          "line": 29,
+          "text": "  if (thrd_sleep(&dur, 0) != 0)"
+        },
+        {
+          "line": 30,
+          "text": "    exit(10);"
+        },
+        {
+          "line": 31,
+          "text": "  timespec_get(&b, TIME_UTC);"
+        },
+        {
+          "line": 32,
+          "text": ""
+        },
+        {
+          "line": 33,
+          "text": "  elapsed_ms = (b.tv_sec - a.tv_sec) * 1000 + (b.tv_nsec - a.tv_nsec) / 1000000;"
+        },
+        {
+          "line": 34,
+          "text": "  if (elapsed_ms < 90)  // must not wake appreciably early"
+        },
+        {
+          "line": 35,
+          "text": "    exit(11);"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\jart__cosmopolitan\\test\\libc\\calls\\utimensat_test.c",
+      "line": 147,
+      "col": 20,
+      "message": "call to futimens() may set timestamps limited to 32-bit time_t on 32-bit systems",
+      "context": [
+        {
+          "line": 141,
+          "text": "  ASSERT_SYS(0, 0, futimens(fd, ts));"
+        },
+        {
+          "line": 142,
+          "text": "  sleep(1);"
+        },
+        {
+          "line": 143,
+          "text": "  ts[0].tv_nsec = UTIME_NOW;   // change access time"
+        },
+        {
+          "line": 144,
+          "text": "  ts[1].tv_nsec = UTIME_OMIT;  // don't change modified time"
+        },
+        {
+          "line": 145,
+          "text": "  close(fd);"
+        },
+        {
+          "line": 146,
+          "text": "  fd = open(\"foo\", O_RDONLY);"
+        },
+        {
+          "line": 147,
+          "text": "  ASSERT_SYS(0, 0, futimens(fd, ts));"
+        },
+        {
+          "line": 148,
+          "text": "  ASSERT_SYS(0, 0, fstat(fd, &st));"
+        },
+        {
+          "line": 149,
+          "text": "  // check time of last status change equals access time"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\jart__cosmopolitan\\test\\libc\\calls\\utimensat_test.c",
+      "line": 141,
+      "col": 20,
+      "message": "call to futimens() may set timestamps limited to 32-bit time_t on 32-bit systems",
+      "context": [
+        {
+          "line": 135,
+          "text": "  ts[0].tv_sec = 1;"
+        },
+        {
+          "line": 136,
+          "text": "  ts[0].tv_nsec = UTIME_OMIT;"
+        },
+        {
+          "line": 137,
+          "text": "  ts[1].tv_sec = 1;"
+        },
+        {
+          "line": 138,
+          "text": "  ts[1].tv_nsec = UTIME_NOW;"
+        },
+        {
+          "line": 139,
+          "text": "  errno = 0;"
+        },
+        {
+          "line": 140,
+          "text": "  ASSERT_SYS(EBADF, -1, futimens(AT_FDCWD, NULL));"
+        },
+        {
+          "line": 141,
+          "text": "  ASSERT_SYS(0, 0, futimens(fd, ts));"
+        },
+        {
+          "line": 142,
+          "text": "  sleep(1);"
+        },
+        {
+          "line": 143,
+          "text": "  ts[0].tv_nsec = UTIME_NOW;   // change access time"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\jart__cosmopolitan\\test\\libc\\calls\\utimensat_test.c",
+      "line": 100,
+      "col": 20,
+      "message": "call to futimens() may set timestamps limited to 32-bit time_t on 32-bit systems",
+      "context": [
+        {
+          "line": 94,
+          "text": "  struct timespec ts[2] = {"
+        },
+        {
+          "line": 95,
+          "text": "      {1655455857},  // atim: Fri Jun 17 2022 08:50:57 GMT+0000"
+        },
+        {
+          "line": 96,
+          "text": "      {827727928},   // mtim: Mon Mar 25 1996 04:25:28 GMT+0000"
+        },
+        {
+          "line": 97,
+          "text": "  };"
+        },
+        {
+          "line": 98,
+          "text": "  EXPECT_SYS(0, 0, touch(\"boop\", 0644));"
+        },
+        {
+          "line": 99,
+          "text": "  EXPECT_SYS(0, 3, open(\"boop\", O_RDWR));"
+        },
+        {
+          "line": 100,
+          "text": "  EXPECT_SYS(0, 0, futimens(3, ts));"
+        },
+        {
+          "line": 101,
+          "text": "  EXPECT_SYS(0, 0, fstat(3, &st));"
+        },
+        {
+          "line": 102,
+          "text": "  EXPECT_SYS(0, 0, close(3));"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\jart__cosmopolitan\\test\\libc\\calls\\utimensat_test.c",
+      "line": 66,
+      "col": 20,
+      "message": "call to futimes() uses struct timeval with long tv_sec; limited to 32-bit range — use futimens() instead",
+      "context": [
+        {
+          "line": 60,
+          "text": "TEST(futimes, test) {"
+        },
+        {
+          "line": 61,
+          "text": "  if (IsLinux() && !__is_linux_2_6_23())"
+        },
+        {
+          "line": 62,
+          "text": "    return;"
+        },
+        {
+          "line": 63,
+          "text": "  struct stat st;"
+        },
+        {
+          "line": 64,
+          "text": "  struct timeval tv[2] = {{1655455857, 1}, {827727928, 2}};"
+        },
+        {
+          "line": 65,
+          "text": "  EXPECT_SYS(0, 3, creat(\"boop\", 0644));"
+        },
+        {
+          "line": 66,
+          "text": "  EXPECT_SYS(0, 0, futimes(3, tv));"
+        },
+        {
+          "line": 67,
+          "text": "  EXPECT_SYS(0, 0, fstat(3, &st));"
+        },
+        {
+          "line": 68,
+          "text": "  EXPECT_EQ(1655455857, st.st_atim.tv_sec);"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\jart__cosmopolitan\\test\\libc\\calls\\utimensat_test.c",
+      "line": 46,
+      "col": 20,
+      "message": "call to utimes() uses struct timeval with long tv_sec; limited to 32-bit range — use utimensat() instead",
+      "context": [
+        {
+          "line": 40,
+          "text": "  struct stat st;"
+        },
+        {
+          "line": 41,
+          "text": "  struct timeval tv[2] = {"
+        },
+        {
+          "line": 42,
+          "text": "      {1655455857, 1},  // atim: Fri Jun 17 2022 08:50:57 GMT+0000"
+        },
+        {
+          "line": 43,
+          "text": "      {827727928, 2},   // mtim: Mon Mar 25 1996 04:25:28 GMT+0000"
+        },
+        {
+          "line": 44,
+          "text": "  };"
+        },
+        {
+          "line": 45,
+          "text": "  EXPECT_SYS(0, 0, touch(\"boop\", 0644));"
+        },
+        {
+          "line": 46,
+          "text": "  EXPECT_SYS(0, 0, utimes(\"boop\", tv));"
+        },
+        {
+          "line": 47,
+          "text": "  EXPECT_SYS(0, 0, stat(\"boop\", &st));"
+        },
+        {
+          "line": 48,
+          "text": "  EXPECT_EQ(1655455857, st.st_atim.tv_sec);"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\jart__cosmopolitan\\test\\libc\\intrin\\memchr_test.c",
+      "line": 52,
+      "col": 10,
+      "message": "implicit conversion of time_t to 'long' may truncate after 2038",
+      "context": [
+        {
+          "line": 46,
+          "text": "void *eat(const void *x) {"
+        },
+        {
+          "line": 47,
+          "text": "  return (void *)x;"
+        },
+        {
+          "line": 48,
+          "text": "}"
+        },
+        {
+          "line": 49,
+          "text": "void *(*pEat)(const void *x) = eat;"
+        },
+        {
+          "line": 50,
+          "text": ""
+        },
+        {
+          "line": 51,
+          "text": "long tonanos(struct timespec x) {"
+        },
+        {
+          "line": 52,
+          "text": "  return x.tv_sec * 1000000000ul + x.tv_nsec;"
+        },
+        {
+          "line": 53,
+          "text": "}"
+        },
+        {
+          "line": 54,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\jart__cosmopolitan\\test\\libc\\str\\memchr16_test.c",
+      "line": 54,
+      "col": 10,
+      "message": "implicit conversion of time_t to 'long' may truncate after 2038",
+      "context": [
+        {
+          "line": 48,
+          "text": "void *eat(const void *x) {"
+        },
+        {
+          "line": 49,
+          "text": "  return (void *)x;"
+        },
+        {
+          "line": 50,
+          "text": "}"
+        },
+        {
+          "line": 51,
+          "text": "void *(*pEat)(const void *x) = eat;"
+        },
+        {
+          "line": 52,
+          "text": ""
+        },
+        {
+          "line": 53,
+          "text": "long tonanos(struct timespec x) {"
+        },
+        {
+          "line": 54,
+          "text": "  return x.tv_sec * 1000000000ul + x.tv_nsec;"
+        },
+        {
+          "line": 55,
+          "text": "}"
+        },
+        {
+          "line": 56,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\jart__cosmopolitan\\test\\libc\\str\\rawmemchr16_test.c",
+      "line": 68,
+      "col": 10,
+      "message": "implicit conversion of time_t to 'long' may truncate after 2038",
+      "context": [
+        {
+          "line": 62,
+          "text": "void *eat(const void *x) {"
+        },
+        {
+          "line": 63,
+          "text": "  return (void *)x;"
+        },
+        {
+          "line": 64,
+          "text": "}"
+        },
+        {
+          "line": 65,
+          "text": "void *(*pEat)(const void *x) = eat;"
+        },
+        {
+          "line": 66,
+          "text": ""
+        },
+        {
+          "line": 67,
+          "text": "long tonanos(struct timespec x) {"
+        },
+        {
+          "line": 68,
+          "text": "  return x.tv_sec * 1000000000ul + x.tv_nsec;"
+        },
+        {
+          "line": 69,
+          "text": "}"
+        },
+        {
+          "line": 70,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\jart__cosmopolitan\\test\\libc\\str\\rawmemchr32_test.c",
+      "line": 49,
+      "col": 10,
+      "message": "implicit conversion of time_t to 'long' may truncate after 2038",
+      "context": [
+        {
+          "line": 43,
+          "text": "void *eat(const void *x) {"
+        },
+        {
+          "line": 44,
+          "text": "  return (void *)x;"
+        },
+        {
+          "line": 45,
+          "text": "}"
+        },
+        {
+          "line": 46,
+          "text": "void *(*pEat)(const void *x) = eat;"
+        },
+        {
+          "line": 47,
+          "text": ""
+        },
+        {
+          "line": 48,
+          "text": "long tonanos(struct timespec x) {"
+        },
+        {
+          "line": 49,
+          "text": "  return x.tv_sec * 1000000000ul + x.tv_nsec;"
+        },
+        {
+          "line": 50,
+          "text": "}"
+        },
+        {
+          "line": 51,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\jart__cosmopolitan\\test\\libc\\str\\rawmemchr_test.c",
+      "line": 49,
+      "col": 10,
+      "message": "implicit conversion of time_t to 'long' may truncate after 2038",
+      "context": [
+        {
+          "line": 43,
+          "text": "void *eat(const void *x) {"
+        },
+        {
+          "line": 44,
+          "text": "  return (void *)x;"
+        },
+        {
+          "line": 45,
+          "text": "}"
+        },
+        {
+          "line": 46,
+          "text": "void *(*pEat)(const void *x) = eat;"
+        },
+        {
+          "line": 47,
+          "text": ""
+        },
+        {
+          "line": 48,
+          "text": "long tonanos(struct timespec x) {"
+        },
+        {
+          "line": 49,
+          "text": "  return x.tv_sec * 1000000000ul + x.tv_nsec;"
+        },
+        {
+          "line": 50,
+          "text": "}"
+        },
+        {
+          "line": 51,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\jart__cosmopolitan\\test\\libc\\str\\strcspn16_test.c",
+      "line": 68,
+      "col": 10,
+      "message": "implicit conversion of time_t to 'long' may truncate after 2038",
+      "context": [
+        {
+          "line": 62,
+          "text": "    }"
+        },
+        {
+          "line": 63,
+          "text": "  }"
+        },
+        {
+          "line": 64,
+          "text": "  munmap(map, pagesz * 2);"
+        },
+        {
+          "line": 65,
+          "text": "}"
+        },
+        {
+          "line": 66,
+          "text": ""
+        },
+        {
+          "line": 67,
+          "text": "long tonanos(struct timespec x) {"
+        },
+        {
+          "line": 68,
+          "text": "  return x.tv_sec * 1000000000ul + x.tv_nsec;"
+        },
+        {
+          "line": 69,
+          "text": "}"
+        },
+        {
+          "line": 70,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\jart__cosmopolitan\\test\\libc\\str\\strcspn_test.c",
+      "line": 68,
+      "col": 10,
+      "message": "implicit conversion of time_t to 'long' may truncate after 2038",
+      "context": [
+        {
+          "line": 62,
+          "text": "    }"
+        },
+        {
+          "line": 63,
+          "text": "  }"
+        },
+        {
+          "line": 64,
+          "text": "  munmap(map, pagesz * 2);"
+        },
+        {
+          "line": 65,
+          "text": "}"
+        },
+        {
+          "line": 66,
+          "text": ""
+        },
+        {
+          "line": 67,
+          "text": "long tonanos(struct timespec x) {"
+        },
+        {
+          "line": 68,
+          "text": "  return x.tv_sec * 1000000000ul + x.tv_nsec;"
+        },
+        {
+          "line": 69,
+          "text": "}"
+        },
+        {
+          "line": 70,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\jart__cosmopolitan\\test\\libc\\str\\strspn16_test.c",
+      "line": 68,
+      "col": 10,
+      "message": "implicit conversion of time_t to 'long' may truncate after 2038",
+      "context": [
+        {
+          "line": 62,
+          "text": "    }"
+        },
+        {
+          "line": 63,
+          "text": "  }"
+        },
+        {
+          "line": 64,
+          "text": "  munmap(map, pagesz * 2);"
+        },
+        {
+          "line": 65,
+          "text": "}"
+        },
+        {
+          "line": 66,
+          "text": ""
+        },
+        {
+          "line": 67,
+          "text": "long tonanos(struct timespec x) {"
+        },
+        {
+          "line": 68,
+          "text": "  return x.tv_sec * 1000000000ul + x.tv_nsec;"
+        },
+        {
+          "line": 69,
+          "text": "}"
+        },
+        {
+          "line": 70,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\jart__cosmopolitan\\test\\libc\\str\\strspn_test.c",
+      "line": 56,
+      "col": 10,
+      "message": "implicit conversion of time_t to 'long' may truncate after 2038",
+      "context": [
+        {
+          "line": 50,
+          "text": "    }"
+        },
+        {
+          "line": 51,
+          "text": "  }"
+        },
+        {
+          "line": 52,
+          "text": "  munmap(map, pagesz * 2);"
+        },
+        {
+          "line": 53,
+          "text": "}"
+        },
+        {
+          "line": 54,
+          "text": ""
+        },
+        {
+          "line": 55,
+          "text": "long tonanos(struct timespec x) {"
+        },
+        {
+          "line": 56,
+          "text": "  return x.tv_sec * 1000000000ul + x.tv_nsec;"
+        },
+        {
+          "line": 57,
+          "text": "}"
+        },
+        {
+          "line": 58,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\jart__cosmopolitan\\test\\libc\\str\\wcscspn_test.c",
+      "line": 68,
+      "col": 10,
+      "message": "implicit conversion of time_t to 'long' may truncate after 2038",
+      "context": [
+        {
+          "line": 62,
+          "text": "    }"
+        },
+        {
+          "line": 63,
+          "text": "  }"
+        },
+        {
+          "line": 64,
+          "text": "  munmap(map, pagesz * 2);"
+        },
+        {
+          "line": 65,
+          "text": "}"
+        },
+        {
+          "line": 66,
+          "text": ""
+        },
+        {
+          "line": 67,
+          "text": "long tonanos(struct timespec x) {"
+        },
+        {
+          "line": 68,
+          "text": "  return x.tv_sec * 1000000000ul + x.tv_nsec;"
+        },
+        {
+          "line": 69,
+          "text": "}"
+        },
+        {
+          "line": 70,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\jart__cosmopolitan\\test\\libc\\str\\wcsspn_test.c",
+      "line": 69,
+      "col": 10,
+      "message": "implicit conversion of time_t to 'long' may truncate after 2038",
+      "context": [
+        {
+          "line": 63,
+          "text": "    }"
+        },
+        {
+          "line": 64,
+          "text": "  }"
+        },
+        {
+          "line": 65,
+          "text": "  munmap(map, pagesz * 2);"
+        },
+        {
+          "line": 66,
+          "text": "}"
+        },
+        {
+          "line": 67,
+          "text": ""
+        },
+        {
+          "line": 68,
+          "text": "long tonanos(struct timespec x) {"
+        },
+        {
+          "line": 69,
+          "text": "  return x.tv_sec * 1000000000ul + x.tv_nsec;"
+        },
+        {
+          "line": 70,
+          "text": "}"
+        },
+        {
+          "line": 71,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\jart__cosmopolitan\\test\\libc\\str\\wmemchr_test.c",
+      "line": 51,
+      "col": 10,
+      "message": "implicit conversion of time_t to 'long' may truncate after 2038",
+      "context": [
+        {
+          "line": 45,
+          "text": "void *eat(const void *x) {"
+        },
+        {
+          "line": 46,
+          "text": "  return (void *)x;"
+        },
+        {
+          "line": 47,
+          "text": "}"
+        },
+        {
+          "line": 48,
+          "text": "void *(*pEat)(const void *x) = eat;"
+        },
+        {
+          "line": 49,
+          "text": ""
+        },
+        {
+          "line": 50,
+          "text": "long tonanos(struct timespec x) {"
+        },
+        {
+          "line": 51,
+          "text": "  return x.tv_sec * 1000000000ul + x.tv_nsec;"
+        },
+        {
+          "line": 52,
+          "text": "}"
+        },
+        {
+          "line": 53,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\jart__cosmopolitan\\test\\libc\\thread\\footek_test.c",
+      "line": 356,
+      "col": 10,
+      "message": "implicit conversion of time_t to 'long' may truncate after 2038",
+      "context": [
+        {
+          "line": 350,
+          "text": "  }"
+        },
+        {
+          "line": 351,
+          "text": "  a.tv_usec -= b.tv_usec;"
+        },
+        {
+          "line": 352,
+          "text": "  return a;"
+        },
+        {
+          "line": 353,
+          "text": "}"
+        },
+        {
+          "line": 354,
+          "text": ""
+        },
+        {
+          "line": 355,
+          "text": "long tomicros(struct timeval x) {"
+        },
+        {
+          "line": 356,
+          "text": "  return x.tv_sec * 1000000ul + x.tv_usec;"
+        },
+        {
+          "line": 357,
+          "text": "}"
+        },
+        {
+          "line": 358,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\jart__cosmopolitan\\test\\posix\\pthread_mutex_timedlock_bignum_test.c",
+      "line": 38,
+      "col": 16,
+      "message": "implicit conversion of time_t to 'long' may truncate after 2038",
+      "context": [
+        {
+          "line": 32,
+          "text": "  struct timespec a, b, d;"
+        },
+        {
+          "line": 33,
+          "text": "  clock_gettime(CLOCK_REALTIME, &a);"
+        },
+        {
+          "line": 34,
+          "text": "  d = a;"
+        },
+        {
+          "line": 35,
+          "text": "  d.tv_sec += 1000000000L;  // ~31 years out: huge, but a valid 64-bit time"
+        },
+        {
+          "line": 36,
+          "text": "  result = pthread_mutex_timedlock(&mu, &d);"
+        },
+        {
+          "line": 37,
+          "text": "  clock_gettime(CLOCK_REALTIME, &b);"
+        },
+        {
+          "line": 38,
+          "text": "  elapsed_ms = (b.tv_sec - a.tv_sec) * 1000 + (b.tv_nsec - a.tv_nsec) / 1000000;"
+        },
+        {
+          "line": 39,
+          "text": "  if (result == 0)"
+        },
+        {
+          "line": 40,
+          "text": "    pthread_mutex_unlock(&mu);"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\jart__cosmopolitan\\test\\posix\\pthread_mutex_timedlock_eintr_test.c",
+      "line": 47,
+      "col": 16,
+      "message": "implicit conversion of time_t to 'long' may truncate after 2038",
+      "context": [
+        {
+          "line": 41,
+          "text": "  if (d.tv_nsec >= 1000000000L) {"
+        },
+        {
+          "line": 42,
+          "text": "    d.tv_sec += 1;"
+        },
+        {
+          "line": 43,
+          "text": "    d.tv_nsec -= 1000000000L;"
+        },
+        {
+          "line": 44,
+          "text": "  }"
+        },
+        {
+          "line": 45,
+          "text": "  result = pthread_mutex_timedlock(&mu, &d);"
+        },
+        {
+          "line": 46,
+          "text": "  clock_gettime(CLOCK_REALTIME, &b);"
+        },
+        {
+          "line": 47,
+          "text": "  elapsed_ms = (b.tv_sec - a.tv_sec) * 1000 + (b.tv_nsec - a.tv_nsec) / 1000000;"
+        },
+        {
+          "line": 48,
+          "text": "  return 0;"
+        },
+        {
+          "line": 49,
+          "text": "}"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\jart__cosmopolitan\\test\\posix\\signal_latency_async_test.c",
+      "line": 77,
+      "col": 23,
+      "message": "implicit conversion of time_t to 'long' may truncate after 2038",
+      "context": [
+        {
+          "line": 71,
+          "text": "    // wait for signal handler to be called"
+        },
+        {
+          "line": 72,
+          "text": "    if (atomic_exchange(&receiver_got_signal, 0)) {"
+        },
+        {
+          "line": 73,
+          "text": ""
+        },
+        {
+          "line": 74,
+          "text": "      // record received time"
+        },
+        {
+          "line": 75,
+          "text": "      struct timespec receive_time;"
+        },
+        {
+          "line": 76,
+          "text": "      clock_gettime(CLOCK_MONOTONIC, &receive_time);"
+        },
+        {
+          "line": 77,
+          "text": "      long sec_diff = receive_time.tv_sec - send_time.tv_sec;"
+        },
+        {
+          "line": 78,
+          "text": "      long nsec_diff = receive_time.tv_nsec - send_time.tv_nsec;"
+        },
+        {
+          "line": 79,
+          "text": "      double latency_ns = sec_diff * 1e9 + nsec_diff;"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\jart__cosmopolitan\\test\\posix\\signal_latency_test.c",
+      "line": 45,
+      "col": 19,
+      "message": "implicit conversion of time_t to 'long' may truncate after 2038",
+      "context": [
+        {
+          "line": 39,
+          "text": ""
+        },
+        {
+          "line": 40,
+          "text": "void receiver_signal_handler(int signo) {"
+        },
+        {
+          "line": 41,
+          "text": "  struct timespec receive_time;"
+        },
+        {
+          "line": 42,
+          "text": "  if (clock_gettime(CLOCK_MONOTONIC, &receive_time) == -1)"
+        },
+        {
+          "line": 43,
+          "text": "    exit(1);"
+        },
+        {
+          "line": 44,
+          "text": ""
+        },
+        {
+          "line": 45,
+          "text": "  long sec_diff = receive_time.tv_sec - send_time.tv_sec;"
+        },
+        {
+          "line": 46,
+          "text": "  long nsec_diff = receive_time.tv_nsec - send_time.tv_nsec;"
+        },
+        {
+          "line": 47,
+          "text": "  double latency_ns = sec_diff * 1e9 + nsec_diff;"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\jart__cosmopolitan\\third_party\\bzip2\\bzip2.c",
+      "line": 971,
+      "col": 13,
+      "message": "call to utime() uses time_t timestamps; limited to 32-bit range — use utimensat() instead",
+      "context": [
+        {
+          "line": 965,
+          "text": "   IntNative      retVal;"
+        },
+        {
+          "line": 966,
+          "text": "   struct utimbuf uTimBuf;"
+        },
+        {
+          "line": 967,
+          "text": ""
+        },
+        {
+          "line": 968,
+          "text": "   uTimBuf.actime = fileMetaInfo.st_atime;"
+        },
+        {
+          "line": 969,
+          "text": "   uTimBuf.modtime = fileMetaInfo.st_mtime;"
+        },
+        {
+          "line": 970,
+          "text": ""
+        },
+        {
+          "line": 971,
+          "text": "   retVal = utime ( dstName, &uTimBuf );"
+        },
+        {
+          "line": 972,
+          "text": "   ERROR_IF_NOT_ZERO ( retVal );"
+        },
+        {
+          "line": 973,
+          "text": "#  endif"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\jart__cosmopolitan\\third_party\\make\\commands.c",
+      "line": 639,
+      "col": 10,
+      "message": "access to struct stat timestamp field 'st_mtim': filesystem may not preserve timestamps beyond 2038",
+      "context": [
+        {
+          "line": 633,
+          "text": "    }"
+        },
+        {
+          "line": 634,
+          "text": "#endif"
+        },
+        {
+          "line": 635,
+          "text": ""
+        },
+        {
+          "line": 636,
+          "text": "  EINTRLOOP (e, stat (file->name, &st));"
+        },
+        {
+          "line": 637,
+          "text": "  if (e == 0"
+        },
+        {
+          "line": 638,
+          "text": "      && S_ISREG (st.st_mode)"
+        },
+        {
+          "line": 639,
+          "text": "      && FILE_TIMESTAMP_STAT_MODTIME (file->name, st) != file->last_mtime)"
+        },
+        {
+          "line": 640,
+          "text": "    {"
+        },
+        {
+          "line": 641,
+          "text": "      if (on_behalf_of)"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\jart__cosmopolitan\\third_party\\make\\commands.c",
+      "line": 639,
+      "col": 10,
+      "message": "access to struct stat timestamp field 'st_mtime': filesystem may not preserve timestamps beyond 2038",
+      "context": [
+        {
+          "line": 633,
+          "text": "    }"
+        },
+        {
+          "line": 634,
+          "text": "#endif"
+        },
+        {
+          "line": 635,
+          "text": ""
+        },
+        {
+          "line": 636,
+          "text": "  EINTRLOOP (e, stat (file->name, &st));"
+        },
+        {
+          "line": 637,
+          "text": "  if (e == 0"
+        },
+        {
+          "line": 638,
+          "text": "      && S_ISREG (st.st_mode)"
+        },
+        {
+          "line": 639,
+          "text": "      && FILE_TIMESTAMP_STAT_MODTIME (file->name, st) != file->last_mtime)"
+        },
+        {
+          "line": 640,
+          "text": "    {"
+        },
+        {
+          "line": 641,
+          "text": "      if (on_behalf_of)"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\jart__cosmopolitan\\third_party\\make\\misc.c",
+      "line": 97,
+      "col": 16,
+      "message": "explicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 91,
+          "text": ""
+        },
+        {
+          "line": 92,
+          "text": "unsigned int"
+        },
+        {
+          "line": 93,
+          "text": "make_rand ()"
+        },
+        {
+          "line": 94,
+          "text": "{"
+        },
+        {
+          "line": 95,
+          "text": "  /* mk_state must never be 0.  */"
+        },
+        {
+          "line": 96,
+          "text": "  if (mk_state == 0)"
+        },
+        {
+          "line": 97,
+          "text": "    mk_state = (unsigned int)(time (NULL) ^ make_pid ()) + 1;"
+        },
+        {
+          "line": 98,
+          "text": ""
+        },
+        {
+          "line": 99,
+          "text": "  /* A simple xorshift RNG.  */"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\jart__cosmopolitan\\third_party\\make\\remake.c",
+      "line": 1650,
+      "col": 19,
+      "message": "access to struct stat timestamp field 'st_mtim': filesystem may not preserve timestamps beyond 2038",
+      "context": [
+        {
+          "line": 1644,
+          "text": "          /* If this is not a symlink, we're done (we started with the real"
+        },
+        {
+          "line": 1645,
+          "text": "             file's mtime so we don't need to test it again).  */"
+        },
+        {
+          "line": 1646,
+          "text": "          if (!S_ISLNK (st.st_mode))"
+        },
+        {
+          "line": 1647,
+          "text": "            break;"
+        },
+        {
+          "line": 1648,
+          "text": ""
+        },
+        {
+          "line": 1649,
+          "text": "          /* If this mtime is newer than what we had, keep the new one.  */"
+        },
+        {
+          "line": 1650,
+          "text": "          ltime = FILE_TIMESTAMP_STAT_MODTIME (lpath, st);"
+        },
+        {
+          "line": 1651,
+          "text": "          if (ltime > mtime)"
+        },
+        {
+          "line": 1652,
+          "text": "            mtime = ltime;"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\jart__cosmopolitan\\third_party\\make\\remake.c",
+      "line": 1650,
+      "col": 19,
+      "message": "access to struct stat timestamp field 'st_mtime': filesystem may not preserve timestamps beyond 2038",
+      "context": [
+        {
+          "line": 1644,
+          "text": "          /* If this is not a symlink, we're done (we started with the real"
+        },
+        {
+          "line": 1645,
+          "text": "             file's mtime so we don't need to test it again).  */"
+        },
+        {
+          "line": 1646,
+          "text": "          if (!S_ISLNK (st.st_mode))"
+        },
+        {
+          "line": 1647,
+          "text": "            break;"
+        },
+        {
+          "line": 1648,
+          "text": ""
+        },
+        {
+          "line": 1649,
+          "text": "          /* If this mtime is newer than what we had, keep the new one.  */"
+        },
+        {
+          "line": 1650,
+          "text": "          ltime = FILE_TIMESTAMP_STAT_MODTIME (lpath, st);"
+        },
+        {
+          "line": 1651,
+          "text": "          if (ltime > mtime)"
+        },
+        {
+          "line": 1652,
+          "text": "            mtime = ltime;"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\jart__cosmopolitan\\third_party\\make\\remake.c",
+      "line": 1601,
+      "col": 13,
+      "message": "access to struct stat timestamp field 'st_mtim': filesystem may not preserve timestamps beyond 2038",
+      "context": [
+        {
+          "line": 1595,
+          "text": "      }"
+        },
+        {
+          "line": 1596,
+          "text": "  }"
+        },
+        {
+          "line": 1597,
+          "text": "#else"
+        },
+        {
+          "line": 1598,
+          "text": "  EINTRLOOP (e, stat (name, &st));"
+        },
+        {
+          "line": 1599,
+          "text": "#endif"
+        },
+        {
+          "line": 1600,
+          "text": "  if (e == 0)"
+        },
+        {
+          "line": 1601,
+          "text": "    mtime = FILE_TIMESTAMP_STAT_MODTIME (name, st);"
+        },
+        {
+          "line": 1602,
+          "text": "  else if (errno == ENOENT || errno == ENOTDIR)"
+        },
+        {
+          "line": 1603,
+          "text": "    mtime = NONEXISTENT_MTIME;"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\jart__cosmopolitan\\third_party\\make\\remake.c",
+      "line": 1601,
+      "col": 13,
+      "message": "access to struct stat timestamp field 'st_mtime': filesystem may not preserve timestamps beyond 2038",
+      "context": [
+        {
+          "line": 1595,
+          "text": "      }"
+        },
+        {
+          "line": 1596,
+          "text": "  }"
+        },
+        {
+          "line": 1597,
+          "text": "#else"
+        },
+        {
+          "line": 1598,
+          "text": "  EINTRLOOP (e, stat (name, &st));"
+        },
+        {
+          "line": 1599,
+          "text": "#endif"
+        },
+        {
+          "line": 1600,
+          "text": "  if (e == 0)"
+        },
+        {
+          "line": 1601,
+          "text": "    mtime = FILE_TIMESTAMP_STAT_MODTIME (name, st);"
+        },
+        {
+          "line": 1602,
+          "text": "  else if (errno == ENOENT || errno == ENOTDIR)"
+        },
+        {
+          "line": 1603,
+          "text": "    mtime = NONEXISTENT_MTIME;"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\jart__cosmopolitan\\third_party\\make\\vpath.c",
+      "line": 490,
+      "col": 32,
+      "message": "access to struct stat timestamp field 'st_mtim': filesystem may not preserve timestamps beyond 2038",
+      "context": [
+        {
+          "line": 484,
+          "text": "                  continue;"
+        },
+        {
+          "line": 485,
+          "text": "                }"
+        },
+        {
+          "line": 486,
+          "text": ""
+        },
+        {
+          "line": 487,
+          "text": "              /* Store the modtime into *MTIME_PTR for the caller.  */"
+        },
+        {
+          "line": 488,
+          "text": "              if (mtime_ptr != 0)"
+        },
+        {
+          "line": 489,
+          "text": "                {"
+        },
+        {
+          "line": 490,
+          "text": "                  *mtime_ptr = FILE_TIMESTAMP_STAT_MODTIME (name, st);"
+        },
+        {
+          "line": 491,
+          "text": "                  mtime_ptr = 0;"
+        },
+        {
+          "line": 492,
+          "text": "                }"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\jart__cosmopolitan\\third_party\\make\\vpath.c",
+      "line": 490,
+      "col": 32,
+      "message": "access to struct stat timestamp field 'st_mtime': filesystem may not preserve timestamps beyond 2038",
+      "context": [
+        {
+          "line": 484,
+          "text": "                  continue;"
+        },
+        {
+          "line": 485,
+          "text": "                }"
+        },
+        {
+          "line": 486,
+          "text": ""
+        },
+        {
+          "line": 487,
+          "text": "              /* Store the modtime into *MTIME_PTR for the caller.  */"
+        },
+        {
+          "line": 488,
+          "text": "              if (mtime_ptr != 0)"
+        },
+        {
+          "line": 489,
+          "text": "                {"
+        },
+        {
+          "line": 490,
+          "text": "                  *mtime_ptr = FILE_TIMESTAMP_STAT_MODTIME (name, st);"
+        },
+        {
+          "line": 491,
+          "text": "                  mtime_ptr = 0;"
+        },
+        {
+          "line": 492,
+          "text": "                }"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\jart__cosmopolitan\\third_party\\ncurses\\lib_twait.c",
+      "line": 98,
+      "col": 8,
+      "message": "implicit conversion of time_t to 'long' may truncate after 2038",
+      "context": [
+        {
+          "line": 92,
+          "text": "    } else {"
+        },
+        {
+          "line": 93,
+          "text": "\t/* .tv_sec and .tv_usec are unsigned, be careful when subtracting */"
+        },
+        {
+          "line": 94,
+          "text": "\tif (t0->tv_usec > t1.tv_usec) {"
+        },
+        {
+          "line": 95,
+          "text": "\t    t1.tv_usec += 1000000;\t/* Convert 1s in 1e6 microsecs */"
+        },
+        {
+          "line": 96,
+          "text": "\t    t1.tv_sec--;"
+        },
+        {
+          "line": 97,
+          "text": "\t}"
+        },
+        {
+          "line": 98,
+          "text": "\tres = (t1.tv_sec - t0->tv_sec) * 1000"
+        },
+        {
+          "line": 99,
+          "text": "\t    + (t1.tv_usec - t0->tv_usec) / 1000;"
+        },
+        {
+          "line": 100,
+          "text": "    }"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\jart__cosmopolitan\\third_party\\ncurses\\write_entry.c",
+      "line": 478,
+      "col": 14,
+      "message": "access to struct stat timestamp field 'st_mtime': filesystem may not preserve timestamps beyond 2038",
+      "context": [
+        {
+          "line": 472,
+          "text": "\t\t    LEAF_FMT \"/%.*s\", ptr[0],"
+        },
+        {
+          "line": 473,
+          "text": "\t\t    (int) sizeof(linkname) - (2 + LEAF_LEN), ptr);"
+        },
+        {
+          "line": 474,
+          "text": ""
+        },
+        {
+          "line": 475,
+          "text": "\tif (strcmp(filename, linkname) == 0) {"
+        },
+        {
+          "line": 476,
+          "text": "\t    _nc_warning(\"self-synonym ignored\");"
+        },
+        {
+          "line": 477,
+          "text": "\t} else if (stat(linkname, &statbuf) >= 0 &&"
+        },
+        {
+          "line": 478,
+          "text": "\t\t   statbuf.st_mtime < start_time) {"
+        },
+        {
+          "line": 479,
+          "text": "\t    _nc_warning(\"alias %s multiply defined.\", ptr);"
+        },
+        {
+          "line": 480,
+          "text": "\t} else if (_nc_access(linkname, W_OK) == 0)"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\jart__cosmopolitan\\third_party\\ncurses\\write_entry.c",
+      "line": 448,
+      "col": 31,
+      "message": "access to struct stat timestamp field 'st_mtime': filesystem may not preserve timestamps beyond 2038",
+      "context": [
+        {
+          "line": 442,
+          "text": ""
+        },
+        {
+          "line": 443,
+          "text": "    check_writeable(first_name[0]);"
+        },
+        {
+          "line": 444,
+          "text": "    write_file(filename, tp);"
+        },
+        {
+          "line": 445,
+          "text": ""
+        },
+        {
+          "line": 446,
+          "text": "    if (start_time == 0) {"
+        },
+        {
+          "line": 447,
+          "text": "\tif (stat(filename, &statbuf) == -1"
+        },
+        {
+          "line": 448,
+          "text": "\t    || (start_time = statbuf.st_mtime) == 0) {"
+        },
+        {
+          "line": 449,
+          "text": "\t    _nc_syserr_abort(\"error obtaining time from %s/%s\","
+        },
+        {
+          "line": 450,
+          "text": "\t\t\t     _nc_tic_dir(0), filename);"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\jart__cosmopolitan\\third_party\\ncurses\\write_entry.c",
+      "line": 424,
+      "col": 13,
+      "message": "access to struct stat timestamp field 'st_mtime': filesystem may not preserve timestamps beyond 2038",
+      "context": [
+        {
+          "line": 418,
+          "text": "     * Has this primary name been written since the first call to"
+        },
+        {
+          "line": 419,
+          "text": "     * write_entry()?  If so, the newer write will step on the older,"
+        },
+        {
+          "line": 420,
+          "text": "     * so warn the user."
+        },
+        {
+          "line": 421,
+          "text": "     */"
+        },
+        {
+          "line": 422,
+          "text": "    if (start_time > 0 &&"
+        },
+        {
+          "line": 423,
+          "text": "\tstat(filename, &statbuf) >= 0"
+        },
+        {
+          "line": 424,
+          "text": "\t&& statbuf.st_mtime >= start_time) {"
+        },
+        {
+          "line": 425,
+          "text": "#if HAVE_LINK && !USE_SYMLINKS"
+        },
+        {
+          "line": 426,
+          "text": "\t/*"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\jart__cosmopolitan\\third_party\\python\\Modules\\posixmodule.c",
+      "line": 4231,
+      "col": 12,
+      "message": "call to utimensat() may set timestamps limited to 32-bit time_t on 32-bit systems",
+      "context": [
+        {
+          "line": 4225,
+          "text": "#ifndef MS_WINDOWS"
+        },
+        {
+          "line": 4226,
+          "text": ""
+        },
+        {
+          "line": 4227,
+          "text": "static int"
+        },
+        {
+          "line": 4228,
+          "text": "utime_default(utime_t *ut, const char *path)"
+        },
+        {
+          "line": 4229,
+          "text": "{"
+        },
+        {
+          "line": 4230,
+          "text": "    UTIME_TO_TIMESPEC;"
+        },
+        {
+          "line": 4231,
+          "text": "    return utimensat(DEFAULT_DIR_FD, path, time, 0);"
+        },
+        {
+          "line": 4232,
+          "text": "}"
+        },
+        {
+          "line": 4233,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\jart__cosmopolitan\\third_party\\readline\\history.c",
+      "line": 268,
+      "col": 24,
+      "message": "explicit conversion of time_t to 'unsigned long' may truncate after 2106",
+      "context": [
+        {
+          "line": 262,
+          "text": "  char ts[64], *ret;"
+        },
+        {
+          "line": 263,
+          "text": ""
+        },
+        {
+          "line": 264,
+          "text": "  t = (time_t) time ((time_t *)0);"
+        },
+        {
+          "line": 265,
+          "text": "#if defined (HAVE_VSNPRINTF)\t\t/* assume snprintf if vsnprintf exists */"
+        },
+        {
+          "line": 266,
+          "text": "  snprintf (ts, sizeof (ts) - 1, \"X%lu\", (unsigned long) t);"
+        },
+        {
+          "line": 267,
+          "text": "#else"
+        },
+        {
+          "line": 268,
+          "text": "  sprintf (ts, \"X%lu\", (unsigned long) t);"
+        },
+        {
+          "line": 269,
+          "text": "#endif"
+        },
+        {
+          "line": 270,
+          "text": "  ret = savestring (ts);"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\jart__cosmopolitan\\third_party\\readline\\input.c",
+      "line": 640,
+      "col": 15,
+      "message": "implicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 634,
+          "text": "\t(current_time.tv_sec == timeout_point.tv_sec &&"
+        },
+        {
+          "line": 635,
+          "text": "\t current_time.tv_usec >= timeout_point.tv_usec))"
+        },
+        {
+          "line": 636,
+          "text": "    return 0;"
+        },
+        {
+          "line": 637,
+          "text": ""
+        },
+        {
+          "line": 638,
+          "text": "  if (secs && usecs)"
+        },
+        {
+          "line": 639,
+          "text": "    {"
+        },
+        {
+          "line": 640,
+          "text": "      *secs = timeout_point.tv_sec - current_time.tv_sec;"
+        },
+        {
+          "line": 641,
+          "text": "      *usecs = timeout_point.tv_usec - current_time.tv_usec;"
+        },
+        {
+          "line": 642,
+          "text": "      if (timeout_point.tv_usec < current_time.tv_usec)"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\jart__cosmopolitan\\third_party\\readline\\input.c",
+      "line": 589,
+      "col": 27,
+      "message": "implicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 583,
+          "text": "  if (gettimeofday(&timeout_point, 0) != 0)"
+        },
+        {
+          "line": 584,
+          "text": "    {"
+        },
+        {
+          "line": 585,
+          "text": "      timerclear (&timeout_point);"
+        },
+        {
+          "line": 586,
+          "text": "      return -1;"
+        },
+        {
+          "line": 587,
+          "text": "    }"
+        },
+        {
+          "line": 588,
+          "text": ""
+        },
+        {
+          "line": 589,
+          "text": "  secs = timeout_duration.tv_sec;"
+        },
+        {
+          "line": 590,
+          "text": "  usecs = timeout_duration.tv_usec;"
+        },
+        {
+          "line": 591,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\jart__cosmopolitan\\third_party\\zip\\crypt.c",
+      "line": 222,
+      "col": 15,
+      "message": "explicit conversion of time_t to 'unsigned int' may truncate after 2106",
+      "context": [
+        {
+          "line": 216,
+          "text": ""
+        },
+        {
+          "line": 217,
+          "text": "    /* First generate RAND_HEAD_LEN-2 random bytes. We encrypt the"
+        },
+        {
+          "line": 218,
+          "text": "     * output of rand() to get less predictability, since rand() is"
+        },
+        {
+          "line": 219,
+          "text": "     * often poorly implemented."
+        },
+        {
+          "line": 220,
+          "text": "     */"
+        },
+        {
+          "line": 221,
+          "text": "    if (++calls == 1) {"
+        },
+        {
+          "line": 222,
+          "text": "        srand((unsigned)time(NULL) ^ ZCR_SEED2);"
+        },
+        {
+          "line": 223,
+          "text": "    }"
+        },
+        {
+          "line": 224,
+          "text": "    init_keys(passwd);"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\jart__cosmopolitan\\third_party\\zip\\fileio.c",
+      "line": 1105,
+      "col": 26,
+      "message": "explicit conversion of time_t to 'unsigned long' may truncate after 2106",
+      "context": [
+        {
+          "line": 1099,
+          "text": "  t_even = (time_t)(((unsigned long)(*t) + 1) & (~1));"
+        },
+        {
+          "line": 1100,
+          "text": "                                /* Round up to even seconds. */"
+        },
+        {
+          "line": 1101,
+          "text": "  s = localtime(&t_even);       /* Use local time since MSDOS does. */"
+        },
+        {
+          "line": 1102,
+          "text": "  if (s == (struct tm *)NULL) {"
+        },
+        {
+          "line": 1103,
+          "text": "      /* time conversion error; use current time as emergency value"
+        },
+        {
+          "line": 1104,
+          "text": "         (assuming that localtime() does at least accept this value!) */"
+        },
+        {
+          "line": 1105,
+          "text": "      t_even = (time_t)(((unsigned long)time(NULL) + 1) & (~1));"
+        },
+        {
+          "line": 1106,
+          "text": "      s = localtime(&t_even);"
+        },
+        {
+          "line": 1107,
+          "text": "  }"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\jart__cosmopolitan\\third_party\\zip\\fileio.c",
+      "line": 1099,
+      "col": 22,
+      "message": "explicit conversion of time_t to 'unsigned long' may truncate after 2106",
+      "context": [
+        {
+          "line": 1093,
+          "text": "/* Return the Unix time t in DOS format, rounded up to the next two"
+        },
+        {
+          "line": 1094,
+          "text": "   second boundary. */"
+        },
+        {
+          "line": 1095,
+          "text": "{"
+        },
+        {
+          "line": 1096,
+          "text": "  time_t t_even;"
+        },
+        {
+          "line": 1097,
+          "text": "  struct tm *s;         /* result of localtime() */"
+        },
+        {
+          "line": 1098,
+          "text": ""
+        },
+        {
+          "line": 1099,
+          "text": "  t_even = (time_t)(((unsigned long)(*t) + 1) & (~1));"
+        },
+        {
+          "line": 1100,
+          "text": "                                /* Round up to even seconds. */"
+        },
+        {
+          "line": 1101,
+          "text": "  s = localtime(&t_even);       /* Use local time since MSDOS does. */"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\jart__cosmopolitan\\third_party\\zip\\timezone.c",
+      "line": 663,
+      "col": 25,
+      "message": "implicit conversion of time_t to 'long' may truncate after 2038",
+      "context": [
+        {
+          "line": 657,
+          "text": "     be sure, we allow a third try, but then the loop is stopped. */"
+        },
+        {
+          "line": 658,
+          "text": "  bailout_cnt = 3;"
+        },
+        {
+          "line": 659,
+          "text": "  then = loctime;"
+        },
+        {
+          "line": 660,
+          "text": "  do {"
+        },
+        {
+          "line": 661,
+          "text": "    ltm = localtime(&then);"
+        },
+        {
+          "line": 662,
+          "text": "    if (ltm == (struct tm *)NULL ||"
+        },
+        {
+          "line": 663,
+          "text": "        (tzoffset_adj = loctime - mkgmtime(ltm)) == 0L)"
+        },
+        {
+          "line": 664,
+          "text": "      break;"
+        },
+        {
+          "line": 665,
+          "text": "    then += tzoffset_adj;"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\jart__cosmopolitan\\third_party\\zip\\timezone.c",
+      "line": 534,
+      "col": 17,
+      "message": "implicit conversion of time_t to 'long' may truncate after 2038",
+      "context": [
+        {
+          "line": 528,
+          "text": "static struct tm _tmbuf;"
+        },
+        {
+          "line": 529,
+          "text": ""
+        },
+        {
+          "line": 530,
+          "text": "struct tm *gmtime(when)"
+        },
+        {
+          "line": 531,
+          "text": "     ZCONST time_t *when;"
+        },
+        {
+          "line": 532,
+          "text": "{"
+        },
+        {
+          "line": 533,
+          "text": "    long days = *when / SECSPERDAY;"
+        },
+        {
+          "line": 534,
+          "text": "    long secs = *when % SECSPERDAY;"
+        },
+        {
+          "line": 535,
+          "text": "    int isleap;"
+        },
+        {
+          "line": 536,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\jart__cosmopolitan\\third_party\\zip\\timezone.c",
+      "line": 533,
+      "col": 17,
+      "message": "implicit conversion of time_t to 'long' may truncate after 2038",
+      "context": [
+        {
+          "line": 527,
+          "text": ""
+        },
+        {
+          "line": 528,
+          "text": "static struct tm _tmbuf;"
+        },
+        {
+          "line": 529,
+          "text": ""
+        },
+        {
+          "line": 530,
+          "text": "struct tm *gmtime(when)"
+        },
+        {
+          "line": 531,
+          "text": "     ZCONST time_t *when;"
+        },
+        {
+          "line": 532,
+          "text": "{"
+        },
+        {
+          "line": 533,
+          "text": "    long days = *when / SECSPERDAY;"
+        },
+        {
+          "line": 534,
+          "text": "    long secs = *when % SECSPERDAY;"
+        },
+        {
+          "line": 535,
+          "text": "    int isleap;"
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\jart__cosmopolitan\\third_party\\zip\\unix.c",
+      "line": 322,
+      "col": 3,
+      "message": "call to utime() uses time_t timestamps; limited to 32-bit range — use utimensat() instead",
+      "context": [
+        {
+          "line": 316,
+          "text": "  /* Convert DOS time to time_t format in u */"
+        },
+        {
+          "line": 317,
+          "text": "#ifdef _POSIX_VERSION"
+        },
+        {
+          "line": 318,
+          "text": "  u.actime = u.modtime = dos2unixtime(d);"
+        },
+        {
+          "line": 319,
+          "text": "  utime(f, &u);"
+        },
+        {
+          "line": 320,
+          "text": "#else"
+        },
+        {
+          "line": 321,
+          "text": "  u[0] = u[1] = dos2unixtime(d);"
+        },
+        {
+          "line": 322,
+          "text": "  utime(f, u);"
+        },
+        {
+          "line": 323,
+          "text": "#endif"
+        },
+        {
+          "line": 324,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "file": "evaluation\\repos\\jart__cosmopolitan\\third_party\\zstd\\programs\\util.c",
+      "line": 333,
+      "col": 15,
+      "message": "call to utime() uses time_t timestamps; limited to 32-bit range — use utimensat() instead",
+      "context": [
+        {
+          "line": 327,
+          "text": "    }"
+        },
+        {
+          "line": 328,
+          "text": "#else"
+        },
+        {
+          "line": 329,
+          "text": "    {"
+        },
+        {
+          "line": 330,
+          "text": "        struct utimbuf timebuf;"
+        },
+        {
+          "line": 331,
+          "text": "        timebuf.actime = time(NULL);"
+        },
+        {
+          "line": 332,
+          "text": "        timebuf.modtime = statbuf->st_mtime;"
+        },
+        {
+          "line": 333,
+          "text": "        ret = utime(filename, &timebuf);"
+        },
+        {
+          "line": 334,
+          "text": "    }"
+        },
+        {
+          "line": 335,
+          "text": "#endif"
+        }
+      ]
+    }
+  ]
+}

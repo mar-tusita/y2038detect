@@ -1,0 +1,13 @@
+{
+  "repo": "ValdikSS/GoodbyeDPI",
+  "stars": 28337,
+  "y2038detect_version": "0.9.4",
+  "scanned_at": "2026-09-30T14:37:51Z",
+  "scan_sec": 1.7,
+  "c_files": 8,
+  "c_lines": 2887,
+  "parse_errors": 541,
+  "scan_errors": 0,
+  "issues": [],
+  "issues_strict": []
+}

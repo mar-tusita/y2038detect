@@ -1,0 +1,13 @@
+{
+  "repo": "radareorg/radare2",
+  "stars": 23991,
+  "y2038detect_version": "0.9.4",
+  "scanned_at": "2026-09-30T14:56:15Z",
+  "scan_sec": 390.45,
+  "c_files": 1386,
+  "c_lines": 875024,
+  "parse_errors": 446536,
+  "scan_errors": 0,
+  "issues": [],
+  "issues_strict": []
+}
