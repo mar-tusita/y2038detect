@@ -51,13 +51,13 @@ This package bundles the Clang library — **no separate LLVM / Clang installati
 
 ### 3. Get the Tool
 
-Download the zip from the distribution site and extract it.
+Download the zip from GitHub Releases and extract it.
 
 ```text
-https://mar-tusita.github.io/y2038detect/en/
+https://github.com/mar-tusita/y2038detect/releases
 ```
 
-The distribution site has only the latest version. Earlier versions (v0.9.4 and later) are available as the same zip from [GitHub Releases](https://github.com/mar-tusita/y2038detect/releases).
+There is a zip for each version (v0.9.4 and later). The download button on the distribution site (<https://mar-tusita.github.io/y2038detect/en/>) also links to the zip of the latest version.
 
 Navigate to the extracted directory:
 

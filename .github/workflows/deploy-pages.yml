@@ -22,12 +22,6 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Install libclang
-        run: pip install libclang
-
-      - name: Build distribution zip
-        run: python make_dist.py
-
       - name: Install pandoc
         run: sudo apt-get install -y pandoc
 
@@ -42,7 +36,9 @@ jobs:
             --highlight-style=pygments \
             -V lang_ja=1 \
             -o _site/index.html
-          python3 docs/inject_download_box.py "$VERSION" _site/index.html "" ja
+          # The download button links to the zip on the GitHub Release vVERSION
+          # of the public repository: deploy only after that Release has its zip.
+          python3 docs/inject_download_box.py "$VERSION" _site/index.html ja
           pandoc README.en.md \
             --from gfm \
             --to html5 \
@@ -50,10 +46,9 @@ jobs:
             --highlight-style=pygments \
             -V lang_en=1 \
             -o _site/en/index.html
-          python3 docs/inject_download_box.py "$VERSION" _site/en/index.html "../" en
+          python3 docs/inject_download_box.py "$VERSION" _site/en/index.html en
           cp docs/style.css _site/style.css
           cp docs/style.css _site/en/style.css
-          cp dist/y2038detect-*.zip "_site/y2038detect-${VERSION}.zip"
           python3 docs/build_findings_site.py --out _site
           python3 docs/gen_sitemap.py _site/sitemap.xml
 

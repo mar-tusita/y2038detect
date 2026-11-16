@@ -51,13 +51,13 @@ pip install libclang
 
 ### 3. ツールの取得
 
-配布サイトから zip をダウンロードして展開します。
+GitHub Releases から zip をダウンロードして展開します。
 
 ```text
-https://mar-tusita.github.io/y2038detect/
+https://github.com/mar-tusita/y2038detect/releases
 ```
 
-配布サイトに置いているのは最新版だけです。過去の版（v0.9.4 以降）は [GitHub Releases](https://github.com/mar-tusita/y2038detect/releases) から同じ形の zip を取得できます。
+zip は版ごとに置いてあります（v0.9.4 以降）。配布サイト（<https://mar-tusita.github.io/y2038detect/>）のダウンロードボタンも、最新版の zip を指しています。
 
 展開したディレクトリに移動します。
 
