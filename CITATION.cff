@@ -1,0 +1,29 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+type: software
+title: "y2038detect"
+abstract: >-
+  A static analysis tool that detects Year 2038 problems (32-bit integer
+  overflow of Unix timestamps, e.g. time_t narrowing) in C source code,
+  using AST analysis via libclang.
+authors:
+  - family-names: "Matsushita"
+    given-names: "Makoto"
+    affiliation: "Osaka University of Medical Sciences, Japan"
+    orcid: "https://orcid.org/0000-0002-8014-4092"
+# Update version and date-released at every release (with _version.py and CHANGELOG.md).
+version: "0.9.4"
+date-released: "2026-09-30"
+license: BSD-2-Clause
+repository-code: "https://github.com/mar-tusita/y2038detect"
+url: "https://mar-tusita.github.io/y2038detect/"
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.24271688
+    description: "Concept DOI on Zenodo (all versions; resolves to the latest)"
+keywords:
+  - "Year 2038 problem"
+  - "time_t"
+  - "static analysis"
+  - "C"
+  - "libclang"
