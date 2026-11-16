@@ -57,6 +57,8 @@ pip install libclang
 https://mar-tusita.github.io/y2038detect/
 ```
 
+配布サイトに置いているのは最新版だけです。過去の版（v0.9.4 以降）は [GitHub Releases](https://github.com/mar-tusita/y2038detect/releases) から同じ形の zip を取得できます。
+
 展開したディレクトリに移動します。
 
 ```bash

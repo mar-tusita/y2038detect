@@ -57,6 +57,8 @@ Download the zip from the distribution site and extract it.
 https://mar-tusita.github.io/y2038detect/en/
 ```
 
+The distribution site has only the latest version. Earlier versions (v0.9.4 and later) are available as the same zip from [GitHub Releases](https://github.com/mar-tusita/y2038detect/releases).
+
 Navigate to the extracted directory:
 
 ```bash

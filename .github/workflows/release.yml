@@ -1,0 +1,57 @@
+name: Attach distribution zip to release
+
+# When a GitHub Release is published (public repository), build the
+# distribution zip with make_dist.py from the release's tag and attach it as
+# y2038detect-VERSION.zip -- the same name the Pages site uses.
+#
+# Create the release yourself (tag first, then `gh release create vX.Y.Z
+# --verify-tag ...`); this workflow only adds the zip. It refuses to attach
+# anything if the tag does not match _version.py, so a mistyped tag cannot
+# publish a zip labelled with the wrong version.
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Existing release tag to (re)attach the zip to, e.g. v0.9.4'
+        required: true
+
+permissions:
+  contents: write
+
+jobs:
+  attach-zip:
+    # Releases are made only in the public repository.
+    if: github.repository == 'mar-tusita/y2038detect'
+    runs-on: ubuntu-latest
+    env:
+      TAG: ${{ github.event.release.tag_name || inputs.tag }}
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: ${{ env.TAG }}
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+
+      - name: Check that the tag matches _version.py
+        run: |
+          VERSION=$(python -c "import _version; print(_version.__version__)")
+          if [ "$TAG" != "v$VERSION" ]; then
+            echo "::error::tag $TAG does not match _version.py ($VERSION)"
+            exit 1
+          fi
+          echo "VERSION=$VERSION" >> "$GITHUB_ENV"
+
+      - name: Build distribution zip
+        run: |
+          python make_dist.py
+          mv dist/y2038detect-*.zip "y2038detect-${VERSION}.zip"
+
+      - name: Attach to the release
+        # --clobber: re-running replaces the asset instead of failing.
+        run: gh release upload "$TAG" "y2038detect-${VERSION}.zip" --clobber --repo "$GITHUB_REPOSITORY"
